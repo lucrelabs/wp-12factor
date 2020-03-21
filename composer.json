@@ -6,11 +6,11 @@
 		},
 		{
 			"type": "path",
-			"url": "plugins/*/"
+			"url": "wp-content/plugins/*/"
 		},
 		{
 			"type": "path",
-			"url": "themes/*/"
+			"url": "wp-content/themes/*/"
 		}
 	],
 	"extra": {
@@ -23,7 +23,7 @@
 	},
 	"require": {
 		"ext-gd": "*",
-		"johnpbloch/wordpress": "^4.5",
+		"johnpbloch/wordpress": "^5.3.2",
 		"wpackagist-plugin/amazon-web-services": "^0.3.4",
 		"wpackagist-plugin/amazon-s3-and-cloudfront": "^0.9.11",
 		"wpackagist-plugin/sendgrid-email-delivery-simplified": "^1.7",
