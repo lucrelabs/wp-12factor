@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "960065fa51793e39b8672c2fb84241c0",
+    "content-hash": "70d95af5f7ba7aea807385a7f758509a",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -3709,6 +3709,24 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/wordpress-seo/"
+        },
+        {
+            "name": "wpackagist-plugin/worker",
+            "version": "4.9.6",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/worker/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/worker.zip?timestamp=1584549846"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/worker/"
         },
         {
             "name": "wpackagist-theme/twentyfifteen",
