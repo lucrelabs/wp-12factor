@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "744290a20ae734cd3395241d31040cda",
+    "content-hash": "304a81016271316b825dc3933c03b9ef",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -666,6 +666,19 @@
                 "composer/installers": "~1.0"
             },
             "type": "wordpress-theme"
+        },
+        {
+            "name": "lucrelabs/amazon-s3-and-cloudfront",
+            "version": "2.2.1",
+            "dist": {
+                "type": "path",
+                "url": "plugins/amazon-s3-and-cloudfront",
+                "reference": "fbc3297d8aa7b6ad25e7ec2a592c912f13c9fe51"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin"
         },
         {
             "name": "mustache/mustache",
@@ -3570,24 +3583,6 @@
             ],
             "description": "Programmatically edit a wp-config.php file.",
             "time": "2019-07-23T17:24:43+00:00"
-        },
-        {
-            "name": "wpackagist-plugin/amazon-s3-and-cloudfront",
-            "version": "2.2.1",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/amazon-s3-and-cloudfront/",
-                "reference": "tags/2.2.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/amazon-s3-and-cloudfront.2.2.1.zip"
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/amazon-s3-and-cloudfront/"
         },
         {
             "name": "wpackagist-plugin/amazon-web-services",
