@@ -25,7 +25,7 @@
 		"ext-gd": "*",
 		"johnpbloch/wordpress": "^5.3.2",
 		"wpackagist-plugin/amazon-web-services": "^0.3.4",
-		"wpackagist-plugin/amazon-s3-and-cloudfront": "^0.9.11",
+		"wpackagist-plugin/amazon-s3-and-cloudfront": "2.2.1",
 		"wpackagist-plugin/sendgrid-email-delivery-simplified": "^1.7",
 		"wpackagist-plugin/woocommerce": "^4.0.0",
 		"wpackagist-plugin/wordpress-seo": "^13.3",
