@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "26c2f95c66fb9e99586198fb3562fa1f",
+    "content-hash": "358d7be79702d77735a46c3117ba79e4",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -653,6 +653,19 @@
                 "schema"
             ],
             "time": "2019-09-25T14:49:45+00:00"
+        },
+        {
+            "name": "landongw/Divi",
+            "version": "1.0.0",
+            "dist": {
+                "type": "path",
+                "url": "themes/Divi",
+                "reference": "1d53171005643ea6a9a673c4bd68f0de30b187c3"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-theme"
         },
         {
             "name": "mustache/mustache",
