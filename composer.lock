@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "79a9a6aab70ee06691e549502dcab6bf",
+    "content-hash": "960065fa51793e39b8672c2fb84241c0",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -3619,6 +3619,24 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/mailchimp/"
+        },
+        {
+            "name": "wpackagist-plugin/mailchimp-for-woocommerce",
+            "version": "2.3.5",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/mailchimp-for-woocommerce/",
+                "reference": "tags/2.3.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/mailchimp-for-woocommerce.2.3.5.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/mailchimp-for-woocommerce/"
         },
         {
             "name": "wpackagist-plugin/sendgrid-email-delivery-simplified",
