@@ -29,6 +29,7 @@
 		"wpackagist-plugin/sendgrid-email-delivery-simplified": "^1.7",
 		"wpackagist-plugin/woocommerce": "^4.0.0",
 		"wpackagist-plugin/wordpress-seo": "^13.3",
+		"wpackagist-plugin/wordpress-importer":"^0.7",
 		"wp-cli/wp-cli": "^1.1.0",
 		"wpackagist-theme/twentyfifteen": "*",
 		"dzuelke/twentyfifteen-child": "*",
