@@ -32,6 +32,7 @@
 		"wpackagist-plugin/mailchimp": "1.5.7",
 		"wpackagist-plugin/mailchimp-for-woocommerce": "2.3.5",
 		"wpackagist-plugin/worker": "4.9.6",
+		"wpackagist-plugin/woocommerce-gateway-stripe": "4.3.2",
 		"wp-cli/wp-cli": "^1.1.0",
 		"wpackagist-theme/twentyfifteen": "*",
 		"dzuelke/twentyfifteen-child": "*",
