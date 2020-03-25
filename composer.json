@@ -37,7 +37,8 @@
 		"wpackagist-theme/twentyfifteen": "*",
 		"dzuelke/twentyfifteen-child": "*",
 		"landongw/Divi": "*",
-		"lucrelabs/amazon-s3-and-cloudfront": "2.2.1"
+		"lucrelabs/amazon-s3-and-cloudfront": "2.2.1",
+		"elex/woo-easypost-shipping-method": "1.2.4"
 	},
 	"scripts": {
 		"wordpress-setup-core-install-prompt": "wp core install --prompt",
