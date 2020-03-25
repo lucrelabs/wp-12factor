@@ -23,6 +23,7 @@
 	},
 	"require": {
 		"ext-gd": "*",
+		"ext-mbstring": "*",
 		"johnpbloch/wordpress": "^5.3.2",
 		"wpackagist-plugin/amazon-web-services": "^0.3.4",
 		"wpackagist-plugin/sendgrid-email-delivery-simplified": "^1.7",

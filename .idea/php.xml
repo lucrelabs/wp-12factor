@@ -2,9 +2,7 @@
 <project version="4">
   <component name="PhpIncludePathManager">
     <include_path>
-      <path value="$PROJECT_DIR$/vendor/mustangostang/spyc" />
       <path value="$PROJECT_DIR$/vendor/justinrainbow/json-schema" />
-      <path value="$PROJECT_DIR$/vendor/johnpbloch/wordpress-core-installer" />
       <path value="$PROJECT_DIR$/vendor/mustache/mustache" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
       <path value="$PROJECT_DIR$/vendor/symfony/console" />
@@ -24,10 +22,39 @@
       <path value="$PROJECT_DIR$/vendor/heroku/heroku-buildpack-php" />
       <path value="$PROJECT_DIR$/vendor/seld/jsonlint" />
       <path value="$PROJECT_DIR$/vendor/seld/phar-utils" />
-      <path value="$PROJECT_DIR$/vendor/seld/cli-prompt" />
       <path value="$PROJECT_DIR$/vendor/psr/log" />
       <path value="$PROJECT_DIR$/vendor/nb/oxymel" />
       <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/autoload-splitter" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/export-command" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/cron-command" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/import-command" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/rewrite-command" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/mustangostang-spyc" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/super-admin-command" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/checksum-command" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/package-command" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/widget-command" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/server-command" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/media-command" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/eval-command" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/core-command" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/extension-command" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/config-command" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/language-command" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/entity-command" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/embed-command" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/shell-command" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/wp-config-transformer" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/db-command" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/role-command" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/search-replace-command" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/cache-command" />
+      <path value="$PROJECT_DIR$/vendor/wp-cli/scaffold-command" />
+      <path value="$PROJECT_DIR$/vendor/johnpbloch/wordpress" />
+      <path value="$PROJECT_DIR$/vendor/johnpbloch/wordpress-core-installer" />
     </include_path>
   </component>
 </project>
