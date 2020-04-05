@@ -3,6 +3,7 @@
   "name": "landongw/Divi",
   "version": "1.0.0",
   "require": {
+    "ext-json": "*",
     "composer/installers": "~1.0"
   }
 }
