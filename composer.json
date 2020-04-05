@@ -11,6 +11,10 @@
 		{
 			"type": "path",
 			"url": "themes/*/"
+		},
+		{
+			"type": "path",
+			"url": "tax/*/"
 		}
 	],
 	"extra": {
