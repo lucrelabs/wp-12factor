@@ -41,7 +41,8 @@
 		"wpackagist-plugin/redirection": "^4.7.1",
 		"wp-cli/wp-cli": "^1.1.0",
 		"landongw/Divi": "*",
-		"lucrelabs/amazon-s3-and-cloudfront": "2.2.1"
+		"lucrelabs/amazon-s3-and-cloudfront": "2.2.1",
+		"ext-json": "*"
 	},
 	"scripts": {
 		"wordpress-setup-core-install-prompt": "wp core install --prompt",
