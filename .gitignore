@@ -5,3 +5,4 @@ nginx-wordpress.conf
 wordpress-12factor.iml
 php.xml
 .DS_Store
+.idea/php.xml
