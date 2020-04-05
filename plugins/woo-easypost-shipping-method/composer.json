@@ -1,8 +1,0 @@
-{
-  "type": "wordpress-plugin",
-  "name": "elex/woo-easypost-shipping-method",
-  "version": "1.2.4",
-  "require": {
-    "composer/installers": "~1.0"
-  }
-}

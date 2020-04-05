@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eca268204c8baf9e78ad62ab66fec365",
+    "content-hash": "b03c7ee79e7cb99ebfedcb44d1680274",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -446,19 +446,6 @@
                 }
             ],
             "time": "2020-03-01T12:26:26+00:00"
-        },
-        {
-            "name": "elex/woo-easypost-shipping-method",
-            "version": "1.2.4",
-            "dist": {
-                "type": "path",
-                "url": "plugins/woo-easypost-shipping-method",
-                "reference": "71227622c4379d3fbc87bd76665063e3c94748ee"
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin"
         },
         {
             "name": "johnpbloch/wordpress",
