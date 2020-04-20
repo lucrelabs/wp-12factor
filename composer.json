@@ -41,9 +41,9 @@
 		"wpackagist-plugin/redirection": "^4.7.1",
 		"wpackagist-plugin/hummingbird-performance": "2.4.2",
 		"wpackagist-plugin/ga-google-analytics": "20200325",
+		"wpackagist-plugin/amazon-s3-and-cloudfront": "2.3.2",
 		"wp-cli/wp-cli": "^1.1.0",
 		"landongw/Divi": "*",
-		"lucrelabs/amazon-s3-and-cloudfront": "2.2.1",
 		"ext-json": "*"
 	},
 	"scripts": {

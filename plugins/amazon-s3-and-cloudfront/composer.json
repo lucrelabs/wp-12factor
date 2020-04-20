@@ -1,8 +1,0 @@
-{
-  "type": "wordpress-plugin",
-  "name": "lucrelabs/amazon-s3-and-cloudfront",
-  "version": "2.3.2",
-  "require": {
-    "composer/installers": "~1.0"
-  }
-}
