@@ -53,4 +53,4 @@ if(function_exists('get_option') && get_option('siteurl') == 'http://example.her
 	exit;
 }
 
-set_time_limit(300);
+set_time_limit(20);
