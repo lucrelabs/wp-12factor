@@ -52,3 +52,9 @@ if(function_exists('get_option') && get_option('siteurl') == 'http://example.her
 	header("Location: $url".$_SERVER['REQUEST_URI']);
 	exit;
 }
+
+set_time_limit(300);
+@ini_set('upload_max_filesize' , '64M' );
+@ini_set('post_max_size', '64M');
+@ini_set('max_execution_time', '180');
+@ini_set('max_input_time', '180')
