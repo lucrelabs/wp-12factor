@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0fee9ecd9f7bb8988b909a82b07ebb9d",
+    "content-hash": "a3477129cbacbaf1d25604850f7d0c90",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -3758,6 +3758,24 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/hummingbird-performance/"
+        },
+        {
+            "name": "wpackagist-plugin/imagify",
+            "version": "1.9.9",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/imagify/",
+                "reference": "tags/1.9.9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/imagify.1.9.9.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/imagify/"
         },
         {
             "name": "wpackagist-plugin/mailchimp",
