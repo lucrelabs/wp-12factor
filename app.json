@@ -28,9 +28,7 @@
 		"WORDPRESS_NONCE_SALT":       { "generator": "secret", "description": "security token generated for WordPress" }
 	},
 	"buildpacks": [
-		{
-			"url": "https://github.com/carloluis/heroku-buildpack-vim"
-		}
+		{}
 	],
 	"addons": [
 		"jawsdb",
