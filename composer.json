@@ -52,7 +52,7 @@
 		"wordpress-setup-core-install": "wp core install --skip-email",
 		"wordpress-setup-clear-home": "wp option delete home || true",
 		"wordpress-setup-configure-s3": "echo '{\"domain\":\"path\",\"copy-to-s3\":\"1\",\"serve-from-s3\":\"1\",\"ssl\":\"request\"}' | wp option add tantan_wordpress_s3 --format=json",
-		"wordpress-setup-enable-plugins": "wp plugin activate amazon-web-services amazon-s3-and-cloudfront sendgrid-email-delivery-simplified woocommerce wordpress-seo worker woocommerce-gateway-stripe hummingbird-performance ga-google-analytics",
+		"wordpress-setup-enable-plugins": "wp plugin activate amazon-web-services amazon-s3-and-cloudfront sendgrid-email-delivery-simplified woocommerce wordpress-seo worker woocommerce-gateway-stripe hummingbird-performance ga-google-analytics regenerate-thumbnails",
 		"wordpress-setup-permalink-structure": "wp rewrite structure '/%year%/%monthnum%/%day%/%postname%/' || true",
 		"wordpress-setup": [
 			"@wordpress-setup-core-install-prompt",
