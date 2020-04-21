@@ -27,13 +27,14 @@
 		"WORDPRESS_LOGGED_IN_SALT":   { "generator": "secret", "description": "security token generated for WordPress" },
 		"WORDPRESS_NONCE_SALT":       { "generator": "secret", "description": "security token generated for WordPress" }
 	},
-	"buildpacks": [
-		{}
-	],
 	"addons": [
-		"jawsdb",
+		"cleardb:ignite",
 		"bucketeer",
-		"sendgrid"
+		"sendgrid:starter",
+		"codeship:free",
+		"librato:development",
+		"memcachedcloud:30",
+		"papertrail:choklad"
 	],
 	"image": "heroku/php"
 }

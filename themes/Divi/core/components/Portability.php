@@ -112,7 +112,6 @@ class ET_Core_Portability {
 			do_action( 'et_core_portability_import_file', $upload['file'] );
             error_log("PORTABILITY upload: " . json_encode($upload));
 
-
 			$temp_file = $this->temp_file( $temp_file_id, 'et_core_import', $upload['file'] );
 			$import = json_decode( $filesystem->get_contents( $temp_file ), true );
 			$import = $this->validate( $import );

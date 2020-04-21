@@ -51,7 +51,7 @@
 		"wordpress-setup-core-install": "wp core install --skip-email",
 		"wordpress-setup-clear-home": "wp option delete home || true",
 		"wordpress-setup-configure-s3": "echo '{\"domain\":\"path\",\"copy-to-s3\":\"1\",\"serve-from-s3\":\"1\",\"ssl\":\"request\"}' | wp option add tantan_wordpress_s3 --format=json",
-		"wordpress-setup-enable-plugins": "wp plugin activate amazon-web-services amazon-s3-and-cloudfront sendgrid-email-delivery-simplified",
+		"wordpress-setup-enable-plugins": "wp plugin activate amazon-web-services amazon-s3-and-cloudfront sendgrid-email-delivery-simplified woocommerce wordpress-seo worker woocommerce-gateway-stripe hummingbird-performance ga-google-analytics",
 		"wordpress-setup-permalink-structure": "wp rewrite structure '/%year%/%monthnum%/%day%/%postname%/' || true",
 		"wordpress-setup": [
 			"@wordpress-setup-core-install-prompt",
@@ -65,7 +65,7 @@
 		],
 		"wordpress-setup-demo-theme": "wp theme activate Divi",
 		"wordpress-setup-welcome-post": [
-			"echo 'It works! Please see <a href=\"https://github.com/dzuelke/wordpress-12factor\">wordpress-12factor on GitHub</a> for info and post-install instructions.' | wp post update 1 - --post_title=\"Welcome to WordPress on Heroku\""
+			"echo 'It works! Please see <a href=\"https://github.com/lucrelabs/wp-12factor\">wordpress-12factor on GitHub</a> for info and post-install instructions.' | wp post update 1 - --post_title=\"Welcome to WordPress on Heroku\""
 		]
 	},
 	"require-dev": {

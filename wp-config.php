@@ -52,3 +52,5 @@ if(function_exists('get_option') && get_option('siteurl') == 'http://example.her
 	header("Location: $url".$_SERVER['REQUEST_URI']);
 	exit;
 }
+
+define('WP_CACHE', true);
