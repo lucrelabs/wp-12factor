@@ -52,6 +52,3 @@ if(function_exists('get_option') && get_option('siteurl') == 'http://example.her
 	header("Location: $url".$_SERVER['REQUEST_URI']);
 	exit;
 }
-
-/** Increase memory limit for Divi uploads on Heroku **/
-define('WP_MEMORY_LIMIT', '256M');
