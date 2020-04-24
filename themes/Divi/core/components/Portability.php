@@ -110,7 +110,7 @@ class ET_Core_Portability {
 			 * @param string $file The absolute path to the uploaded JSON file's temporary location.
 			 */
 			do_action( 'et_core_portability_import_file', $upload['file'] );
-            error_log("PORTABILITY upload: " . print_r($upload));
+            error_log("PORTABILITY upload: " . json_encode($upload));
 
 			$temp_file = $this->temp_file( $temp_file_id, 'et_core_import', $upload['file'] );
 			$import = json_decode( $filesystem->get_contents( $temp_file ), true );

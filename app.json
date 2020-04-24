@@ -1,5 +1,5 @@
 {
-	"name": "Twelve-Factor WordPress",
+	"name": "LUCRElabs Twelve-Factor WordPress",
 	"description": "WordPress, fully managed using Composer and configured using environment variables.",
 	"keywords": [
 		"php",
@@ -7,8 +7,8 @@
 		"blog",
 		"cms"
 	],
-	"website": "https://github.com/dzuelke/wordpress-12factor",
-	"repository": "https://github.com/dzuelke/wordpress-12factor",
+	"website": "https://github.com/lucrelabs/wp-12factor",
+	"repository": "https://github.com/lucrelabs/wp-12factor",
 	"logo": "https://s.w.org/about/images/logos/wordpress-logo-notext-rgb.png",
 	"success_url": "/",
 	"scripts": {
@@ -28,9 +28,13 @@
 		"WORDPRESS_NONCE_SALT":       { "generator": "secret", "description": "security token generated for WordPress" }
 	},
 	"addons": [
-		"jawsdb",
+		"cleardb:ignite",
 		"bucketeer",
-		"sendgrid"
+		"sendgrid:starter",
+		"codeship:free",
+		"librato:development",
+		"memcachedcloud:30",
+		"papertrail:choklad"
 	],
 	"image": "heroku/php"
 }
