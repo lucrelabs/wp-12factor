@@ -6943,6 +6943,7 @@ endif;
 
 if ( ! function_exists( 'et_get_original_footer_credits' ) ) :
 function et_get_original_footer_credits() {
+    // TODO get URL and name from databasegit
 	return sprintf( __( '© %1$s | Built by %2$s', 'Divi' ), '<a href="http://www.mightycricket.co" >Mighty Cricket</a>', '<a href="https://lucrelabs.com" style="color: gold;">LUCRElabs</a>' );
 }
 endif;
