@@ -57,6 +57,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/widget-command" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/wp-cli" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/wp-config-transformer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-staging/pro" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

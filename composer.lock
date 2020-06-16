@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1204a6265eea4a7ddf414ed3b9696fe4",
+    "content-hash": "d690f726e824176c3cf4d8980b22609a",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -683,48 +683,21 @@
             "type": "wordpress-theme"
         },
         {
-            "name": "lucrelabs/wp-staging-pro",
-            "version": "3.0.4",
+            "name": "lucrelabs/wp-migrate-db-pro",
+            "version": "1.9.10",
             "dist": {
                 "type": "path",
-                "url": "plugins/wp-staging-pro",
-                "reference": "b438f255d13e830e65455da99b69c144d1e7735c"
+                "url": "plugins/wp-migrate-db-pro",
+                "reference": "11c0866b0e2eebdedcaeef78da0463ca0723a6da"
             },
             "require": {
-                "composer/installers": "~1.0",
-                "ext-pdo": "*",
-                "psr/log": "^1.1"
-            },
-            "require-dev": {
-                "mikey179/vfsstream": "1.6.8",
-                "phpunit/phpunit": "4.8.36",
-                "roave/security-advisories": "dev-master"
+                "composer/installers": "~1.0"
             },
             "type": "wordpress-plugin",
-            "autoload": {
-                "psr-4": {
-                    "WPStaging\\": "",
-                    "WPStaging\\Test\\": "../tests/unit"
-                }
-            },
             "license": [
                 "proprietary"
             ],
-            "authors": [
-                {
-                    "name": "René Hermenau",
-                    "email": "support@wp-staging.com",
-                    "role": "Founder",
-                    "homepage": "https://wp-staging.com"
-                },
-                {
-                    "name": "Ilgıt Yıldırım",
-                    "email": "ilgit.yildirim@triplebits.com",
-                    "role": "Sr. Full-Stack Software Developer",
-                    "homepage": "https://triplebits.com"
-                }
-            ],
-            "description": "WordPress plugin for creating staging sites"
+            "description": "WordPress plugin for database migration"
         },
         {
             "name": "mustache/mustache",

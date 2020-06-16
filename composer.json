@@ -44,7 +44,7 @@
 		"wpackagist-plugin/amazon-s3-and-cloudfront": "2.3.2",
 		"wpackagist-plugin/regenerate-thumbnails": "3.1.3",
 		"wpackagist-plugin/tiny-compress-images": "3.2.1",
-		"lucrelabs/wp-staging-pro": "3.0.4",
+		"lucrelabs/wp-migrate-db-pro": "1.9.10",
 		"wp-cli/wp-cli": "^1.1.0",
 		"landongw/Divi": "*",
 		"ext-json": "*"
