@@ -1,5 +1,7 @@
 {
+  "type": "wordpress-plugin",
   "name": "wp-staging/pro",
+  "version": "3.0.4",
   "license": "proprietary",
   "description": "WordPress plugin for creating staging sites",
   "type": "project",
