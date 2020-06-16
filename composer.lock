@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1930ee967578d468e1988b3373dedd78",
+    "content-hash": "1204a6265eea4a7ddf414ed3b9696fe4",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -681,6 +681,50 @@
                 "composer/installers": "~1.0"
             },
             "type": "wordpress-theme"
+        },
+        {
+            "name": "lucrelabs/wp-staging-pro",
+            "version": "3.0.4",
+            "dist": {
+                "type": "path",
+                "url": "plugins/wp-staging-pro",
+                "reference": "b438f255d13e830e65455da99b69c144d1e7735c"
+            },
+            "require": {
+                "composer/installers": "~1.0",
+                "ext-pdo": "*",
+                "psr/log": "^1.1"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "1.6.8",
+                "phpunit/phpunit": "4.8.36",
+                "roave/security-advisories": "dev-master"
+            },
+            "type": "wordpress-plugin",
+            "autoload": {
+                "psr-4": {
+                    "WPStaging\\": "",
+                    "WPStaging\\Test\\": "../tests/unit"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "René Hermenau",
+                    "email": "support@wp-staging.com",
+                    "role": "Founder",
+                    "homepage": "https://wp-staging.com"
+                },
+                {
+                    "name": "Ilgıt Yıldırım",
+                    "email": "ilgit.yildirim@triplebits.com",
+                    "role": "Sr. Full-Stack Software Developer",
+                    "homepage": "https://triplebits.com"
+                }
+            ],
+            "description": "WordPress plugin for creating staging sites"
         },
         {
             "name": "mustache/mustache",
@@ -3721,49 +3765,6 @@
             ],
             "description": "Programmatically edit a wp-config.php file.",
             "time": "2019-07-23T17:24:43+00:00"
-        },
-        {
-            "name": "wp-staging/pro",
-            "version": "3.0.4",
-            "dist": {
-                "type": "path",
-                "url": "plugins/wp-staging-pro",
-                "reference": "3ddb29f6e775eed84ef8b490c5e157b8d177f1c8"
-            },
-            "require": {
-                "ext-pdo": "*",
-                "psr/log": "^1.1"
-            },
-            "require-dev": {
-                "mikey179/vfsstream": "1.6.8",
-                "phpunit/phpunit": "4.8.36",
-                "roave/security-advisories": "dev-master"
-            },
-            "type": "project",
-            "autoload": {
-                "psr-4": {
-                    "WPStaging\\": "",
-                    "WPStaging\\Test\\": "../tests/unit"
-                }
-            },
-            "license": [
-                "proprietary"
-            ],
-            "authors": [
-                {
-                    "name": "René Hermenau",
-                    "email": "support@wp-staging.com",
-                    "role": "Founder",
-                    "homepage": "https://wp-staging.com"
-                },
-                {
-                    "name": "Ilgıt Yıldırım",
-                    "email": "ilgit.yildirim@triplebits.com",
-                    "role": "Sr. Full-Stack Software Developer",
-                    "homepage": "https://triplebits.com"
-                }
-            ],
-            "description": "WordPress plugin for creating staging sites"
         },
         {
             "name": "wpackagist-plugin/amazon-s3-and-cloudfront",
