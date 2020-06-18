@@ -1,0 +1,894 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Delivery Slots\n"
+"POT-Creation-Date: 2016-11-13 15:13+0200\n"
+"PO-Revision-Date: 2016-11-13 15:32+0200\n"
+"Last-Translator: James Kemp <me@jckemp.com>\n"
+"Language-Team: James Kemp <me@jckemp.com>\n"
+"Language: he_IL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: iconic-woo-delivery-slots.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: assets/options/jck-deliveryslots.php:9 inc/admin/settings.php:28
+msgid "General Settings"
+msgstr "הגדרות כלליות"
+
+#: assets/options/jck-deliveryslots.php:13
+#: assets/options/jck-deliveryslots.php:132 inc/admin/settings.php:32
+#: inc/admin/settings.php:162
+msgid "Date Settings"
+msgstr "הגדרות תאריך"
+
+#: assets/options/jck-deliveryslots.php:17 inc/admin/settings.php:36
+msgid "Time Settings"
+msgstr "הגדרות שעה"
+
+#: assets/options/jck-deliveryslots.php:21
+#: assets/options/jck-deliveryslots.php:390
+#: assets/options/jck-deliveryslots.php:396 inc/admin/settings.php:40
+#: inc/admin/settings.php:426 inc/admin/settings.php:432
+msgid "Holidays"
+msgstr "חגים"
+
+#: assets/options/jck-deliveryslots.php:25 inc/admin/settings.php:44
+msgid "Reservation Table"
+msgstr "טבלת שמירת תאריכים"
+
+#: assets/options/jck-deliveryslots.php:32 inc/admin/settings.php:60
+msgid "General Setup"
+msgstr "הגדרה כללית"
+
+#: assets/options/jck-deliveryslots.php:38 inc/admin/settings.php:66
+msgid "Checkout Fields Position"
+msgstr "מיקום השדות בתהליך"
+
+#: assets/options/jck-deliveryslots.php:39 inc/admin/settings.php:67
+msgid "Where should the date and time fields show on the checkout page?"
+msgstr "היכן להציג את שדות התאריך והשעה בעמוד התשלום?"
+
+#: assets/options/jck-deliveryslots.php:43 inc/admin/settings.php:71
+msgid "Before Customer Details"
+msgstr "לפני פרטי הלקוח"
+
+#: assets/options/jck-deliveryslots.php:44 inc/admin/settings.php:72
+msgid "Within Billing Fields"
+msgstr "בין שדות החיוב"
+
+#: assets/options/jck-deliveryslots.php:45 inc/admin/settings.php:73
+msgid "Within Shipping Fields"
+msgstr "בין שדות המשלוח"
+
+#: assets/options/jck-deliveryslots.php:46 inc/admin/settings.php:74
+msgid "After Customer Details"
+msgstr "אחרי פרטי הלקוח"
+
+#: assets/options/jck-deliveryslots.php:47 inc/admin/settings.php:75
+msgid "Before Order Review"
+msgstr "לפני פרטי ההזמנה"
+
+#: assets/options/jck-deliveryslots.php:48 inc/admin/settings.php:76
+msgid "Within Order Review"
+msgstr "בתוך פרטי ההזמנה"
+
+#: assets/options/jck-deliveryslots.php:49 inc/admin/settings.php:77
+msgid "After Order Review"
+msgstr "אחרי פרטי ההזמנה"
+
+#: assets/options/jck-deliveryslots.php:54 inc/admin/settings.php:82
+msgid "Checkout Fields Position Priority"
+msgstr "עדיפות שדה "
+
+#: assets/options/jck-deliveryslots.php:55 inc/admin/settings.php:83
+msgid "Enter a number of priority, e.g. 10 is early/before, 50 is late/after"
+msgstr ""
+"יש להזין מספר עדיפות (אינדקס), למשל 10 הוא מוקדם/לפני, 50 הוא מאוחר/אחרי."
+
+#: assets/options/jck-deliveryslots.php:62 inc/admin/settings.php:90
+#: inc/admin/settings.php:636
+msgid "Shipping Methods"
+msgstr "שיטות משלוח"
+
+#: assets/options/jck-deliveryslots.php:63 inc/admin/settings.php:91
+msgid "Enable delivery slots for the following shipping methods."
+msgstr "הפעלת חלונות זמן עבור שיטות המשלוח הבאות."
+
+#: assets/options/jck-deliveryslots.php:73 inc/admin/settings.php:102
+msgid "Date Setup"
+msgstr "הגדרת תאריך"
+
+#: assets/options/jck-deliveryslots.php:79
+#: assets/options/jck-deliveryslots.php:208 inc/admin/settings.php:108
+#: inc/admin/settings.php:285
+msgid "Mandatory Field?"
+msgstr "שדה חובה?"
+
+#: assets/options/jck-deliveryslots.php:80 inc/admin/settings.php:109
+msgid "Is the delivery date a required field at checkout?"
+msgstr "האם זה שדה זה הינו חובה לשם תשלום?"
+
+#: assets/options/jck-deliveryslots.php:87
+#: assets/options/jck-deliveryslots.php:216 inc/admin/settings.php:116
+#: inc/admin/settings.php:293
+msgid "Show Description?"
+msgstr "הצג תיאור?"
+
+#: assets/options/jck-deliveryslots.php:94 inc/admin/settings.php:123
+msgid "Theme"
+msgstr "ערכת עיצוב"
+
+#: assets/options/jck-deliveryslots.php:95 inc/admin/settings.php:124
+msgid ""
+"Select a theme for the front-end calendar at checkout. If you already have a "
+"jQuery UI theme installed, select \"None\". Themes can be viewed <a href="
+"\"http://jqueryui.com/themeroller/\" target=\"_blank\">here</a>, in the "
+"\"Gallery\" section."
+msgstr ""
+"בחירת ערכת נשוא לעיצוב לוח השנה בצד הלקוח בעמוד התשלום. במידה ומותקנת ערכת "
+"עיצוב של jQuery UI יש לסמן \"ללא\".\vניתן לצפות בערכות הנושא <a href="
+"\"http://jqueryui.com/themeroller/\" target=\"_blank\">כאן</a> באיזור "
+"\"Gallery\"."
+
+#: assets/options/jck-deliveryslots.php:138 inc/admin/settings.php:168
+msgid "Delivery Days"
+msgstr "ימי משלוח"
+
+#: assets/options/jck-deliveryslots.php:143
+#: assets/options/jck-deliveryslots.php:374 inc/admin/settings.php:173
+#: inc/admin/settings.php:247 inc/admin/settings.php:409
+#: jck_woo_deliveryslots.php:2069
+msgid "Sunday"
+msgstr "ראשון"
+
+#: assets/options/jck-deliveryslots.php:144
+#: assets/options/jck-deliveryslots.php:375 inc/admin/settings.php:174
+#: inc/admin/settings.php:248 inc/admin/settings.php:410
+#: jck_woo_deliveryslots.php:2070
+msgid "Monday"
+msgstr "שני"
+
+#: assets/options/jck-deliveryslots.php:145
+#: assets/options/jck-deliveryslots.php:376 inc/admin/settings.php:175
+#: inc/admin/settings.php:249 inc/admin/settings.php:411
+#: jck_woo_deliveryslots.php:2071
+msgid "Tuesday"
+msgstr "שלישי"
+
+#: assets/options/jck-deliveryslots.php:146
+#: assets/options/jck-deliveryslots.php:377 inc/admin/settings.php:176
+#: inc/admin/settings.php:250 inc/admin/settings.php:412
+#: jck_woo_deliveryslots.php:2072
+msgid "Wednesday"
+msgstr "רביעי"
+
+#: assets/options/jck-deliveryslots.php:147
+#: assets/options/jck-deliveryslots.php:378 inc/admin/settings.php:177
+#: inc/admin/settings.php:251 inc/admin/settings.php:413
+#: jck_woo_deliveryslots.php:2073
+msgid "Thursday"
+msgstr "חמישי"
+
+#: assets/options/jck-deliveryslots.php:148
+#: assets/options/jck-deliveryslots.php:379 inc/admin/settings.php:178
+#: inc/admin/settings.php:252 inc/admin/settings.php:414
+#: jck_woo_deliveryslots.php:2074
+msgid "Friday"
+msgstr "שישי"
+
+#: assets/options/jck-deliveryslots.php:149
+#: assets/options/jck-deliveryslots.php:380 inc/admin/settings.php:179
+#: inc/admin/settings.php:253 inc/admin/settings.php:415
+#: jck_woo_deliveryslots.php:2075
+msgid "Saturday"
+msgstr "שבת"
+
+#: assets/options/jck-deliveryslots.php:154 inc/admin/settings.php:184
+msgid "Minimum/Maximum Selectable Date Method"
+msgstr "מינימום/מקסימום תאריכים לבחירה"
+
+#: assets/options/jck-deliveryslots.php:155 inc/admin/settings.php:185
+msgid ""
+"Choose whether the minimum and maximum selectable date applies to all days "
+"of the week, allowed days only, or weekdays only."
+msgstr ""
+"בחירה האם הגבלת המינימום והמקסימום לבחירת תאריכים מתייחסת לכל הימים, רק "
+"לימים מורשים או לימים השבוע בלבד."
+
+#: assets/options/jck-deliveryslots.php:167 inc/admin/settings.php:197
+msgid "Minimum Selectable Date"
+msgstr "תאריך בחירה מינימלי"
+
+#: assets/options/jck-deliveryslots.php:168 inc/admin/settings.php:198
+msgid "Days from now. Enter \"0\" for same day."
+msgstr "ימים מיום נוכחי, \"0\" ליום נוכחי."
+
+#: assets/options/jck-deliveryslots.php:175 inc/admin/settings.php:205
+msgid "Maximum Selectable Date"
+msgstr "תאריך בחירה מקסימלי"
+
+#: assets/options/jck-deliveryslots.php:176 inc/admin/settings.php:206
+msgid "Days from now."
+msgstr "ימים מיום נוכחי."
+
+#: assets/options/jck-deliveryslots.php:183 inc/admin/settings.php:259
+msgid "Date Format"
+msgstr "פורמט תאריך"
+
+#: assets/options/jck-deliveryslots.php:184 inc/admin/settings.php:260
+#: inc/admin/settings.php:505
+msgid ""
+"Available formats can be found <a href=\"http://api.jqueryui.com/datepicker/"
+"#utility-formatDate\" target=\"_blank\">here</a>."
+msgstr ""
+"ניתן לצפות בפורמטים הקיימים <a href=\"http://api.jqueryui.com/datepicker/"
+"#utility-formatDate\" target=\"_blank\">כאן</a>."
+
+#: assets/options/jck-deliveryslots.php:194 inc/admin/settings.php:271
+msgid "Time Setup"
+msgstr "הגדרות זמן"
+
+#: assets/options/jck-deliveryslots.php:200 inc/admin/settings.php:277
+msgid "Enable Time Slots"
+msgstr "הפעלת חלונות זמן"
+
+#: assets/options/jck-deliveryslots.php:201 inc/admin/settings.php:278
+msgid "Check this box to enable time slots at checkout."
+msgstr "הפעלת אשפרות בחירה לחלונות זמן בעמוד הקופה"
+
+#: assets/options/jck-deliveryslots.php:209 inc/admin/settings.php:286
+msgid "Is the time slot a required field at checkout?"
+msgstr "האם שדה הזמן הינו שדה חובה בעת התשלום?"
+
+#: assets/options/jck-deliveryslots.php:223 inc/admin/settings.php:300
+msgid "Time Format"
+msgstr "פורמט זמן"
+
+#: assets/options/jck-deliveryslots.php:224 inc/admin/settings.php:301
+msgid "Select a time format for the frontend."
+msgstr "בחירת פורמט הזמן בצד הלקוח"
+
+#: assets/options/jck-deliveryslots.php:239 inc/admin/settings.php:317
+msgid "Time Slot Configuration"
+msgstr "הגדרות חלון זמן"
+
+#: assets/options/jck-deliveryslots.php:245 inc/admin/settings.php:323
+#: inc/admin/settings.php:377
+msgid "Allow Bookings Up To (x) Minutes Before Slot"
+msgstr "אפשר שמירת חלון זמן עד (X) דקות לפני החלון"
+
+#: assets/options/jck-deliveryslots.php:246
+msgid ""
+"This option will prevent bookings being made too close to the delivery time. "
+"(Check your timezone in WordPress Settings)."
+msgstr ""
+"אפשרות זו מונעת בחירת חלון זמן קרוב מידי לתחילת החלון.\v(יש לבדוק את הגדרות "
+"איזור הזמן בהגדרות וורדפרס)"
+
+#: assets/options/jck-deliveryslots.php:253 inc/admin/settings.php:213
+msgid "Disable Same Day Delivery if Current Time is After (x)"
+msgstr "אל תאפשר הזמנה לאותו היום אם השעה הנוכחית היא אחרי (X)"
+
+#: assets/options/jck-deliveryslots.php:260
+#: assets/options/jck-deliveryslots.php:274
+#: assets/options/jck-deliveryslots.php:316
+#: assets/options/jck-deliveryslots.php:338 inc/admin/settings.php:217
+#: inc/admin/settings.php:228 inc/admin/settings.php:359
+#: inc/admin/settings.php:370
+msgid "AM"
+msgstr "AM"
+
+#: assets/options/jck-deliveryslots.php:261
+#: assets/options/jck-deliveryslots.php:275
+#: assets/options/jck-deliveryslots.php:317
+#: assets/options/jck-deliveryslots.php:339 inc/admin/settings.php:218
+#: inc/admin/settings.php:229 inc/admin/settings.php:360
+#: inc/admin/settings.php:371
+msgid "PM"
+msgstr "PM"
+
+#: assets/options/jck-deliveryslots.php:267 inc/admin/settings.php:224
+msgid "Disable Next Day Delivery if Current Time is After (x)"
+msgstr "אל תאפשר הזמנה ליום הבא אם השעה הנוכחית היא אחרי (X)"
+
+#: assets/options/jck-deliveryslots.php:281 inc/admin/settings.php:331
+msgid "Time Slots"
+msgstr "חלונות זמן"
+
+#: assets/options/jck-deliveryslots.php:283 inc/admin/settings.php:333
+#: jck_woo_deliveryslots.php:511 jck_woo_deliveryslots.php:783
+#: jck_woo_deliveryslots.php:1045 jck_woo_deliveryslots.php:1061
+#: jck_woo_deliveryslots.php:1153
+msgid "Time Slot"
+msgstr "חלון זמן"
+
+#: assets/options/jck-deliveryslots.php:305 inc/admin/settings.php:355
+#: inc/admin/settings.php:440
+msgid "From"
+msgstr "מ"
+
+#: assets/options/jck-deliveryslots.php:308
+#: assets/options/jck-deliveryslots.php:327
+#: assets/options/jck-deliveryslots.php:331
+#: assets/options/jck-deliveryslots.php:410 jck_woo_deliveryslots.php:510
+msgid "Date"
+msgstr "תאריך"
+
+#: assets/options/jck-deliveryslots.php:309
+#: assets/options/jck-deliveryslots.php:328
+#: assets/options/jck-deliveryslots.php:332
+#: assets/options/jck-deliveryslots.php:411
+msgid "Time"
+msgstr "שעה"
+
+#: assets/options/jck-deliveryslots.php:324 inc/admin/settings.php:366
+#: inc/admin/settings.php:448
+msgid "To"
+msgstr "עד"
+
+#: assets/options/jck-deliveryslots.php:346 inc/admin/settings.php:384
+msgid "Lockout"
+msgstr "נעילה"
+
+#: assets/options/jck-deliveryslots.php:354 inc/admin/settings.php:391
+msgid "Postcodes"
+msgstr "מיקוד"
+
+#: assets/options/jck-deliveryslots.php:361 inc/admin/settings.php:397
+#, php-format
+msgid "Fee (%s)"
+msgstr "דמי משלוח (%s)"
+
+#: assets/options/jck-deliveryslots.php:369 inc/admin/settings.php:404
+msgid "Days"
+msgstr "ימים"
+
+#: assets/options/jck-deliveryslots.php:391 inc/admin/settings.php:427
+msgid "Please add any holidays where deliveries should not be made."
+msgstr "בחירת ימי חג בהם לא מתבצעים משלוחים."
+
+#: assets/options/jck-deliveryslots.php:398 inc/admin/settings.php:435
+msgid "Holiday"
+msgstr "חג"
+
+#: assets/options/jck-deliveryslots.php:403
+msgid "Holiday Date"
+msgstr "תאריך חג"
+
+#: assets/options/jck-deliveryslots.php:422 inc/admin/settings.php:456
+msgid "Name"
+msgstr "שם"
+
+#: assets/options/jck-deliveryslots.php:426 inc/admin/settings.php:460
+msgid "e.g. Christmas"
+msgstr "לדוגמא: חנוכה"
+
+#: assets/options/jck-deliveryslots.php:435 inc/admin/settings.php:470
+msgid "Reservations"
+msgstr "רישום מראש"
+
+#: assets/options/jck-deliveryslots.php:436 inc/admin/settings.php:471
+msgid ""
+"You can insert a reservation table using the shortcode <strong>[jckwds]</"
+"strong>. This allows your customers to reserve a delivery time and date "
+"while they shop. <br><strong>Note:</strong> Time Slots should be enabled if "
+"you want to use the reservation table."
+msgstr ""
+"ניתן להוסיף טבלת הזמנות מראש ע\"י שורטקוד <strong>[jckwds]</strong> ע\"מ "
+"לאפשר ללקוחות שלך לשמור תאריך ושעה למשלוח בזמן הקנייה בחנות.<br>\vיש להפעיל "
+"חלונות זמן ע\"מ להשתמש בטבלאות רישום מראש."
+
+#: assets/options/jck-deliveryslots.php:441 inc/admin/settings.php:476
+msgid "Expiration"
+msgstr "תפוגה"
+
+#: assets/options/jck-deliveryslots.php:442 inc/admin/settings.php:477
+msgid "Reservations expire after (x) Minutes."
+msgstr "ההזמנה פגה אחרי (X) דקות."
+
+#: assets/options/jck-deliveryslots.php:449 inc/admin/settings.php:484
+msgid "Date Columns"
+msgstr "עמודות תאריכים"
+
+#: assets/options/jck-deliveryslots.php:450 inc/admin/settings.php:485
+msgid "How many date columns should the reservation table display?"
+msgstr "כמה עמודות תאריכים יוצגו בטבלה?"
+
+#: assets/options/jck-deliveryslots.php:457 inc/admin/settings.php:492
+msgid "Selection Type"
+msgstr "סוג בחירה"
+
+#: assets/options/jck-deliveryslots.php:458 inc/admin/settings.php:493
+msgid "Choose the selection type for the time slots in the table."
+msgstr "סוג הבחירה של חלונות זמן בטבלה."
+
+#: assets/options/jck-deliveryslots.php:463 inc/admin/settings.php:498
+msgid "Checkbox"
+msgstr "תשלום (צ'קאאוט)"
+
+#: assets/options/jck-deliveryslots.php:464 inc/admin/settings.php:499
+msgid "Fee"
+msgstr "דמי משלוח"
+
+#: assets/options/jck-deliveryslots.php:472 inc/admin/settings.php:516
+msgid "Table Styling"
+msgstr "עיצוב הטבלה"
+
+#: assets/options/jck-deliveryslots.php:473 inc/admin/settings.php:517
+msgid "Customise the look of your reservation table to match your website."
+msgstr "התאמה אישית של הטבלה לצבעי האתר."
+
+#: assets/options/jck-deliveryslots.php:478 inc/admin/settings.php:522
+msgid "Header Cell Colour"
+msgstr "צבע תאי כותרת"
+
+#: assets/options/jck-deliveryslots.php:485 inc/admin/settings.php:529
+msgid "Header Cell Border Colour"
+msgstr "צבע גבול תאי כותרת "
+
+#: assets/options/jck-deliveryslots.php:492 inc/admin/settings.php:536
+msgid "Header Cell Font Colour"
+msgstr "צבע גופן תאי כותרת"
+
+#: assets/options/jck-deliveryslots.php:499 inc/admin/settings.php:543
+msgid "Arrow Icon Colour"
+msgstr "צבע אייקון חץ"
+
+#: assets/options/jck-deliveryslots.php:506 inc/admin/settings.php:550
+msgid "Arrow Icon Hover Colour"
+msgstr "צבע אייקון חץ בעת מעבר עכבר"
+
+#: assets/options/jck-deliveryslots.php:513 inc/admin/settings.php:557
+msgid "Reserve Cell Colour"
+msgstr "צבע תא שמור"
+
+#: assets/options/jck-deliveryslots.php:520 inc/admin/settings.php:564
+msgid "Reserve Cell Border Colour"
+msgstr "בצע גבול תא שמור"
+
+#: assets/options/jck-deliveryslots.php:527 inc/admin/settings.php:571
+msgid "Reserve Icon Colour"
+msgstr "צבע אייקון שמור"
+
+#: assets/options/jck-deliveryslots.php:534 inc/admin/settings.php:578
+msgid "Reserve Icon Hover Colour"
+msgstr "צבע אייקון שמור בעת מעבר עכבר"
+
+#: assets/options/jck-deliveryslots.php:541 inc/admin/settings.php:585
+msgid "Unavailable Cell Colour"
+msgstr "צבע תא לא זמין"
+
+#: assets/options/jck-deliveryslots.php:548 inc/admin/settings.php:592
+msgid "Reserved Cell Colour"
+msgstr "צבע תא שמור"
+
+#: assets/options/jck-deliveryslots.php:555 inc/admin/settings.php:599
+msgid "Reserved Cell Border Colour"
+msgstr "צבע גבול תא שמור"
+
+#: assets/options/jck-deliveryslots.php:562 inc/admin/settings.php:606
+msgid "Reserved Icon Colour"
+msgstr "צבע אייקון שמור"
+
+#: assets/options/jck-deliveryslots.php:569 inc/admin/settings.php:613
+msgid "Loading Icon Colour"
+msgstr "צבע אייקון טעינה"
+
+#: assets/options/jck-deliveryslots.php:576 inc/admin/settings.php:620
+msgid "Lock Icon Colour"
+msgstr "צבע אייקון נעילה"
+
+#: inc/admin/deliveries.php:12
+msgid "Upcoming Deliveries"
+msgstr "משלוחים עתידיים"
+
+#: inc/admin/deliveries.php:13
+msgid "Currently Reserved"
+msgstr "הזמנות נוכחיות"
+
+#: inc/admin/settings.php:235
+msgid "Only allow deliveries within the current week?"
+msgstr "אפשר משלוחים בשבוע נוכחי בלבד?"
+
+#: inc/admin/settings.php:242
+msgid "Last Day of the Week"
+msgstr "יום אחרון בשבוע"
+
+#: inc/admin/settings.php:324
+msgid ""
+"This option will prevent bookings being made too close to the delivery time. "
+"Can be overridden on an individual time slot basis. (Check your timezone in "
+"WordPress Settings)."
+msgstr ""
+"אשפרות זו תמנע הזמנה בסמוך למועד ההזמנה. ניתן לעקוף הגדרה זו בכל חלון זמן "
+"באופן פרטני (יש לבדוק את הגדרת איזור הזמן בהגדרות וורדפרס)"
+
+#: inc/admin/settings.php:433
+msgid ""
+"For single days, just enter a date in the \"From\" field. For ranges, enter "
+"a \"From\" and \"To\" date. Ranges are up to and including the dates you "
+"enter."
+msgstr ""
+"לימים בודדים יש להזין תאריך בשדה \"מ\", לטווח בין ימים יש להזין תאריך בשדה "
+"\"מ\" ותאריך בשדה \"עד\". הטווחים הינם עד תאריך כולל התאריך שנבחר."
+
+#: inc/admin/settings.php:504
+msgid "Header Date Format"
+msgstr "פורמט כותרת תאריך"
+
+#: inc/admin/wp-settings-framework.php:121
+#: inc/admin/wp-settings-framework/wp-settings-framework.php:135
+msgid "WPSF settings must be an array"
+msgstr "הגדרת WPSF חייבת להיות מערך"
+
+#: inc/admin/wp-settings-framework.php:213
+#: inc/admin/wp-settings-framework/wp-settings-framework.php:227
+#: jck_woo_deliveryslots.php:348
+msgid "You do not have sufficient permissions to access this page."
+msgstr "אין לך הרשאות מספיקות ע\"מ להציג עמוד זה."
+
+#: inc/admin/wp-settings-framework.php:680
+#: inc/admin/wp-settings-framework/wp-settings-framework.php:830
+msgid "Save Changes"
+msgstr "שמירת שינויים"
+
+#: jck_woo_deliveryslots.php:88
+#, php-format
+msgid ""
+"You need to be running PHP 5.3+ for Delivery Slots to work. You're on %s."
+msgstr ""
+"יש להריץ PHP 5.3+ ע\"מ שתוסף \"ווקומרס - חלונות זמן משלוח\" יעבוד, כרגע "
+"מותקמת גרסה %s."
+
+#: jck_woo_deliveryslots.php:323
+msgid "Deliveries"
+msgstr "משלוחים"
+
+#: jck_woo_deliveryslots.php:494
+msgid "There are currently no upcoming deliveries."
+msgstr "לא קיימים משלוחים עתידיים"
+
+#: jck_woo_deliveryslots.php:496
+msgid "There are currently no active reservations."
+msgstr "לא קיימים תאריכים שמוכים."
+
+#: jck_woo_deliveryslots.php:509
+msgid "Status"
+msgstr "סטטוס"
+
+#: jck_woo_deliveryslots.php:512
+msgid "Order #"
+msgstr "הזמנה #"
+
+#: jck_woo_deliveryslots.php:513
+msgid "Order Overview"
+msgstr "פרטי ההזמנה"
+
+#: jck_woo_deliveryslots.php:514
+msgid "Customer Name"
+msgstr "שם הלקוח"
+
+#: jck_woo_deliveryslots.php:515
+msgid "Customer Email"
+msgstr "אימייל"
+
+#: jck_woo_deliveryslots.php:554
+msgid ""
+"\"Allow Bookings Up To (x) Minutes Before Slot\" should be a positive "
+"integer. It has defaulted to 0."
+msgstr ""
+"שדה \"אפשר שמירה עד )X( דקות לפני חלון זמן\" חייבת להכיל מספר שלם חיובי, "
+"ברירת המחדל הינה 0."
+
+#: jck_woo_deliveryslots.php:570
+msgid ""
+"The Same Day cutoff should be a valid time format (00:00), try using the "
+"time picker instead."
+msgstr ""
+"הגבלת יום נוכחי חייבת להיות בפורמט זמן תקין (00:00), יש להשתמש בדוגם הזמן "
+"במקום."
+
+#: jck_woo_deliveryslots.php:586
+msgid ""
+"The Next Day cutoff should be a valid time format (00:00), try using the "
+"time picker instead."
+msgstr ""
+"הגבלת היום הבא חייבת להיות בפורמט זמן תקין (00:00), יש להשתמש בדוגם הזמן "
+"במקום."
+
+#: jck_woo_deliveryslots.php:683
+msgid ""
+"The \"Allow Bookings Up To (x) Minutes Before Slot\" time slot setting "
+"should be a positive integer. It has been removed."
+msgstr ""
+"שדה \"אפשר שמירה עד )X( דקות לפני חלון זמן\" חייבת להכיל מספר שלם חיובי, "
+"הערך שהוזן הוסר."
+
+#: jck_woo_deliveryslots.php:693
+msgid ""
+"The \"Lockout After\" time slot setting should be a positive integer. It has "
+"defaulted to 10."
+msgstr ""
+"הגדרת \"נעל אחרי\" עבור חלון זמן חייבת להיות מספר חיובי, ברירת המחדל הינה 10."
+
+#: jck_woo_deliveryslots.php:703
+msgid ""
+"You should select at least one active day for your time slot. All days have "
+"now been selected."
+msgstr "יש לבחור לפחות יום אחד פעיל עבור חלון הזמן שלך, כל הימים הופעלו כעת."
+
+#: jck_woo_deliveryslots.php:713
+msgid ""
+"One of the time slots you entered had an invalid format. Try using the time "
+"picker instead. A default has been added in its place."
+msgstr ""
+"אחד מחלונות הזמן שהוזנו מכיל פורמט זמן לא תקין. יש להשתמש בכלי בחירת הזמן "
+"במקום. זמן ברירת מחדל הוזן במקום הערך הקודם שהוזן."
+
+#: jck_woo_deliveryslots.php:764 jck_woo_deliveryslots.php:1041
+#: jck_woo_deliveryslots.php:1057 jck_woo_deliveryslots.php:1152
+msgid "Delivery Date"
+msgstr "תאריך המשלוח"
+
+#: jck_woo_deliveryslots.php:767
+msgid "Select a delivery date"
+msgstr "בחירת תאריך משלוח"
+
+#: jck_woo_deliveryslots.php:769
+msgid "Please choose a date for your delivery."
+msgstr "יש לבחור תאריך לביצוע משלוח."
+
+#: jck_woo_deliveryslots.php:787
+msgid "Please select a date first..."
+msgstr "ראשית יש לבחור תאריך..."
+
+#: jck_woo_deliveryslots.php:789
+msgid "Please choose a time slot for your delivery."
+msgstr "יש לבחור חלון זמן לביצוע המשלוח."
+
+#: jck_woo_deliveryslots.php:797 jck_woo_deliveryslots.php:2064
+msgid "Please select a time slot..."
+msgstr "יש לבחור חלון זמן..."
+
+#: jck_woo_deliveryslots.php:880 jck_woo_deliveryslots.php:882
+msgid "Please select a valid delivery date."
+msgstr "יש לזמן תאריך משלוח תקין."
+
+#: jck_woo_deliveryslots.php:896 jck_woo_deliveryslots.php:898
+msgid "Please select a time slot."
+msgstr "יש לבחור חלון זמן."
+
+#: jck_woo_deliveryslots.php:1037 jck_woo_deliveryslots.php:1053
+#: templates/checkout-fields.php:5
+msgid "Delivery Details"
+msgstr "פרטי המשלוח"
+
+#: jck_woo_deliveryslots.php:1087
+msgid "Delivery"
+msgstr "משלוח"
+
+#: jck_woo_deliveryslots.php:2065
+msgid "Sorry, no slots available..."
+msgstr "אנו מצטערים, לא קיימים חלונות זמן פנויים..."
+
+#: jck_woo_deliveryslots.php:2066
+msgid "Sorry, the time slot you reserved is not available for your postcode."
+msgstr "אנו מצטערים, לא קיימים חלונות זמן פנויים למיקוד שלך..."
+
+#: jck_woo_deliveryslots.php:2067
+msgid "Loading..."
+msgstr "טוען..."
+
+#: jck_woo_deliveryslots.php:2078
+msgid "Su"
+msgstr "א'"
+
+#: jck_woo_deliveryslots.php:2079
+msgid "Mo"
+msgstr "ב'"
+
+#: jck_woo_deliveryslots.php:2080
+msgid "Tu"
+msgstr "ג'"
+
+#: jck_woo_deliveryslots.php:2081
+msgid "We"
+msgstr "ד'"
+
+#: jck_woo_deliveryslots.php:2082
+msgid "Th"
+msgstr "ה'"
+
+#: jck_woo_deliveryslots.php:2083
+msgid "Fr"
+msgstr "ו"
+
+#: jck_woo_deliveryslots.php:2084
+msgid "Sa"
+msgstr "ש'"
+
+#: jck_woo_deliveryslots.php:2087
+msgid "January"
+msgstr "ינואר"
+
+#: jck_woo_deliveryslots.php:2088
+msgid "February"
+msgstr "פברואר"
+
+#: jck_woo_deliveryslots.php:2089
+msgid "March"
+msgstr "מרץ"
+
+#: jck_woo_deliveryslots.php:2090
+msgid "April"
+msgstr "אפריל"
+
+#: jck_woo_deliveryslots.php:2091 jck_woo_deliveryslots.php:2105
+msgid "May"
+msgstr "מאי"
+
+#: jck_woo_deliveryslots.php:2092
+msgid "June"
+msgstr "יוני"
+
+#: jck_woo_deliveryslots.php:2093
+msgid "July"
+msgstr "יולי"
+
+#: jck_woo_deliveryslots.php:2094
+msgid "August"
+msgstr "אוגוסט"
+
+#: jck_woo_deliveryslots.php:2095
+msgid "September"
+msgstr "ספטמבר"
+
+#: jck_woo_deliveryslots.php:2096
+msgid "October"
+msgstr "אוקטובר"
+
+#: jck_woo_deliveryslots.php:2097
+msgid "November"
+msgstr "נובמבר"
+
+#: jck_woo_deliveryslots.php:2098
+msgid "December"
+msgstr "דצמבר"
+
+#: jck_woo_deliveryslots.php:2101
+msgid "Jan"
+msgstr "ינו"
+
+#: jck_woo_deliveryslots.php:2102
+msgid "Feb"
+msgstr "פבר"
+
+#: jck_woo_deliveryslots.php:2103
+msgid "Mar"
+msgstr "מרץ"
+
+#: jck_woo_deliveryslots.php:2104
+msgid "Apr"
+msgstr "אפר"
+
+#: jck_woo_deliveryslots.php:2106
+msgid "Jun"
+msgstr "יונ"
+
+#: jck_woo_deliveryslots.php:2107
+msgid "Jul"
+msgstr "יול"
+
+#: jck_woo_deliveryslots.php:2108
+msgid "Aug"
+msgstr "אוג"
+
+#: jck_woo_deliveryslots.php:2109
+msgid "Sep"
+msgstr "ספט"
+
+#: jck_woo_deliveryslots.php:2110
+msgid "Oct"
+msgstr "אוק"
+
+#: jck_woo_deliveryslots.php:2111
+msgid "Nov"
+msgstr "נוב"
+
+#: jck_woo_deliveryslots.php:2112
+msgid "Dec"
+msgstr "דצמ"
+
+#: jck_woo_deliveryslots.php:2634
+msgid "Any Method"
+msgstr "כל שיטה"
+
+#: jck_woo_deliveryslots.php:2763
+msgid "Shipping"
+msgstr "דמי משלוח"
+
+#: jck_woo_deliveryslots.php:2868
+msgid "Everywhere Else"
+msgstr "לכל מקום אחר"
+
+#: jck_woo_deliveryslots.php:2923
+msgid "Time Slot Fee"
+msgstr "עלות חלון זמן"
+
+#. Plugin Name of the plugin/theme
+msgid "WooCommerce Delivery Slots"
+msgstr "ווקומרס - חלונות זמן למשלוח"
+
+#. Plugin URI of the plugin/theme
+msgid "https://iconicwp.com"
+msgstr "https://iconicwp.com"
+
+#. Description of the plugin/theme
+msgid "Allow your customers to select a delivery slot for their order"
+msgstr "מאפשר ללקוחותיך לבחור תאריך וחלון זמן למשלוח."
+
+#. Author of the plugin/theme
+msgid "Iconic"
+msgstr "Iconic"
+
+#~ msgid "Lockout After"
+#~ msgstr "נעילה אחרי"
+
+#~ msgid "Postcode Restrictions"
+#~ msgstr "הגבלת מיקוד"
+
+#~ msgid "Display Instructions?"
+#~ msgstr "הצגת הנחייות?"
+
+#~ msgid ""
+#~ "When checked, instructions for the reservation table will be displayed."
+#~ msgstr ""
+#~ "כאשר אפשראות זו מסומנת, יוצגו ללוקח הנחיות לשימוש בטבלת הרישום מראש."
+
+#~ msgid "Show Available Slots When Logged Out?"
+#~ msgstr "הצגת חלונות זמן זמינים ללקוח שאינו מחובר למערכת?"
+
+#~ msgid ""
+#~ "When checked, the reservation table will be displayed to logged out users "
+#~ "with the remaining slots available."
+#~ msgstr ""
+#~ "כאשר אפשרות זו מסומנת, טבלת הרישום מראש תוצג גם ללקוחות אשר אינם רשומים "
+#~ "או מחוברים לחנות כרגע."
+
+#~ msgid "Select a delivery time"
+#~ msgstr "בחירת שעת משלוח"
+
+#~ msgid "<strong>%d</strong> <span>Avail</span>"
+#~ msgstr "<strong>%d</strong> <span>זמין</span>"
+
+#~ msgid "Please <a href=\"%s\" class=\"%s\">login</a> to reserve a slot."
+#~ msgstr "אנא <a href=\"%s\" class=\"%s\">התחבר/י</a> ע\"מ לשמור חלון זמן."
+
+#~ msgid "Reservation Instructions"
+#~ msgstr "הנחיות לשמירת חלון זמן"
+
+#~ msgid "Navigate the days available for reservation by using the %s icons."
+#~ msgstr "יש לנווט בין הימים ע\"מ לשמור חלון זמן באמצעות האייקונים %s."
+
+#~ msgid ""
+#~ "Click on any of the %s icons to reserve your slot. Your slot will be "
+#~ "reserved for %d minutes. Once reserved, your slot will be highlighted. "
+#~ "You can change your reserved slot at any time."
+#~ msgstr ""
+#~ "יש להקליק על אחד מהאייקונים %s ע\"מ לשמור את חלון הזמן הרצוי. החלון יהיה "
+#~ "שמור ל%d דקות. ברגע שנשמר, חלון הזמן יהיה מודגש. ניתן לשמור שמירה בכל רגע."
+
+#~ msgid "http://www.jckemp.com"
+#~ msgstr "http://www.jckemp.com"
+
+#~ msgid "James Kemp"
+#~ msgstr "ג'יימס קמפ"

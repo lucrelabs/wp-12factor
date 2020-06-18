@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d690f726e824176c3cf4d8980b22609a",
+    "content-hash": "7c9b909edec73422cae870fea822016a",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -681,6 +681,23 @@
                 "composer/installers": "~1.0"
             },
             "type": "wordpress-theme"
+        },
+        {
+            "name": "lucrelabs/iconic-woo-delivery-slots-premium",
+            "version": "1.10.0",
+            "dist": {
+                "type": "path",
+                "url": "plugins/iconic-woo-delivery-slots-premium",
+                "reference": "7c488d0660ec4d26fea8f1e2d5a6c459d902a155"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Adds delivery slots to checkout"
         },
         {
             "name": "lucrelabs/wp-migrate-db-pro",
@@ -3831,15 +3848,15 @@
         },
         {
             "name": "wpackagist-plugin/mailchimp-for-woocommerce",
-            "version": "2.4.0",
+            "version": "2.4.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/mailchimp-for-woocommerce/",
-                "reference": "tags/2.4.0"
+                "reference": "tags/2.4.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/mailchimp-for-woocommerce.2.4.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/mailchimp-for-woocommerce.2.4.1.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -4013,16 +4030,16 @@
     "packages-dev": [
         {
             "name": "heroku/heroku-buildpack-php",
-            "version": "v176",
+            "version": "v177",
             "source": {
                 "type": "git",
                 "url": "https://github.com/heroku/heroku-buildpack-php.git",
-                "reference": "6c6cc209a95c65f01d4715540459d5d673be19dc"
+                "reference": "fe7640eb4f46bfe00e31b77b3b6b809ab74ab5c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/heroku/heroku-buildpack-php/zipball/6c6cc209a95c65f01d4715540459d5d673be19dc",
-                "reference": "6c6cc209a95c65f01d4715540459d5d673be19dc",
+                "url": "https://api.github.com/repos/heroku/heroku-buildpack-php/zipball/fe7640eb4f46bfe00e31b77b3b6b809ab74ab5c7",
+                "reference": "fe7640eb4f46bfe00e31b77b3b6b809ab74ab5c7",
                 "shasum": ""
             },
             "bin": [
@@ -4053,7 +4070,7 @@
                 "nginx",
                 "php"
             ],
-            "time": "2020-05-26T15:47:09+00:00"
+            "time": "2020-06-18T17:40:54+00:00"
         }
     ],
     "aliases": [],
