@@ -1,0 +1,10 @@
+{
+  "type": "wordpress-plugin",
+  "name": "lucrelabs/woocommerce-subscriptions",
+  "version": "3.0.5",
+  "license": "proprietary",
+  "description": "Adds subscriptions to WooCommerce",
+  "require": {
+    "composer/installers": "~1.0"
+  }
+}
