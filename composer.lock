@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7c9b909edec73422cae870fea822016a",
+    "content-hash": "a506f81e19642d84397f0146949c14b5",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -698,6 +698,23 @@
                 "proprietary"
             ],
             "description": "Adds delivery slots to checkout"
+        },
+        {
+            "name": "lucrelabs/woocommerce-subscriptions",
+            "version": "3.0.5",
+            "dist": {
+                "type": "path",
+                "url": "plugins/woocommerce-subscriptions",
+                "reference": "8779ae9ea0054c8c81f190751f4c02ebf3fc45c5"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Adds subscriptions to WooCommerce"
         },
         {
             "name": "lucrelabs/wp-migrate-db-pro",
