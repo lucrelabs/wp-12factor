@@ -1,0 +1,10 @@
+{
+  "type": "wordpress-plugin",
+  "name": "lucrelabs/wp-migrate-db-pro",
+  "version": "1.9.10",
+  "license": "proprietary",
+  "description": "WordPress plugin for database migration",
+  "require": {
+    "composer/installers": "~1.0"
+  }
+}

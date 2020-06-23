@@ -1,0 +1,764 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Delivery Slots\n"
+"POT-Creation-Date: 2016-09-21 13:13+0000\n"
+"PO-Revision-Date: 2018-01-20 09:50+0100\n"
+"Last-Translator: Thomas Züger <thomas@thomaszueger.com>\n"
+"Language-Team: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.3\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: iconic-woo-delivery-slots.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Language: de_DE\n"
+"Report-Msgid-Bugs-To: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: assets/options/jck-deliveryslots.php:154
+msgid "Minimum/Maximum Selectable Date Method"
+msgstr "Minimale/maximale wählbaren Datums-Methode"
+
+#: assets/options/jck-deliveryslots.php:155
+msgid ""
+"Choose whether the minimum and maximum selectable date applies to all days "
+"of the week, allowed days only, or weekdays only."
+msgstr ""
+"Wählen Sie, ob das erste und letzte wählbaren Datum an allen Tagen der "
+"Woche, an den verfügbaren Tagen oder nur an Werktagen angewendet wird."
+
+#: assets/options/jck-deliveryslots.php:184
+msgid ""
+"Available formats can be found <a href=\"http://api.jqueryui.com/datepicker/"
+"#utility-formatDate\" target=\"_blank\">here</a>."
+msgstr ""
+"Verfügbare Formate finden Sie auf <a href=\"http://api.jqueryui.com/"
+"datepicker/#utility-formatDate\" target=\"_blank\"></a>."
+
+#: assets/options/jck-deliveryslots.php:253
+msgid "Disable Same Day Delivery if Current Time is After (x)"
+msgstr ""
+"Lieferung am selben Tag zu deaktivieren, wenn aktuelle Zeit nach (X) ist"
+
+#: assets/options/jck-deliveryslots.php:267
+msgid "Disable Next Day Delivery if Current Time is After (x)"
+msgstr ""
+"Lieferung am nächsten Tag zu deaktivieren, wenn aktuelle Zeit nach (X) ist"
+
+#: assets/options/jck-deliveryslots.php:346
+msgid "Lockout"
+msgstr "Aussperrung"
+
+#: assets/options/jck-deliveryslots.php:354
+msgid "Postcodes"
+msgstr "Postleitzahlen"
+
+#: assets/options/jck-deliveryslots.php:361
+#, c-format
+msgid "Fee (%s)"
+msgstr "Gebühr (%s)"
+
+#: assets/options/jck-deliveryslots.php:436
+msgid ""
+"You can insert a reservation table using the shortcode <strong>[jckwds]</"
+"strong>. This allows your customers to reserve a delivery time and date "
+"while they shop. <br><strong>Note:</strong> Time Slots should be enabled if "
+"you want to use the reservation table."
+msgstr ""
+"Sie können eine Reservierung-Tabelle mithilfe des Shortcodes "
+"<strong>[Jckwds]</strong>einfügen. Dies ermöglicht Ihren Kunden, eine "
+"Lieferzeit zu reservieren und während sie einkaufen.<br><strong>Hinweis:</"
+"strong>Die Zeitfenster sollten aktiviert werden, wenn Sie die Reservierung-"
+"Tabelle verwenden möchten."
+
+#: assets/options/jck-deliveryslots.php:450
+msgid "How many date columns should the reservation table display?"
+msgstr ""
+"Wie viele Datums-Spalten sollen in der Reservationstabelle angezeigt werden?"
+
+#: assets/options/jck-deliveryslots.php:457
+msgid "Selection Type"
+msgstr "Auswahlart"
+
+#: assets/options/jck-deliveryslots.php:458
+msgid "Choose the selection type for the time slots in the table."
+msgstr "Wählen Sie die Auswahlart für die Zeitfenster in der Tabelle."
+
+#: assets/options/jck-deliveryslots.php:463
+msgid "Checkbox"
+msgstr "Auswahlbox"
+
+#: assets/options/jck-deliveryslots.php:464
+msgid "Fee"
+msgstr "Gebühr"
+
+#: assets/options/jck-deliveryslots.php:472
+msgid "Table Styling"
+msgstr "Tabellengestaltung"
+
+#: assets/options/jck-deliveryslots.php:473
+msgid "Customise the look of your reservation table to match your website."
+msgstr ""
+"Passen Sie das Aussehen Ihrer Reservationstabelle analog Ihrer Website an."
+
+#: assets/options/jck-deliveryslots.php:478
+msgid "Header Cell Colour"
+msgstr "Kopfzeilen Zellfarbe"
+
+#: assets/options/jck-deliveryslots.php:485
+msgid "Header Cell Border Colour"
+msgstr "Kopfzeilen Rahmenfarbe"
+
+#: assets/options/jck-deliveryslots.php:492
+msgid "Header Cell Font Colour"
+msgstr "Kopfzeilen Schriftfarbe"
+
+#: assets/options/jck-deliveryslots.php:499
+msgid "Arrow Icon Colour"
+msgstr "Symbolfarbe"
+
+#: assets/options/jck-deliveryslots.php:506
+msgid "Arrow Icon Hover Colour"
+msgstr "Symbolfarbe (hover)"
+
+#: assets/options/jck-deliveryslots.php:513
+msgid "Reserve Cell Colour"
+msgstr ""
+
+#: assets/options/jck-deliveryslots.php:520
+msgid "Reserve Cell Border Colour"
+msgstr ""
+
+#: assets/options/jck-deliveryslots.php:527
+msgid "Reserve Icon Colour"
+msgstr ""
+
+#: assets/options/jck-deliveryslots.php:534
+msgid "Reserve Icon Hover Colour"
+msgstr ""
+
+#: assets/options/jck-deliveryslots.php:541
+msgid "Unavailable Cell Colour"
+msgstr ""
+
+#: assets/options/jck-deliveryslots.php:548
+msgid "Reserved Cell Colour"
+msgstr ""
+
+#: assets/options/jck-deliveryslots.php:555
+msgid "Reserved Cell Border Colour"
+msgstr ""
+
+#: assets/options/jck-deliveryslots.php:562
+msgid "Reserved Icon Colour"
+msgstr ""
+
+#: assets/options/jck-deliveryslots.php:569
+msgid "Loading Icon Colour"
+msgstr ""
+
+#: assets/options/jck-deliveryslots.php:576
+msgid "Lock Icon Colour"
+msgstr ""
+
+#: inc/admin/deliveries.php:12
+msgid "Upcoming Deliveries"
+msgstr "Bevorstehende Lieferungen"
+
+#: inc/admin/deliveries.php:13
+msgid "Currently Reserved"
+msgstr "Momentan reserviert"
+
+#: jck_woo_deliveryslots.php:94
+#, c-format
+msgid ""
+"You need to be running PHP 5.3+ for Delivery Slots to work. You're on %s."
+msgstr ""
+"Die Mindestanforderung ist PHP 5.3 + für die Ausführung von WooCommerce "
+"Delivery Slots. Aktuell ist %s installiert."
+
+#: jck_woo_deliveryslots.php:251 jck_woo_deliveryslots.php:310
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+"Sie haben nicht die nötigen Berechtigungen, um auf diese Seite zuzugreifen."
+
+#: jck_woo_deliveryslots.php:282
+msgid "Deliveries"
+msgstr "Lieferungen"
+
+#: jck_woo_deliveryslots.php:468
+msgid "There are currently no upcoming deliveries."
+msgstr "Es liegen noch keine anstehenden Lieferungen vor."
+
+#: jck_woo_deliveryslots.php:470
+msgid "There are currently no active reservations."
+msgstr "Es liegen noch keine Reservierungen vor."
+
+#: jck_woo_deliveryslots.php:483
+msgid "Status"
+msgstr "Status"
+
+#: jck_woo_deliveryslots.php:486
+msgid "Order #"
+msgstr "Auftragsnummer"
+
+#: jck_woo_deliveryslots.php:487
+msgid "Order Overview"
+msgstr "Auftragsübersicht"
+
+#: jck_woo_deliveryslots.php:488
+msgid "Customer Name"
+msgstr "Kundenname"
+
+#: jck_woo_deliveryslots.php:489
+msgid "Customer Email"
+msgstr "Kunden E-Mail"
+
+#: jck_woo_deliveryslots.php:531
+msgid ""
+"\"Allow Bookings Up To (x) Minutes Before Slot\" should be a positive "
+"integer. It has defaulted to 0."
+msgstr ""
+"„Erlaube Buchungen bis zu (x) Minuten vorher“ muss eine positive Ganzzahl "
+"sein. Sie ist standardmäßig auf 0 festgelegt."
+
+#: jck_woo_deliveryslots.php:547
+msgid ""
+"The Same Day cutoff should be a valid time format (00:00), try using the "
+"time picker instead."
+msgstr ""
+
+#: jck_woo_deliveryslots.php:563
+msgid ""
+"The Next Day cutoff should be a valid time format (00:00), try using the "
+"time picker instead."
+msgstr ""
+
+#: jck_woo_deliveryslots.php:644
+msgid ""
+"The \"Lockout After\" time slot setting should be a positive integer. It has "
+"defaulted to 10."
+msgstr ""
+"Die Einstellung “Aussperrung nach\" für Zeitfenster muss eine positive "
+"Ganzzahl sein. Es ist standardmäßig auf 10 festgelegt."
+
+#: jck_woo_deliveryslots.php:654
+msgid ""
+"You should select at least one active day for your time slot. All days have "
+"now been selected."
+msgstr ""
+"Sie sollten mindestens einen aktiven Tag für Ihr Zeitfenster auswählen. Nun "
+"wurden alle Tage ausgewählt."
+
+#: jck_woo_deliveryslots.php:664
+msgid ""
+"One of the time slots you entered had an invalid format. Try using the time "
+"picker instead. A default has been added in its place."
+msgstr ""
+"Eines der eingegebene Zeitfenster hatte ein ungültiges Format. Verwenden Sie "
+"stattdessen die Zeitauswahl. Ein Standardwert wurde an seiner Stelle "
+"hinzugefügt."
+
+#: jck_woo_deliveryslots.php:744
+msgid "Please select a date first..."
+msgstr "Bitte wählen Sie zuerst ein Datum..."
+
+#: jck_woo_deliveryslots.php:746
+msgid "Please choose a time slot for your delivery."
+msgstr "Bitte wählen Sie ein Zeitfenster für Ihre Lieferung/Abholung."
+
+#: jck_woo_deliveryslots.php:754 jck_woo_deliveryslots.php:1944
+msgid "Please select a time slot..."
+msgstr "Bitte wählen Sie ein Zeitfenster …"
+
+#: jck_woo_deliveryslots.php:833 jck_woo_deliveryslots.php:835
+msgid "Please select a time slot."
+msgstr "Bitte wählen Sie ein Zeitfenster."
+
+#: jck_woo_deliveryslots.php:1001
+msgid "Delivery"
+msgstr "Lieferung"
+
+#: jck_woo_deliveryslots.php:1945
+msgid "Sorry, no slots available..."
+msgstr "Keine verfügbaren Zeitfenster…"
+
+#: jck_woo_deliveryslots.php:1946
+msgid "Sorry, the time slot you reserved is not available for your postcode."
+msgstr ""
+"Das Zeitfenster, welches Sie reservieren möchten, steht für Ihre "
+"Postleitzahl nicht zur Verfügung."
+
+#: jck_woo_deliveryslots.php:1947
+msgid "Loading..."
+msgstr "Wird geladen..."
+
+#: jck_woo_deliveryslots.php:2556
+msgid "Any Method"
+msgstr "Beliebige Methode"
+
+#: jck_woo_deliveryslots.php:2617
+msgid "Shipping"
+msgstr "Versand"
+
+#: jck_woo_deliveryslots.php:2694
+msgid "Time Slot Fee"
+msgstr "Zuschlag für das Zeitfenster"
+
+#. Plugin Name of the plugin/theme
+msgid "WooCommerce Delivery Slots"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.jckemp.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Allow your customers to select a delivery slot for their order"
+msgstr ""
+"Erlauben Sie Ihren Kunden eine Lieferzeitraum für ihre Bestellung auszuwählen"
+
+#. Author of the plugin/theme
+msgid "James Kemp"
+msgstr ""
+
+#: assets/options/jck-deliveryslots.php:9
+msgid "General Settings"
+msgstr "Allgemeine Einstellungen"
+
+#: assets/options/jck-deliveryslots.php:32
+msgid "General Setup"
+msgstr "Allgemeine Einstellungen"
+
+#: assets/options/jck-deliveryslots.php:38
+msgid "Checkout Fields Position"
+msgstr "Position in  Kasse"
+
+#: assets/options/jck-deliveryslots.php:39
+msgid "Where should the date and time fields show on the checkout page?"
+msgstr "Wo sollen Datum und Uhrzeit innerhalb der Kassen-Seite erscheinen?"
+
+#: assets/options/jck-deliveryslots.php:43
+msgid "Before Customer Details"
+msgstr "Vor den Kundendetails"
+
+#: assets/options/jck-deliveryslots.php:44
+msgid "Within Billing Fields"
+msgstr "Innerhalb der Rechnungsfelder"
+
+#: assets/options/jck-deliveryslots.php:45
+msgid "Within Shipping Fields"
+msgstr "Innerhalb der Versandfelder"
+
+#: assets/options/jck-deliveryslots.php:46
+msgid "After Customer Details"
+msgstr "Hinter den Kundendetails"
+
+#: assets/options/jck-deliveryslots.php:47
+msgid "Before Order Review"
+msgstr "Vor der Bestellübersicht"
+
+#: assets/options/jck-deliveryslots.php:48
+msgid "Within Order Review"
+msgstr "Innerhalb der Bestellübersicht"
+
+#: assets/options/jck-deliveryslots.php:49
+msgid "After Order Review"
+msgstr "Hinter der Bestellübersicht"
+
+#: assets/options/jck-deliveryslots.php:54
+msgid "Checkout Fields Position Priority"
+msgstr "Positionspriorität innerhalb der Kassenfelder"
+
+#: assets/options/jck-deliveryslots.php:55
+msgid "Enter a number of priority, e.g. 10 is early/before, 50 is late/after"
+msgstr ""
+"Gib die Priorität als Zahl ein, z.B. 10 ist früh/zuvor, 50 ist spät/zuletzt"
+
+#: assets/options/jck-deliveryslots.php:62
+msgid "Shipping Methods"
+msgstr "Versandarten"
+
+#: assets/options/jck-deliveryslots.php:63
+msgid "Enable delivery slots for the following shipping methods."
+msgstr "Aktiviere Delivery Slots für die folgenden Versandarten."
+
+#: assets/options/jck-deliveryslots.php:13
+#: assets/options/jck-deliveryslots.php:132
+msgid "Date Settings"
+msgstr "Datum Einstellung\t"
+
+#: assets/options/jck-deliveryslots.php:17
+msgid "Time Settings"
+msgstr "Uhrzeit Einstellung"
+
+#: assets/options/jck-deliveryslots.php:21
+#: assets/options/jck-deliveryslots.php:390
+#: assets/options/jck-deliveryslots.php:396
+msgid "Holidays"
+msgstr "Freie Tage"
+
+#: assets/options/jck-deliveryslots.php:25
+msgid "Reservation Table"
+msgstr "Reservierungen"
+
+#: assets/options/jck-deliveryslots.php:73
+msgid "Date Setup"
+msgstr "Datum Einstellungen"
+
+#: assets/options/jck-deliveryslots.php:79
+#: assets/options/jck-deliveryslots.php:208
+msgid "Mandatory Field?"
+msgstr "Pflichtfeld?"
+
+#: assets/options/jck-deliveryslots.php:80
+msgid "Is the delivery date a required field at checkout?"
+msgstr "Ist das Lieferdatum ein Pflichtfeld?"
+
+#: assets/options/jck-deliveryslots.php:87
+#: assets/options/jck-deliveryslots.php:216
+msgid "Show Description?"
+msgstr "Beschreibung anzeigen?"
+
+#: assets/options/jck-deliveryslots.php:94
+msgid "Theme"
+msgstr "Theme"
+
+#: assets/options/jck-deliveryslots.php:95
+msgid ""
+"Select a theme for the front-end calendar at checkout. If you already have a "
+"jQuery UI theme installed, select \"None\". Themes can be viewed <a href="
+"\"http://jqueryui.com/themeroller/\" target=\"_blank\">here</a>, in the "
+"\"Gallery\" section."
+msgstr "Bitte Kalender Style auswählen"
+
+#: assets/options/jck-deliveryslots.php:138
+msgid "Delivery Days"
+msgstr "Liefertage"
+
+#: assets/options/jck-deliveryslots.php:143
+#: assets/options/jck-deliveryslots.php:374 jck_woo_deliveryslots.php:1949
+msgid "Sunday"
+msgstr "Sonntag"
+
+#: assets/options/jck-deliveryslots.php:144
+#: assets/options/jck-deliveryslots.php:375 jck_woo_deliveryslots.php:1950
+msgid "Monday"
+msgstr "Montag"
+
+#: assets/options/jck-deliveryslots.php:145
+#: assets/options/jck-deliveryslots.php:376 jck_woo_deliveryslots.php:1951
+msgid "Tuesday"
+msgstr "Dienstag"
+
+#: assets/options/jck-deliveryslots.php:146
+#: assets/options/jck-deliveryslots.php:377 jck_woo_deliveryslots.php:1952
+msgid "Wednesday"
+msgstr "Mittwoch"
+
+#: assets/options/jck-deliveryslots.php:147
+#: assets/options/jck-deliveryslots.php:378 jck_woo_deliveryslots.php:1953
+msgid "Thursday"
+msgstr "Donnerstag"
+
+#: assets/options/jck-deliveryslots.php:148
+#: assets/options/jck-deliveryslots.php:379 jck_woo_deliveryslots.php:1954
+msgid "Friday"
+msgstr "Freitag"
+
+#: assets/options/jck-deliveryslots.php:149
+#: assets/options/jck-deliveryslots.php:380 jck_woo_deliveryslots.php:1955
+msgid "Saturday"
+msgstr "Samstag"
+
+#: assets/options/jck-deliveryslots.php:167
+msgid "Minimum Selectable Date"
+msgstr "Frühstes Datum"
+
+#: assets/options/jck-deliveryslots.php:168
+msgid "Days from now. Enter \"0\" for same day."
+msgstr "Tage von jetzt. Wähle \"0\" für den gleichen Tag."
+
+#: assets/options/jck-deliveryslots.php:175
+msgid "Maximum Selectable Date"
+msgstr "Spätestes Datum"
+
+#: assets/options/jck-deliveryslots.php:176
+msgid "Days from now."
+msgstr "Tage von heute."
+
+#: assets/options/jck-deliveryslots.php:183
+msgid "Date Format"
+msgstr "Datum Format"
+
+#: assets/options/jck-deliveryslots.php:194
+msgid "Time Setup"
+msgstr "Uhrzeit Einstellungen"
+
+#: assets/options/jck-deliveryslots.php:200
+msgid "Enable Time Slots"
+msgstr "Zeiträume aktivieren"
+
+#: assets/options/jck-deliveryslots.php:201
+msgid "Check this box to enable time slots at checkout."
+msgstr "Aktivieren um Zeiträume anzuzeigen"
+
+#: assets/options/jck-deliveryslots.php:209
+msgid "Is the time slot a required field at checkout?"
+msgstr "Sind Zeiträume ein Pflichtfeld?"
+
+#: assets/options/jck-deliveryslots.php:223
+msgid "Time Format"
+msgstr "Zeit Format"
+
+#: assets/options/jck-deliveryslots.php:224
+msgid "Select a time format for the frontend."
+msgstr "Wähle ein Zeit Format"
+
+#: assets/options/jck-deliveryslots.php:239
+msgid "Time Slot Configuration"
+msgstr "Zeiträume Konfiguration"
+
+#: assets/options/jck-deliveryslots.php:245
+msgid "Allow Bookings Up To (x) Minutes Before Slot"
+msgstr "Erlaube Buchungen bis zu (x) Minuten vorher"
+
+#: assets/options/jck-deliveryslots.php:246
+msgid ""
+"This option will prevent bookings being made too close to the delivery time. "
+"(Check your timezone in WordPress Settings)."
+msgstr "Diese Option verhindert Buchungen zu nah am Lieferdatum."
+
+#: assets/options/jck-deliveryslots.php:260
+#: assets/options/jck-deliveryslots.php:274
+#: assets/options/jck-deliveryslots.php:316
+#: assets/options/jck-deliveryslots.php:338
+msgid "AM"
+msgstr "am"
+
+#: assets/options/jck-deliveryslots.php:261
+#: assets/options/jck-deliveryslots.php:275
+#: assets/options/jck-deliveryslots.php:317
+#: assets/options/jck-deliveryslots.php:339
+msgid "PM"
+msgstr "pm"
+
+#: assets/options/jck-deliveryslots.php:281
+msgid "Time Slots"
+msgstr "Zeiträume"
+
+#: assets/options/jck-deliveryslots.php:283 jck_woo_deliveryslots.php:485
+#: jck_woo_deliveryslots.php:740 jck_woo_deliveryslots.php:953
+#: jck_woo_deliveryslots.php:969 jck_woo_deliveryslots.php:1044
+msgid "Time Slot"
+msgstr "Zeitraum"
+
+#: assets/options/jck-deliveryslots.php:305
+msgid "From"
+msgstr "Von"
+
+#: assets/options/jck-deliveryslots.php:308
+#: assets/options/jck-deliveryslots.php:327
+#: assets/options/jck-deliveryslots.php:331
+#: assets/options/jck-deliveryslots.php:410 jck_woo_deliveryslots.php:484
+msgid "Date"
+msgstr "Datum"
+
+#: assets/options/jck-deliveryslots.php:309
+#: assets/options/jck-deliveryslots.php:328
+#: assets/options/jck-deliveryslots.php:332
+#: assets/options/jck-deliveryslots.php:411
+msgid "Time"
+msgstr "Uhrzeit"
+
+#: assets/options/jck-deliveryslots.php:324
+msgid "To"
+msgstr "bis"
+
+#: assets/options/jck-deliveryslots.php:369
+msgid "Days"
+msgstr "Tage"
+
+#: assets/options/jck-deliveryslots.php:391
+msgid "Please add any holidays where deliveries should not be made."
+msgstr "Bitte wähle Tage an dennen es keine Lieferung gibt."
+
+#: assets/options/jck-deliveryslots.php:398
+msgid "Holiday"
+msgstr "Freitage"
+
+#: assets/options/jck-deliveryslots.php:403
+msgid "Holiday Date"
+msgstr "Freitage Daten"
+
+#: assets/options/jck-deliveryslots.php:422
+msgid "Name"
+msgstr "Name"
+
+#: assets/options/jck-deliveryslots.php:426
+msgid "e.g. Christmas"
+msgstr "z.B.: Weihnachten"
+
+#: assets/options/jck-deliveryslots.php:435
+msgid "Reservations"
+msgstr "Reservierungen"
+
+#: assets/options/jck-deliveryslots.php:441
+msgid "Expiration"
+msgstr "Ablauf"
+
+#: assets/options/jck-deliveryslots.php:442
+msgid "Reservations expire after (x) Minutes."
+msgstr "Reservierung läuft ab in (x) Minuten"
+
+#: assets/options/jck-deliveryslots.php:449
+msgid "Date Columns"
+msgstr "Datum Spalten"
+
+#: jck_woo_deliveryslots.php:721 jck_woo_deliveryslots.php:949
+#: jck_woo_deliveryslots.php:965 jck_woo_deliveryslots.php:1043
+msgid "Delivery Date"
+msgstr "Lieferdatum"
+
+#: jck_woo_deliveryslots.php:724
+msgid "Select a delivery date"
+msgstr "Datum auswählen"
+
+#: jck_woo_deliveryslots.php:726
+msgid "Please choose a date for your delivery."
+msgstr "Bitte ein Datum wählen"
+
+#: jck_woo_deliveryslots.php:817 jck_woo_deliveryslots.php:819
+msgid "Please select a valid delivery date."
+msgstr "Bitte ein gültiges Datum wählen."
+
+#: jck_woo_deliveryslots.php:945 jck_woo_deliveryslots.php:961
+#: templates/checkout-fields.php:5
+msgid "Delivery Details"
+msgstr "Lieferangaben"
+
+#: jck_woo_deliveryslots.php:1958
+msgid "Su"
+msgstr "So"
+
+#: jck_woo_deliveryslots.php:1959
+msgid "Mo"
+msgstr "Mo"
+
+#: jck_woo_deliveryslots.php:1960
+msgid "Tu"
+msgstr "Di"
+
+#: jck_woo_deliveryslots.php:1961
+msgid "We"
+msgstr "Mi"
+
+#: jck_woo_deliveryslots.php:1962
+msgid "Th"
+msgstr "Do"
+
+#: jck_woo_deliveryslots.php:1963
+msgid "Fr"
+msgstr "Fr"
+
+#: jck_woo_deliveryslots.php:1964
+msgid "Sa"
+msgstr "Sa"
+
+#: jck_woo_deliveryslots.php:1967
+msgid "January"
+msgstr "Januar"
+
+#: jck_woo_deliveryslots.php:1968
+msgid "February"
+msgstr "Februar"
+
+#: jck_woo_deliveryslots.php:1969
+msgid "March"
+msgstr "März"
+
+#: jck_woo_deliveryslots.php:1970
+msgid "April"
+msgstr "April"
+
+#: jck_woo_deliveryslots.php:1971 jck_woo_deliveryslots.php:1985
+msgid "May"
+msgstr "Mai"
+
+#: jck_woo_deliveryslots.php:1972
+msgid "June"
+msgstr "Juni"
+
+#: jck_woo_deliveryslots.php:1973
+msgid "July"
+msgstr "Juli"
+
+#: jck_woo_deliveryslots.php:1974
+msgid "August"
+msgstr "August"
+
+#: jck_woo_deliveryslots.php:1975
+msgid "September"
+msgstr "September"
+
+#: jck_woo_deliveryslots.php:1976
+msgid "October"
+msgstr "Oktober"
+
+#: jck_woo_deliveryslots.php:1977
+msgid "November"
+msgstr "November"
+
+#: jck_woo_deliveryslots.php:1978
+msgid "December"
+msgstr "Dezember"
+
+#: jck_woo_deliveryslots.php:1981
+msgid "Jan"
+msgstr "Jan"
+
+#: jck_woo_deliveryslots.php:1982
+msgid "Feb"
+msgstr "Feb"
+
+#: jck_woo_deliveryslots.php:1983
+msgid "Mar"
+msgstr "Mär"
+
+#: jck_woo_deliveryslots.php:1984
+msgid "Apr"
+msgstr "Apr"
+
+#: jck_woo_deliveryslots.php:1986
+msgid "Jun"
+msgstr "Jun"
+
+#: jck_woo_deliveryslots.php:1987
+msgid "Jul"
+msgstr "Jul"
+
+#: jck_woo_deliveryslots.php:1988
+msgid "Aug"
+msgstr "Aug"
+
+#: jck_woo_deliveryslots.php:1989
+msgid "Sep"
+msgstr "Sep"
+
+#: jck_woo_deliveryslots.php:1990
+msgid "Oct"
+msgstr "Okt"
+
+#: jck_woo_deliveryslots.php:1991
+msgid "Nov"
+msgstr "Nov"
+
+#: jck_woo_deliveryslots.php:1992
+msgid "Dec"
+msgstr "Dez"

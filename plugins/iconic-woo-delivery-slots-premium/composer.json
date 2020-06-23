@@ -1,0 +1,10 @@
+{
+  "type": "wordpress-plugin",
+  "name": "lucrelabs/iconic-woo-delivery-slots-premium",
+  "version": "1.10.0",
+  "license": "proprietary",
+  "description": "Adds delivery slots to checkout",
+  "require": {
+    "composer/installers": "~1.0"
+  }
+}

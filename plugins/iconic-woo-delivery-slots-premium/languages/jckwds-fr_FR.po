@@ -1,0 +1,1041 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Delivery Slots\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2017-12-09 16:51+0100\n"
+"Last-Translator: James Kemp <me@jckemp.com>\n"
+"Language-Team: Benjamin Falsata <benjamin@falsata.com>\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: iconic-woo-delivery-slots.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: iconic-woo-delivery-slots.php:166
+msgid ""
+"You need to be running PHP 5.3+ for Delivery Slots to work. You're on %s."
+msgstr ""
+"Vous devez utiliser PHP 5.3+ pour faire fonctionner \"WooCommerce Delivery "
+"Slots\". Vous êtes sur %s."
+
+#: iconic-woo-delivery-slots.php:352, iconic-woo-delivery-slots.php:352
+msgid "Deliveries"
+msgstr "Livraisons"
+
+#: iconic-woo-delivery-slots.php:383
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+"Vous ne disposez pas des autorisations suffisantes pour accéder à cette page."
+
+#: iconic-woo-delivery-slots.php:519
+msgid "There are currently no upcoming deliveries."
+msgstr "Il n'y a pas de livraisons à venir."
+
+#: iconic-woo-delivery-slots.php:521
+msgid "There are currently no active reservations."
+msgstr "Il n'y a aucune réservations actives."
+
+#: iconic-woo-delivery-slots.php:588
+msgid ""
+"You need to select at least one shipping method in General Settings. \"Any "
+"Method\" has been selected for you."
+msgstr ""
+"Vous devez sélectionner au moins une méthode d’expédition dans Paramètres "
+"généraux. “Toute méthode” a été sélectionné pour vous."
+
+#: iconic-woo-delivery-slots.php:598
+msgid ""
+"\"Allow Bookings Up To (x) Minutes Before Slot\" should be a positive "
+"integer. It has defaulted to 0."
+msgstr ""
+"“Autoriser les réservations jusqu’à (x) minutes avant la fente” doit être un "
+"nombre entier positif. Il a par défaut à 0."
+
+#: iconic-woo-delivery-slots.php:610
+msgid ""
+"Minimum selectable date should be a positive integer. It has defaulted to 0."
+msgstr ""
+"La date minimale sélectionnable doit être un nombre entier positif. Il a par "
+"défaut à 0."
+
+#: iconic-woo-delivery-slots.php:622
+msgid ""
+"Maximum selectable date should be a positive integer. It has defaulted to 14."
+msgstr ""
+"La date maximale sélectionnable doit être un nombre entier positif. Il a par "
+"défaut 14."
+
+#: iconic-woo-delivery-slots.php:634
+msgid ""
+"Minimum selectable date should be less than or equal to the maximum "
+"selectable date."
+msgstr ""
+"La date minimum sélectionnable doit être inférieure ou égale à la date "
+"maximale sélectionnable."
+
+#: iconic-woo-delivery-slots.php:646
+msgid ""
+"The Same Day cutoff should be a valid time format (00:00), try using the "
+"time picker instead."
+msgstr ""
+"Le seuil du jour même doit être un format d’heure valide (00:00), essayez "
+"plutôt d’utiliser le sélecteur de temps."
+
+#: iconic-woo-delivery-slots.php:658
+msgid ""
+"The Next Day cutoff should be a valid time format (00:00), try using the "
+"time picker instead."
+msgstr ""
+"Le seuil du jour suivant doit être un format d’heure valide (00:00), essayez "
+"d’utiliser le sélecteur de temps à la place."
+
+#: iconic-woo-delivery-slots.php:742
+msgid ""
+"Some of your time slots were not enabled for any shipping methods. \"Any "
+"Method\" has been selected for them."
+msgstr ""
+"Certains de vos créneaux horaires n’étaient pas activés pour les méthodes "
+"d’expédition. “Toute méthode” a été sélectionnée pour eux."
+
+#: iconic-woo-delivery-slots.php:749
+msgid ""
+"The \"Allow Bookings Up To (x) Minutes Before Slot\" time slot setting "
+"should be a positive integer. It has been removed."
+msgstr ""
+"Le paramètre “Autoriser les réservations jusqu’à (x) minutes avant la fente” "
+"doit être un nombre entier positif. Il a été supprimé."
+
+#: iconic-woo-delivery-slots.php:756
+msgid ""
+"The \"Lockout After\" time slot setting should be a positive integer. It has "
+"defaulted to 10."
+msgstr ""
+"Le paramétrage de l'intervalle de temps de \"Fermeture après\" doit être un "
+"entier positif. Il est à 10 par défaut."
+
+#: iconic-woo-delivery-slots.php:763
+msgid ""
+"You should select at least one active day for your time slot. All days have "
+"now been selected."
+msgstr ""
+"Vous devez sélectionner au moins une journée active pour votre créneau "
+"horaire. Tous les jours ont été sélectionnés."
+
+#: iconic-woo-delivery-slots.php:770
+msgid ""
+"One of the time slots you entered had an invalid format. Try using the time "
+"picker instead. A default has been added in its place."
+msgstr ""
+"L'un des créneaux horaires que vous avez renseignés avait un format non "
+"valide. Essayez d'utiliser le \"time picker\" à la place. Un créneau par "
+"défaut a été ajouté à sa place."
+
+#: iconic-woo-delivery-slots.php:815, iconic-woo-delivery-slots.php:828,
+#: iconic-woo-delivery-slots.php:1040
+msgid "Delivery Date"
+msgstr "Date de livraison"
+
+#: iconic-woo-delivery-slots.php:818
+msgid "Select a delivery date"
+msgstr "Sélectionnez une date de livraison"
+
+#: iconic-woo-delivery-slots.php:820
+msgid "Please choose a date for your delivery."
+msgstr "Veuillez choisir une date pour votre livraison."
+
+#: iconic-woo-delivery-slots.php:843, iconic-woo-delivery-slots.php:1041,
+#: inc/admin/settings.php:439
+msgid "Time Slot"
+msgstr "Créneau Horaire"
+
+#: iconic-woo-delivery-slots.php:847
+msgid "Please select a date first..."
+msgstr "Veuillez sélectionner une date en premier…"
+
+#: iconic-woo-delivery-slots.php:849
+msgid "Please choose a time slot for your delivery."
+msgstr "Veuillez choisir un créneau horaire pour votre livraison."
+
+#: iconic-woo-delivery-slots.php:856, iconic-woo-delivery-slots.php:1793,
+#: iconic-woo-delivery-slots.php:1872
+msgid "Please select a time slot..."
+msgstr "Veuillez sélectionner un créneau horaire ..."
+
+#: iconic-woo-delivery-slots.php:988
+msgid "Delivery date updated."
+msgstr "Date de livraison mise à jour."
+
+#: iconic-woo-delivery-slots.php:1039, templates/checkout-fields.php:8
+msgid "Delivery Details"
+msgstr "Détails de livraison"
+
+#: iconic-woo-delivery-slots.php:1794, iconic-woo-delivery-slots.php:1873
+msgid "Sorry, no slots available..."
+msgstr "Désolé, pas de Créneaux Disponibles…"
+
+#: iconic-woo-delivery-slots.php:1795, iconic-woo-delivery-slots.php:1874
+msgid "Loading..."
+msgstr "Chargement..."
+
+#: iconic-woo-delivery-slots.php:1797, iconic-woo-delivery-slots.php:1876,
+#: inc/admin/settings.php:237, inc/admin/settings.php:319,
+#: inc/admin/settings.php:518
+msgid "Sunday"
+msgstr "Dimanche"
+
+#: iconic-woo-delivery-slots.php:1798, iconic-woo-delivery-slots.php:1877,
+#: inc/admin/settings.php:238, inc/admin/settings.php:320,
+#: inc/admin/settings.php:519
+msgid "Monday"
+msgstr "Lundi"
+
+#: iconic-woo-delivery-slots.php:1799, iconic-woo-delivery-slots.php:1878,
+#: inc/admin/settings.php:239, inc/admin/settings.php:321,
+#: inc/admin/settings.php:520
+msgid "Tuesday"
+msgstr "Mardi"
+
+#: iconic-woo-delivery-slots.php:1800, iconic-woo-delivery-slots.php:1879,
+#: inc/admin/settings.php:240, inc/admin/settings.php:322,
+#: inc/admin/settings.php:521
+msgid "Wednesday"
+msgstr "Mercredi"
+
+#: iconic-woo-delivery-slots.php:1801, iconic-woo-delivery-slots.php:1880,
+#: inc/admin/settings.php:241, inc/admin/settings.php:323,
+#: inc/admin/settings.php:522
+msgid "Thursday"
+msgstr "Jeudi"
+
+#: iconic-woo-delivery-slots.php:1802, iconic-woo-delivery-slots.php:1881,
+#: inc/admin/settings.php:242, inc/admin/settings.php:324,
+#: inc/admin/settings.php:523
+msgid "Friday"
+msgstr "Vendredi"
+
+#: iconic-woo-delivery-slots.php:1803, iconic-woo-delivery-slots.php:1882,
+#: inc/admin/settings.php:243, inc/admin/settings.php:325,
+#: inc/admin/settings.php:524
+msgid "Saturday"
+msgstr "Samedi"
+
+#: iconic-woo-delivery-slots.php:1806, iconic-woo-delivery-slots.php:1885
+msgid "Su"
+msgstr "Di"
+
+#: iconic-woo-delivery-slots.php:1807, iconic-woo-delivery-slots.php:1886
+msgid "Mo"
+msgstr "Lu"
+
+#: iconic-woo-delivery-slots.php:1808, iconic-woo-delivery-slots.php:1887
+msgid "Tu"
+msgstr "Ma"
+
+#: iconic-woo-delivery-slots.php:1809, iconic-woo-delivery-slots.php:1888
+msgid "We"
+msgstr "Me"
+
+#: iconic-woo-delivery-slots.php:1810, iconic-woo-delivery-slots.php:1889
+msgid "Th"
+msgstr "Je"
+
+#: iconic-woo-delivery-slots.php:1811, iconic-woo-delivery-slots.php:1890
+msgid "Fr"
+msgstr "Ve"
+
+#: iconic-woo-delivery-slots.php:1812, iconic-woo-delivery-slots.php:1891
+msgid "Sa"
+msgstr "Sa"
+
+#: iconic-woo-delivery-slots.php:1815, iconic-woo-delivery-slots.php:1894
+msgid "January"
+msgstr "Janvier"
+
+#: iconic-woo-delivery-slots.php:1816, iconic-woo-delivery-slots.php:1895
+msgid "February"
+msgstr "Février"
+
+#: iconic-woo-delivery-slots.php:1817, iconic-woo-delivery-slots.php:1896
+msgid "March"
+msgstr "Mars"
+
+#: iconic-woo-delivery-slots.php:1818, iconic-woo-delivery-slots.php:1897
+msgid "April"
+msgstr "Avril"
+
+#: iconic-woo-delivery-slots.php:1819, iconic-woo-delivery-slots.php:1833,
+#: iconic-woo-delivery-slots.php:1898, iconic-woo-delivery-slots.php:1912
+msgid "May"
+msgstr "Mai"
+
+#: iconic-woo-delivery-slots.php:1820, iconic-woo-delivery-slots.php:1899
+msgid "June"
+msgstr "Juin"
+
+#: iconic-woo-delivery-slots.php:1821, iconic-woo-delivery-slots.php:1900
+msgid "July"
+msgstr "Juillet"
+
+#: iconic-woo-delivery-slots.php:1822, iconic-woo-delivery-slots.php:1901
+msgid "August"
+msgstr "Août"
+
+#: iconic-woo-delivery-slots.php:1823, iconic-woo-delivery-slots.php:1902
+msgid "September"
+msgstr "Septembre"
+
+#: iconic-woo-delivery-slots.php:1824, iconic-woo-delivery-slots.php:1903
+msgid "October"
+msgstr "Octobre"
+
+#: iconic-woo-delivery-slots.php:1825, iconic-woo-delivery-slots.php:1904
+msgid "November"
+msgstr "Novembre"
+
+#: iconic-woo-delivery-slots.php:1826, iconic-woo-delivery-slots.php:1905
+msgid "December"
+msgstr "Décembre"
+
+#: iconic-woo-delivery-slots.php:1829, iconic-woo-delivery-slots.php:1908
+msgid "Jan"
+msgstr "Jan"
+
+#: iconic-woo-delivery-slots.php:1830, iconic-woo-delivery-slots.php:1909
+msgid "Feb"
+msgstr "Fév"
+
+#: iconic-woo-delivery-slots.php:1831, iconic-woo-delivery-slots.php:1910
+msgid "Mar"
+msgstr "Mar"
+
+#: iconic-woo-delivery-slots.php:1832, iconic-woo-delivery-slots.php:1911
+msgid "Apr"
+msgstr "Avr"
+
+#: iconic-woo-delivery-slots.php:1834, iconic-woo-delivery-slots.php:1913
+msgid "Jun"
+msgstr "Jui"
+
+#: iconic-woo-delivery-slots.php:1835, iconic-woo-delivery-slots.php:1914
+msgid "Jul"
+msgstr "Jui"
+
+#: iconic-woo-delivery-slots.php:1836, iconic-woo-delivery-slots.php:1915
+msgid "Aug"
+msgstr "Aoû"
+
+#: iconic-woo-delivery-slots.php:1837, iconic-woo-delivery-slots.php:1916
+msgid "Sep"
+msgstr "Sep"
+
+#: iconic-woo-delivery-slots.php:1838, iconic-woo-delivery-slots.php:1917
+msgid "Oct"
+msgstr "Oct"
+
+#: iconic-woo-delivery-slots.php:1839, iconic-woo-delivery-slots.php:1918
+msgid "Nov"
+msgstr "Nov"
+
+#: iconic-woo-delivery-slots.php:1840, iconic-woo-delivery-slots.php:1919
+msgid "Dec"
+msgstr "Dec"
+
+#: iconic-woo-delivery-slots.php:2348
+msgid "Any Method"
+msgstr "Toute méthode"
+
+#: iconic-woo-delivery-slots.php:2598
+msgid "Everywhere Else"
+msgstr "Partout ailleurs"
+
+#: iconic-woo-delivery-slots.php:2632
+msgid "Rule"
+msgstr "Règle"
+
+#: iconic-woo-delivery-slots.php:2692
+msgid "Time Slot Fee"
+msgstr "Frais de créneau horaire"
+
+#: iconic-woo-delivery-slots.php:2696
+msgid "Same Day Delivery Fee"
+msgstr "Frais de livraison le jour même"
+
+#: iconic-woo-delivery-slots.php:2700
+msgid "Next Day Delivery Fee"
+msgstr "Frais de livraison le lendemain"
+
+#: inc/class-licence.php:83
+msgid "Manage Licence &amp; Billing"
+msgstr "Gérer la licence & amp; Facturation"
+
+#: inc/class-order.php:44
+msgid "Delivery"
+msgstr "Livraison"
+
+#: inc/class-order.php:122
+msgid "No slot was selected."
+msgstr "Aucun emplacement n’a été sélectionné."
+
+#: inc/class-settings.php:24
+msgid "Welcome to WooCommerce Delivery Slots"
+msgstr "Bienvenue aux créneaux de livraison WooCommerce"
+
+#: inc/class-settings.php:25
+msgid ""
+"You're awesome! We've been looking forward to having you onboard, and we're "
+"pleased to see the day has finally come."
+msgstr ""
+"Vous êtes génial! Nous avons hâte de vous avoir à bord, et nous sommes "
+"heureux de voir que le jour est enfin arrivé."
+
+#: inc/class-settings.php:26
+msgid ""
+"Make yourself at home. If you get stuck, check out the <a href=\"%s\" target="
+"\"_blank\">documentation</a>, or create a support ticket using the button "
+"below."
+msgstr ""
+"Faites comme chez vous. Si vous êtes coincé, consultez la <a href=“%s” "
+"target=“_blank”>documentation</a> ou créez un ticket de support (en anglais) "
+"en utilisant le bouton ci-dessous ou contactez Communica."
+
+#: inc/class-settings.php:35
+msgid "Read Documentation"
+msgstr "Lire la documentation"
+
+#: inc/admin/settings.php:29
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+#: inc/admin/settings.php:33
+msgid "General Settings"
+msgstr "Réglages généraux"
+
+#: inc/admin/settings.php:37, inc/admin/settings.php:226
+msgid "Date Settings"
+msgstr "Paramètres de date"
+
+#: inc/admin/settings.php:41
+msgid "Time Settings"
+msgstr "Réglages de l'heure"
+
+#: inc/admin/settings.php:45, inc/admin/settings.php:535,
+#: inc/admin/settings.php:541
+msgid "Holidays"
+msgstr "Vacances"
+
+#: inc/admin/settings.php:49
+msgid "Reservation Table"
+msgstr "Réservation de table"
+
+#: inc/admin/settings.php:67
+msgid "Welcome"
+msgstr "Bienvenue"
+
+#: inc/admin/settings.php:78
+msgid "License & Account Settings"
+msgstr "Licence et paramètres de compte"
+
+#: inc/admin/settings.php:84
+msgid "Licence &amp; Billing"
+msgstr "Licence &amp; Facturation"
+
+#: inc/admin/settings.php:85
+msgid ""
+"Activate or sync your license, cancel your subscription, print invoices, and "
+"manage your account information."
+msgstr ""
+"Activez ou synchronisez votre licence, annulez votre abonnement, imprimez "
+"des factures et gérez les informations de votre compte."
+
+#: inc/admin/settings.php:96, inc/admin/settings.php:102
+msgid "Support"
+msgstr "Support"
+
+#: inc/admin/settings.php:103
+msgid "Get premium support with a valid license."
+msgstr "Obtenez un support premium avec une licence valide."
+
+#: inc/admin/settings.php:109
+msgid "Documentation"
+msgstr "Documentation"
+
+#: inc/admin/settings.php:110
+msgid "Read the plugin documentation."
+msgstr "Lisez la documentation de l’extension."
+
+#: inc/admin/settings.php:123
+msgid "General Setup"
+msgstr "Configuration générale"
+
+#: inc/admin/settings.php:129
+msgid "Checkout Fields Position"
+msgstr "Positionner les champs Position"
+
+#: inc/admin/settings.php:130
+msgid "Where should the date and time fields show on the checkout page?"
+msgstr "Positionner les champs Position?"
+
+#: inc/admin/settings.php:134
+msgid "Before Customer Details"
+msgstr "Avant les détails du client"
+
+#: inc/admin/settings.php:135
+msgid "Within Billing Fields"
+msgstr "Dans les champs de facturation"
+
+#: inc/admin/settings.php:136
+msgid "Within Shipping Fields"
+msgstr "Dans les zones d’expédition"
+
+#: inc/admin/settings.php:137
+msgid "After Customer Details"
+msgstr "Après les détails du client"
+
+#: inc/admin/settings.php:138
+msgid "Before Order Review"
+msgstr "Avant l’examen de la commande"
+
+#: inc/admin/settings.php:139
+msgid "Within Order Review"
+msgstr "Dans l’examen de la commande"
+
+#: inc/admin/settings.php:140
+msgid "After Order Review"
+msgstr "Après l’examen de la commande"
+
+#: inc/admin/settings.php:145
+msgid "Checkout Fields Position Priority"
+msgstr "Champs de paiement Priorité de position"
+
+#: inc/admin/settings.php:146
+msgid "Enter a number of priority, e.g. 10 is early/before, 50 is late/after"
+msgstr ""
+"Entrez un numéro de priorité, par ex. 10 est en avance / avant, 50 est en "
+"retard / après"
+
+#: inc/admin/settings.php:153, inc/admin/settings.php:744
+msgid "Shipping Methods"
+msgstr "Méthodes de livraison"
+
+#: inc/admin/settings.php:154
+msgid "Enable delivery slots for the following shipping methods."
+msgstr ""
+"Activez les emplacements de livraison pour les méthodes d’expédition "
+"suivantes."
+
+#: inc/admin/settings.php:166
+msgid "Date Setup"
+msgstr "Réglage de la date"
+
+#: inc/admin/settings.php:172, inc/admin/settings.php:383
+msgid "Mandatory Field?"
+msgstr "Champ obligatoire ?"
+
+#: inc/admin/settings.php:173
+msgid "Is the delivery date a required field at checkout?"
+msgstr ""
+"Est-ce que la date de livraison est un champ obligatoire sur la page "
+"commande ?"
+
+#: inc/admin/settings.php:180, inc/admin/settings.php:391
+msgid "Show Description?"
+msgstr "Afficher la description ?"
+
+#: inc/admin/settings.php:187
+msgid "Theme"
+msgstr "Thème"
+
+#: inc/admin/settings.php:188
+msgid ""
+"Select a theme for the front-end calendar at checkout. If you already have a "
+"jQuery UI theme installed, select \"None\". Themes can be viewed <a href="
+"\"http://jqueryui.com/themeroller/\" target=\"_blank\">here</a>, in the "
+"\"Gallery\" section."
+msgstr ""
+"Sélectionnez le thème du calendrier sur la page commande . Si vous avez déjà "
+"un thème jQuery UI installé, sélectionnez \"Aucun\". Vous pouvez visualiser "
+"les thèmes <a href=\"http://jqueryui.com/themeroller/\" target=\"_blank"
+"\">ici</a>, dans la section \"Galerie\"."
+
+#: inc/admin/settings.php:232
+msgid "Delivery Days"
+msgstr "Jours de livraison"
+
+#: inc/admin/settings.php:248
+msgid "Minimum/Maximum Selectable Date Method"
+msgstr "Méthode de date minimale / maximale sélectionnable"
+
+#: inc/admin/settings.php:249
+msgid ""
+"Choose whether the minimum and maximum selectable date applies to all days "
+"of the week, allowed days only, or weekdays only."
+msgstr ""
+"Choisissez si la date minimum et maximum sélectionnable s’applique à tous "
+"les jours de la semaine, aux jours autorisés uniquement, aux jours de la "
+"semaine seulement."
+
+#: inc/admin/settings.php:261
+msgid "Skip Current Day if Not an Allowed Delivery Day?"
+msgstr "Passer le jour actuel si ce n’est pas un jour de livraison autorisé?"
+
+#: inc/admin/settings.php:262
+msgid ""
+"When checked, this will start the minimum date calculation from the first "
+"*allowed* delivery day."
+msgstr ""
+"Lorsque cette case est cochée, le calcul de la date minimale commence à "
+"partir du premier jour de livraison * autorisé *."
+
+#: inc/admin/settings.php:269
+msgid "Minimum Selectable Date"
+msgstr "Nombre minimum de jour sélectionnable"
+
+#: inc/admin/settings.php:270
+msgid "Days from now. Enter \"0\" for same day."
+msgstr "Jours à partir de maintenant . Entrez \"0\" pour le jour même."
+
+#: inc/admin/settings.php:277
+msgid "Maximum Selectable Date"
+msgstr "Nombre maximum de jour sélectionnable"
+
+#: inc/admin/settings.php:278
+msgid "Days from now."
+msgstr "Jours à partir de maintenant."
+
+#: inc/admin/settings.php:285
+msgid "Disable Same Day Delivery if Current Time is After (x)"
+msgstr "Désactiver la livraison le jour même si l’heure actuelle est après (x)"
+
+#: inc/admin/settings.php:289, inc/admin/settings.php:300,
+#: inc/admin/settings.php:468, inc/admin/settings.php:479
+msgid "AM"
+msgstr "AM"
+
+#: inc/admin/settings.php:290, inc/admin/settings.php:301,
+#: inc/admin/settings.php:469, inc/admin/settings.php:480
+msgid "PM"
+msgstr "PM"
+
+#: inc/admin/settings.php:296
+msgid "Disable Next Day Delivery if Current Time is After (x)"
+msgstr ""
+"Désactiver la livraison le jour suivant si l’heure actuelle est après (x)"
+
+#: inc/admin/settings.php:307
+msgid "Only Allow Deliveries Within the Current Week?"
+msgstr "Autoriser uniquement les livraisons dans la semaine en cours?"
+
+#: inc/admin/settings.php:314
+msgid "Last Day of the Week"
+msgstr "Dernier jour de la semaine"
+
+#: inc/admin/settings.php:331
+msgid "Date Format"
+msgstr "Format de date"
+
+#: inc/admin/settings.php:332, inc/admin/settings.php:614
+msgid ""
+"Available formats can be found <a href=\"http://api.jqueryui.com/datepicker/"
+"#utility-formatDate\" target=\"_blank\">here</a>."
+msgstr ""
+"Les formats disponibles peuvent être trouvés <a href=\"http://api.jqueryui."
+"com/datepicker/#utility-formatDate\" target=\"_blank\">ici</a>."
+
+#: inc/admin/settings.php:343
+msgid "Fees"
+msgstr "Frais"
+
+#: inc/admin/settings.php:349
+msgid "Same Day"
+msgstr "Même jour"
+
+#: inc/admin/settings.php:350
+msgid "Fee applied when a same day delivery is selected."
+msgstr "Frais appliqués lorsque la livraison le jour même est sélectionnée."
+
+#: inc/admin/settings.php:353, inc/admin/settings.php:361
+msgid "E.g. 3.00"
+msgstr "Par exemple. 3,00"
+
+#: inc/admin/settings.php:357
+msgid "Next Day"
+msgstr "Jour suivant"
+
+#: inc/admin/settings.php:358
+msgid "Fee applied when a next day delivery is selected."
+msgstr "Frais appliqués lorsque la livraison le lendemain est sélectionnée."
+
+#: inc/admin/settings.php:369
+msgid "Time Setup"
+msgstr "Réglage de l'heure"
+
+#: inc/admin/settings.php:375
+msgid "Enable Time Slots"
+msgstr "Permettre les plages horaires"
+
+#: inc/admin/settings.php:376
+msgid "Check this box to enable time slots at checkout."
+msgstr "Cochez cette case pour permettre les plages horaires à la commande."
+
+#: inc/admin/settings.php:384
+msgid "Is the time slot a required field at checkout?"
+msgstr ""
+"Est-ce que la plage horaire est un champ obligatoire sur la page commande ?"
+
+#: inc/admin/settings.php:398
+msgid "Time Format"
+msgstr "Format d'heure"
+
+#: inc/admin/settings.php:399
+msgid "Select a time format for the frontend."
+msgstr "Sélectionnez le format pour afficher l'heure sur votre site."
+
+#: inc/admin/settings.php:415
+msgid "Time Slot Configuration"
+msgstr "Configuration des créneaux horaires"
+
+#: inc/admin/settings.php:421
+msgid "Calculate Tax?"
+msgstr "Calculer l’impôt?"
+
+#: inc/admin/settings.php:422
+msgid ""
+"Check this box to calculate tax on timeslot fees. If enabled, fees should be "
+"entered exclusive of tax."
+msgstr ""
+"Cochez cette case pour calculer la taxe sur les frais de créneau horaire. Si "
+"activé, les frais doivent être indiqués hors taxes."
+
+#: inc/admin/settings.php:429, inc/admin/settings.php:486
+msgid "Allow Bookings Up To (x) Minutes Before Slot"
+msgstr "Autoriser une réservation jusqu’à (x) minutes avant la fin du créneau"
+
+#: inc/admin/settings.php:430
+msgid ""
+"This option will prevent bookings being made too close to the delivery time. "
+"Can be overridden on an individual time slot basis. (Check your timezone in "
+"WordPress Settings)."
+msgstr ""
+"Cette option empêchera les réservations d’être effectuées trop près du délai "
+"de livraison. Peut être substitué sur une base de temps spécifique. "
+"(Vérifiez votre fuseau horaire dans les paramètres WordPress)."
+
+#: inc/admin/settings.php:437
+msgid "Time Slots"
+msgstr "Créneaux horaires"
+
+#: inc/admin/settings.php:464, inc/admin/settings.php:549
+msgid "From"
+msgstr "De"
+
+#: inc/admin/settings.php:475, inc/admin/settings.php:557
+msgid "To"
+msgstr "À"
+
+#: inc/admin/settings.php:493
+msgid "Lockout"
+msgstr "Verrouillage"
+
+#: inc/admin/settings.php:500
+msgid "Postcodes"
+msgstr "Codes postaux"
+
+#: inc/admin/settings.php:506
+msgid "Fee (%s)"
+msgstr "Frais (%s)"
+
+#: inc/admin/settings.php:513
+msgid "Days"
+msgstr "Jours"
+
+#: inc/admin/settings.php:536
+msgid "Please add any holidays where deliveries should not be made."
+msgstr ""
+"Ajoutez les périodes de vacances pendant lesquelles il n'a pas de "
+"réservation possible."
+
+#: inc/admin/settings.php:542
+msgid ""
+"For single days, just enter a date in the \"From\" field. For ranges, enter "
+"a \"From\" and \"To\" date. Ranges are up to and including the dates you "
+"enter."
+msgstr ""
+"Pour les jours simples, entrez simplement une date dans le champ “De”. Pour "
+"les plages, entrez une date “De” et “À”. Les plages vont jusqu’à et y "
+"compris les dates que vous entrez."
+
+#: inc/admin/settings.php:544
+msgid "Holiday"
+msgstr "Vacances"
+
+#: inc/admin/settings.php:565
+msgid "Name"
+msgstr "Nom"
+
+#: inc/admin/settings.php:569
+msgid "e.g. Christmas"
+msgstr "ex. Noël"
+
+#: inc/admin/settings.php:579
+msgid "Reservations"
+msgstr "Réservations"
+
+#: inc/admin/settings.php:580
+msgid ""
+"You can insert a reservation table using the shortcode <strong>[jckwds]</"
+"strong>. This allows your customers to reserve a delivery time and date "
+"while they shop. <br><strong>Note:</strong> Time Slots should be enabled if "
+"you want to use the reservation table."
+msgstr ""
+"Vous pouvez insérer un tableau de réservation en utilisant le shortcode "
+"<strong>[jckwds]</ strong>. Cela permet à vos clients de réserver une date "
+"et un créneau horaire de livraison pendant qu'ils naviguent sur votre "
+"boutique. <br><strong>Note :</ strong> La gestion des créneaux horaires doit "
+"être activée si vous souhaitez utiliser la réservation de table."
+
+#: inc/admin/settings.php:585
+msgid "Expiration"
+msgstr "Expiration"
+
+#: inc/admin/settings.php:586
+msgid "Reservations expire after (x) Minutes."
+msgstr "Les réservations expirent après (x) minutes."
+
+#: inc/admin/settings.php:593
+msgid "Date Columns"
+msgstr "Colonnes date"
+
+#: inc/admin/settings.php:594
+msgid "How many date columns should the reservation table display?"
+msgstr ""
+"Sur combien de colonnes date doit s'afficher le tableau de réservation ?"
+
+#: inc/admin/settings.php:601
+msgid "Selection Type"
+msgstr "Type de sélection"
+
+#: inc/admin/settings.php:602
+msgid "Choose the selection type for the time slots in the table."
+msgstr ""
+"Choisissez le type de sélection pour les intervalles de temps dans le "
+"tableau."
+
+#: inc/admin/settings.php:607
+msgid "Checkbox"
+msgstr "Case à cocher"
+
+#: inc/admin/settings.php:608
+msgid "Fee"
+msgstr "Frais"
+
+#: inc/admin/settings.php:613
+msgid "Header Date Format"
+msgstr "Format date de l’en-tête Date"
+
+#: inc/admin/settings.php:625
+msgid "Table Styling"
+msgstr "Apparence du tableau de réservation"
+
+#: inc/admin/settings.php:626
+msgid "Customise the look of your reservation table to match your website."
+msgstr ""
+"Personnaliser l'apparence de votre tableau de réservation pour le faire "
+"correspondre au design de votre site."
+
+#: inc/admin/settings.php:631
+msgid "Header Cell Colour"
+msgstr "Couleur des cellules d'entête"
+
+#: inc/admin/settings.php:638
+msgid "Header Cell Border Colour"
+msgstr "Couleur de la bordure des cellules d'entêtes"
+
+#: inc/admin/settings.php:645
+msgid "Header Cell Font Colour"
+msgstr "Couleur de la police des cellules d'entête"
+
+#: inc/admin/settings.php:652
+msgid "Arrow Icon Colour"
+msgstr "Couleur de l'icône flèche"
+
+#: inc/admin/settings.php:659
+msgid "Arrow Icon Hover Colour"
+msgstr "Couleur de l'icône flèche au survol de la souris"
+
+#: inc/admin/settings.php:666
+msgid "Reserve Cell Colour"
+msgstr "Couleur des cellules Réservé"
+
+#: inc/admin/settings.php:673
+msgid "Reserve Cell Border Colour"
+msgstr "Couleur de la bordure des cellules Réservé"
+
+#: inc/admin/settings.php:680
+msgid "Reserve Icon Colour"
+msgstr "Couleur de l'icône Réservé"
+
+#: inc/admin/settings.php:687
+msgid "Reserve Icon Hover Colour"
+msgstr "Couleur de l'icône \"Réservé\" au survol de la souris"
+
+#: inc/admin/settings.php:694
+msgid "Unavailable Cell Colour"
+msgstr "Couleur des cellules Non Disponible"
+
+#: inc/admin/settings.php:701
+msgid "Reserved Cell Colour"
+msgstr "Couleur des cellules Pour Réserver"
+
+#: inc/admin/settings.php:708
+msgid "Reserved Cell Border Colour"
+msgstr "Couleur de la bordure des cellules Pour Réserver"
+
+#: inc/admin/settings.php:715
+msgid "Reserved Icon Colour"
+msgstr "Couleur de l'icône Pour Réserver"
+
+#: inc/admin/settings.php:722
+msgid "Loading Icon Colour"
+msgstr "Couleur de l'icône chargement"
+
+#: inc/admin/settings.php:729
+msgid "Lock Icon Colour"
+msgstr "Verrouiller l’icône Couleur"
+
+#: inc/admin/settings.php:756
+msgid ""
+"NOTICE! All Iconic plugins will soon be moving away from Envato, so you will "
+"no longer be able to receive updates from CodeCanyon. <br><br>Please use "
+"your <a style=\"color: #fff; text-decoration: underline;\" href=\"https://"
+"iconicwp.com/files/purchase-code.png\" target=\"_blank\">purchase code</a> "
+"to <a href=\"https://iconicwp.com/generate-a-licence/\" style=\"color: #fff; "
+"text-decoration: underline;\" target=\"_blank\">generate a new licence</a>. "
+"You will also be given a full year of support from your original date or "
+"purchase, or at least an additional 6 months of support if that date has "
+"passed."
+msgstr ""
+"REMARQUE! Merci d’utiliser votre <a style=“color: #fff; text-decoration: "
+"underline;” href=“https://iconicwp.com/files/purchase-code.png” "
+"target=“_blank”>code d’achat</a> pour <a href=“https://iconicwp.com/generate-"
+"a-licence/“ style=“color: #fff; text-decoration: underline;” "
+"target=“_blank”>générer une nouvelle license</a>. Vous bénéficierez "
+"également d’une année complète de support à compter de votre date d’achat ou "
+"d’achat, ou au moins 6 mois de soutien supplémentaires si cette date est "
+"dépassée."
+
+#~ msgid "Date"
+#~ msgstr "Date"
+
+#~ msgid "Time"
+#~ msgstr "Heure"
+
+#~ msgid "Holiday Date"
+#~ msgstr "Date de vacances"
+
+#~ msgid "Upcoming Deliveries"
+#~ msgstr "Livraisons à venir"
+
+#~ msgid "Currently Reserved"
+#~ msgstr "Réservé actuellement"
+
+#~ msgid "Status"
+#~ msgstr "Statut"
+
+#~ msgid "Order #"
+#~ msgstr "Commander #"
+
+#~ msgid "Order Overview"
+#~ msgstr "Suivi des commandes"
+
+#~ msgid "Customer Name"
+#~ msgstr "Nom du client"
+
+#~ msgid "Customer Email"
+#~ msgstr "Adresse e-mail du client"
+
+#~ msgid "Please select a valid delivery date."
+#~ msgstr "Veuillez sélectionner une date de livraison valide."
+
+#~ msgid "Please select a time slot."
+#~ msgstr "Veuillez sélectionner un créneau horaire."
+
+#~ msgid ""
+#~ "Sorry, the time slot you reserved is not available for your postcode."
+#~ msgstr ""
+#~ "Désolé, le créneau horaire que vous avez réservé n’est pas disponible "
+#~ "pour votre code postal."
+
+#~ msgid "Shipping"
+#~ msgstr "Expédition"
+
+#~ msgid "http://www.jckemp.com"
+#~ msgstr "http://www.jckemp.com"
+
+#~ msgid "Allow your customers to select a delivery slot for their order"
+#~ msgstr ""
+#~ "Permettre à vos clients de sélectionner un créneau de livraison pour leur "
+#~ "commande"
+
+#~ msgid "James Kemp"
+#~ msgstr "James Kemp"
+
+#~ msgid "Lockout After"
+#~ msgstr "Fermeture après"
+
+#~ msgid "Display Instructions?"
+#~ msgstr "Afficher les instructions ?"
+
+#~ msgid ""
+#~ "When checked, instructions for the reservation table will be displayed."
+#~ msgstr ""
+#~ "Si cette case est cochée, les instructions liés à l'utilisation du "
+#~ "tableau de réservation seront affichées."
+
+#~ msgid "Show Available Slots When Logged Out?"
+#~ msgstr "Afficher les créneaux horaires disponibles si déconnecté ?"
+
+#~ msgid ""
+#~ "When checked, the reservation table will be displayed to logged out users "
+#~ "with the remaining slots available."
+#~ msgstr ""
+#~ "Si cette case est cochée, le tableau de réservation sera affiché pour les "
+#~ "utilisateurs déconnectés avec les créneaux horaires encore disponibles."
+
+#~ msgid "Select a delivery time"
+#~ msgstr "Sélectionnez un délai de livraison"
+
+#~ msgid "<strong>%d</strong> <span>Avail</span>"
+#~ msgstr "<strong>%d</strong> <span>Dispo</span>"
+
+#~ msgid "Please <a href=\"%s\" class=\"%s\">login</a> to reserve a slot."
+#~ msgstr ""
+#~ "Veuillez vous <a href=\"%s\" class=\"%s\">connecter</a> pour réserver un "
+#~ "créneau."
+
+#~ msgid "Reservation Instructions"
+#~ msgstr "Instructions de réservation"
+
+#~ msgid "Navigate the days available for reservation by using the %s icons."
+#~ msgstr ""
+#~ "Naviguer dans les jours disponibles pour la réservation en utilisant les "
+#~ "icônes %s."
+
+#~ msgid ""
+#~ "Click on any of the %s icons to reserve your slot. Your slot will be "
+#~ "reserved for %d minutes. Once reserved, your slot will be highlighted. "
+#~ "You can change your reserved slot at any time."
+#~ msgstr ""
+#~ "Cliquez sur l'un des %s icônes pour réserver votre emplacement. Votre "
+#~ "place sera réservée pour %d minutes. Une fois réservé, votre emplacement "
+#~ "sera mis en surbrillance. Vous pouvez modifier le crénau réservé à tout "
+#~ "moment."
+

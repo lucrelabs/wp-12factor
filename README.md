@@ -22,7 +22,8 @@ HTTPS is forced for Login and Admin functions. `WP_DEBUG` is on; errors do not g
 
 If you have a [Heroku](http://heroku.com) account, you may simply use the following button to deploy this application:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/lucrelabs/wp-12factor)
+
 
 After the deploy, in [Heroku's Dashboard](https://dasboard.heroku.com) under "Settings" for your deployed application, **remove the `WORDPRESS_ADMIN_*` environment variables**.
 

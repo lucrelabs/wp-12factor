@@ -1,0 +1,1288 @@
+# Copyright (C) 2020 iconic-woo-delivery-slots
+# This file is distributed under the same license as the iconic-woo-delivery-slots package.
+msgid ""
+msgstr ""
+"Project-Id-Version: iconic-woo-delivery-slots\n"
+"POT-Creation-Date: 2020-04-08 16:33+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;"
+"_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;"
+"esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.3\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:246
+#, php-format
+msgid ""
+"You need to be running PHP 5.3+ for Delivery Slots to work. You're on %s."
+msgstr ""
+"U moet PHP 5.3+ draaien om delivery slots te laten werken. Je zit op %s."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:362
+msgid "Deliveries"
+msgstr "Leveringen"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:393
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/vendor/wp-settings-framework/wp-settings-framework.php:206
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Je hebt niet voldoende rechten om toegang te krijgen op deze pagina."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:417
+msgid "There are currently no upcoming deliveries."
+msgstr "Er zijn nu geen komende bezorgingen."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:419
+msgid "There are currently no active reservations."
+msgstr "Er zijn geen actieve reserveringen."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:461
+msgid "Key:"
+msgstr "Sleutel:"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:463
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:307
+msgid "Same Day"
+msgstr "Dezelfde dag"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:466
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:315
+msgid "Next Day"
+msgstr "De volgende dag"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:468
+msgid "Upcoming"
+msgstr "Komende"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:474
+msgid "Date"
+msgstr "Datum"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:476
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:435
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-helpers.php:119
+msgid "Time Slot"
+msgstr "Dagdeel"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:479
+msgid "Order"
+msgstr "Bestelling"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:480
+msgid "Ship to"
+msgstr "Verzenden naar volgende adres"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:482
+msgid "Customer Name"
+msgstr "Klantnaam"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:483
+msgid "Customer Email"
+msgstr "Emailadres"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:486
+msgid "Status"
+msgstr "Status"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:513
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2398
+msgid "ASAP"
+msgstr "Zo spoedig mogelijk"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:527
+msgid "via"
+msgstr "via"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:559
+msgid ""
+"You need to select at least one shipping method in General Settings. \"Any "
+"Method\" has been selected for you."
+msgstr ""
+"Je moet ten minste 1 verzendmethode kiezen bij de algemene instellingen. "
+"\"Any Method\" is voor jou geselecteerd."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:569
+msgid ""
+"\"Allow Bookings Up To (x) Minutes Before Slot\" should be a positive "
+"integer. It has defaulted to 0."
+msgstr ""
+"\"Bookings To (x) Minutes Before Slot\" moet een positief geheel zijn. Het "
+"is standaard ingesteld op 0."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:581
+msgid ""
+"Minimum selectable date should be a positive integer. It has defaulted to 0."
+msgstr ""
+"De minimale selecteerbare datum moet een positief geheel getal zijn. Het is "
+"gewijzigd naar 0."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:593
+msgid ""
+"Maximum selectable date should be a positive integer. It has defaulted to 14."
+msgstr ""
+"De maximale selecteerbare datum moet een positief geheel getal zijn. Het is "
+"gewijzigd naar 14."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:605
+msgid ""
+"Minimum selectable date should be less than or equal to the maximum "
+"selectable date."
+msgstr ""
+"De mimimale selecteerbare datum moet kleiner of gelijk aan de maximale "
+"selecteerbare datum."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:617
+msgid ""
+"The Same Day cutoff should be a valid time format (00:00), try using the "
+"time picker instead."
+msgstr ""
+"De grens voor een dezelfde dag levering moet in een geldig tijdsformat zijn "
+"(00:00), probeer de tijdskiezer te gebruiken."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:629
+msgid ""
+"The Next Day cutoff should be a valid time format (00:00), try using the "
+"time picker instead."
+msgstr ""
+"De grens voor een volgende dag levering moet in een geldig tijdsformat zijn "
+"(00:00), probeer de tijdskiezer te gebruiken."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:713
+msgid ""
+"Some of your time slots were not enabled for any shipping methods. \"Any "
+"Method\" has been selected for them."
+msgstr ""
+"Sommige van je tijdsvakken zijn niet beschikbaar voor verzendmethoden. \"Any "
+"Method\" is geselecteerd voor deze tijdsvakken."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:720
+msgid ""
+"The \"Allow Bookings Up To (x) Minutes Before Slot\" time slot setting "
+"should be a positive integer. It has been removed."
+msgstr ""
+"De instelling 'Boekingen tot (x) minuten voor slot toestaan\" moet een "
+"positief geheel zijn. Het is verwijderd."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:727
+msgid ""
+"The \"Lockout After\" time slot setting should be a positive integer. It has "
+"defaulted to 10."
+msgstr ""
+"De instelling \"Lockout After\" moet een positief geheel getal zijn. Het is "
+"standaard ingesteld op 10."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:734
+msgid ""
+"You should select at least one active day for your time slot. All days have "
+"now been selected."
+msgstr ""
+"U moet ten minste één actieve dag voor uw tijdslot selecteren. Alle dagen "
+"zijn nu geselecteerd."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:741
+msgid ""
+"One of the time slots you entered had an invalid format. Try using the time "
+"picker instead. A default has been added in its place."
+msgstr ""
+"Een van de tijdslots door u ingevoerde had een ongeldig formaat. Probeer de "
+"datum selectie tool. Een standaard datum is toegevoegd in de plaats."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:945
+msgid "Delivery date updated."
+msgstr "Leveringsdatum is geüpdatet."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1954
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2035
+msgid "Loading..."
+msgstr "Laden..."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1955
+msgid "Available"
+msgstr "Beschikbaar"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1956
+msgid "Unavailable"
+msgstr "Niet beschikbaar"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1958
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2037
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:180
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:270
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:514
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-settings.php:107
+msgid "Sunday"
+msgstr "Zondag"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1959
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2038
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:181
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:271
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:515
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-settings.php:108
+msgid "Monday"
+msgstr "Maandag"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1960
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2039
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:182
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:272
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:516
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-settings.php:109
+msgid "Tuesday"
+msgstr "Dinsdag"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1961
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2040
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:183
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:273
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:517
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-settings.php:110
+msgid "Wednesday"
+msgstr "Woensdag"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1962
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2041
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:184
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:274
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:518
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-settings.php:111
+msgid "Thursday"
+msgstr "Donderdag"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1963
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2042
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:185
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:275
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:519
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-settings.php:112
+msgid "Friday"
+msgstr "Vrjdag"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1964
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2043
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:186
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:276
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:520
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-settings.php:113
+msgid "Saturday"
+msgstr "Zaterdag"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1967
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2046
+msgid "Su"
+msgstr "Zo"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1968
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2047
+msgid "Mo"
+msgstr "Ma"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1969
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2048
+msgid "Tu"
+msgstr "Di"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1970
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2049
+msgid "We"
+msgstr "Wo"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1971
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2050
+msgid "Th"
+msgstr "Do"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1972
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2051
+msgid "Fr"
+msgstr "Vr"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1973
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2052
+msgid "Sa"
+msgstr "Za"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1976
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2055
+msgid "January"
+msgstr "Januari"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1977
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2056
+msgid "February"
+msgstr "Februari"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1978
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2057
+msgid "March"
+msgstr "Maart"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1979
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2058
+msgid "April"
+msgstr "April"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1980
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1994
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2059
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2073
+msgid "May"
+msgstr "Mei"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1981
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2060
+msgid "June"
+msgstr "Juni"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1982
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2061
+msgid "July"
+msgstr "Juli"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1983
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2062
+msgid "August"
+msgstr "Augustus"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1984
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2063
+msgid "September"
+msgstr "September"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1985
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2064
+msgid "October"
+msgstr "Oktober"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1986
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2065
+msgid "November"
+msgstr "November"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1987
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2066
+msgid "December"
+msgstr "December"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1990
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2069
+msgid "Jan"
+msgstr "Jan"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1991
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2070
+msgid "Feb"
+msgstr "Feb"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1992
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2071
+msgid "Mar"
+msgstr "Maa"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1993
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2072
+msgid "Apr"
+msgstr "Apr"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1995
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2074
+msgid "Jun"
+msgstr "Jun"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1996
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2075
+msgid "Jul"
+msgstr "Jul"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1997
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2076
+msgid "Aug"
+msgstr "Aug"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1998
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2077
+msgid "Sep"
+msgstr "Sep"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:1999
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2078
+msgid "Oct"
+msgstr "Okt"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2000
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2079
+msgid "Nov"
+msgstr "Nov"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2001
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2080
+msgid "Dec"
+msgstr "Dec"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2591
+msgid "Any Method"
+msgstr "Een methode"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2727
+msgid "Shipping"
+msgstr "Verzending"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2843
+msgid "Everywhere Else"
+msgstr "Ergens anders"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2877
+msgid "Rule"
+msgstr "Regel"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/iconic-woo-delivery-slots.php:2978
+msgid "Delivery Fee"
+msgstr "Bezorgkosten"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/deliveries.php:13
+msgid "Upcoming Deliveries"
+msgstr "Aankomende bezorgingen"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/deliveries.php:14
+msgid "Currently Reserved"
+msgstr "Momenteel gereserveerd"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:22
+msgid "General Settings"
+msgstr "Algemene instellingen"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:27
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:169
+msgid "Date Settings"
+msgstr "Datum instellingen"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:32
+msgid "Time Settings"
+msgstr "Tijds instellingen"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:37
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:531
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:537
+msgid "Holidays"
+msgstr "Vakantie"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:42
+msgid "Reservation Table"
+msgstr "Reserverings tabel"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:50
+msgid "General Setup"
+msgstr "Algemene instellingen"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:56
+msgid "Checkout Fields Position"
+msgstr "Afreken veld positie"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:57
+msgid "Where should the date and time fields show on the checkout page?"
+msgstr "Waar wil je de datum en tijd velden weergeven op de checkout pagina?"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:61
+msgid "Before Customer Details"
+msgstr "Voor de klantgegevens"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:62
+msgid "Within Billing Fields"
+msgstr "Binnen de factureringsvelden"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:63
+msgid "Within Shipping Fields"
+msgstr "Binnen de verzendvelden"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:64
+msgid "After Customer Details"
+msgstr "Na de klantgegevens"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:65
+msgid "Before Order Review"
+msgstr "Voor de order review"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:66
+msgid "Within Order Review"
+msgstr "Binnen de order review"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:67
+msgid "After Order Review"
+msgstr "Na de order review"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:72
+msgid "Checkout Fields Position Priority"
+msgstr "Positieprioriteit betaalvelden"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:73
+msgid "Enter a number of priority, e.g. 10 is early/before, 50 is late/after"
+msgstr ""
+"Voer een prioriteit in, bijvoorbeeld 10 is vroeg/ervoor, 50 is te laat/erna"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:80
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:736
+msgid "Shipping Methods"
+msgstr "Verzendmethoden"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:81
+msgid "Enable delivery slots for the following shipping methods."
+msgstr "Leveringsvakken inschakelen voor de volgende verzendmethoden."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:89
+msgid "Exclude Products"
+msgstr "Producten uitsluiten"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:90
+msgid ""
+"If any of these products are in the cart, delivery date selection will be "
+"disabled."
+msgstr ""
+"Als een van deze producten zich in de winkelwagen bevindt, wordt de selectie "
+"van de leveringsdatum uitgeschakeld."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:96
+msgid "Exclude Categories"
+msgstr "Categorieën uitsluiten"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:97
+msgid ""
+"If a product from any of these categories is in the cart, delivery date "
+"selection will be disabled."
+msgstr ""
+"Als een product uit een van deze categorieën in de winkelwagen staat, wordt "
+"de selectie van de leveringsdatum uitgeschakeld."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:109
+msgid "Date Setup"
+msgstr "Datum setup"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:115
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:341
+msgid "Mandatory Field?"
+msgstr "Verplicht veld?"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:116
+msgid "Is the delivery date a required field at checkout?"
+msgstr "Is de leveringsdatum een verplicht veld in de checkout?"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:123
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:349
+msgid "Show Description?"
+msgstr "Beschrijving laten zien?"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:130
+msgid "Theme"
+msgstr "Thema"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:131
+msgid ""
+"Select a theme for the front-end calendar at checkout. If you already have a "
+"jQuery UI theme installed, select \"None\". Themes can be viewed <a href="
+"\"http://jqueryui.com/themeroller/\" target=\"_blank\">here</a>, in the "
+"\"Gallery\" section."
+msgstr ""
+"Selecteer een thema voor een zichtbare kalender in de checkout. Als je al "
+"een jQuery UI thema hebt geïnstalleerd, selecteer \"None\". Thema's kunnen "
+"<a href=\"http://jqueryui.com/themeroller/\" target=\"_blank\">hier</a> "
+"bekeken worden, in het \"Gallery\" deel."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:175
+msgid "Delivery Days"
+msgstr "Bezorgdagen"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:191
+msgid "Minimum/Maximum Selectable Date Method"
+msgstr "Minimum/maximum selecteerbare datum methode"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:192
+msgid ""
+"Choose whether the minimum and maximum selectable date applies to all days "
+"of the week, allowed days only, or weekdays only."
+msgstr ""
+"Kies of een minimale en maximale selecteerbare datum van toepassing is op "
+"alle dagen van de week, alleen de toegestane dagen of alleen de weekenden."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:204
+msgid "Skip Current Day if Not an Allowed Delivery Day?"
+msgstr "Sla de huidige dag over als dit geen toegestane bezorgdag is?"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:205
+msgid ""
+"When checked, this will start the minimum date calculation from the first "
+"*allowed* delivery day."
+msgstr ""
+"Wanneer dit is aangevinkt, zorgt dit ervoor dat de minimale datum berekening "
+"begint vanaf de eerste *toegestane* bezorgdag."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:212
+msgid "Minimum Selectable Date"
+msgstr "Minimale selecteerbare datum"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:213
+msgid "Days from now. Enter \"0\" for same day."
+msgstr "Aantal dagen vanaf nu. Vul \"0\"in voor dezelfde dag."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:220
+msgid "Maximum Selectable Date"
+msgstr "Maximale selecteerbare datum"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:221
+msgid "Days from now."
+msgstr "Aantal dagen vanaf nu."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:228
+msgid "Disable Same Day Delivery if Current Time is After (x)"
+msgstr ""
+"Schakel de bezorging op dezelfde dag uit als de huidige tijd later is dan (x)"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:232
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:243
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:400
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:464
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:475
+msgid "AM"
+msgstr "AM"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:233
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:244
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:401
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:465
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:476
+msgid "PM"
+msgstr "PM"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:239
+msgid "Disable Next Day Delivery if Current Time is After (x)"
+msgstr ""
+"Schakel de bezorging op de volgende dag uit als de huidige tijd later is dan "
+"(x)"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:250
+msgid "Use Next \"Allowed\" Day?"
+msgstr "De volgende \"Toegestane\" dag gebruiken?"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:251
+msgid ""
+"Checking this will use the next \"allowed\" delivery day as the next day, "
+"instead of tomorrow."
+msgstr ""
+"Wanneer dit aangevinkt is, de volgende \"allowed\" leveringsdatum zal "
+"gebruikt worden als de volgende dag, in plaats van morgen."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:258
+msgid "Only Allow Deliveries Within the Current Week?"
+msgstr "Alleen bezorgingen toestaan in de huidige week?"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:265
+msgid "Last Day of the Week"
+msgstr "De laatste dag van de week"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:282
+msgid "Date Format"
+msgstr "Datum format"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:283
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:610
+msgid ""
+"Available formats can be found <a href=\"http://api.jqueryui.com/datepicker/"
+"#utility-formatDate\" target=\"_blank\">here</a>."
+msgstr ""
+"Beschikbare formaten zijn <a href=\"http://api.jqueryui.com/datepicker/"
+"#utility-formatDate\" target=\"_blank\">hier</a>te vinden."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:294
+msgid "Fees"
+msgstr "Kosten"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:300
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:509
+msgid "Days"
+msgstr "Dagen"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:301
+msgid "Fees applied to specific days of the week."
+msgstr "Kosten die van toepassing zijn op specifieke dagen van de week."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:308
+msgid "Fee applied when a same day delivery is selected."
+msgstr ""
+"Kosten die van toepassing zijn wanneer een bezorging op dezelfde dag is "
+"geselecteerd."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:311
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:319
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:391
+msgid "E.g. 3.00"
+msgstr "B.v. 3.00"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:316
+msgid "Fee applied when a next day delivery is selected."
+msgstr ""
+"Kosten die van toepassing zijn wanneer een bezorging op de volgende dag is "
+"geselecteerd."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:327
+msgid "Time Setup"
+msgstr "Tijds instellingen"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:333
+msgid "Enable Time Slots"
+msgstr "Schakel tijdsvakken in"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:334
+msgid "Check this box to enable time slots at checkout."
+msgstr "Selecteer dit vakje om tijdsvakken in te schakelen bij de checkout."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:342
+msgid "Is the time slot a required field at checkout?"
+msgstr "Is het tijdsvak een verplicht veld bij de checkout?"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:356
+msgid "Time Format"
+msgstr "Tijdsformaat"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:357
+msgid "Select a time format for the frontend."
+msgstr "Selecteer een tijdsnotatie voor de frontend."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:373
+msgid "ASAP Delivery"
+msgstr "Zo snel mogelijke bezorging"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:379
+msgid "Enable ASAP Delivery"
+msgstr "ASAP-levering inschakelen"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:380
+msgid ""
+"Allow your customers to choose ASAP for their selected delivery date, or a "
+"time slot."
+msgstr ""
+"Laat uw klanten kiezen voor zo snel mogelijk bezorgen voor hun geselecteerde "
+"leveringsdatum of tijdslot."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:387
+msgid "ASAP Fee"
+msgstr "Kosten voor zo snel mogelijke bezorging"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:388
+msgid "Fee applied when an ASAP delivery time is selected."
+msgstr ""
+"Kosten die van toepassing zijn wanneer een zo snel mogelijke bezorging is "
+"geselecteerd."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:395
+msgid "Same Day Cut Off"
+msgstr "Dezelfde dag afkap"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:396
+msgid "Disable same day ASAP delivery slot if current time is after (x)."
+msgstr ""
+"Schakel de bezorging op dezelfde dag uit als de huidige tijd later is dan (x)"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:411
+msgid "Time Slot Configuration"
+msgstr "Tijdsvak configuratie"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:417
+msgid "Calculate Tax?"
+msgstr "Belasting berekenen?"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:418
+msgid ""
+"Check this box to calculate tax on timeslot fees. If enabled, fees should be "
+"entered exclusive of tax."
+msgstr ""
+"Schakel dit selectievakje in om belasting op tijdslotkosten te berekenen. "
+"Indien dit is ingeschakeld, moeten de kosten exclusief belasting worden "
+"ingevoerd."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:425
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:482
+msgid "Allow Bookings Up To (x) Minutes Before Slot"
+msgstr "Boekingen tot (x) minuten toestaan voor slot"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:426
+msgid ""
+"This option will prevent bookings being made too close to the delivery time. "
+"Can be overridden on an individual time slot basis. (Check your timezone in "
+"WordPress Settings)."
+msgstr ""
+"Deze optie voorkomt dat boekingen te dicht bij de levertijd worden gemaakt. "
+"Kan worden overschreven op een individueel tijdslot basis. (Controleer uw "
+"tijdzone in WordPress-instellingen)."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:433
+msgid "Time Slots"
+msgstr "Tijdsvakken"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:460
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:545
+msgid "From"
+msgstr "Vanaf"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:471
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:553
+msgid "To"
+msgstr "Tot"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:489
+msgid "Lockout"
+msgstr "Uitsluiten"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:496
+msgid "Postcodes"
+msgstr "Postcodes"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:502
+#, php-format
+msgid "Fee (%s)"
+msgstr "Vergoeding (%s)"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:532
+msgid "Please add any holidays where deliveries should not be made."
+msgstr "Voeg vakantie dagen toe wanneer geen bezorgingen mogelijk zijn."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:538
+msgid ""
+"For single days, just enter a date in the \"From\" field. For ranges, enter "
+"a \"From\" and \"To\" date. Ranges are up to and including the dates you "
+"enter."
+msgstr ""
+"Voer voor enkele dagen een datum in het veld 'Van'. Voer voor bereiken een "
+"datum 'Van' en 'Tot' in. Bereiken zijn maximaal en inclusief de datums die u "
+"invoert."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:540
+msgid "Holiday"
+msgstr "Vakantie"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:561
+msgid "Name"
+msgstr "Naam"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:565
+msgid "e.g. Christmas"
+msgstr "b.v. Kerstmis"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:575
+msgid "Reservations"
+msgstr "Reserveringen"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:576
+msgid ""
+"You can insert a reservation table using the shortcode <strong>[jckwds]</"
+"strong>. This allows your customers to reserve a delivery time and date "
+"while they shop. <strong>Note:</strong> Time Slots should be enabled if you "
+"want to use the reservation table."
+msgstr ""
+"U een reserveringstabel invoegen met behulp van de shortcode "
+"<strong>[jckwds]</strong>. Hierdoor kunnen uw klanten een levertijd en datum "
+"reserveren terwijl ze winkelen. <strong>Let op:</strong> Tijdvakken moeten "
+"worden ingeschakeld als u de reserveringstabel wilt gebruiken."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:581
+msgid "Expiration"
+msgstr "Verstrijken"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:582
+msgid "Reservations expire after (x) Minutes."
+msgstr "Reserveringen verstrijken na (x) minuten."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:589
+msgid "Date Columns"
+msgstr "Datum kolom"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:590
+msgid "How many date columns should the reservation table display?"
+msgstr ""
+"Hoeveel datum kolommen moeten er zichtbaar zijn in de reserverings tabel?"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:597
+msgid "Selection Type"
+msgstr "Selectietype"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:598
+msgid "Choose the selection type for the time slots in the table."
+msgstr "Kies het selectietype voor de tijdvakken in de tabel."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:603
+msgid "Checkbox"
+msgstr "Selectievakje"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:604
+msgid "Fee"
+msgstr "Vergoeding"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:609
+msgid "Header Date Format"
+msgstr "Datum format koptekst"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:621
+msgid "Table Styling"
+msgstr "Stijling van de tabellen"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:622
+msgid "Customise the look of your reservation table to match your website."
+msgstr "Pas het uiterlijk van uw reserveringstabel aan uw website aan."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:627
+msgid "Header Cell Colour"
+msgstr "Kleur koptekstcel"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:634
+msgid "Header Cell Border Colour"
+msgstr "Kleur celrand voor koptekst"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:641
+msgid "Header Cell Font Colour"
+msgstr "Koptekstcellettertypekleur"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:648
+msgid "Arrow Icon Colour"
+msgstr "Pijlpictogramkleur"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:655
+msgid "Arrow Icon Hover Colour"
+msgstr "Pijlpictogram-kleur"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:662
+msgid "Reserve Cell Colour"
+msgstr "Celkleur reserveren"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:669
+msgid "Reserve Cell Border Colour"
+msgstr "Celrandkleur reserveren"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:676
+msgid "Reserve Icon Colour"
+msgstr "Kleur van het pictogram reserveren"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:683
+msgid "Reserve Icon Hover Colour"
+msgstr "Kleur van pictogram reserveren"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:690
+msgid "Unavailable Cell Colour"
+msgstr "Onbeschikbare cel kleur"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:697
+msgid "Reserved Cell Colour"
+msgstr "Gereserveerde cel kleur"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:704
+msgid "Reserved Cell Border Colour"
+msgstr "Gereserveerde cel omlijningskleur"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:711
+msgid "Reserved Icon Colour"
+msgstr "Gereserveerd symbool kleur"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:718
+msgid "Loading Icon Colour"
+msgstr "Laad symbool kleur"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/admin/settings.php:725
+msgid "Lock Icon Colour"
+msgstr "Slot symbool kleur"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-checkout.php:197
+#, php-format
+msgid "%s is a required field."
+msgstr "%s is een verplicht veld."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-cross-sells.php:69
+msgid ""
+"Display individual product variations of a variable product in your product "
+"listings. Make it easy for your customers to view and filter product "
+"variations."
+msgstr ""
+"Geef individuele productvariaties van een variabel product weer in uw "
+"productvermeldingen. Maak het uw klanten gemakkelijk om productvariaties te "
+"bekijken en te filteren."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-cross-sells.php:80
+msgid ""
+"Enable zoom, sliders, video, fullscreen, multiple images per variation, and "
+"customisable layout options for your product imagery."
+msgstr ""
+"Zoom, schuifregelaars, video, fullscreen, meerdere afbeeldingen per variant "
+"en aanpasbare lay-outopties voor uw productafbeeldingen inschakelen."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-cross-sells.php:91
+msgid ""
+"Choose a delivery date and time for each order. Add a limit to the number of "
+"allowed reservations, restrict time slots to specific delivery methods, and "
+"so much more."
+msgstr ""
+"Kies een leveringsdag en tijd voor elke order. Voeg een limiet toe aan het "
+"aantal toegestane reserveringen, beperk de tijdvakken tot specifieke "
+"verzendmethoden etc."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-cross-sells.php:102
+msgid ""
+"Link a group of WooCommerce products together by their attributes; a new way "
+"to handle product variations."
+msgstr ""
+"Koppel een groep WooCommerce-producten aan elkaar aan hun kenmerken; een "
+"nieuwe manier om productvariaties aan te pakken."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-cross-sells.php:113
+msgid ""
+"Use transparent image layers for your variable products, removing the need "
+"to create hundreds of final product variation images."
+msgstr ""
+"Gebruik transparante afbeeldingslagen voor uw variabele producten, waardoor "
+"u honderden afbeeldingen van de uiteindelijke productvariatie hoeft te maken."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-cross-sells.php:124
+msgid ""
+"A modern take on quick view for WooCommerce; expand product details within "
+"your product listings for a convenient shopping experience."
+msgstr ""
+"Een moderne kijk op snelle weergave voor WooCommerce; productgegevens binnen "
+"uw productvermeldingen uitbreiden voor een handige winkelervaring."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-cross-sells.php:131
+msgid ""
+"Add and manage pages in your WooCommerce \"My Account\" area using the "
+"native WordPress \"Pages\" functionality."
+msgstr ""
+"Pagina's toevoegen en beheren in uw WooCommerce-gebied 'Mijn account' met "
+"behulp van de native WordPress-functionaliteit 'Pagina's'."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-cross-sells.php:138
+msgid ""
+"Quickly view any product from the catalog, without reloading the page. "
+"Encourage sales with easy and efficient product browsing."
+msgstr ""
+"Bekijk snel elk product uit de catalogus, zonder de pagina opnieuw te laden. "
+"Stimuleer de verkoop met eenvoudige en efficiënte productbrowsen."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-cross-sells.php:149
+msgid ""
+"Bored of the standard dropdown fields when viewing a variable product? Turn "
+"them into colour, image, or text swatches!"
+msgstr ""
+"Verveeld van de standaard dropdown velden bij het bekijken van een variabel "
+"product? Zet ze om in kleur, afbeelding of tekststalen!"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-cross-sells.php:160
+msgid ""
+"Easily add custom fields to your product variations; the perfect way to "
+"display organised additional product data to your customers."
+msgstr ""
+"Voeg eenvoudig aangepaste velden toe aan uw productvariaties; de perfecte "
+"manier om georganiseerde extra productgegevens aan uw klanten weer te geven."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-cross-sells.php:167
+msgid ""
+"Bundle a selection of products on a single product page. It even works with "
+"variable products!"
+msgstr ""
+"Bundel een selectie producten op één productpagina. Het werkt zelfs met "
+"variabele producten!"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-cross-sells.php:231
+msgid "Learn More"
+msgstr "Meer informatie"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-cross-sells.php:240
+msgid "View All Iconic Plugins"
+msgstr "Bekijk alle iconische plug-ins"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-licence.php:177
+msgid "Back to Settings"
+msgstr "Terug naar de instellingen"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-licence.php:206
+msgid "Changelog"
+msgstr "Changelog"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-licence.php:217
+msgid "Manage Licence &amp; Billing"
+msgstr "Licentie &amp; facturering beheren"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:180
+msgid "Action failed. Please refresh the page and retry."
+msgstr "Actie mislukt. Vernieuw de pagina en probeer opnieuw."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:209
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:304
+msgid "Dismiss"
+msgstr "Afwijzen"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:213
+#, php-format
+msgid ""
+"Thank you for installing %s. Check out the <a href=\"%s\">plugin dashboard</"
+"a>."
+msgstr ""
+"Bedankt voor het installeren van %s. Bekijk het dashboard van de <a href=\"%s"
+"\">plug-in.</a>."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:307
+msgid ""
+"Thank you for choosing Iconic. We've put together some useful links to help "
+"you get started:"
+msgstr ""
+"Bedankt voor het kiezen van Iconic. We hebben een aantal handige links "
+"samengesteld om u op weg te helpen:"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:311
+msgid "Need some help?"
+msgstr "Heb je hulp nodig?"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:311
+#, php-format
+msgid ""
+"Take a look at our\n"
+"\t\t\t\t<a href=\"%s?utm_source=plugin&utm_medium=jckwds&utm_campaign=need-"
+"some-help\" target=\"_blank\">troubleshooting documentation</a>"
+msgstr ""
+"Neem een kijkje op onze\n"
+"\t\t\t\t<a href=\"%s?utm_source=plugin&utm_medium=jckwds&utm_campaign=need-"
+"some-help\" target=\"_blank\">documentatie voor probleemoplossing</a>"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:312
+msgid ""
+"There is a permanent link to the plugin documentation in the \"Support\" "
+"section below."
+msgstr ""
+"Er is een permanente link naar de plugin documentatie in de \"Support\" "
+"sectie hieronder."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:383
+msgid "Getting Started"
+msgstr "Aan de slag"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:426
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:433
+msgid "License &amp; Account Settings"
+msgstr "Licentie- en accountinstellingen"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:439
+msgid "License &amp; Billing"
+msgstr "Licentie &amp; facturering"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:440
+msgid ""
+"Activate or sync your license, cancel your subscription, print invoices, and "
+"manage your account information."
+msgstr ""
+"Activeer of synchroniseer uw licentie, annuleer uw abonnement, print "
+"facturen en beheer uw accountgegevens."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:446
+msgid "Your Account"
+msgstr "Jouw account"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:447
+msgid "Manage all of your Iconic plugins, supscriptions, renewals, and more."
+msgstr "Beheer al je Iconic plugins, abonnementen, vernieuwingen en meer."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:459
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:465
+msgid "Support"
+msgstr "Hulp"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:466
+msgid "Get premium support with a valid license."
+msgstr "Krijg premium ondersteuning met een geldige licentie."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:472
+msgid "Documentation"
+msgstr "Documentatie"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:473
+msgid "Read the plugin documentation."
+msgstr "Lees de plugin documentatie."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:489
+msgid "Works Well With..."
+msgstr "Werkt goed samen met."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:506
+msgid "Submit Ticket"
+msgstr "Voeg ticket toe"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:515
+msgid "Read Documentation"
+msgstr "Lees documentatie"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-core-settings.php:524
+msgid "Manage Your Account"
+msgstr "Beheer je account"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-helpers.php:114
+msgid "Delivery Details"
+msgstr "Bezorg details"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-helpers.php:115
+msgid "Delivery Date"
+msgstr "Bezorgdatum"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-helpers.php:116
+msgid "Select a delivery date"
+msgstr "Selecteer een bezorgingsdag"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-helpers.php:117
+msgid "Please choose a date for your delivery."
+msgstr "Kies een datum voor je bezorging."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-helpers.php:118
+msgid "Please select a date first..."
+msgstr "Kies eerst een datum."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-helpers.php:120
+msgid "Please choose a time slot for your delivery."
+msgstr "Kies een tijdvak voor je bezorging."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-helpers.php:121
+msgid "Please select a time slot..."
+msgstr "Selecteer een tijdvak."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-helpers.php:122
+msgid "Sorry, no slots available..."
+msgstr "Sorry, er zijn geen tijdvakken beschikbaar."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-order.php:55
+msgid "Delivery"
+msgstr "Bezorging"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-order.php:133
+msgid "No slot was selected."
+msgstr "Er is geen tijdvak geselecteerd."
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-order.php:418
+msgid "Today"
+msgstr "Vandaag"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-order.php:419
+msgid "Tomorrow"
+msgstr "Morgen"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/class-settings.php:85
+msgid "Search for a product&hellip;"
+msgstr "Zoek naar een product&hellip;"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/vendor/wp-settings-framework/wp-settings-framework.php:127
+msgid "WPSF settings must be an array"
+msgstr "WPSF-instellingen moeten een array zijn"
+
+#: iconic-woo-delivery-slots-premium-latest/iconic-woo-delivery-slots-premium/inc/vendor/wp-settings-framework/wp-settings-framework.php:764
+msgid "Save Changes"
+msgstr "Wijzigingen opslaan"
+
