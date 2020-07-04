@@ -1,0 +1,174 @@
+# Copyright (C) 2018 iconic-woo-bundled-products
+# This file is distributed under the same license as the iconic-woo-bundled-products package.
+msgid ""
+msgstr ""
+"Project-Id-Version: iconic-woo-bundled-products\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: iconic-woo-bundled-products.php:271
+msgid "Bundled Products"
+msgstr ""
+
+#: iconic-woo-bundled-products.php:473
+msgid "Sorry, the products could not be added to the cart."
+msgstr ""
+
+#: iconic-woo-bundled-products.php:489
+msgid "Sorry, one of the products could not be added to the cart."
+msgstr ""
+
+#: iconic-woo-bundled-products.php:609
+msgid "Discount"
+msgstr ""
+
+#: inc/class-licence.php:86
+msgid "Manage Licence &amp; Billing"
+msgstr ""
+
+#: inc/class-licence.php:93
+msgid "Manage Billing"
+msgstr ""
+
+#: inc/class-licence.php:102
+msgid "Create Support Ticket"
+msgstr ""
+
+#: inc/class-licence.php:118
+msgid "Back to Settings"
+msgstr ""
+
+#: inc/class-licence.php:144
+msgid "Changelog"
+msgstr ""
+
+#: inc/class-product-bundled.php:320
+msgid "up to"
+msgstr ""
+
+#: inc/class-product-bundled.php:325
+msgid "Add All to Cart &mdash; Save %s %s"
+msgstr ""
+
+#: inc/class-product-bundled.php:325
+msgid "Add All to Cart"
+msgstr ""
+
+#: inc/class-settings.php:102
+msgid "Welcome to WooCommerce Bundled Products"
+msgstr ""
+
+#: inc/class-settings.php:103
+msgid "You're awesome! We've been looking forward to having you onboard, and we're pleased to see the day has finally come."
+msgstr ""
+
+#: inc/class-settings.php:104
+msgid "Make yourself at home. If you get stuck, check out the <a href=\"%s\" target=\"_blank\">documentation</a>, or use the search beacon at the bottom right of this page."
+msgstr ""
+
+#: inc/class-settings.php:113
+msgid "Read Documentation"
+msgstr ""
+
+#: inc/product-tab-bundled-data.php:19
+msgid "Price Display"
+msgstr ""
+
+#: inc/product-tab-bundled-data.php:23
+msgid "None"
+msgstr ""
+
+#: inc/product-tab-bundled-data.php:24
+msgid "Combined"
+msgstr ""
+
+#: inc/product-tab-bundled-data.php:25
+msgid "Range"
+msgstr ""
+
+#: inc/product-tab-bundled-data.php:26
+msgid "Custom"
+msgstr ""
+
+#: inc/product-tab-bundled-data.php:33
+msgid "Bundle Price (%s)"
+msgstr ""
+
+#: inc/product-tab-bundled-data.php:35
+msgid "If you selected \"Custom\" for \"Price Display\", enter the total price for your bundle here. Note: this is only effective if using \"Add All to Cart\" button."
+msgstr ""
+
+#: inc/product-tab-bundled-data.php:42
+msgid "Enable \"Add All to Cart\"?"
+msgstr ""
+
+#: inc/product-tab-bundled-data.php:44, inc/product-tab-bundled-data.php:54, inc/product-tab-bundled-data.php:64, inc/product-tab-bundled-data.php:74
+msgid "No"
+msgstr ""
+
+#: inc/product-tab-bundled-data.php:45, inc/product-tab-bundled-data.php:55, inc/product-tab-bundled-data.php:65, inc/product-tab-bundled-data.php:75
+msgid "Yes"
+msgstr ""
+
+#: inc/product-tab-bundled-data.php:52
+msgid "Hide Individual \"Add to Cart\" Buttons?"
+msgstr ""
+
+#: inc/product-tab-bundled-data.php:62
+msgid "Hide Individual Quantity Fields?"
+msgstr ""
+
+#: inc/product-tab-bundled-data.php:72
+msgid "Hide Individual Prices?"
+msgstr ""
+
+#: inc/product-tab-bundled-data.php:82
+msgid "Fixed Discount (%s)"
+msgstr ""
+
+#: inc/product-tab-bundled-data.php:85
+msgid "Enter an amount in %s to apply a fixed discount when all products are added to the cart."
+msgstr ""
+
+#: inc/admin/settings.php:23
+msgid "Dashboard"
+msgstr ""
+
+#: inc/admin/settings.php:41
+msgid "Welcome"
+msgstr ""
+
+#: inc/admin/settings.php:52
+msgid "License & Account Settings"
+msgstr ""
+
+#: inc/admin/settings.php:58
+msgid "License &amp; Billing"
+msgstr ""
+
+#: inc/admin/settings.php:59
+msgid "Activate or sync your license, cancel your subscription, print invoices, and manage your account information."
+msgstr ""
+
+#: inc/admin/settings.php:70, inc/admin/settings.php:76
+msgid "Support"
+msgstr ""
+
+#: inc/admin/settings.php:77
+msgid "Get premium support with a valid license."
+msgstr ""
+
+#: inc/admin/settings.php:83
+msgid "Documentation"
+msgstr ""
+
+#: inc/admin/settings.php:84
+msgid "Read the plugin documentation."
+msgstr ""
