@@ -36,7 +36,7 @@ To set up WordPress' Cron Jobs using [Heroku Scheduler](https://elements.heroku.
 Clone this repo (we're naming the Git remote "`upstream`" since you'll likely want to have "`origin`" be your actual site - you can [sync](https://help.github.com/articles/syncing-a-fork) changes from this repository later):
 
 ```
-$ git clone -o upstream https://github.com/lucrelabs/wop-12factor
+$ git clone -o upstream https://github.com/lucrelabs/wp-12factor
 $ cd wp-12factor
 ```
 
