@@ -46,7 +46,7 @@
 		"wpackagist-plugin/tiny-compress-images": "3.2.1",
 		"wpackagist-plugin/facebook-for-woocommerce": "2.0.1",
 		"wpackagist-plugin/woocommerce-google-adwords-conversion-tracking": "1.0.1",
-		"wpackagist-plugins/wc-vendors": "2.2.1",
+		"wpackagist-plugin/wc-vendors": "2.2.1",
 		"lucrelabs/wp-migrate-db-pro": "1.9.10",
 		"lucrelabs/iconic-woo-delivery-slots-premium": "1.10.0",
 		"lucrelabs/woocommerce-subscriptions": "3.0.5",
