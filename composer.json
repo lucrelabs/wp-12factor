@@ -49,6 +49,7 @@
 		"wpackagist-plugin/wc-vendors": "2.2.1",
 		"lucrelabs/wp-migrate-db-pro": "1.9.10",
 		"lucrelabs/iconic-woo-delivery-slots-premium": "1.10.0",
+		"lucrelabs/iconic-woo-bundled-products-premium": "2.0.13",
 		"lucrelabs/woocommerce-subscriptions": "3.0.5",
 		"wp-cli/wp-cli": "^1.1.0",
 		"landongw/Divi": "*",
