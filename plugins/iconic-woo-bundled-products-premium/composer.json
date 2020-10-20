@@ -1,0 +1,10 @@
+{
+  "type": "wordpress-plugin",
+  "name": "lucrelabs/iconic-woo-bundled-products-premium",
+  "version": "2.0.13",
+  "license": "proprietary",
+  "description": "Adds product bundling",
+  "require": {
+    "composer/installers": "~1.0"
+  }
+}

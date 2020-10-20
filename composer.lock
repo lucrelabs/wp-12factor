@@ -714,6 +714,23 @@
             "type": "wordpress-theme"
         },
         {
+            "name": "lucrelabs/iconic-woo-bundled-products-premium",
+            "version": "2.0.13",
+            "dist": {
+                "type": "path",
+                "url": "plugins/iconic-woo-bundled-products-premium",
+                "reference": "2cdd8ab7aa14af5746fef93840ccba25add41a10"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Adds product bundling"
+        },
+        {
             "name": "lucrelabs/iconic-woo-delivery-slots-premium",
             "version": "1.10.0",
             "dist": {
