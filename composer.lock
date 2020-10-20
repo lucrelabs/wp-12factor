@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "14eae131b4bb73c36b7fdb78e867b3da",
+    "content-hash": "68f2d33f69edf51b9cd7b7f8ff4dd0ee",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -3884,24 +3884,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/ga-google-analytics/"
-        },
-        {
-            "name": "wpackagist-plugin/header-and-footer-scripts",
-            "version": "2.2.1",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/header-and-footer-scripts/",
-                "reference": "tags/2.2.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/header-and-footer-scripts.2.2.1.zip"
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/header-and-footer-scripts/"
         },
         {
             "name": "wpackagist-plugin/hummingbird-performance",
