@@ -3850,6 +3850,24 @@
             "homepage": "https://wordpress.org/plugins/amazon-web-services/"
         },
         {
+            "name": "wpackagist-plugin/facebook-for-woocommerce",
+            "version": "2.0.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/facebook-for-woocommerce/",
+                "reference": "tags/2.0.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/facebook-for-woocommerce.2.0.1.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/facebook-for-woocommerce/"
+        },
+        {
             "name": "wpackagist-plugin/ga-google-analytics",
             "version": 20200325,
             "source": {
@@ -4012,6 +4030,24 @@
             "homepage": "https://wordpress.org/plugins/tiny-compress-images/"
         },
         {
+            "name": "wpackagist-plugin/wc-vendors",
+            "version": "2.2.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/wc-vendors/",
+                "reference": "tags/2.2.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/wc-vendors.2.2.1.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/wc-vendors/"
+        },
+        {
             "name": "wpackagist-plugin/woocommerce",
             "version": "4.6.0",
             "source": {
@@ -4046,6 +4082,24 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/woocommerce-gateway-stripe/"
+        },
+        {
+            "name": "wpackagist-plugin/woocommerce-google-adwords-conversion-tracking",
+            "version": "1.0.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/woocommerce-google-adwords-conversion-tracking/",
+                "reference": "tags/1.0.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/woocommerce-google-adwords-conversion-tracking.1.0.1.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/woocommerce-google-adwords-conversion-tracking/"
         },
         {
             "name": "wpackagist-plugin/wordpress-importer",
