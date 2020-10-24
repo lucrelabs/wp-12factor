@@ -1,0 +1,10 @@
+{
+  "type": "wordpress-plugin",
+  "name": "lucrelabs/wc-vendors-gateway-stripe-connect",
+  "version": "2.0.8",
+  "license": "proprietary",
+  "description": "Adds Stripe Connect to WooCommerce",
+  "require": {
+    "composer/installers": "~1.0"
+  }
+}

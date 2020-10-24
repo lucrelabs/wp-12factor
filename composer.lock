@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "68f2d33f69edf51b9cd7b7f8ff4dd0ee",
+    "content-hash": "c1ec39c41e485db9b9aed3b653551a2a",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -729,6 +729,23 @@
                 "proprietary"
             ],
             "description": "Adds delivery slots to checkout"
+        },
+        {
+            "name": "lucrelabs/wc-vendors-gateway-stripe-connect",
+            "version": "2.0.8",
+            "dist": {
+                "type": "path",
+                "url": "plugins/wc-vendors-gateway-stripe-connect",
+                "reference": "efff9bd9532d780bf55fd0740d0a0bfef1ae25bd"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Adds Stripe Connect to WooCommerce"
         },
         {
             "name": "lucrelabs/woocommerce-subscriptions",
@@ -3974,6 +3991,24 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/regenerate-thumbnails/"
+        },
+        {
+            "name": "wpackagist-plugin/say-what",
+            "version": "1.9.6",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/say-what/",
+                "reference": "tags/1.9.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/say-what.1.9.6.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/say-what/"
         },
         {
             "name": "wpackagist-plugin/sendgrid-email-delivery-simplified",
