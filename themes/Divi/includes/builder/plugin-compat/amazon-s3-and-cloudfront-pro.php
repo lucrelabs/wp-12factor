@@ -35,7 +35,7 @@ class ET_Builder_Plugin_Compat_WP_Offload_S3_Pro extends ET_Builder_Plugin_Compa
 		}
 
 		// Up to: latest theme version
-		add_action( 'et_fb_ajax_save_verification_result', array( $this, 'override_fb_ajax_save_verification' )  );
+		add_action( 'et_fb_ajax_save_verification_result', array( $this, 'override_fb_ajax_save_verification' ) );
 	}
 
 	/**

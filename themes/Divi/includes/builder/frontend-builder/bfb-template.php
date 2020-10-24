@@ -37,7 +37,10 @@
 			</div>
 		</article>
 	<?php } ?>
-	<?php while ( have_posts() ): the_post(); ?>
+	<?php
+	while ( have_posts() ) :
+		the_post();
+		?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div id="page-container-bfb" class="entry-content">
 				<?php the_content(); ?>

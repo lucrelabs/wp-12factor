@@ -12,17 +12,17 @@ class ET_Builder_Module_Comments extends ET_Builder_Module {
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'elements'   => esc_html__( 'Elements', 'et_builder' ),
+					'elements' => et_builder_i18n( 'Elements' ),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
 					'image' => array(
-						'title'    => esc_html__( 'Image', 'et_builder' ),
+						'title'    => et_builder_i18n( 'Image' ),
 						'priority' => 30,
 					),
-					'text' => array(
-						'title'    => esc_html__( 'Text', 'et_builder' ),
+					'text'  => array(
+						'title'    => et_builder_i18n( 'Text' ),
 						'priority' => 49,
 					),
 				),
@@ -30,7 +30,7 @@ class ET_Builder_Module_Comments extends ET_Builder_Module {
 		);
 
 		$this->advanced_fields = array(
-			'box_shadow'            => array(
+			'box_shadow'     => array(
 				'default' => array(),
 				'image'   => array(
 					'label'           => esc_html__( 'Image Box Shadow', 'et_builder' ),
@@ -42,10 +42,10 @@ class ET_Builder_Module_Comments extends ET_Builder_Module {
 					),
 				),
 			),
-			'borders'               => array(
+			'borders'        => array(
 				'default' => array(
 					'css' => array(
-						'main' => array(
+						'main'      => array(
 							'border_radii'  => "{$this->main_css_element}",
 							'border_styles' => "{$this->main_css_element}",
 						),
@@ -59,7 +59,7 @@ class ET_Builder_Module_Comments extends ET_Builder_Module {
 							'border_styles' => '%%order_class%%.et_pb_comments_module .commentlist li img.avatar',
 						),
 					),
-					'label_prefix' => esc_html__( 'Image', 'et_builder' ),
+					'label_prefix' => et_builder_i18n( 'Image' ),
 					'tab_slug'     => 'advanced',
 					'toggle_slug'  => 'image',
 				),
@@ -69,10 +69,10 @@ class ET_Builder_Module_Comments extends ET_Builder_Module {
 					'important' => 'all',
 				),
 			),
-			'fonts'                 => array(
+			'fonts'          => array(
 				'header' => array(
-					'label'          => esc_html__( 'Comment Count', 'et_builder' ),
-					'css'            => array(
+					'label'        => esc_html__( 'Comment Count', 'et_builder' ),
+					'css'          => array(
 						'main' => "{$this->main_css_element} h1.page_title, {$this->main_css_element} h2.page_title, {$this->main_css_element} h3.page_title, {$this->main_css_element} h4.page_title, {$this->main_css_element} h5.page_title, {$this->main_css_element} h6.page_title",
 					),
 					'header_level' => array(
@@ -93,11 +93,11 @@ class ET_Builder_Module_Comments extends ET_Builder_Module {
 					'letter_spacing' => array(
 						'default' => '0px',
 					),
-					'header_level' => array(
+					'header_level'   => array(
 						'default' => 'h3',
 					),
 				),
-				'meta' => array(
+				'meta'   => array(
 					'label'          => esc_html__( 'Meta', 'et_builder' ),
 					'css'            => array(
 						'main'       => "{$this->main_css_element} .comment_postinfo span",
@@ -114,7 +114,7 @@ class ET_Builder_Module_Comments extends ET_Builder_Module {
 						'default' => '0px',
 					),
 				),
-				'body' => array(
+				'body'   => array(
 					'label'          => esc_html__( 'Comment', 'et_builder' ),
 					'css'            => array(
 						'main' => "{$this->main_css_element} .comment-content p",
@@ -130,17 +130,17 @@ class ET_Builder_Module_Comments extends ET_Builder_Module {
 					),
 				),
 			),
-			'button'                => array(
+			'button'         => array(
 				'button' => array(
-					'label' => esc_html__( 'Button', 'et_builder' ),
-					'css' => array(
-						'main' => "{$this->main_css_element}.et_pb_comments_module .et_pb_button",
+					'label'          => et_builder_i18n( 'Button' ),
+					'css'            => array(
+						'main'         => "{$this->main_css_element}.et_pb_comments_module .et_pb_button",
 						'limited_main' => "{$this->main_css_element}.et_pb_comments_module .et_pb_button",
-						'alignment' => "{$this->main_css_element} .form-submit",
+						'alignment'    => "{$this->main_css_element} .form-submit",
 					),
-					'no_rel_attr' => true,
-					'use_alignment' => true,
-					'box_shadow'    => array(
+					'no_rel_attr'    => true,
+					'use_alignment'  => true,
+					'box_shadow'     => array(
 						'css' => array(
 							'main' => "{$this->main_css_element} .et_pb_button",
 						),
@@ -152,28 +152,28 @@ class ET_Builder_Module_Comments extends ET_Builder_Module {
 					),
 				),
 			),
-			'text'                  => array(
+			'text'           => array(
 				'use_background_layout' => true,
-				'css' => array(
-					'main' => '%%order_class%% p, %%order_class%% .comment_postinfo *, %%order_class%% .page_title, %%order_class%% .comment-reply-title',
+				'css'                   => array(
+					'main'        => '%%order_class%% p, %%order_class%% .comment_postinfo *, %%order_class%% .page_title, %%order_class%% .comment-reply-title',
 					'text_shadow' => '%%order_class%% p, %%order_class%% .comment_postinfo, %%order_class%% .page_title, %%order_class%% .comment-reply-title',
 				),
-				'options' => array(
+				'options'               => array(
 					'background_layout' => array(
 						'default_on_front' => 'light',
-						'hover' => 'tabs',
+						'hover'            => 'tabs',
 					),
 				),
 			),
-			'form_field'           => array(
+			'form_field'     => array(
 				'form_field' => array(
 					'label'         => esc_html__( 'Fields', 'et_builder' ),
 					'css'           => array(
-						'main'        => "{$this->main_css_element} #commentform textarea, {$this->main_css_element} #commentform input[type='text'], {$this->main_css_element} #commentform input[type='email'], {$this->main_css_element} #commentform input[type='url']",
-						'hover'       => "{$this->main_css_element} #commentform textarea:hover, {$this->main_css_element} #commentform input[type='text']:hover, {$this->main_css_element} #commentform input[type='email']:hover, {$this->main_css_element} #commentform input[type='url']:hover",
-						'focus'       => "{$this->main_css_element} #commentform textarea:focus, {$this->main_css_element} #commentform input[type='text']:focus, {$this->main_css_element} #commentform input[type='email']:focus, {$this->main_css_element} #commentform input[type='url']:focus",
-						'focus_hover' => "{$this->main_css_element} #commentform textarea:focus:hover, {$this->main_css_element} #commentform input[type='text']:focus:hover, {$this->main_css_element} #commentform input[type='email']:focus:hover, {$this->main_css_element} #commentform input[type='url']:focus:hover",
-						'placeholder' => "{$this->main_css_element} #commentform textarea::-webkit-input-placeholder, {$this->main_css_element} #commentform textarea::-moz-placeholder, {$this->main_css_element} #commentform textarea:-ms-input-placeholder, {$this->main_css_element} #commentform input::-webkit-input-placeholder, {$this->main_css_element} #commentform input::-moz-placeholder, {$this->main_css_element} #commentform input:-ms-input-placeholder",
+						'main'              => "{$this->main_css_element} #commentform textarea, {$this->main_css_element} #commentform input[type='text'], {$this->main_css_element} #commentform input[type='email'], {$this->main_css_element} #commentform input[type='url']",
+						'hover'             => "{$this->main_css_element} #commentform textarea:hover, {$this->main_css_element} #commentform input[type='text']:hover, {$this->main_css_element} #commentform input[type='email']:hover, {$this->main_css_element} #commentform input[type='url']:hover",
+						'focus'             => "{$this->main_css_element} #commentform textarea:focus, {$this->main_css_element} #commentform input[type='text']:focus, {$this->main_css_element} #commentform input[type='email']:focus, {$this->main_css_element} #commentform input[type='url']:focus",
+						'focus_hover'       => "{$this->main_css_element} #commentform textarea:focus:hover, {$this->main_css_element} #commentform input[type='text']:focus:hover, {$this->main_css_element} #commentform input[type='email']:focus:hover, {$this->main_css_element} #commentform input[type='url']:focus:hover",
+						'placeholder'       => "{$this->main_css_element} #commentform textarea::-webkit-input-placeholder, {$this->main_css_element} #commentform textarea::-moz-placeholder, {$this->main_css_element} #commentform textarea:-ms-input-placeholder, {$this->main_css_element} #commentform input::-webkit-input-placeholder, {$this->main_css_element} #commentform input::-moz-placeholder, {$this->main_css_element} #commentform input:-ms-input-placeholder",
 						'placeholder_focus' => "{$this->main_css_element} #commentform textarea:focus::-webkit-input-placeholder, {$this->main_css_element} #commentform textarea:focus::-moz-placeholder, {$this->main_css_element} #commentform textarea:focus:-ms-input-placeholder, {$this->main_css_element} #commentform input:focus::-webkit-input-placeholder, {$this->main_css_element} #commentform input:focus::-moz-placeholder, {$this->main_css_element} #commentform input:focus:-ms-input-placeholder",
 						'margin'            => "{$this->main_css_element} #commentform .comment-form-comment, {$this->main_css_element} #commentform .comment-form-author, {$this->main_css_element} #commentform .comment-form-email, {$this->main_css_element} #commentform .comment-form-url",
 					),
@@ -187,7 +187,7 @@ class ET_Builder_Module_Comments extends ET_Builder_Module {
 						'form_field'       => array(
 							'name'         => 'fields',
 							'css'          => array(
-								'main' => array(
+								'main'      => array(
 									'border_radii'  => "{$this->main_css_element} #commentform textarea, {$this->main_css_element} #commentform input[type='text'], {$this->main_css_element} #commentform input[type='email'], {$this->main_css_element} #commentform input[type='url']",
 									'border_styles' => "{$this->main_css_element} #commentform textarea, {$this->main_css_element} #commentform input[type='text'], {$this->main_css_element} #commentform input[type='email'], {$this->main_css_element} #commentform input[type='url']",
 								),
@@ -201,7 +201,7 @@ class ET_Builder_Module_Comments extends ET_Builder_Module {
 								'main' => array(
 									'border_radii'  => "{$this->main_css_element} #commentform textarea:focus, {$this->main_css_element} #commentform input[type='text']:focus, {$this->main_css_element} #commentform input[type='email']:focus, {$this->main_css_element} #commentform input[type='url']:focus",
 									'border_styles' => "{$this->main_css_element} #commentform textarea:focus, {$this->main_css_element} #commentform input[type='text']:focus, {$this->main_css_element} #commentform input[type='email']:focus, {$this->main_css_element} #commentform input[type='url']:focus",
-								)
+								),
 							),
 							'label_prefix' => esc_html__( 'Fields Focus', 'et_builder' ),
 						),
@@ -223,13 +223,13 @@ class ET_Builder_Module_Comments extends ET_Builder_Module {
 					),
 				),
 			),
-			'filters'               => array(
+			'filters'        => array(
 				'child_filters_target' => array(
 					'tab_slug'    => 'advanced',
 					'toggle_slug' => 'image',
 				),
 			),
-			'image'                  => array(
+			'image'          => array(
 				'css' => array(
 					'main' => "{$this->main_css_element} .commentlist img.avatar",
 				),
@@ -237,15 +237,15 @@ class ET_Builder_Module_Comments extends ET_Builder_Module {
 		);
 
 		$this->custom_css_fields = array(
-			'main_header' => array(
+			'main_header'     => array(
 				'label'    => esc_html__( 'Comments Count', 'et_builder' ),
 				'selector' => 'h1#comments',
 			),
-			'comment_body' => array(
+			'comment_body'    => array(
 				'label'    => esc_html__( 'Comment Body', 'et_builder' ),
 				'selector' => '.comment-body',
 			),
-			'comment_meta' => array(
+			'comment_meta'    => array(
 				'label'    => esc_html__( 'Comment Meta', 'et_builder' ),
 				'selector' => '.comment_postinfo',
 			),
@@ -253,35 +253,35 @@ class ET_Builder_Module_Comments extends ET_Builder_Module {
 				'label'    => esc_html__( 'Comment Content', 'et_builder' ),
 				'selector' => '.comment_area .comment-content',
 			),
-			'comment_avatar' => array(
+			'comment_avatar'  => array(
 				'label'    => esc_html__( 'Comment Avatar', 'et_builder' ),
 				'selector' => '.comment_avatar',
 			),
-			'reply_button' => array(
+			'reply_button'    => array(
 				'label'    => esc_html__( 'Reply Button', 'et_builder' ),
 				'selector' => '.comment-reply-link.et_pb_button',
 			),
-			'new_title' => array(
+			'new_title'       => array(
 				'label'    => esc_html__( 'New Comment Title', 'et_builder' ),
 				'selector' => 'h3#reply-title',
 			),
-			'message_field' => array(
+			'message_field'   => array(
 				'label'    => esc_html__( 'Message Field', 'et_builder' ),
 				'selector' => '.comment-form-comment textarea#comment',
 			),
-			'name_field' => array(
+			'name_field'      => array(
 				'label'    => esc_html__( 'Name Field', 'et_builder' ),
 				'selector' => '.comment-form-author input',
 			),
-			'email_field' => array(
+			'email_field'     => array(
 				'label'    => esc_html__( 'Email Field', 'et_builder' ),
 				'selector' => '.comment-form-email input',
 			),
-			'website_field' => array(
+			'website_field'   => array(
 				'label'    => esc_html__( 'Website Field', 'et_builder' ),
 				'selector' => '.comment-form-url input',
 			),
-			'submit_button' => array(
+			'submit_button'   => array(
 				'label'    => esc_html__( 'Submit Button', 'et_builder' ),
 				'selector' => '.form-submit .et_pb_button#et_pb_submit',
 			),
@@ -289,7 +289,7 @@ class ET_Builder_Module_Comments extends ET_Builder_Module {
 
 		$this->help_videos = array(
 			array(
-				'id'   => esc_html( 'k6vskmOxM4U' ),
+				'id'   => 'k6vskmOxM4U',
 				'name' => esc_html__( 'An introduction to the Comments module', 'et_builder' ),
 			),
 		);
@@ -304,36 +304,36 @@ class ET_Builder_Module_Comments extends ET_Builder_Module {
 				'type'             => 'yes_no_button',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'on'  => esc_html__( 'Yes', 'et_builder' ),
-					'off' => esc_html__( 'No', 'et_builder' ),
+					'on'  => et_builder_i18n( 'Yes' ),
+					'off' => et_builder_i18n( 'No' ),
 				),
 				'toggle_slug'      => 'elements',
 				'default_on_front' => 'on',
 				'mobile_options'   => true,
 				'hover'            => 'tabs',
 			),
-			'show_reply' => array(
+			'show_reply'  => array(
 				'label'            => esc_html__( 'Show Reply Button', 'et_builder' ),
 				'description'      => esc_html__( 'Disabling the reply button will prevent visitors from creating threaded comments.', 'et_builder' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'on'  => esc_html__( 'Yes', 'et_builder' ),
-					'off' => esc_html__( 'No', 'et_builder' ),
+					'on'  => et_builder_i18n( 'Yes' ),
+					'off' => et_builder_i18n( 'No' ),
 				),
 				'toggle_slug'      => 'elements',
 				'default_on_front' => 'on',
 				'mobile_options'   => true,
 				'hover'            => 'tabs',
 			),
-			'show_count' => array(
+			'show_count'  => array(
 				'label'            => esc_html__( 'Show Comment Count', 'et_builder' ),
 				'description'      => esc_html__( 'Disabling the comment count will remove the number of comments from the top of the module.', 'et_builder' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'on'  => esc_html__( 'Yes', 'et_builder' ),
-					'off' => esc_html__( 'No', 'et_builder' ),
+					'on'  => et_builder_i18n( 'Yes' ),
+					'off' => et_builder_i18n( 'No' ),
 				),
 				'toggle_slug'      => 'elements',
 				'default_on_front' => 'on',
@@ -382,7 +382,7 @@ class ET_Builder_Module_Comments extends ET_Builder_Module {
 		do_action( 'et_fb_after_comments_template' );
 
 		// Globally flag that comment module has been printed
-		$et_pb_comments_print = false;
+		$et_pb_comments_print     = false;
 		$et_comments_header_level = '';
 
 		return $comments_content;
@@ -433,7 +433,7 @@ class ET_Builder_Module_Comments extends ET_Builder_Module {
 	}
 
 	function et_pb_comments_template() {
-		return realpath( dirname(__FILE__) . '/..' ) . '/comments_template.php';
+		return realpath( dirname( __FILE__ ) . '/..' ) . '/comments_template.php';
 	}
 
 	function et_pb_comments_submit_button( $submit_button ) {
@@ -452,20 +452,19 @@ class ET_Builder_Module_Comments extends ET_Builder_Module {
 	}
 
 	function render( $attrs, $content = null, $render_slug ) {
-		$multi_view                      = et_pb_multi_view_options( $this );
-		$button_custom                   = $this->props['custom_button'];
-		$show_avatar                     = $this->props['show_avatar'];
-		$show_reply                      = $this->props['show_reply'];
-		$show_count                      = $this->props['show_count'];
-		$header_level                    = $this->props['header_level'];
-		$video_background                = $this->video_background();
-		$parallax_image_background       = $this->get_parallax_image_background();
+		$multi_view                = et_pb_multi_view_options( $this );
+		$button_custom             = $this->props['custom_button'];
+		$show_avatar               = $this->props['show_avatar'];
+		$show_reply                = $this->props['show_reply'];
+		$show_count                = $this->props['show_count'];
+		$header_level              = $this->props['header_level'];
+		$video_background          = $this->video_background();
+		$parallax_image_background = $this->get_parallax_image_background();
 
-		$custom_icon_values              = et_pb_responsive_options()->get_property_values( $this->props, 'button_icon' );
-		$custom_icon                     = isset( $custom_icon_values['desktop'] ) ? $custom_icon_values['desktop'] : '';
-		$custom_icon_tablet              = isset( $custom_icon_values['tablet'] ) ? $custom_icon_values['tablet'] : '';
-		$custom_icon_phone               = isset( $custom_icon_values['phone'] ) ? $custom_icon_values['phone'] : '';
-
+		$custom_icon_values = et_pb_responsive_options()->get_property_values( $this->props, 'button_icon' );
+		$custom_icon        = isset( $custom_icon_values['desktop'] ) ? $custom_icon_values['desktop'] : '';
+		$custom_icon_tablet = isset( $custom_icon_values['tablet'] ) ? $custom_icon_values['tablet'] : '';
+		$custom_icon_phone  = isset( $custom_icon_values['phone'] ) ? $custom_icon_values['phone'] : '';
 
 		$this->et_pb_unique_comments_module_class = ET_Builder_Element::get_module_order_class( $render_slug ); // use this variable to make the comments request unique for each module instance
 
@@ -480,11 +479,13 @@ class ET_Builder_Module_Comments extends ET_Builder_Module {
 
 		// Image - CSS Filters.
 		if ( et_()->array_get( $this->advanced_fields, 'image.css', false ) ) {
-			$this->add_classname( $this->generate_css_filters(
-				$this->slug,
-				'child_',
-				et_()->array_get( $this->advanced_fields['image']['css'], 'main', '%%order_class%%' )
-			) );
+			$this->add_classname(
+				$this->generate_css_filters(
+					$this->slug,
+					'child_',
+					et_()->array_get( $this->advanced_fields['image']['css'], 'main', '%%order_class%%' )
+				)
+			);
 		}
 
 		$comments_custom_icon        = 'on' === $button_custom ? $custom_icon : '';
@@ -495,10 +496,12 @@ class ET_Builder_Module_Comments extends ET_Builder_Module {
 		$data_background_layout = et_pb_background_layout_options()->get_background_layout_attrs( $this->props );
 
 		// Module classname
-		$this->add_classname( array(
-			'et_pb_comments_module',
-			$this->get_text_orientation_classname(),
-		) );
+		$this->add_classname(
+			array(
+				'et_pb_comments_module',
+				$this->get_text_orientation_classname(),
+			)
+		);
 
 		// Background layout class names.
 		$background_layout_class_names = et_pb_background_layout_options()->get_background_layout_class( $this->props );
@@ -519,19 +522,21 @@ class ET_Builder_Module_Comments extends ET_Builder_Module {
 		// Removed automatically added classname
 		$this->remove_classname( $render_slug );
 
-		$multi_view_data_attr = $multi_view->render_attrs( array(
-			'classes' =>  array(
-				'et_pb_no_avatar' => array(
-					'show_avatar' => 'off',
+		$multi_view_data_attr = $multi_view->render_attrs(
+			array(
+				'classes' => array(
+					'et_pb_no_avatar'         => array(
+						'show_avatar' => 'off',
+					),
+					'et_pb_no_reply_button'   => array(
+						'show_reply' => 'off',
+					),
+					'et_pb_no_comments_count' => array(
+						'show_count' => 'off',
+					),
 				),
-				'et_pb_no_reply_button' => array(
-					'show_reply' => 'off',
-				),
-				'et_pb_no_comments_count' => array(
-					'show_count' => 'off',
-				)
-			),
-		) );
+			)
+		);
 
 		$output = sprintf(
 			'<div%3$s class="%2$s"%4$s%7$s%8$s%9$s%10$s>
@@ -555,9 +560,9 @@ class ET_Builder_Module_Comments extends ET_Builder_Module {
 	}
 }
 
-new ET_Builder_Module_Comments;
+new ET_Builder_Module_Comments();
 
 if ( et_is_woocommerce_plugin_active() && defined( 'ET_BUILDER_DIR' ) ) {
 	// Use separate files for better organization.
-	require_once ( ET_BUILDER_DIR . 'module/woocommerce/Reviews.php' );
+	require_once ET_BUILDER_DIR . 'module/woocommerce/Reviews.php';
 }

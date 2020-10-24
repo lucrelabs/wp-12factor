@@ -2,13 +2,13 @@
 
 class ET_Builder_Module_Fullwidth_Map extends ET_Builder_Module {
 	function init() {
-		$this->name            = esc_html__( 'Fullwidth Map', 'et_builder' );
-		$this->plural          = esc_html__( 'Fullwidth Maps', 'et_builder' );
-		$this->slug            = 'et_pb_fullwidth_map';
-		$this->vb_support      = 'on';
-		$this->fullwidth       = true;
-		$this->child_slug      = 'et_pb_map_pin';
-		$this->child_item_text = esc_html__( 'Pin', 'et_builder' );
+		$this->name                   = esc_html__( 'Fullwidth Map', 'et_builder' );
+		$this->plural                 = esc_html__( 'Fullwidth Maps', 'et_builder' );
+		$this->slug                   = 'et_pb_fullwidth_map';
+		$this->vb_support             = 'on';
+		$this->fullwidth              = true;
+		$this->child_slug             = 'et_pb_map_pin';
+		$this->child_item_text        = esc_html__( 'Pin', 'et_builder' );
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
@@ -17,9 +17,9 @@ class ET_Builder_Module_Fullwidth_Map extends ET_Builder_Module {
 			),
 			'advanced' => array(
 				'toggles' => array(
-					'controls' => esc_html__( 'Controls', 'et_builder' ),
+					'controls'      => esc_html__( 'Controls', 'et_builder' ),
 					'child_filters' => array(
-						'title' => esc_html__( 'Map', 'et_builder' ),
+						'title'    => esc_html__( 'Map', 'et_builder' ),
 						'priority' => 51,
 					),
 				),
@@ -27,7 +27,7 @@ class ET_Builder_Module_Fullwidth_Map extends ET_Builder_Module {
 		);
 
 		$this->advanced_fields = array(
-			'box_shadow'            => array(
+			'box_shadow'     => array(
 				'default' => array(
 					'css' => array(
 						'overlay' => 'inset',
@@ -39,8 +39,8 @@ class ET_Builder_Module_Fullwidth_Map extends ET_Builder_Module {
 					'important' => array( 'custom_margin' ), // needed to overwrite last module margin-bottom styling
 				),
 			),
-			'filters'               => array(
-				'css' => array(
+			'filters'        => array(
+				'css'                  => array(
 					'main' => '%%order_class%%',
 				),
 				'child_filters_target' => array(
@@ -49,31 +49,31 @@ class ET_Builder_Module_Fullwidth_Map extends ET_Builder_Module {
 					'label'       => esc_html__( 'Map', 'et_builder' ),
 				),
 			),
-			'child_filters'         => array(
+			'child_filters'  => array(
 				'css' => array(
 					'main' => '%%order_class%% .gm-style>div>div>div>div>div>img',
 				),
 			),
-			'height'                => array(
-				'css' => array(
-					'main'    => '%%order_class%% > .et_pb_map',
+			'height'         => array(
+				'css'     => array(
+					'main' => '%%order_class%% > .et_pb_map',
 				),
 				'options' => array(
 					'height' => array(
-						'default'         => '440px',
-						'default_tablet'  => '350px',
-						'default_phone'   => '200px',
+						'default'        => '440px',
+						'default_tablet' => '350px',
+						'default_phone'  => '200px',
 					),
 				),
 			),
-			'fonts'                 => false,
-			'text'                  => false,
-			'button'                => false,
+			'fonts'          => false,
+			'text'           => false,
+			'button'         => false,
 		);
 
 		$this->help_videos = array(
 			array(
-				'id'   => esc_html( 'JtTSSI6wlU0' ),
+				'id'   => 'JtTSSI6wlU0',
 				'name' => esc_html__( 'An introduction to the Fullwidth Map module', 'et_builder' ),
 			),
 		);
@@ -82,35 +82,35 @@ class ET_Builder_Module_Fullwidth_Map extends ET_Builder_Module {
 	function get_fields() {
 		$fields = array(
 			'google_maps_script_notice' => array(
-				'type'              => 'warning',
-				'value'             => et_pb_enqueue_google_maps_script(),
-				'display_if'        => false,
-				'message'          => esc_html__(
+				'type'        => 'warning',
+				'value'       => et_pb_enqueue_google_maps_script(),
+				'display_if'  => false,
+				'message'     => esc_html__(
 					sprintf(
 						'The Google Maps API Script is currently disabled in the <a href="%s" target="_blank">Theme Options</a>. This module will not function properly without the Google Maps API.',
 						admin_url( 'admin.php?page=et_divi_options' )
 					),
 					'et_builder'
 				),
-				'toggle_slug'     => 'map',
+				'toggle_slug' => 'map',
 			),
-			'google_api_key' => array(
-				'label'             => esc_html__( 'Google API Key', 'et_builder' ),
-				'type'              => 'text',
-				'option_category'   => 'basic_option',
-				'attributes'        => 'readonly',
-				'additional_button' => sprintf(
+			'google_api_key'            => array(
+				'label'                  => esc_html__( 'Google API Key', 'et_builder' ),
+				'type'                   => 'text',
+				'option_category'        => 'basic_option',
+				'attributes'             => 'readonly',
+				'additional_button'      => sprintf(
 					' <a href="%2$s" target="_blank" class="et_pb_update_google_key button" data-empty_text="%3$s">%1$s</a>',
 					esc_html__( 'Change API Key', 'et_builder' ),
 					esc_url( et_pb_get_options_page_link() ),
 					esc_attr__( 'Add Your API Key', 'et_builder' )
 				),
 				'additional_button_type' => 'change_google_api_key',
-				'class' => array( 'et_pb_google_api_key', 'et-pb-helper-field' ),
-				'description'       => et_get_safe_localization( sprintf( __( 'The Maps module uses the Google Maps API and requires a valid Google API Key to function. Before using the map module, please make sure you have added your API key inside the Divi Theme Options panel. Learn more about how to create your Google API Key <a href="%1$s" target="_blank">here</a>.', 'et_builder' ), esc_url( 'http://www.elegantthemes.com/gallery/divi/documentation/map/#gmaps-api-key' ) ) ),
-				'toggle_slug'       => 'map',
+				'class'                  => array( 'et_pb_google_api_key', 'et-pb-helper-field' ),
+				'description'            => et_get_safe_localization( sprintf( __( 'The Maps module uses the Google Maps API and requires a valid Google API Key to function. Before using the map module, please make sure you have added your API key inside the Divi Theme Options panel. Learn more about how to create your Google API Key <a href="%1$s" target="_blank">here</a>.', 'et_builder' ), esc_url( 'http://www.elegantthemes.com/gallery/divi/documentation/map/#gmaps-api-key' ) ) ),
+				'toggle_slug'            => 'map',
 			),
-			'address' => array(
+			'address'                   => array(
 				'label'             => esc_html__( 'Map Center Address', 'et_builder' ),
 				'type'              => 'text',
 				'option_category'   => 'basic_option',
@@ -122,77 +122,77 @@ class ET_Builder_Module_Fullwidth_Map extends ET_Builder_Module {
 				'description'       => esc_html__( 'Enter an address for the map center point, and the address will be geocoded and displayed on the map below.', 'et_builder' ),
 				'toggle_slug'       => 'map',
 			),
-			'zoom_level' => array(
+			'zoom_level'                => array(
 				'type'    => 'hidden',
 				'class'   => array( 'et_pb_zoom_level' ),
 				'default' => '18',
 			),
-			'address_lat' => array(
+			'address_lat'               => array(
 				'type'  => 'hidden',
 				'class' => array( 'et_pb_address_lat' ),
 			),
-			'address_lng' => array(
+			'address_lng'               => array(
 				'type'  => 'hidden',
 				'class' => array( 'et_pb_address_lng' ),
 			),
-			'map_center_map' => array(
+			'map_center_map'            => array(
 				'type'                  => 'center_map',
 				'use_container_wrapper' => false,
 				'option_category'       => 'basic_option',
 				'toggle_slug'           => 'map',
 			),
-			'mouse_wheel' => array(
-				'label'           => esc_html__( 'Mouse Wheel Zoom', 'et_builder' ),
-				'type'            => 'yes_no_button',
-				'option_category' => 'configuration',
-				'options'         => array(
-					'on'  => esc_html__( 'On', 'et_builder' ),
-					'off' => esc_html__( 'Off', 'et_builder' ),
+			'mouse_wheel'               => array(
+				'label'            => esc_html__( 'Mouse Wheel Zoom', 'et_builder' ),
+				'type'             => 'yes_no_button',
+				'option_category'  => 'configuration',
+				'options'          => array(
+					'on'  => et_builder_i18n( 'On' ),
+					'off' => et_builder_i18n( 'Off' ),
 				),
-				'tab_slug'        => 'advanced',
-				'toggle_slug'     => 'controls',
-				'description'     => esc_html__( 'Here you can choose whether the zoom level will be controlled by mouse wheel or not.', 'et_builder' ),
-				'default_on_front'         => 'on',
+				'tab_slug'         => 'advanced',
+				'toggle_slug'      => 'controls',
+				'description'      => esc_html__( 'Here you can choose whether the zoom level will be controlled by mouse wheel or not.', 'et_builder' ),
+				'default_on_front' => 'on',
 			),
-			'mobile_dragging' => array(
-				'label'           => esc_html__( 'Draggable On Mobile', 'et_builder' ),
-				'type'            => 'yes_no_button',
-				'option_category' => 'configuration',
-				'options'         => array(
-					'on'  => esc_html__( 'On', 'et_builder' ),
-					'off' => esc_html__( 'Off', 'et_builder' ),
+			'mobile_dragging'           => array(
+				'label'            => esc_html__( 'Draggable On Mobile', 'et_builder' ),
+				'type'             => 'yes_no_button',
+				'option_category'  => 'configuration',
+				'options'          => array(
+					'on'  => et_builder_i18n( 'On' ),
+					'off' => et_builder_i18n( 'Off' ),
 				),
-				'tab_slug'        => 'advanced',
-				'toggle_slug'     => 'controls',
-				'description'     => esc_html__( 'Here you can choose whether or not the map will be draggable on mobile devices.', 'et_builder' ),
-				'default_on_front'         => 'on',
+				'tab_slug'         => 'advanced',
+				'toggle_slug'      => 'controls',
+				'description'      => esc_html__( 'Here you can choose whether or not the map will be draggable on mobile devices.', 'et_builder' ),
+				'default_on_front' => 'on',
 			),
-			'use_grayscale_filter' => array(
-				'label'           => esc_html__( 'Use Grayscale Filter', 'et_builder' ),
-				'description'     => esc_html__( 'Adjusting the grayscale filter will allow you to change the color saturation of the map.', 'et_builder' ),
-				'type'            => 'hidden',
-				'option_category' => 'configuration',
-				'options'         => array(
-					'off' => esc_html__( 'No', 'et_builder' ),
-					'on'  => esc_html__( 'Yes', 'et_builder' ),
+			'use_grayscale_filter'      => array(
+				'label'            => esc_html__( 'Use Grayscale Filter', 'et_builder' ),
+				'description'      => esc_html__( 'Adjusting the grayscale filter will allow you to change the color saturation of the map.', 'et_builder' ),
+				'type'             => 'hidden',
+				'option_category'  => 'configuration',
+				'options'          => array(
+					'off' => et_builder_i18n( 'No' ),
+					'on'  => et_builder_i18n( 'Yes' ),
 				),
-				'affects'         => array(
+				'affects'          => array(
 					'grayscale_filter_amount',
 				),
-				'tab_slug'        => 'advanced',
-				'toggle_slug'     => 'child_filters',
-				'default_on_front'         => 'off',
+				'tab_slug'         => 'advanced',
+				'toggle_slug'      => 'child_filters',
+				'default_on_front' => 'off',
 			),
-			'grayscale_filter_amount' => array(
-				'label'           => esc_html__( 'Grayscale Filter Amount (%)', 'et_builder' ),
-				'description'     => esc_html__( 'Adjusting the grayscale filter will allow you to change the color saturation of the map.', 'et_builder' ),
-				'type'            => 'hidden',
-				'default_on_front'=> '0',
-				'option_category' => 'configuration',
-				'tab_slug'        => 'advanced',
-				'toggle_slug'     => 'child_filters',
-				'depends_show_if' => 'on',
-				'validate_unit'   => false,
+			'grayscale_filter_amount'   => array(
+				'label'            => esc_html__( 'Grayscale Filter Amount (%)', 'et_builder' ),
+				'description'      => esc_html__( 'Adjusting the grayscale filter will allow you to change the color saturation of the map.', 'et_builder' ),
+				'type'             => 'hidden',
+				'default_on_front' => '0',
+				'option_category'  => 'configuration',
+				'tab_slug'         => 'advanced',
+				'toggle_slug'      => 'child_filters',
+				'depends_show_if'  => 'on',
+				'validate_unit'    => false,
 			),
 		);
 		return $fields;
@@ -223,17 +223,21 @@ class ET_Builder_Module_Fullwidth_Map extends ET_Builder_Module {
 
 		// Map Tiles: Add CSS Filters and Mix Blend Mode rules (if set)
 		if ( array_key_exists( 'child_filters', $this->advanced_fields ) && array_key_exists( 'css', $this->advanced_fields['child_filters'] ) ) {
-			$this->add_classname( $this->generate_css_filters(
-				$render_slug,
-				'child_',
-				self::$data_utils->array_get( $this->advanced_fields['child_filters']['css'], 'main', '%%order_class%%' )
-			) );
+			$this->add_classname(
+				$this->generate_css_filters(
+					$render_slug,
+					'child_',
+					self::$data_utils->array_get( $this->advanced_fields['child_filters']['css'], 'main', '%%order_class%%' )
+				)
+			);
 		}
 
 		// Module classnames
-		$this->add_classname( array(
-			'et_pb_map_container',
-		) );
+		$this->add_classname(
+			array(
+				'et_pb_map_container',
+			)
+		);
 
 		// Remove automatically added classname
 		$this->remove_classname( $render_slug );
@@ -262,4 +266,4 @@ class ET_Builder_Module_Fullwidth_Map extends ET_Builder_Module {
 	}
 }
 
-new ET_Builder_Module_Fullwidth_Map;
+new ET_Builder_Module_Fullwidth_Map();

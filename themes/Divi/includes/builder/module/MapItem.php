@@ -2,21 +2,21 @@
 
 class ET_Builder_Module_Map_Item extends ET_Builder_Module {
 	function init() {
-		$this->name                        = esc_html__( 'Pin', 'et_builder' );
-		$this->plural                      = esc_html__( 'Pins', 'et_builder' );
-		$this->slug                        = 'et_pb_map_pin';
-		$this->vb_support                  = 'on';
-		$this->type                        = 'child';
-		$this->child_title_var             = 'title';
-		$this->custom_css_tab              = false;
+		$this->name            = esc_html__( 'Pin', 'et_builder' );
+		$this->plural          = esc_html__( 'Pins', 'et_builder' );
+		$this->slug            = 'et_pb_map_pin';
+		$this->vb_support      = 'on';
+		$this->type            = 'child';
+		$this->child_title_var = 'title';
+		$this->custom_css_tab  = false;
 
 		$this->advanced_setting_title_text = esc_html__( 'New Pin', 'et_builder' );
 		$this->settings_text               = esc_html__( 'Pin Settings', 'et_builder' );
 
 		$this->settings_modal_toggles = array(
-			'general'  => array(
+			'general' => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Text', 'et_builder' ),
+					'main_content' => et_builder_i18n( 'Text' ),
 					'map'          => esc_html__( 'Map', 'et_builder' ),
 				),
 			),
@@ -27,8 +27,8 @@ class ET_Builder_Module_Map_Item extends ET_Builder_Module {
 
 	function get_fields() {
 		$fields = array(
-			'title' => array(
-				'label'           => esc_html__( 'Title', 'et_builder' ),
+			'title'           => array(
+				'label'           => et_builder_i18n( 'Title' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
 				'description'     => esc_html__( 'The title will be used within the tab button for this tab.', 'et_builder' ),
@@ -37,7 +37,7 @@ class ET_Builder_Module_Map_Item extends ET_Builder_Module {
 				'mobile_options'  => true,
 				'hover'           => 'tabs',
 			),
-			'pin_address' => array(
+			'pin_address'     => array(
 				'label'             => esc_html__( 'Map Pin Address', 'et_builder' ),
 				'type'              => 'text',
 				'option_category'   => 'basic_option',
@@ -49,31 +49,31 @@ class ET_Builder_Module_Map_Item extends ET_Builder_Module {
 				),
 				'toggle_slug'       => 'map',
 			),
-			'zoom_level' => array(
-				'type'    => 'hidden',
-				'class'   => array( 'et_pb_zoom_level' ),
-				'default' => '18',
+			'zoom_level'      => array(
+				'type'             => 'hidden',
+				'class'            => array( 'et_pb_zoom_level' ),
+				'default'          => '18',
 				'default_on_front' => '',
 				'option_category'  => 'basic_option',
 			),
 			'pin_address_lat' => array(
-				'type'  => 'hidden',
-				'class' => array( 'et_pb_pin_address_lat' ),
+				'type'            => 'hidden',
+				'class'           => array( 'et_pb_pin_address_lat' ),
 				'option_category' => 'basic_option',
 			),
 			'pin_address_lng' => array(
-				'type'  => 'hidden',
-				'class' => array( 'et_pb_pin_address_lng' ),
+				'type'            => 'hidden',
+				'class'           => array( 'et_pb_pin_address_lng' ),
 				'option_category' => 'basic_option',
 			),
-			'map_center_map' => array(
+			'map_center_map'  => array(
 				'type'                  => 'center_map',
 				'option_category'       => 'basic_option',
 				'use_container_wrapper' => false,
 				'toggle_slug'           => 'map',
 			),
-			'content' => array(
-				'label'           => esc_html__( 'Body', 'et_builder' ),
+			'content'         => array(
+				'label'           => et_builder_i18n( 'Body' ),
 				'type'            => 'tiny_mce',
 				'option_category' => 'basic_option',
 				'description'     => esc_html__( 'Here you can define the content that will be placed within the infobox for the pin.', 'et_builder' ),
@@ -89,18 +89,23 @@ class ET_Builder_Module_Map_Item extends ET_Builder_Module {
 	function render( $attrs, $content = null, $render_slug ) {
 		global $et_pb_tab_titles;
 
-		$multi_view      = et_pb_multi_view_options($this);
-		$title           = $multi_view->render_element( array(
-			'tag' => 'h3',
-			'content' => '{{title}}',
-			'styles' => array(
-				'margin-top' => '10px',
-			),
-		) );
+		$multi_view      = et_pb_multi_view_options( $this );
+		$title           = $multi_view->render_element(
+			array(
+				'tag'     => 'h3',
+				'content' => '{{title}}',
+				'styles'  => array(
+					'margin-top' => '10px',
+				),
+			)
+		);
 		$pin_address_lat = $this->props['pin_address_lat'];
 		$pin_address_lng = $this->props['pin_address_lng'];
 
-		$replace_htmlentities = array( '&#8221;' => '', '&#8243;' => '' );
+		$replace_htmlentities = array(
+			'&#8221;' => '',
+			'&#8243;' => '',
+		);
 
 		if ( ! empty( $pin_address_lat ) ) {
 			$pin_address_lat = strtr( $pin_address_lat, $replace_htmlentities );
@@ -109,20 +114,24 @@ class ET_Builder_Module_Map_Item extends ET_Builder_Module {
 			$pin_address_lng = strtr( $pin_address_lng, $replace_htmlentities );
 		}
 
-		$content = $multi_view->render_element( array(
-			'tag'     => 'div',
-			'content' => '{{content}}',
-			'attrs'   => array(
-				'class' => 'infowindow',
-			),
-			'required_some' => array( 'title', 'content' ),
-		) );
+		$content = $multi_view->render_element(
+			array(
+				'tag'           => 'div',
+				'content'       => '{{content}}',
+				'attrs'         => array(
+					'class' => 'infowindow',
+				),
+				'required_some' => array( 'title', 'content' ),
+			)
+		);
 
-		$title_multi_view_data_attr = $multi_view->render_attrs( array(
-			'attrs'   => array(
-				'data-title' => '{{title}}',
-			),
-		) );
+		$title_multi_view_data_attr = $multi_view->render_attrs(
+			array(
+				'attrs' => array(
+					'data-title' => '{{title}}',
+				),
+			)
+		);
 
 		$output = sprintf(
 			'<div class="et_pb_map_pin" data-lat="%1$s" data-lng="%2$s" data-title="%5$s"%6$s>
@@ -144,12 +153,12 @@ class ET_Builder_Module_Map_Item extends ET_Builder_Module {
 	 * Filter multi view value.
 	 *
 	 * @since 3.27.1
-	 * 
+	 *
 	 * @see ET_Builder_Module_Helper_MultiViewOptions::filter_value
 	 *
-	 * @param mixed $raw_value Props raw value.
-	 * @param array $args {
-	 *     Context data.
+	 * @param mixed                                     $raw_value Props raw value.
+	 * @param array                                     $args {
+	 *                                         Context data.
 	 *
 	 *     @type string $context      Context param: content, attrs, visibility, classes.
 	 *     @type string $name         Module options props name.
@@ -170,11 +179,11 @@ class ET_Builder_Module_Map_Item extends ET_Builder_Module {
 		);
 
 		if ( $raw_value && in_array( $name, $fields_need_escape, true ) ) {
-			return $this->_esc_attr( $multi_view->get_name_by_mode( $name, $mode ) );
+			return $this->_esc_attr( $multi_view->get_name_by_mode( $name, $mode ), 'none', $raw_value );
 		}
 
 		return $raw_value;
 	}
 }
 
-new ET_Builder_Module_Map_Item;
+new ET_Builder_Module_Map_Item();

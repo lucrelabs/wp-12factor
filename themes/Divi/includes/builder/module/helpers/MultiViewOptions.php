@@ -202,7 +202,7 @@ class ET_Builder_Module_Helper_MultiViewOptions {
 	 * @return string
 	 */
 	public static function get_regex_suffix() {
-		return '/(__hover|__hover_enabled|_last_edited|_tablet|_phone)$/';
+		return '/(__hover|__hover_enabled|__sticky|__sticky_enabled|_last_edited|_tablet|_phone)$/';
 	}
 
 	/**
@@ -985,17 +985,17 @@ class ET_Builder_Module_Helper_MultiViewOptions {
 	public function render_element( $contexts = array(), $echo = false ) {
 		// Define the array of defaults.
 		$defaults = array(
-			'tag'                => 'span',
-			'content'            => '',
-			'attrs'              => array(),
-			'styles'             => array(),
-			'classes'            => array(),
-			'visibility'         => array(),
-			'target'             => '',
-			'hover_selector'     => '',
-			'render_slug'        => '',
-			'custom_props'       => array(),
-			'required'           => array(),
+			'tag'            => 'span',
+			'content'        => '',
+			'attrs'          => array(),
+			'styles'         => array(),
+			'classes'        => array(),
+			'visibility'     => array(),
+			'target'         => '',
+			'hover_selector' => '',
+			'render_slug'    => '',
+			'custom_props'   => array(),
+			'required'       => array(),
 		);
 
 		// Parse incoming $args into an array and merge it with $defaults.
@@ -1154,8 +1154,8 @@ class ET_Builder_Module_Helper_MultiViewOptions {
 	/**
 	 * Get or render the multi content attribute.
 	 *
-	 * @param array   $contexts {
-	 *       Data contexts.
+	 * @param array $contexts {
+	 *     Data contexts.
 	 *
 	 *     @type string          $content            Param that will be used to populate the content data.
 	 *                                               Use props name wrapped with 2 curly brackets within the value for find & replace wildcard: {{props_name}}
@@ -1207,15 +1207,15 @@ class ET_Builder_Module_Helper_MultiViewOptions {
 	public function render_attrs( $contexts = array(), $echo = false, $populated_data = null, $as_array = false ) {
 		// Define the array of defaults.
 		$defaults = array(
-			'content'            => '',
-			'attrs'              => array(),
-			'styles'             => array(),
-			'classes'            => array(),
-			'visibility'         => array(),
-			'target'             => '',
-			'hover_selector'     => '',
-			'render_slug'        => '',
-			'custom_props'       => array(),
+			'content'        => '',
+			'attrs'          => array(),
+			'styles'         => array(),
+			'classes'        => array(),
+			'visibility'     => array(),
+			'target'         => '',
+			'hover_selector' => '',
+			'render_slug'    => '',
+			'custom_props'   => array(),
 		);
 
 		// Parse incoming $args into an array and merge it with $defaults.
@@ -1324,11 +1324,11 @@ class ET_Builder_Module_Helper_MultiViewOptions {
 				$output[ $data_attr_key ] = esc_attr( wp_json_encode( $data ) );
 
 				if ( $is_hidden_on_load_tablet ) {
-					$output[ $data_attr_key. '-load-tablet-hidden'] = 'true';
+					$output[ $data_attr_key . '-load-tablet-hidden' ] = 'true';
 				}
 
 				if ( $is_hidden_on_load_phone ) {
-					$output[ $data_attr_key. '-load-phone-hidden'] = 'true';
+					$output[ $data_attr_key . '-load-phone-hidden' ] = 'true';
 				}
 			} else {
 				// Format the html data attribute output.
@@ -2079,14 +2079,14 @@ class ET_Builder_Module_Helper_MultiViewOptions {
 		// Populate the required keys from the content if it is empty.
 		if ( ! $required_keys ) {
 			$content = et_()->array_get( $contexts, 'content', '' );
-	
+
 			if ( ! empty( $content ) && preg_match_all( $this->pattern, $content, $matches, PREG_SET_ORDER, 0 ) ) {
 				// Populate the required keys from the content.
 				foreach ( $matches as $match ) {
 					if ( ! isset( $match[1] ) ) {
 						continue;
 					}
-	
+
 					$required_keys[] = $match[1];
 				}
 			}

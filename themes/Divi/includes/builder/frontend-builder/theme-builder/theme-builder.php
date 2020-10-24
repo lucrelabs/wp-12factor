@@ -28,6 +28,10 @@ if ( ! defined( 'ET_THEME_BUILDER_SETTING_SEPARATOR' ) ) {
 	define( 'ET_THEME_BUILDER_SETTING_SEPARATOR', ':' );
 }
 
+if ( ! defined( 'ET_THEME_BUILDER_DYNAMIC_CONTENT_REGEX' ) ) {
+	define( 'ET_THEME_BUILDER_DYNAMIC_CONTENT_REGEX', '/@ET-DC@(.*?)@/' );
+}
+
 require_once ET_THEME_BUILDER_DIR . 'ThemeBuilderApiErrors.php';
 require_once ET_THEME_BUILDER_DIR . 'ThemeBuilderRequest.php';
 require_once ET_THEME_BUILDER_DIR . 'template-setting-validations.php';
@@ -39,6 +43,7 @@ require_once ET_THEME_BUILDER_DIR . 'dynamic-content.php';
 // Conditional Includes.
 if ( et_is_woocommerce_plugin_active() ) {
 	require_once ET_THEME_BUILDER_DIR . 'woocommerce.php';
+	require_once ET_THEME_BUILDER_DIR . 'WoocommerceProductVariationPlaceholder.php';
 	require_once ET_THEME_BUILDER_DIR . 'WoocommerceProductVariablePlaceholder.php';
 	require_once ET_THEME_BUILDER_DIR . 'WoocommerceProductVariablePlaceholderDataStoreCPT.php';
 }
@@ -57,150 +62,165 @@ if ( et_core_is_wpml_plugin_active() ) {
 function et_theme_builder_register_entities() {
 	$publicly_queryable = isset( $_GET['et_fb'] ) && '1' === $_GET['et_fb'] && et_pb_is_allowed( 'use_visual_builder' );
 
-	register_post_type( ET_THEME_BUILDER_THEME_BUILDER_POST_TYPE, array(
-		'labels'             => array(
-			'name'               => esc_html__( 'Theme Builders', 'et_builder' ),
-			'singular_name'      => esc_html__( 'Theme Builder', 'et_builder' ),
-			'add_new'            => esc_html__( 'Add New', 'et_builder' ),
-			'add_new_item'       => esc_html__( 'Add New Theme Builder', 'et_builder' ),
-			'edit_item'          => esc_html__( 'Edit Theme Builder', 'et_builder' ),
-			'new_item'           => esc_html__( 'New Theme Builder', 'et_builder' ),
-			'all_items'          => esc_html__( 'All Theme Builders', 'et_builder' ),
-			'view_item'          => esc_html__( 'View Theme Builder', 'et_builder' ),
-			'search_items'       => esc_html__( 'Search Theme Builders', 'et_builder' ),
-			'not_found'          => esc_html__( 'Nothing found', 'et_builder' ),
-			'not_found_in_trash' => esc_html__( 'Nothing found in Trash', 'et_builder' ),
-			'parent_item_colon'  => '',
-		),
-		'can_export'         => false,
-		'capability_type'    => 'post',
-		'has_archive'        => false,
-		'hierarchical'       => false,
-		'map_meta_cap'       => true,
-		'public'             => false,
-		'publicly_queryable' => false,
-		'query_var'          => false,
-		'show_ui'            => false,
-		'show_in_rest'       => false,
-		'rewrite'            => true,
-		'supports'           => array( 'title', 'author' ),
-	) );
+	register_post_type(
+		ET_THEME_BUILDER_THEME_BUILDER_POST_TYPE,
+		array(
+			'labels'             => array(
+				'name'               => esc_html__( 'Theme Builders', 'et_builder' ),
+				'singular_name'      => esc_html__( 'Theme Builder', 'et_builder' ),
+				'add_new'            => esc_html__( 'Add New', 'et_builder' ),
+				'add_new_item'       => esc_html__( 'Add New Theme Builder', 'et_builder' ),
+				'edit_item'          => esc_html__( 'Edit Theme Builder', 'et_builder' ),
+				'new_item'           => esc_html__( 'New Theme Builder', 'et_builder' ),
+				'all_items'          => esc_html__( 'All Theme Builders', 'et_builder' ),
+				'view_item'          => esc_html__( 'View Theme Builder', 'et_builder' ),
+				'search_items'       => esc_html__( 'Search Theme Builders', 'et_builder' ),
+				'not_found'          => esc_html__( 'Nothing found', 'et_builder' ),
+				'not_found_in_trash' => esc_html__( 'Nothing found in Trash', 'et_builder' ),
+				'parent_item_colon'  => '',
+			),
+			'can_export'         => false,
+			'capability_type'    => 'post',
+			'has_archive'        => false,
+			'hierarchical'       => false,
+			'map_meta_cap'       => true,
+			'public'             => false,
+			'publicly_queryable' => false,
+			'query_var'          => false,
+			'show_ui'            => false,
+			'show_in_rest'       => false,
+			'rewrite'            => true,
+			'supports'           => array( 'title', 'author' ),
+		)
+	);
 
-	register_post_type( ET_THEME_BUILDER_TEMPLATE_POST_TYPE, array(
-		'labels'             => array(
-			'name'               => esc_html__( 'Templates', 'et_builder' ),
-			'singular_name'      => esc_html__( 'Template', 'et_builder' ),
-			'add_new'            => esc_html__( 'Add New', 'et_builder' ),
-			'add_new_item'       => esc_html__( 'Add New Template', 'et_builder' ),
-			'edit_item'          => esc_html__( 'Edit Template', 'et_builder' ),
-			'new_item'           => esc_html__( 'New Template', 'et_builder' ),
-			'all_items'          => esc_html__( 'All Templates', 'et_builder' ),
-			'view_item'          => esc_html__( 'View Template', 'et_builder' ),
-			'search_items'       => esc_html__( 'Search Templates', 'et_builder' ),
-			'not_found'          => esc_html__( 'Nothing found', 'et_builder' ),
-			'not_found_in_trash' => esc_html__( 'Nothing found in Trash', 'et_builder' ),
-			'parent_item_colon'  => '',
-		),
-		'can_export'         => true,
-		'capability_type'    => 'post',
-		'has_archive'        => false,
-		'hierarchical'       => false,
-		'map_meta_cap'       => true,
-		'public'             => false,
-		'publicly_queryable' => $publicly_queryable,
-		'query_var'          => false,
-		'show_ui'            => false,
-		'show_in_rest'       => false,
-		'rewrite'            => true,
-		'supports'           => array( 'title', 'author' ),
-	) );
+	register_post_type(
+		ET_THEME_BUILDER_TEMPLATE_POST_TYPE,
+		array(
+			'labels'             => array(
+				'name'               => esc_html__( 'Templates', 'et_builder' ),
+				'singular_name'      => esc_html__( 'Template', 'et_builder' ),
+				'add_new'            => esc_html__( 'Add New', 'et_builder' ),
+				'add_new_item'       => esc_html__( 'Add New Template', 'et_builder' ),
+				'edit_item'          => esc_html__( 'Edit Template', 'et_builder' ),
+				'new_item'           => esc_html__( 'New Template', 'et_builder' ),
+				'all_items'          => esc_html__( 'All Templates', 'et_builder' ),
+				'view_item'          => esc_html__( 'View Template', 'et_builder' ),
+				'search_items'       => esc_html__( 'Search Templates', 'et_builder' ),
+				'not_found'          => esc_html__( 'Nothing found', 'et_builder' ),
+				'not_found_in_trash' => esc_html__( 'Nothing found in Trash', 'et_builder' ),
+				'parent_item_colon'  => '',
+			),
+			'can_export'         => true,
+			'capability_type'    => 'post',
+			'has_archive'        => false,
+			'hierarchical'       => false,
+			'map_meta_cap'       => true,
+			'public'             => false,
+			'publicly_queryable' => $publicly_queryable,
+			'query_var'          => false,
+			'show_ui'            => false,
+			'show_in_rest'       => false,
+			'rewrite'            => true,
+			'supports'           => array( 'title', 'author' ),
+		)
+	);
 
-	register_post_type( ET_THEME_BUILDER_HEADER_LAYOUT_POST_TYPE, array(
-		'labels'             => array(
-			'name'               => esc_html__( 'Header Layouts', 'et_builder' ),
-			'singular_name'      => esc_html__( 'Header Layout', 'et_builder' ),
-			'add_new'            => esc_html__( 'Add New', 'et_builder' ),
-			'add_new_item'       => esc_html__( 'Add New Header Layout', 'et_builder' ),
-			'edit_item'          => esc_html__( 'Edit Header Layout', 'et_builder' ),
-			'new_item'           => esc_html__( 'New Header Layout', 'et_builder' ),
-			'all_items'          => esc_html__( 'All Header Layouts', 'et_builder' ),
-			'view_item'          => esc_html__( 'View Header Layout', 'et_builder' ),
-			'search_items'       => esc_html__( 'Search Header Layouts', 'et_builder' ),
-			'not_found'          => esc_html__( 'Nothing found', 'et_builder' ),
-			'not_found_in_trash' => esc_html__( 'Nothing found in Trash', 'et_builder' ),
-			'parent_item_colon'  => '',
-		),
-		'can_export'         => true,
-		'capability_type'    => 'post',
-		'has_archive'        => false,
-		'hierarchical'       => false,
-		'map_meta_cap'       => true,
-		'public'             => false,
-		'publicly_queryable' => $publicly_queryable,
-		'query_var'          => false,
-		'show_ui'            => false,
-		'show_in_rest'       => false,
-		'rewrite'            => true,
-		'supports'           => array( 'title', 'editor', 'author', 'revisions', 'comments' ),
-	) );
+	register_post_type(
+		ET_THEME_BUILDER_HEADER_LAYOUT_POST_TYPE,
+		array(
+			'labels'             => array(
+				'name'               => esc_html__( 'Header Layouts', 'et_builder' ),
+				'singular_name'      => esc_html__( 'Header Layout', 'et_builder' ),
+				'add_new'            => esc_html__( 'Add New', 'et_builder' ),
+				'add_new_item'       => esc_html__( 'Add New Header Layout', 'et_builder' ),
+				'edit_item'          => esc_html__( 'Edit Header Layout', 'et_builder' ),
+				'new_item'           => esc_html__( 'New Header Layout', 'et_builder' ),
+				'all_items'          => esc_html__( 'All Header Layouts', 'et_builder' ),
+				'view_item'          => esc_html__( 'View Header Layout', 'et_builder' ),
+				'search_items'       => esc_html__( 'Search Header Layouts', 'et_builder' ),
+				'not_found'          => esc_html__( 'Nothing found', 'et_builder' ),
+				'not_found_in_trash' => esc_html__( 'Nothing found in Trash', 'et_builder' ),
+				'parent_item_colon'  => '',
+			),
+			'can_export'         => true,
+			'capability_type'    => 'post',
+			'has_archive'        => false,
+			'hierarchical'       => false,
+			'map_meta_cap'       => true,
+			'public'             => false,
+			'publicly_queryable' => $publicly_queryable,
+			'query_var'          => false,
+			'show_ui'            => false,
+			'show_in_rest'       => false,
+			'rewrite'            => true,
+			'supports'           => array( 'title', 'editor', 'author', 'revisions', 'comments' ),
+		)
+	);
 
-	register_post_type( ET_THEME_BUILDER_BODY_LAYOUT_POST_TYPE, array(
-		'labels'             => array(
-			'name'               => esc_html__( 'Body Layouts', 'et_builder' ),
-			'singular_name'      => esc_html__( 'Body Layout', 'et_builder' ),
-			'add_new'            => esc_html__( 'Add New', 'et_builder' ),
-			'add_new_item'       => esc_html__( 'Add New Body Layout', 'et_builder' ),
-			'edit_item'          => esc_html__( 'Edit Body Layout', 'et_builder' ),
-			'new_item'           => esc_html__( 'New Body Layout', 'et_builder' ),
-			'all_items'          => esc_html__( 'All Body Layouts', 'et_builder' ),
-			'view_item'          => esc_html__( 'View Body Layout', 'et_builder' ),
-			'search_items'       => esc_html__( 'Search Body Layouts', 'et_builder' ),
-			'not_found'          => esc_html__( 'Nothing found', 'et_builder' ),
-			'not_found_in_trash' => esc_html__( 'Nothing found in Trash', 'et_builder' ),
-			'parent_item_colon'  => '',
-		),
-		'can_export'         => true,
-		'capability_type'    => 'post',
-		'has_archive'        => false,
-		'hierarchical'       => false,
-		'map_meta_cap'       => true,
-		'public'             => false,
-		'publicly_queryable' => $publicly_queryable,
-		'query_var'          => false,
-		'show_ui'            => false,
-		'show_in_rest'       => false,
-		'rewrite'            => true,
-		'supports'           => array( 'title', 'editor', 'author', 'revisions', 'comments' ),
-	) );
+	register_post_type(
+		ET_THEME_BUILDER_BODY_LAYOUT_POST_TYPE,
+		array(
+			'labels'             => array(
+				'name'               => esc_html__( 'Body Layouts', 'et_builder' ),
+				'singular_name'      => esc_html__( 'Body Layout', 'et_builder' ),
+				'add_new'            => esc_html__( 'Add New', 'et_builder' ),
+				'add_new_item'       => esc_html__( 'Add New Body Layout', 'et_builder' ),
+				'edit_item'          => esc_html__( 'Edit Body Layout', 'et_builder' ),
+				'new_item'           => esc_html__( 'New Body Layout', 'et_builder' ),
+				'all_items'          => esc_html__( 'All Body Layouts', 'et_builder' ),
+				'view_item'          => esc_html__( 'View Body Layout', 'et_builder' ),
+				'search_items'       => esc_html__( 'Search Body Layouts', 'et_builder' ),
+				'not_found'          => esc_html__( 'Nothing found', 'et_builder' ),
+				'not_found_in_trash' => esc_html__( 'Nothing found in Trash', 'et_builder' ),
+				'parent_item_colon'  => '',
+			),
+			'can_export'         => true,
+			'capability_type'    => 'post',
+			'has_archive'        => false,
+			'hierarchical'       => false,
+			'map_meta_cap'       => true,
+			'public'             => false,
+			'publicly_queryable' => $publicly_queryable,
+			'query_var'          => false,
+			'show_ui'            => false,
+			'show_in_rest'       => false,
+			'rewrite'            => true,
+			'supports'           => array( 'title', 'editor', 'author', 'revisions', 'comments' ),
+		)
+	);
 
-	register_post_type( ET_THEME_BUILDER_FOOTER_LAYOUT_POST_TYPE, array(
-		'labels'             => array(
-			'name'               => esc_html__( 'Footer Layouts', 'et_builder' ),
-			'singular_name'      => esc_html__( 'Footer Layout', 'et_builder' ),
-			'add_new'            => esc_html__( 'Add New', 'et_builder' ),
-			'add_new_item'       => esc_html__( 'Add New Footer Layout', 'et_builder' ),
-			'edit_item'          => esc_html__( 'Edit Footer Layout', 'et_builder' ),
-			'new_item'           => esc_html__( 'New Footer Layout', 'et_builder' ),
-			'all_items'          => esc_html__( 'All Footer Layouts', 'et_builder' ),
-			'view_item'          => esc_html__( 'View Footer Layout', 'et_builder' ),
-			'search_items'       => esc_html__( 'Search Footer Layouts', 'et_builder' ),
-			'not_found'          => esc_html__( 'Nothing found', 'et_builder' ),
-			'not_found_in_trash' => esc_html__( 'Nothing found in Trash', 'et_builder' ),
-			'parent_item_colon'  => '',
-		),
-		'can_export'         => true,
-		'capability_type'    => 'post',
-		'has_archive'        => false,
-		'hierarchical'       => false,
-		'map_meta_cap'       => true,
-		'public'             => false,
-		'publicly_queryable' => $publicly_queryable,
-		'query_var'          => false,
-		'show_ui'            => false,
-		'show_in_rest'       => false,
-		'rewrite'            => true,
-		'supports'           => array( 'title', 'editor', 'author', 'revisions', 'comments' ),
-	) );
+	register_post_type(
+		ET_THEME_BUILDER_FOOTER_LAYOUT_POST_TYPE,
+		array(
+			'labels'             => array(
+				'name'               => esc_html__( 'Footer Layouts', 'et_builder' ),
+				'singular_name'      => esc_html__( 'Footer Layout', 'et_builder' ),
+				'add_new'            => esc_html__( 'Add New', 'et_builder' ),
+				'add_new_item'       => esc_html__( 'Add New Footer Layout', 'et_builder' ),
+				'edit_item'          => esc_html__( 'Edit Footer Layout', 'et_builder' ),
+				'new_item'           => esc_html__( 'New Footer Layout', 'et_builder' ),
+				'all_items'          => esc_html__( 'All Footer Layouts', 'et_builder' ),
+				'view_item'          => esc_html__( 'View Footer Layout', 'et_builder' ),
+				'search_items'       => esc_html__( 'Search Footer Layouts', 'et_builder' ),
+				'not_found'          => esc_html__( 'Nothing found', 'et_builder' ),
+				'not_found_in_trash' => esc_html__( 'Nothing found in Trash', 'et_builder' ),
+				'parent_item_colon'  => '',
+			),
+			'can_export'         => true,
+			'capability_type'    => 'post',
+			'has_archive'        => false,
+			'hierarchical'       => false,
+			'map_meta_cap'       => true,
+			'public'             => false,
+			'publicly_queryable' => $publicly_queryable,
+			'query_var'          => false,
+			'show_ui'            => false,
+			'show_in_rest'       => false,
+			'rewrite'            => true,
+			'supports'           => array( 'title', 'editor', 'author', 'revisions', 'comments' ),
+		)
+	);
 }
 add_action( 'init', 'et_theme_builder_register_entities', 11 );
 
@@ -282,20 +302,20 @@ add_filter( 'et_builder_default_post_types', 'et_theme_builder_filter_builder_de
 add_filter( 'et_library_builder_post_types', 'et_theme_builder_filter_builder_default_post_types' );
 
 /**
- * Filter post types which should be blacklisted from appearing as options when enabling/disabling the builder.
+ * Filter post types which should be blocklisted from appearing as options when enabling/disabling the builder.
  *
  * @param $post_types
  *
  * @return array
  */
-function et_theme_builder_filter_builder_post_type_options_blacklist( $post_types ) {
+function et_theme_builder_filter_builder_post_type_options_blocklist( $post_types ) {
 	return array_merge(
 		$post_types,
 		et_theme_builder_get_layout_post_types(),
 		array( ET_THEME_BUILDER_TEMPLATE_POST_TYPE )
 	);
 }
-add_filter( 'et_builder_post_type_options_blacklist', 'et_theme_builder_filter_builder_default_post_types' );
+add_filter( 'et_builder_post_type_options_blocklist', 'et_theme_builder_filter_builder_default_post_types' );
 
 /**
  * Filter builder status for template area posts.
@@ -308,7 +328,7 @@ add_filter( 'et_builder_post_type_options_blacklist', 'et_theme_builder_filter_b
  * @return bool
  */
 function et_theme_builder_filter_enable_builder_for_post_types( $enabled, $post_id ) {
-	$post_type  = get_post_type( $post_id );
+	$post_type = get_post_type( $post_id );
 
 	if ( et_theme_builder_is_layout_post_type( $post_type ) ) {
 		$enabled = true;
@@ -330,17 +350,19 @@ add_filter( 'et_builder_fb_enabled_for_post', 'et_theme_builder_filter_enable_bu
  */
 function et_theme_builder_get_theme_builder_post_id( $live, $create = true ) {
 	$status = $live ? 'publish' : 'auto-draft';
-	$query  = new WP_Query( array(
-		'post_type'              => ET_THEME_BUILDER_THEME_BUILDER_POST_TYPE,
-		'post_status'            => $status,
-		'posts_per_page'         => 1,
-		'orderby'                => 'date',
-		'order'                  => 'desc',
-		'fields'                 => 'ids',
-		'no_found_rows'          => true,
-		'update_post_meta_cache' => false,
-		'update_post_term_cache' => false,
-	) );
+	$query  = new WP_Query(
+		array(
+			'post_type'              => ET_THEME_BUILDER_THEME_BUILDER_POST_TYPE,
+			'post_status'            => $status,
+			'posts_per_page'         => 1,
+			'orderby'                => 'date',
+			'order'                  => 'desc',
+			'fields'                 => 'ids',
+			'no_found_rows'          => true,
+			'update_post_meta_cache' => false,
+			'update_post_term_cache' => false,
+		)
+	);
 
 	if ( ! empty( $query->posts ) ) {
 		return $query->posts[0];
@@ -350,11 +372,13 @@ function et_theme_builder_get_theme_builder_post_id( $live, $create = true ) {
 		return 0;
 	}
 
-	$post_id = wp_insert_post( array(
-		'post_type'   => ET_THEME_BUILDER_THEME_BUILDER_POST_TYPE,
-		'post_status' => $status,
-		'post_title'  => 'Theme Builder',
-	) );
+	$post_id = wp_insert_post(
+		array(
+			'post_type'   => ET_THEME_BUILDER_THEME_BUILDER_POST_TYPE,
+			'post_status' => $status,
+			'post_title'  => 'Theme Builder',
+		)
+	);
 
 	return $post_id;
 }
@@ -387,10 +411,12 @@ function et_theme_builder_get_theme_builder_template_ids( $live ) {
  * @return array
  */
 function et_theme_builder_get_theme_builder_templates( $live ) {
-	return array_filter( array_map(
-		'et_theme_builder_get_template',
-		et_theme_builder_get_theme_builder_template_ids( $live )
-	) );
+	return array_filter(
+		array_map(
+			'et_theme_builder_get_template',
+			et_theme_builder_get_theme_builder_template_ids( $live )
+		)
+	);
 }
 
 /**
@@ -482,56 +508,60 @@ function et_theme_builder_trash_draft_and_unused_posts() {
 	}
 
 	// Mark unreferenced layouts for trashing.
-	$posts_to_mark = new WP_Query( array(
-		'post_type'              => array(
-			ET_THEME_BUILDER_TEMPLATE_POST_TYPE,
-			ET_THEME_BUILDER_HEADER_LAYOUT_POST_TYPE,
-			ET_THEME_BUILDER_BODY_LAYOUT_POST_TYPE,
-			ET_THEME_BUILDER_FOOTER_LAYOUT_POST_TYPE,
-		),
-		'post__not_in'           => $used_posts,
-		'posts_per_page'         => -1,
-		'fields'                 => 'ids',
-		'meta_query'             => array(
-			array(
-				'key'     => $mark_meta_key,
-				'compare' => 'NOT EXISTS',
-				'value'   => 'https://core.trac.wordpress.org/ticket/23268',
+	$posts_to_mark = new WP_Query(
+		array(
+			'post_type'              => array(
+				ET_THEME_BUILDER_TEMPLATE_POST_TYPE,
+				ET_THEME_BUILDER_HEADER_LAYOUT_POST_TYPE,
+				ET_THEME_BUILDER_BODY_LAYOUT_POST_TYPE,
+				ET_THEME_BUILDER_FOOTER_LAYOUT_POST_TYPE,
 			),
-		),
-		'no_found_rows'          => true,
-		'update_post_meta_cache' => false,
-		'update_post_term_cache' => false,
-	) );
+			'post__not_in'           => $used_posts,
+			'posts_per_page'         => -1,
+			'fields'                 => 'ids',
+			'meta_query'             => array(
+				array(
+					'key'     => $mark_meta_key,
+					'compare' => 'NOT EXISTS',
+					'value'   => 'https://core.trac.wordpress.org/ticket/23268',
+				),
+			),
+			'no_found_rows'          => true,
+			'update_post_meta_cache' => false,
+			'update_post_term_cache' => false,
+		)
+	);
 
 	foreach ( $posts_to_mark->posts as $post_id ) {
-		update_post_meta( $post_id, $mark_meta_key, date('Y-m-d H:i:s') );
+		update_post_meta( $post_id, $mark_meta_key, date( 'Y-m-d H:i:s' ) ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date -- No need to use gmdate.
 	}
 
 	// Trash any posts marked more than 7 days ago.
 	// We only trash up to 50 posts at a time in order to avoid performance issues.
 	// Any leftover posts will be cleaned up eventually whenever this is called again.
-	$posts_to_trash = new WP_Query( array(
-		'post_type'              => array(
-			ET_THEME_BUILDER_TEMPLATE_POST_TYPE,
-			ET_THEME_BUILDER_HEADER_LAYOUT_POST_TYPE,
-			ET_THEME_BUILDER_BODY_LAYOUT_POST_TYPE,
-			ET_THEME_BUILDER_FOOTER_LAYOUT_POST_TYPE,
-		),
-		'posts_per_page'         => 50,
-		'fields'                 => 'ids',
-		'meta_query'             => array(
-			array(
-				'key'     => $mark_meta_key,
-				'compare' => '<',
-				'value'   => date('Y-m-d H:i:s', time() - 60 * 60 * 24 * 7),
-				'type'    => 'DATE',
+	$posts_to_trash = new WP_Query(
+		array(
+			'post_type'              => array(
+				ET_THEME_BUILDER_TEMPLATE_POST_TYPE,
+				ET_THEME_BUILDER_HEADER_LAYOUT_POST_TYPE,
+				ET_THEME_BUILDER_BODY_LAYOUT_POST_TYPE,
+				ET_THEME_BUILDER_FOOTER_LAYOUT_POST_TYPE,
 			),
-		),
-		'no_found_rows'          => true,
-		'update_post_meta_cache' => false,
-		'update_post_term_cache' => false,
-	) );
+			'posts_per_page'         => 50,
+			'fields'                 => 'ids',
+			'meta_query'             => array(
+				array(
+					'key'     => $mark_meta_key,
+					'compare' => '<',
+					'value'   => date( 'Y-m-d H:i:s', time() - 60 * 60 * 24 * 7 ), // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date -- No need to use gmdate.
+					'type'    => 'DATE',
+				),
+			),
+			'no_found_rows'          => true,
+			'update_post_meta_cache' => false,
+			'update_post_term_cache' => false,
+		)
+	);
 
 	foreach ( $posts_to_trash->posts as $post_id ) {
 		wp_trash_post( $post_id );
@@ -548,7 +578,7 @@ function et_theme_builder_trash_draft_and_unused_posts() {
  * @return array
  */
 function et_theme_builder_get_template_settings_options_for_post_type( $post_type_name ) {
-	$post_type        = get_post_type_object( $post_type_name );
+	$post_type = get_post_type_object( $post_type_name );
 
 	if ( null === $post_type ) {
 		return array();
@@ -559,7 +589,7 @@ function et_theme_builder_get_template_settings_options_for_post_type( $post_typ
 
 	$group = array(
 		'label'    => et_core_intentionally_unescaped( $post_type_plural, 'react_jsx' ),
-		'settings' =>  array(
+		'settings' => array(
 			array(
 				'id'       => implode(
 					ET_THEME_BUILDER_SETTING_SEPARATOR,
@@ -580,7 +610,7 @@ function et_theme_builder_get_template_settings_options_for_post_type( $post_typ
 			'priority' => 110,
 			'validate' => 'et_theme_builder_template_setting_validate_homepage',
 		);
-	} else if ( 'post' === $post_type_name || $post_type->has_archive ) {
+	} elseif ( 'post' === $post_type_name || $post_type->has_archive ) {
 		$group['settings'][] = array(
 			'id'       => implode(
 				ET_THEME_BUILDER_SETTING_SEPARATOR,
@@ -597,17 +627,31 @@ function et_theme_builder_get_template_settings_options_for_post_type( $post_typ
 	}
 
 	foreach ( $taxonomies as $taxonomy ) {
-		if ( ! $taxonomy->public || ! $taxonomy->show_ui ) {
+		/**
+		 * Filters whether the given taxonomy should be used to generate the following template settings:
+		 * - Posts with Specific %
+		 *
+		 * @since 4.3.3
+		 *
+		 * @param boolean $show
+		 */
+		$show = apply_filters( 'et_theme_builder_template_settings_options_posts_with_specific_term', $taxonomy->show_ui );
+
+		if ( ! $show ) {
 			continue;
 		}
 
 		$taxonomy_plural  = ucwords( $taxonomy->labels->name );
-		$use_short_plural = in_array( $taxonomy->name, array(
-			'project_category',
-			'project_tag',
-			'product_cat',
-			'product_tag',
-		), true );
+		$use_short_plural = in_array(
+			$taxonomy->name,
+			array(
+				'project_category',
+				'project_tag',
+				'product_cat',
+				'product_tag',
+			),
+			true
+		);
 
 		// Translators: %1$s: Post type plural name; %2$s: Taxonomy plural name.
 		$label = et_core_intentionally_unescaped(
@@ -616,7 +660,8 @@ function et_theme_builder_get_template_settings_options_for_post_type( $post_typ
 				$post_type_plural,
 				$use_short_plural ? esc_html__( 'Tags', 'et_builder' ) : $taxonomy_plural
 			),
-		'react_jsx' );
+			'react_jsx'
+		);
 
 		if ( in_array( $taxonomy->name, array( 'category', 'project_category', 'product_cat' ), true ) ) {
 			// Translators: %1$s: Post type plural name; %2$s: Taxonomy plural name.
@@ -626,7 +671,8 @@ function et_theme_builder_get_template_settings_options_for_post_type( $post_typ
 					$post_type_plural,
 					$use_short_plural ? esc_html__( 'Categories', 'et_builder' ) : $taxonomy_plural
 				),
-			'react_jsx' );
+				'react_jsx'
+			);
 		}
 
 		$group['settings'][] = array(
@@ -692,11 +738,14 @@ function et_theme_builder_get_template_settings_options_for_post_type( $post_typ
  * @return array
  */
 function et_theme_builder_get_template_settings_options_for_archive_pages() {
-	$taxonomies = get_taxonomies( array(
-		'public'   => true,
-		'show_ui'  => true,
-		'_builtin' => false,
-	), 'objects' );
+	$taxonomies = get_taxonomies(
+		array(
+			'public'   => true,
+			'show_ui'  => true,
+			'_builtin' => false,
+		),
+		'objects'
+	);
 
 	ksort( $taxonomies );
 
@@ -710,7 +759,7 @@ function et_theme_builder_get_template_settings_options_for_archive_pages() {
 
 	$group = array(
 		'label'    => et_core_intentionally_unescaped( __( 'Archive Pages', 'et_builder' ), 'react_jsx' ),
-		'settings' =>  array(
+		'settings' => array(
 			array(
 				'id'       => implode(
 					ET_THEME_BUILDER_SETTING_SEPARATOR,
@@ -724,7 +773,18 @@ function et_theme_builder_get_template_settings_options_for_archive_pages() {
 	);
 
 	foreach ( $taxonomies as $taxonomy ) {
-		if ( ! $taxonomy->public || ! $taxonomy->show_ui ) {
+		/**
+		 * Filters whether the given taxonomy should be used to generate the following template settings:
+		 * - All % Pages
+		 * - Specific % Pages
+		 *
+		 * @since 4.3.3
+		 *
+		 * @param boolean $show
+		 */
+		$show = apply_filters( 'et_theme_builder_template_settings_options_term_pages', $taxonomy->public && $taxonomy->show_ui );
+
+		if ( ! $show ) {
 			continue;
 		}
 
@@ -734,7 +794,7 @@ function et_theme_builder_get_template_settings_options_for_archive_pages() {
 		if ( 'product_cat' === $taxonomy->name ) {
 			// WooCommerce registers Product Categories with a singular name of Category instead of Product Category...
 			$taxonomy_name = __( 'Product Category', 'et_builder' );
-		} else if ( false !== strpos( $taxonomy->name, 'cat' ) ) {
+		} elseif ( false !== strpos( $taxonomy->name, 'cat' ) ) {
 			// Use singular for Category.
 			$taxonomy_name = ucwords( $taxonomy->labels->singular_name );
 		}
@@ -761,8 +821,8 @@ function et_theme_builder_get_template_settings_options_for_archive_pages() {
 			'validate' => 'et_theme_builder_template_setting_validate_archive_taxonomy_term_id',
 			'options'  => array(
 				'label' => $taxonomy_plural,
-				'type'     => 'taxonomy',
-				'value'    => $taxonomy->name,
+				'type'  => 'taxonomy',
+				'value' => $taxonomy->name,
 			),
 		);
 	}
@@ -835,10 +895,12 @@ function et_theme_builder_get_template_settings_options_for_archive_pages() {
  * @return array
  */
 function et_theme_builder_get_template_settings_options() {
-	$post_types = get_post_types( array(
-		'public'   => true,
-		'_builtin' => false,
-	) );
+	$post_types = get_post_types(
+		array(
+			'public'   => true,
+			'_builtin' => false,
+		)
+	);
 	sort( $post_types );
 
 	$options = array(
@@ -852,7 +914,7 @@ function et_theme_builder_get_template_settings_options() {
 	}
 
 	$options['other'] = array(
-		'label' => et_core_intentionally_unescaped( __( 'Other', 'et_builder' ), 'react_jsx' ),
+		'label'    => et_core_intentionally_unescaped( __( 'Other', 'et_builder' ), 'react_jsx' ),
 		'settings' => array(
 			array(
 				'id'       => 'search',
@@ -889,10 +951,12 @@ function et_theme_builder_get_template_settings_options() {
  * @return array[]
  */
 function et_theme_builder_get_template_settings_options_for_preloading() {
-	$templates   = array_unique( array_merge(
-		et_theme_builder_get_theme_builder_template_ids( true ),
-		et_theme_builder_get_theme_builder_template_ids( false )
-	) );
+	$templates   = array_unique(
+		array_merge(
+			et_theme_builder_get_theme_builder_template_ids( true ),
+			et_theme_builder_get_theme_builder_template_ids( false )
+		)
+	);
 	$setting_ids = array();
 
 	foreach ( $templates as $template_id ) {
@@ -983,8 +1047,8 @@ function et_theme_builder_get_template_setting_child_options( $parent, $include 
 	$include = array_map( 'intval', $include );
 
 	if ( ! empty( $include ) ) {
-		$search = '';
-		$page = 1;
+		$search   = '';
+		$page     = 1;
 		$per_page = -1;
 	}
 
@@ -1004,84 +1068,90 @@ function et_theme_builder_get_template_setting_child_options( $parent, $include 
 
 	switch ( $parent['options']['type'] ) {
 		case 'post_type':
-			$posts  = get_posts( array(
-				'post_type'      => $parent['options']['value'],
-				'post_status'    => 'any',
-				'post__in'       => $include,
-				's'              => $search,
-				'posts_per_page' => $per_page,
-				'paged'          => $page,
-			) );
+			$posts = get_posts(
+				array(
+					'post_type'      => $parent['options']['value'],
+					'post_status'    => 'any',
+					'post__in'       => $include,
+					's'              => $search,
+					'posts_per_page' => $per_page,
+					'paged'          => $page,
+				)
+			);
 
 			foreach ( $posts as $post ) {
 				$id            = $parent['id'] . $post->ID;
 				$values[ $id ] = array(
-					'id'        => $id,
-					'parent'    => $parent['id'],
-					'label'     => et_core_intentionally_unescaped( $post->post_title, 'react_jsx' ),
-					'title'     => et_core_intentionally_unescaped( $post->post_name, 'react_jsx' ),
-					'priority'  => $parent['priority'],
-					'validate'  => $parent['validate'],
+					'id'       => $id,
+					'parent'   => $parent['id'],
+					'label'    => et_core_intentionally_unescaped( $post->post_title, 'react_jsx' ),
+					'title'    => et_core_intentionally_unescaped( $post->post_name, 'react_jsx' ),
+					'priority' => $parent['priority'],
+					'validate' => $parent['validate'],
 				);
 			}
 			break;
 
 		case 'taxonomy':
-			$terms  = get_terms( array(
-				'taxonomy'   => $parent['options']['value'],
-				'hide_empty' => false,
-				'include'    => $include,
-				'search'     => $search,
-				'number'     => -1 === $per_page ? false : $per_page,
-				'offset'     => -1 !== $per_page ? ($page - 1) * $per_page : 0,
-			) );
+			$terms = get_terms(
+				array(
+					'taxonomy'   => $parent['options']['value'],
+					'hide_empty' => false,
+					'include'    => $include,
+					'search'     => $search,
+					'number'     => -1 === $per_page ? false : $per_page,
+					'offset'     => -1 !== $per_page ? ( $page - 1 ) * $per_page : 0,
+				)
+			);
 
 			foreach ( $terms as $term ) {
 				$id            = $parent['id'] . $term->term_id;
 				$values[ $id ] = array(
-					'id'        => $id,
-					'parent'    => $parent['id'],
-					'label'     => et_core_intentionally_unescaped( $term->name, 'react_jsx' ),
-					'title'     => et_core_intentionally_unescaped( $term->slug, 'react_jsx' ),
-					'priority'  => $parent['priority'],
-					'validate'  => $parent['validate'],
+					'id'       => $id,
+					'parent'   => $parent['id'],
+					'label'    => et_core_intentionally_unescaped( $term->name, 'react_jsx' ),
+					'title'    => et_core_intentionally_unescaped( $term->slug, 'react_jsx' ),
+					'priority' => $parent['priority'],
+					'validate' => $parent['validate'],
 				);
 			}
 			break;
 
 		case 'user':
-			$users  = get_users( array(
-				'include' => $include,
-				'search'  => $search,
-				'number'  => $per_page,
-				'paged'   => $page,
-			) );
+			$users = get_users(
+				array(
+					'include' => $include,
+					'search'  => $search,
+					'number'  => $per_page,
+					'paged'   => $page,
+				)
+			);
 
 			foreach ( $users as $user ) {
 				$id            = $parent['id'] . $user->ID;
 				$values[ $id ] = array(
-					'id'        => $id,
-					'parent'    => $parent['id'],
-					'label'     => et_core_intentionally_unescaped( $user->display_name, 'react_jsx' ),
-					'title'     => et_core_intentionally_unescaped( $user->user_login, 'react_jsx' ),
-					'priority'  => $parent['priority'],
-					'validate'  => $parent['validate'],
+					'id'       => $id,
+					'parent'   => $parent['id'],
+					'label'    => et_core_intentionally_unescaped( $user->display_name, 'react_jsx' ),
+					'title'    => et_core_intentionally_unescaped( $user->user_login, 'react_jsx' ),
+					'priority' => $parent['priority'],
+					'validate' => $parent['validate'],
 				);
 			}
 			break;
 
 		case 'user_role':
-			$roles  = wp_roles()->get_names();
+			$roles = wp_roles()->get_names();
 
 			foreach ( $roles as $role => $label ) {
 				$id            = $parent['id'] . $role;
 				$values[ $id ] = array(
-					'id'        => $id,
-					'parent'    => $parent['id'],
-					'label'     => et_core_intentionally_unescaped( $label, 'react_jsx' ),
-					'title'     => et_core_intentionally_unescaped( $role, 'react_jsx' ),
-					'priority'  => $parent['priority'],
-					'validate'  => $parent['validate'],
+					'id'       => $id,
+					'parent'   => $parent['id'],
+					'label'    => et_core_intentionally_unescaped( $label, 'react_jsx' ),
+					'title'    => et_core_intentionally_unescaped( $role, 'react_jsx' ),
+					'priority' => $parent['priority'],
+					'validate' => $parent['validate'],
 				);
 			}
 			break;
@@ -1107,8 +1177,8 @@ function et_theme_builder_get_template_setting_child_options( $parent, $include 
  * @since 4.0
  *
  * @param ET_Theme_Builder_Request $request Request to check against. Defaults to the current one.
- * @param bool $cache Cache the result or not, regardless of whether any layouts should be loaded.
- * @param bool $load_from_cache Load the cached result for the given post ID, if available.
+ * @param bool                     $cache Cache the result or not, regardless of whether any layouts should be loaded.
+ * @param bool                     $load_from_cache Load the cached result for the given post ID, if available.
  *
  * @return array Array of layouts or an empty array if no layouts should be loaded.
  */
@@ -1116,6 +1186,11 @@ function et_theme_builder_get_template_layouts( $request = null, $cache = true, 
 	static $store = array();
 
 	if ( null === $request ) {
+		if ( is_embed() ) {
+			// Ignore TB templates when displaying posts intended for embedding.
+			return array();
+		}
+
 		if ( is_et_pb_preview() ) {
 			// Ignore TB templates when previewing.
 			return array();
@@ -1139,14 +1214,33 @@ function et_theme_builder_get_template_layouts( $request = null, $cache = true, 
 
 	if ( et_theme_builder_is_layout_post_type( $post_type ) ) {
 		// We are currently editing a layout in the VB.
-		$layouts = array_replace( array(
-			ET_THEME_BUILDER_TEMPLATE_POST_TYPE      => 0,
-			ET_THEME_BUILDER_HEADER_LAYOUT_POST_TYPE => array( 'id' => 0, 'enabled' => false, 'override' => true ),
-			ET_THEME_BUILDER_BODY_LAYOUT_POST_TYPE   => array( 'id' => 0, 'enabled' => false, 'override' => true ),
-			ET_THEME_BUILDER_FOOTER_LAYOUT_POST_TYPE => array( 'id' => 0, 'enabled' => false, 'override' => true ),
-		), array(
-			$post_type => array( 'id' => $request->get_id(), 'enabled' => true, 'override' => true ),
-		) );
+		$layouts = array_replace(
+			array(
+				ET_THEME_BUILDER_TEMPLATE_POST_TYPE      => 0,
+				ET_THEME_BUILDER_HEADER_LAYOUT_POST_TYPE => array(
+					'id'       => 0,
+					'enabled'  => false,
+					'override' => true,
+				),
+				ET_THEME_BUILDER_BODY_LAYOUT_POST_TYPE   => array(
+					'id'       => 0,
+					'enabled'  => false,
+					'override' => true,
+				),
+				ET_THEME_BUILDER_FOOTER_LAYOUT_POST_TYPE => array(
+					'id'       => 0,
+					'enabled'  => false,
+					'override' => true,
+				),
+			),
+			array(
+				$post_type => array(
+					'id'       => $request->get_id(),
+					'enabled'  => true,
+					'override' => true,
+				),
+			)
+		);
 	} else {
 		// We are currently displaying a template in the FE.
 		$templates = et_theme_builder_get_theme_builder_templates( true );
@@ -1163,9 +1257,9 @@ function et_theme_builder_get_template_layouts( $request = null, $cache = true, 
 			// it does not override any areas otherwise it will take over ALL site pages.
 			if ( ! $is_default || $override_header || $override_body || $override_footer ) {
 				$layouts = array(
-					ET_THEME_BUILDER_TEMPLATE_POST_TYPE      => $template['id'],
+					ET_THEME_BUILDER_TEMPLATE_POST_TYPE    => $template['id'],
 					ET_THEME_BUILDER_HEADER_LAYOUT_POST_TYPE => $template['layouts']['header'],
-					ET_THEME_BUILDER_BODY_LAYOUT_POST_TYPE   => $template['layouts']['body'],
+					ET_THEME_BUILDER_BODY_LAYOUT_POST_TYPE => $template['layouts']['body'],
 					ET_THEME_BUILDER_FOOTER_LAYOUT_POST_TYPE => $template['layouts']['footer'],
 				);
 			}
@@ -1236,8 +1330,8 @@ function et_theme_builder_layout_has_post_content( $layout ) {
  * Get the failure modal html for a template that overrides the body but does not display
  * post content (e.g. Post Content module is missing or the body has been disabled).
  *
- * @param string $template_name
- * @param boolean $layout_enabled
+ * @param string  $template_name  Template name.
+ * @param boolean $layout_enabled Layout enabled.
  *
  * @return string
  */
@@ -1288,31 +1382,31 @@ function et_theme_builder_get_failure_notification_modal( $template_name, $layou
  *
  * @since 4.0
  *
- * @param integer $theme_builder_id
- * @param array $template
- * @param boolean $allow_default
+ * @param integer $theme_builder_id Theme builder ID.
+ * @param array   $template         Template.
+ * @param boolean $allow_default    Allow default.
  *
  * @return integer
  */
 function et_theme_builder_store_template( $theme_builder_id, $template, $allow_default ) {
-	$_              = et_();
-	$raw_post_id    = $_->array_get( $template, 'id', 0 );
-	$post_id        = is_numeric( $raw_post_id ) ? (int) $raw_post_id : 0;
-	$title          = sanitize_text_field( $_->array_get( $template, 'title', '' ) );
-	$default        = $allow_default && '1' === $_->array_get( $template, 'default', '1' );
-	$enabled        = '1' === $_->array_get( $template, 'enabled', '1' );
-	$header_id      = (int) $_->array_get( $template, 'layouts.header.id', 0 );
-	$header_enabled = (bool) $_->array_get( $template, 'layouts.header.enabled', true );
-	$body_id        = (int) $_->array_get( $template, 'layouts.body.id', 0 );
-	$body_enabled   = (bool) $_->array_get( $template, 'layouts.body.enabled', true );
-	$footer_id      = (int) $_->array_get( $template, 'layouts.footer.id', 0 );
-	$footer_enabled = (bool) $_->array_get( $template, 'layouts.footer.enabled', true );
-	$use_on         = array_map( 'sanitize_text_field', $_->array_get( $template, 'use_on', array() ) );
-	$exclude_from   = array_map( 'sanitize_text_field', $_->array_get( $template, 'exclude_from', array() ) );
-	$exists         = ET_THEME_BUILDER_TEMPLATE_POST_TYPE === get_post_type( $post_id ) && 'publish' === get_post_status( $post_id );
+	$_                   = et_();
+	$raw_post_id         = $_->array_get( $template, 'id', 0 );
+	$post_id             = is_numeric( $raw_post_id ) ? (int) $raw_post_id : 0;
+	$title               = sanitize_text_field( $_->array_get( $template, 'title', '' ) );
+	$default             = $allow_default && '1' === $_->array_get( $template, 'default', '1' );
+	$enabled             = '1' === $_->array_get( $template, 'enabled', '1' );
+	$header_id           = (int) $_->array_get( $template, 'layouts.header.id', 0 );
+	$header_enabled      = (bool) $_->array_get( $template, 'layouts.header.enabled', true );
+	$body_id             = (int) $_->array_get( $template, 'layouts.body.id', 0 );
+	$body_enabled        = (bool) $_->array_get( $template, 'layouts.body.enabled', true );
+	$footer_id           = (int) $_->array_get( $template, 'layouts.footer.id', 0 );
+	$footer_enabled      = (bool) $_->array_get( $template, 'layouts.footer.enabled', true );
+	$use_on              = array_map( 'sanitize_text_field', $_->array_get( $template, 'use_on', array() ) );
+	$exclude_from        = array_map( 'sanitize_text_field', $_->array_get( $template, 'exclude_from', array() ) );
+	$exists              = ET_THEME_BUILDER_TEMPLATE_POST_TYPE === get_post_type( $post_id ) && 'publish' === get_post_status( $post_id );
 	$autogenerated_title = '1' === $_->array_get( $template, 'autogenerated_title', '1' );
 
-	if ( ET_THEME_BUILDER_HEADER_LAYOUT_POST_TYPE !== get_post_type( $header_id )  || 'publish' !== get_post_status( $header_id ) ) {
+	if ( ET_THEME_BUILDER_HEADER_LAYOUT_POST_TYPE !== get_post_type( $header_id ) || 'publish' !== get_post_status( $header_id ) ) {
 		$header_id = 0;
 	}
 
@@ -1325,16 +1419,20 @@ function et_theme_builder_store_template( $theme_builder_id, $template, $allow_d
 	}
 
 	if ( $exists ) {
-		wp_update_post( array(
-			'ID'         => $post_id,
-			'post_title' => $title,
-		) );
+		wp_update_post(
+			array(
+				'ID'         => $post_id,
+				'post_title' => $title,
+			)
+		);
 	} else {
-		$post_id = wp_insert_post( array(
-			'post_type'   => ET_THEME_BUILDER_TEMPLATE_POST_TYPE,
-			'post_status' => 'publish',
-			'post_title'  => $title,
-		) );
+		$post_id = wp_insert_post(
+			array(
+				'post_type'   => ET_THEME_BUILDER_TEMPLATE_POST_TYPE,
+				'post_status' => 'publish',
+				'post_title'  => $title,
+			)
+		);
 	}
 
 	update_post_meta( $post_id, '_et_autogenerated_title', $autogenerated_title ? '1' : '0' );
@@ -1422,11 +1520,15 @@ function et_theme_builder_sanitize_template( $template ) {
  */
 function et_theme_builder_insert_layout( $options ) {
 	$post_id = wp_insert_post(
-		array_merge( array(
-			'post_status' => 'publish',
-			'post_title'  => 'Theme Builder Layout',
-		), $options ),
-	true );
+		array_merge(
+			array(
+				'post_status' => 'publish',
+				'post_title'  => 'Theme Builder Layout',
+			),
+			$options
+		),
+		true
+	);
 
 	if ( is_wp_error( $post_id ) ) {
 		return $post_id;
@@ -1464,7 +1566,7 @@ add_filter( 'et_builder_cache_post_type', 'et_theme_builder_cache_post_type' );
  * @since 4.0.7
  *
  * @param integer|string $post_id
- * @param string $resource_slug
+ * @param string         $resource_slug Resource slug.
  *
  * @return string
  */
@@ -1493,3 +1595,189 @@ function et_theme_builder_decorate_page_resource_slug( $post_id, $resource_slug 
 	return $resource_slug;
 }
 add_filter( 'et_builder_cache_post_type', 'et_theme_builder_cache_post_type' );
+
+/**
+ * Clear cache of 3P caching plugins partially on the posts or all of them.
+ *
+ * @since 4.5.0
+ *
+ * @param string|array $post_ids 'all' or array of post IDs.
+ *
+ * @return void
+ */
+function et_theme_builder_clear_wp_cache( $post_ids = 'all' ) {
+	if ( ! et_pb_detect_cache_plugins() ) {
+		return;
+	}
+
+	if ( empty( $post_ids ) ) {
+		return;
+	}
+
+	if ( 'all' === $post_ids ) {
+		et_core_clear_wp_cache();
+	} elseif ( is_array( $post_ids ) ) {
+		foreach ( $post_ids as $post_id ) {
+			et_core_clear_wp_cache( $post_id );
+		}
+	}
+}
+
+/**
+ * Clear cache of 3P caching plugins fully or partially after TB layouts saved.
+ *
+ * Clear all the cache when the template updated is:
+ * - Default template
+ * - Used on archive, 404, or all posts
+ * - Non static homepage
+ *
+ * @since 4.5.0
+ *
+ * @param int $layout_id
+ *
+ * @return void
+ */
+function et_theme_builder_clear_wp_post_cache( $layout_id = '' ) {
+	$layout_type = get_post_type( $layout_id );
+
+	if ( ! et_theme_builder_is_layout_post_type( $layout_type ) ) {
+		return;
+	}
+
+	if ( ! et_pb_detect_cache_plugins() ) {
+		return;
+	}
+
+	// Get template of current TB layout.
+	$template = new WP_Query(
+		array(
+			'post_type'              => ET_THEME_BUILDER_TEMPLATE_POST_TYPE,
+			'post_status'            => 'publish',
+			'posts_per_page'         => 1,
+			'fields'                 => 'ids',
+			'no_found_rows'          => true,
+			'update_post_meta_cache' => false,
+			'update_post_term_cache' => false,
+			'meta_query'             => array(
+				'relation' => 'AND',
+				array(
+					'key'     => '_et_enabled',
+					'value'   => '1',
+					'compare' => '=',
+				),
+				array(
+					'key'     => "_{$layout_type}_id",
+					'value'   => $layout_id,
+					'compare' => '=',
+				),
+				array(
+					'key'     => "_{$layout_type}_enabled",
+					'value'   => '1',
+					'compare' => '=',
+				),
+				array(
+					'key'     => '_et_theme_builder_marked_as_unused',
+					'compare' => 'NOT EXISTS',
+				),
+			),
+		)
+	);
+
+	if ( ! $template->have_posts() ) {
+		return;
+	}
+
+	$_                   = et_();
+	$template_id         = $_->array_get( $template->posts, '0' );
+	$template_use_on     = get_post_meta( $template_id, '_et_use_on', false );
+	$is_template_default = '1' === get_post_meta( $template_id, '_et_default', true );
+
+	// Unassigned Template - False or empty _et_use_on means it's unassigned.
+	if ( empty( $template_use_on ) ) {
+		// Clear All - If the template is 'default' because it's enabled globally.
+		if ( $is_template_default ) {
+			et_theme_builder_clear_wp_cache( 'all' );
+		}
+		return;
+	}
+
+	$target_post_ids = array();
+
+	foreach ( $template_use_on as $location ) {
+		$location_pieces = explode( ':', $location );
+		$location_first  = $_->array_get( $location_pieces, '0' );
+		$location_last   = end( $location_pieces );
+
+		if ( in_array( $location_first, array( 'archive', '404' ) ) || 'all' === $location_last ) {
+			// Path: archive:user:id:{user_id}, singular:post_type:{post_type_slug}:all,
+			// archive:taxonomy:{taxonomy_name}:all, etc.
+			// Clear All - If the template is being used on 'archive:' or ':all' posts.
+			$target_post_ids = 'all';
+			break;
+		} elseif ( 'homepage' === $location_first ) {
+			// Path: homepage
+			$homepage_id       = (int) get_option( 'page_on_front' );
+			$target_post_ids[] = $homepage_id;
+			if ( ! $homepage_id ) {
+				// Clear All - If the homepage is non static page.
+				$target_post_ids = 'all';
+				break;
+			}
+		} elseif ( 'singular' === $location_first ) {
+			$singular_type = $_->array_get( $location_pieces, '3' );
+
+			if ( 'id' === $singular_type ) {
+				// Path: singular:post_type:{post_type_slug}:id:{post_id}
+				$target_post_ids[] = (int) $_->array_get( $location_pieces, '4' );
+			} elseif ( 'children' === $singular_type ) {
+				// Path: singular:post_type:{post_type_slug}:children:id:{post_id}
+				$parent_id       = (int) $_->array_get( $location_pieces, '5' );
+				$children_ids    = get_children(
+					array(
+						'posts_per_page' => -1,
+						'post_parent'    => $parent_id,
+						'fields'         => 'ids',
+					)
+				);
+				$target_post_ids = array_merge( $target_post_ids, $children_ids );
+			} elseif ( 'term' === $singular_type ) {
+				// Path: singular:taxonomy:{taxonomy_name}:term:id:{term_id}
+				$taxonomy        = $_->array_get( $location_pieces, '2' );
+				$taxonomy_object = get_taxonomy( $taxonomy );
+				$taxonomy_type   = ! empty( $taxonomy_object->object_type ) ? $_->array_get( $taxonomy_object->object_type, '0' ) : 'post';
+				$term_id         = (int) $_->array_get( $location_pieces, '5' );
+				$posts_ids       = get_posts(
+					array(
+						'posts_per_page' => -1,
+						'fields'         => 'ids',
+						'post_type'      => $taxonomy_type,
+						'tax_query'      => array(
+							array(
+								'taxonomy' => $taxonomy,
+								'field'    => 'term_id',
+								'terms'    => $term_id,
+							),
+						),
+					)
+				);
+				$target_post_ids = array_merge( $target_post_ids, $posts_ids );
+			}
+		} elseif ( 'woocommerce' === $location_first && et_is_woocommerce_plugin_active() && function_exists( 'wc_get_page_id' ) ) {
+			// Path: woocommerce:my_account, woocommerce:cart, etc.
+			$woocommerce_page    = str_replace( '_', '', $_->array_get( $location_pieces, '1' ) );
+			$woocommerce_page_id = wc_get_page_id( $woocommerce_page );
+			if ( $woocommerce_page_id ) {
+				$target_post_ids[] = $woocommerce_page_id;
+			}
+		}
+	}
+
+	// Remove duplicate posts.
+	if ( is_array( $target_post_ids ) ) {
+		$target_post_ids = array_unique( $target_post_ids );
+	}
+
+	et_theme_builder_clear_wp_cache( $target_post_ids );
+}
+
+add_action( 'et_save_post', 'et_theme_builder_clear_wp_post_cache' );

@@ -55,7 +55,7 @@ class ET_GB_Utils_Conversion {
 	public static function is_reusable_block( $block = array() ) {
 		$block_name = et_()->array_get( $block, 'blockName', '' );
 
-		return 'core/block' === $block_name && et_()->array_get( $block, 'attrs.ref'  ) > 0;
+		return 'core/block' === $block_name && et_()->array_get( $block, 'attrs.ref' ) > 0;
 	}
 
 	/**
@@ -78,7 +78,7 @@ class ET_GB_Utils_Conversion {
 		$block_data = get_post( $block_id );
 
 		if ( ! $block_data || 'wp_block' !== $block_data->post_type || 'publish' !== $block_data->post_status ) {
-			return array() ;
+			return array();
 		}
 
 		return parse_blocks( $block_data->post_content );
@@ -101,7 +101,7 @@ class ET_GB_Utils_Conversion {
 		unset( $block['attrs']['ref'] );
 
 		// Change block into group so its content is being rendered
-		$block['blockName']    = 'core/group';
+		$block['blockName'] = 'core/group';
 
 		// Recreate innerContent which is used by block parser to render innerBlock.
 		// See: `render_block()`'s `$block['innerContent'] as $chunk` loop
@@ -217,7 +217,7 @@ class ET_GB_Utils_Conversion {
 		}
 
 		// Loop over populated content and render it into shortcode layout
-		foreach( array_merge( $this->layout_list, $this->deep_layout_blocks ) as $item ) {
+		foreach ( array_merge( $this->layout_list, $this->deep_layout_blocks ) as $item ) {
 			if ( self::is_layout_block( $item ) ) {
 				$shortcode_layout = trim( et_()->array_get( $item, 'innerHTML', '' ) );
 

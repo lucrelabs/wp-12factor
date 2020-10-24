@@ -157,18 +157,30 @@ class ET_Core_API_Email_MailChimp extends ET_Core_API_Email_Provider {
 		$custom_fields_data = self::$_->array_get( $this->data, "lists.{$list_id}.custom_fields", array() );
 
 		foreach ( $fields as $field_id => $value ) {
+			$is_group = self::$_->array_get( $custom_fields_data, "{$field_id}.is_group", false );
+
 			if ( is_array( $value ) && $value ) {
 				foreach ( $value as $id => $field_value ) {
-					self::$_->array_set( $args, "interests.{$id}", true );
+					if ( $is_group ) {
+						// If it is a group custom field, set as `interests` and don't process the `merge_fields`
+						self::$_->array_set( $args, "interests.{$id}", true );
+						$field_id = false;
+					} else {
+						$value = $field_value;
+					}
 				}
-			} else {
-				// In previous version of Mailchimp implementation we only supported default field tag, but it can be customized and our code fails.
-				// Added `field_tag` attribute which is actual field tag. Fallback to default field tag if `field_tag` doesn't exist for backward compatibility.
-				$custom_field_tag = self::$_->array_get( $custom_fields_data, "{$field_id}.field_tag", "MMERGE{$field_id}" );
-
-				// Need to strips existing slash chars.
-				self::$_->array_set( $args, "merge_fields.{$custom_field_tag}", stripslashes( $value ) );
 			}
+
+			if ( false === $field_id ) {
+				continue;
+			}
+
+			// In previous version of Mailchimp implementation we only supported default field tag, but it can be customized and our code fails.
+			// Added `field_tag` attribute which is actual field tag. Fallback to default field tag if `field_tag` doesn't exist for backward compatibility.
+			$custom_field_tag = self::$_->array_get( $custom_fields_data, "{$field_id}.field_tag", "MMERGE{$field_id}" );
+
+			// Need to strips existing slash chars.
+			self::$_->array_set( $args, "merge_fields.{$custom_field_tag}", stripslashes( $value ) );
 		}
 
 		return $args;

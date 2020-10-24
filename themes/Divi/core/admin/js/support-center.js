@@ -211,7 +211,7 @@
     if ('activate' === postData.support_update) {
       var safeModeProduct = $toggle.parents('#et_card_safe_mode').data('et-product');
 
-      // Continue only if the product is in our whitelist
+      // Continue only if the product is in our allowlist
       switch (safeModeProduct) {
         case 'divi_builder_plugin':
         case 'divi_theme':
@@ -279,6 +279,41 @@
     if (instance && instance.codemirror) {
       logViewers.push(instance.codemirror);
     }
+  }
+
+  // Dismiss Card in the Support Center
+  function dismissCard($button) {
+    const postData = {
+      action:   'et_dismiss_support_center_card',
+      nonce:    etSupportCenter.nonce,
+      product:  $button.data('product'),
+      card_key: $button.data('key'),
+    };
+
+    // Dismiss the Card via AJAX
+    jQuery.ajax({
+      type:       'POST',
+      data:       postData,
+      dataType:   'json',
+      url:        etSupportCenter.ajaxURL,
+      beforeSend: function(xhr) {
+        $button.prop('disabled', true);
+        $save_message.addClass('et_loading').removeClass('success-animation');
+        $save_message.fadeIn('fast');
+      },
+      success:    function(response) {
+        $button.parent().remove();
+        $save_message.removeClass('et_loading').addClass('success-animation');
+
+        setTimeout(function() {
+          $save_message.fadeOut('slow');
+        }, removeDelay);
+      },
+    }).fail(function(data) {
+      $button.prop('disabled', false);
+      console.log(data.responseText);
+      $save_message.fadeOut('slow');
+    });
   }
 
   $(window).on('resize', function() {
@@ -509,5 +544,24 @@
       document.execCommand('copy');
       confirmClipboardCopy();
     });
+
+    /**
+     * Support Center :: Divi Hosting Card
+     */
+
+    // Dismiss Card from the Support Center
+    $('.card.has-dismiss-button').on('click', '.et-dismiss-button', function(e) {
+      const $toggle = $(this);
+
+      dismissCard($toggle);
+    });
+
+    // Initialize Tippy when it's available
+    if (typeof tippy !== 'undefined') {
+      tippy('[data-tippy-content]', {
+        arrow: tippy.roundArrow,
+        theme: 'et-tippy',
+      });
+    }
   });
 })(jQuery);

@@ -101,8 +101,8 @@ class ET_Builder_Module_Helper_Font {
 			return $default_breakpoint;
 		}
 
-		$is_phone_default  = $this->is_font_default( $attrs, $name, 'phone');
-		$is_tablet_default = $this->is_font_default( $attrs, $name, 'tablet');
+		$is_phone_default  = $this->is_font_default( $attrs, $name, 'phone' );
+		$is_tablet_default = $this->is_font_default( $attrs, $name, 'tablet' );
 
 		// Tablet.
 		if ( 'tablet' === $device ) {
@@ -111,10 +111,10 @@ class ET_Builder_Module_Helper_Font {
 		}
 
 		// Desktop.
-		if ($is_tablet_default) {
+		if ( $is_tablet_default ) {
 			// Return breakpoint for desktop only if tablet uses default.
 			return et_pb_responsive_options()->get_breakpoint_by_device( 'desktop_only' );
-		} else if ( $is_phone_default ) {
+		} elseif ( $is_phone_default ) {
 			// Return breakpoint for desktop & only if tablet uses default.
 			return et_pb_responsive_options()->get_breakpoint_by_device( 'desktop_tablet_only' );
 		}

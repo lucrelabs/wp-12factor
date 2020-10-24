@@ -21,7 +21,7 @@ class ET_Builder_Module_Transition_Options {
 
 	/**
 	 * Return transition value.
-	 * 
+	 *
 	 * @since 3.23 Add $device param to support responsive settings.
 	 *
 	 * @param string $key
@@ -49,7 +49,7 @@ class ET_Builder_Module_Transition_Options {
 	 *
 	 * @since 3.23 Add $device param to support responsive settings.
 	 *
-	 * @param array $props
+	 * @param array  $props
 	 * @param string $device
 	 *
 	 * @return string
@@ -64,7 +64,7 @@ class ET_Builder_Module_Transition_Options {
 	 *
 	 * @since 3.23 Add $device param to support responsive settings.
 	 *
-	 * @param array $props
+	 * @param array  $props
 	 * @param string $device
 	 *
 	 * @return string
@@ -79,7 +79,7 @@ class ET_Builder_Module_Transition_Options {
 	 *
 	 * @since 3.23 Add $device param to support responsive settings.
 	 *
-	 * @param array $props
+	 * @param array  $props
 	 * @param string $device
 	 *
 	 * @return string
@@ -90,7 +90,7 @@ class ET_Builder_Module_Transition_Options {
 
 	/**
 	 * Return transition styles.
-	 * 
+	 *
 	 * @since 3.23 Add $device param to support responsive settings.
 	 *
 	 * @param string $property
@@ -102,7 +102,7 @@ class ET_Builder_Module_Transition_Options {
 	public function get_style( $property, $props, $device = 'desktop' ) {
 		$duration = $this->get_duration( $props, $device = 'desktop' );
 		$easing   = $this->get_easing( $props, $device = 'desktop' );
-		$delay    = $this->get_delay( $props, $device = 'desktop');
+		$delay    = $this->get_delay( $props, $device = 'desktop' );
 
 		return "{$property} {$duration} {$easing} {$delay}";
 	}

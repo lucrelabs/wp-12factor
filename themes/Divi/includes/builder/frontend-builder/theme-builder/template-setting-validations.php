@@ -4,9 +4,9 @@
  *
  * @since 4.2
  *
- * @param integer $id
- * @param string $type
- * @param string $subtype
+ * @param integer $id      Object ID.
+ * @param string  $type    Type.
+ * @param string  $subtype Subtype.
  *
  * @return integer
  */
@@ -28,10 +28,10 @@ function et_theme_builder_template_setting_filter_validation_object_id( $id, $ty
  *
  * @since 4.0
  *
- * @param string $type
- * @param string $subtype
- * @param integer $id
- * @param string[] $setting
+ * @param string   $type    Type.
+ * @param string   $subtype Subtype.
+ * @param integer  $id      ID.
+ * @param string[] $setting Setting.
  *
  * @return bool
  */
@@ -44,10 +44,10 @@ function et_theme_builder_template_setting_validate_homepage( $type, $subtype, $
  *
  * @since 4.0
  *
- * @param string $type
- * @param string $subtype
- * @param integer $id
- * @param string[] $setting
+ * @param string   $type    Type.
+ * @param string   $subtype Subtype.
+ * @param integer  $id      ID.
+ * @param string[] $setting Setting.
  *
  * @return bool
  */
@@ -65,10 +65,10 @@ function et_theme_builder_template_setting_validate_singular_post_type_all( $typ
  *
  * @since 4.0
  *
- * @param string $type
- * @param string $subtype
- * @param integer $id
- * @param string[] $setting
+ * @param string   $type    Type.
+ * @param string   $subtype Subtype.
+ * @param integer  $id      ID.
+ * @param string[] $setting Setting.
  *
  * @return bool
  */
@@ -81,10 +81,10 @@ function et_theme_builder_template_setting_validate_archive_post_type( $type, $s
  *
  * @since 4.0
  *
- * @param string $type
- * @param string $subtype
- * @param integer $id
- * @param string[] $setting
+ * @param string   $type    Type.
+ * @param string   $subtype Subtype.
+ * @param integer  $id      ID.
+ * @param string[] $setting Setting.
  *
  * @return bool
  */
@@ -104,10 +104,10 @@ function et_theme_builder_template_setting_validate_singular_post_type_id( $type
  *
  * @since 4.0
  *
- * @param string $type
- * @param string $subtype
- * @param integer $id
- * @param string[] $setting
+ * @param string   $type    Type.
+ * @param string   $subtype Subtype.
+ * @param integer  $id      ID.
+ * @param string[] $setting Setting.
  *
  * @return bool
  */
@@ -126,10 +126,10 @@ function et_theme_builder_template_setting_validate_singular_post_type_children_
  *
  * @since 4.0
  *
- * @param string $type
- * @param string $subtype
- * @param integer $id
- * @param string[] $setting
+ * @param string   $type    Type.
+ * @param string   $subtype Subtype.
+ * @param integer  $id      ID.
+ * @param string[] $setting Setting.
  *
  * @return bool
  */
@@ -149,10 +149,10 @@ function et_theme_builder_template_setting_validate_singular_taxonomy_term_id( $
  *
  * @since 4.0
  *
- * @param string $type
- * @param string $subtype
- * @param integer $id
- * @param string[] $setting
+ * @param string   $type    Type.
+ * @param string   $subtype Subtype.
+ * @param integer  $id      ID.
+ * @param string[] $setting Setting.
  *
  * @return bool
  */
@@ -172,10 +172,10 @@ function et_theme_builder_template_setting_validate_archive_all( $type, $subtype
  *
  * @since 4.0
  *
- * @param string $type
- * @param string $subtype
- * @param integer $id
- * @param string[] $setting
+ * @param string   $type    Type.
+ * @param string   $subtype Subtype.
+ * @param integer  $id      ID.
+ * @param string[] $setting Setting.
  *
  * @return bool
  */
@@ -188,10 +188,10 @@ function et_theme_builder_template_setting_validate_archive_taxonomy_all( $type,
  *
  * @since 4.0
  *
- * @param string $type
- * @param string $subtype
- * @param integer $id
- * @param string[] $setting
+ * @param string   $type    Type.
+ * @param string   $subtype Subtype.
+ * @param integer  $id      ID.
+ * @param string[] $setting Setting.
  *
  * @return bool
  */
@@ -219,10 +219,10 @@ function et_theme_builder_template_setting_validate_archive_taxonomy_term_id( $t
  *
  * @since 4.0
  *
- * @param string $type
- * @param string $subtype
- * @param integer $id
- * @param string[] $setting
+ * @param string   $type    Type.
+ * @param string   $subtype Subtype.
+ * @param integer  $id      ID.
+ * @param string[] $setting Setting.
  *
  * @return bool
  */
@@ -235,10 +235,10 @@ function et_theme_builder_template_setting_validate_archive_user_all( $type, $su
  *
  * @since 4.0
  *
- * @param string $type
- * @param string $subtype
- * @param integer $id
- * @param string[] $setting
+ * @param string   $type    Type.
+ * @param string   $subtype Subtype.
+ * @param integer  $id      ID.
+ * @param string[] $setting Setting.
  *
  * @return bool
  */
@@ -251,10 +251,10 @@ function et_theme_builder_template_setting_validate_archive_user_id( $type, $sub
  *
  * @since 4.0.10
  *
- * @param string $type
- * @param string $subtype
- * @param integer $id
- * @param string[] $setting
+ * @param string   $type    Type.
+ * @param string   $subtype Subtype.
+ * @param integer  $id      ID.
+ * @param string[] $setting Setting.
  *
  * @return bool
  */
@@ -281,10 +281,10 @@ function et_theme_builder_template_setting_validate_archive_user_role( $type, $s
  *
  * @since 4.0
  *
- * @param string $type
- * @param string $subtype
- * @param integer $id
- * @param string[] $setting
+ * @param string   $type    Type.
+ * @param string   $subtype Subtype.
+ * @param integer  $id      ID.
+ * @param string[] $setting Setting.
  *
  * @return bool
  */
@@ -297,10 +297,10 @@ function et_theme_builder_template_setting_validate_archive_date_all( $type, $su
  *
  * @since 4.0
  *
- * @param string $type
- * @param string $subtype
- * @param integer $id
- * @param string[] $setting
+ * @param string   $type    Type.
+ * @param string   $subtype Subtype.
+ * @param integer  $id      ID.
+ * @param string[] $setting Setting.
  *
  * @return bool
  */
@@ -313,10 +313,10 @@ function et_theme_builder_template_setting_validate_search( $type, $subtype, $id
  *
  * @since 4.0
  *
- * @param string $type
- * @param string $subtype
- * @param integer $id
- * @param string[] $setting
+ * @param string   $type    Type.
+ * @param string   $subtype Subtype.
+ * @param integer  $id      ID.
+ * @param string[] $setting Setting.
  *
  * @return bool
  */

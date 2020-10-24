@@ -63,7 +63,7 @@ function et_builder_wc_get_page_layouts( $translation_context = 'et_builder' ) {
 		default:
 			$product_page_layouts = array(
 				'et_build_from_scratch' => esc_html__( 'Build From Scratch', 'et_builder' ),
-				'et_default_layout'     => esc_html__( 'Default', 'et_builder' ),
+				'et_default_layout'     => et_builder_i18n( 'Default' ),
 			);
 			break;
 	}
@@ -111,7 +111,7 @@ function et_builder_wc_add_settings( $builder_settings_fields ) {
 			'tab_slug'        => 'post_type_integration',
 			'toggle_slug'     => 'performance',
 		),
-		'et_pb_woocommerce_page_layout' => array(
+		'et_pb_woocommerce_page_layout'    => array(
 			'type'            => 'select',
 			'id'              => 'et_pb_woocommerce_product_page_layout',
 			'index'           => -1,
@@ -211,7 +211,7 @@ function et_builder_wc_get_product_layout( $post_id ) {
 		return false;
 	}
 
-	return  get_post_meta( $post_id, ET_BUILDER_WC_PRODUCT_PAGE_LAYOUT_META_KEY, true );
+	return get_post_meta( $post_id, ET_BUILDER_WC_PRODUCT_PAGE_LAYOUT_META_KEY, true );
 }
 
 /**
@@ -245,8 +245,11 @@ function et_builder_wc_set_initial_content( $maybe_shortcode_content, $post_id )
 		);
 	}
 
-	$is_product_content_modified = 'modified' === get_post_meta( $post_id,
-			ET_BUILDER_WC_PRODUCT_PAGE_CONTENT_STATUS_META_KEY, true );
+	$is_product_content_modified = 'modified' === get_post_meta(
+		$post_id,
+		ET_BUILDER_WC_PRODUCT_PAGE_CONTENT_STATUS_META_KEY,
+		true
+	);
 
 	// Content was already saved or default content should be loaded.
 	if ( $is_product_content_modified || 'et_default_layout' === $product_page_layout ) {
@@ -254,8 +257,8 @@ function et_builder_wc_set_initial_content( $maybe_shortcode_content, $post_id )
 	}
 
 	if ( has_shortcode( $maybe_shortcode_content, 'et_pb_section' ) &&
-	     'et_build_from_scratch' === $product_page_layout &&
-	     ! empty( $maybe_shortcode_content ) ) {
+		 'et_build_from_scratch' === $product_page_layout &&
+		 ! empty( $maybe_shortcode_content ) ) {
 		$args['existing_shortcode'] = $maybe_shortcode_content;
 	}
 
@@ -348,7 +351,8 @@ function et_builder_wc_long_description_metabox_register( $post ) {
 		return;
 	}
 
-	add_meta_box( 'et_builder_wc_product_long_description_metabox',
+	add_meta_box(
+		'et_builder_wc_product_long_description_metabox',
 		__( 'Product long description', 'et_builder' ),
 		'et_builder_wc_long_description_metabox_render',
 		'product',
@@ -373,7 +377,7 @@ function et_builder_wc_need_overwrite_global( $product_id = 'current' ) {
 	// ajax request, computed callback jax request (all ajax request has faulty global variable),
 	// and if `product` attribute is not current page's product id (ie Woo Tabs being used
 	// on non `product` CPT)
-	$need_overwrite_global   = ! $is_current_product_page
+	$need_overwrite_global = ! $is_current_product_page
 		|| et_fb_is_builder_ajax()
 		|| et_fb_is_computed_callback_ajax();
 
@@ -386,8 +390,8 @@ function et_builder_wc_need_overwrite_global( $product_id = 'current' ) {
  * @since 3.29
  *
  * @param string $function_name
- * @param array $args
- * @param array $overwrite
+ * @param array  $args
+ * @param array  $overwrite
  *
  * @return string
  */
@@ -397,8 +401,8 @@ function et_builder_wc_render_module_template( $function_name, $args = array(), 
 		return;
 	}
 
-	// Check if passed function name is whitelisted or not
-	$whitelisted_functions = array(
+	// Check if passed function name is allowlisted or not
+	$allowlisted_functions = array(
 		'the_title',
 		'woocommerce_breadcrumb',
 		'woocommerce_template_single_price',
@@ -414,7 +418,7 @@ function et_builder_wc_render_module_template( $function_name, $args = array(), 
 		'woocommerce_upsell_display',
 	);
 
-	if ( ! in_array( $function_name, $whitelisted_functions ) ) {
+	if ( ! in_array( $function_name, $allowlisted_functions ) ) {
 		return '';
 	}
 
@@ -436,7 +440,7 @@ function et_builder_wc_render_module_template( $function_name, $args = array(), 
 		// module template rendering instead of once for all module template rendering because some
 		// module's template rendering uses `wp_reset_postdata()` which resets global query
 		et_theme_builder_wc_set_global_objects();
-	} else if ( $overwrite_global ) {
+	} elseif ( $overwrite_global ) {
 		$is_latest_product       = 'latest' === $args['product'];
 		$is_current_product_page = 'current' === $args['product'];
 
@@ -460,12 +464,14 @@ function et_builder_wc_render_module_template( $function_name, $args = array(), 
 
 		if ( 'product' !== get_post_type( $product_id ) ) {
 			// We are in a Theme Builder layout and the current post is not a product - use the latest one instead.
-			$products = new WP_Query( array(
-				'post_type'      => 'product',
-				'post_status'    => 'publish',
-				'posts_per_page' => 1,
-				'no_found_rows'  => true,
-			) );
+			$products = new WP_Query(
+				array(
+					'post_type'      => 'product',
+					'post_status'    => 'publish',
+					'posts_per_page' => 1,
+					'no_found_rows'  => true,
+				)
+			);
 
 			if ( ! $products->have_posts() ) {
 				return '';
@@ -476,8 +482,8 @@ function et_builder_wc_render_module_template( $function_name, $args = array(), 
 
 		// Overwrite product
 		if ( $overwrite_product ) {
-			$original_product   = $product;
-			$product            = wc_get_product( $product_id );
+			$original_product = $product;
+			$product          = wc_get_product( $product_id );
 		}
 
 		// Overwrite post
@@ -495,15 +501,17 @@ function et_builder_wc_render_module_template( $function_name, $args = array(), 
 
 	ob_start();
 
-	switch( $function_name ) {
+	switch ( $function_name ) {
 		case 'woocommerce_breadcrumb':
 			$breadcrumb_separator = et_()->array_get( $args, 'breadcrumb_separator', '' );
 			$breadcrumb_separator = str_replace( '&#8221;', '', $breadcrumb_separator );
 
-			woocommerce_breadcrumb( array(
-				'delimiter'   => ' ' . $breadcrumb_separator . ' ',
-				'home'        => et_()->array_get( $args, 'breadcrumb_home_text', '' ),
-			) );
+			woocommerce_breadcrumb(
+				array(
+					'delimiter' => ' ' . $breadcrumb_separator . ' ',
+					'home'      => et_()->array_get( $args, 'breadcrumb_home_text', '' ),
+				)
+			);
 			break;
 		case 'woocommerce_show_product_images':
 			// WC Images module needs to modify global variable's property. Thus it is performed
@@ -585,7 +593,7 @@ function et_builder_wc_render_module_template( $function_name, $args = array(), 
 	// Reset original product variable to global $product
 	if ( $is_tb ) {
 		et_theme_builder_wc_reset_global_objects();
-	} else if ( $overwrite_global ) {
+	} elseif ( $overwrite_global ) {
 		// Reset $product global
 		if ( $overwrite_product ) {
 			$product = $original_product;
@@ -752,7 +760,7 @@ function et_builder_wc_override_default_layout() {
 	 * @see https://github.com/elegantthemes/Divi/issues/16155
 	 */
 	if ( ! $product_page_layout && ! et_core_is_fb_enabled()
-	     || ( $product_page_layout && 'et_build_from_scratch' !== $product_page_layout )
+		 || ( $product_page_layout && 'et_build_from_scratch' !== $product_page_layout )
 	) {
 		return;
 	}
@@ -776,11 +784,12 @@ function et_builder_wc_override_default_layout() {
  *
  * Otherwise, the description would be shown in both Product Tabs and at the end of the
  * default WooCommerce layout set at
+ *
  * @see et_builder_wc_get_initial_content()
  *
  * @since 3.29
  *
- * @param bool $flag
+ * @param bool    $flag
  * @param WP_Post $post
  *
  * @return bool
@@ -888,12 +897,28 @@ function et_builder_wc_is_non_product_post_type() {
  *       removed here because there is currently no WooCommerce module equivalent of them
  *
  * @since 3.29
+ *
+ * @since 4.3.3 Loads WC scripts on Shop, Product Category & Product Tags archives.
  */
 function et_builder_wc_load_scripts() {
 	global $post;
 
+	$is_shop = function_exists( 'is_shop' ) && is_shop();
+
+	// is_product_taxonomy() is not returning TRUE for Category & Tags.
+	// Hence we check Category & Tag archives individually.
+	$is_product_category = function_exists( 'is_product_category' ) && is_product_category();
+	$is_product_tag      = function_exists( 'is_product_tag' ) && is_product_tag();
+
 	// If current page is not non-`product` CPT which using builder, stop early
-	if ( ( ! et_builder_wc_is_non_product_post_type() || ! class_exists( 'WC_Frontend_Scripts' ) ) && function_exists( 'et_fb_enabled' ) && ! et_fb_enabled() ) {
+	if ( ( ! et_builder_wc_is_non_product_post_type()
+			|| ! class_exists( 'WC_Frontend_Scripts' ) )
+		&& function_exists( 'et_fb_enabled' )
+		&& ! et_fb_enabled()
+		&& ! $is_shop
+		&& ! $is_product_category
+		&& ! $is_product_tag
+	) {
 		return;
 	}
 
@@ -1001,10 +1026,13 @@ function et_builder_wc_add_outer_content_class( $classes ) {
 
 	// Add Class only when the <body> tag does not contain them.
 	$woocommerce_classes = array( 'woocommerce', 'woocommerce-page' );
-	$common_classes      = array_intersect( $body_classes, array(
-		'woocommerce',
-		'woocommerce-page',
-	) );
+	$common_classes      = array_intersect(
+		$body_classes,
+		array(
+			'woocommerce',
+			'woocommerce-page',
+		)
+	);
 	if ( is_array( $common_classes )
 		 && count( $woocommerce_classes ) === count( $common_classes ) ) {
 		return $classes;
@@ -1075,19 +1103,48 @@ function et_builder_set_product_page_layout_meta( $post_id ) {
  * @link https://github.com/elegantthemes/Divi/issues/16420
  *
  * @param int $post_id Post ID.
- *
  */
 function et_builder_set_product_content_status( $post_id ) {
 	if ( 0 === absint( $post_id ) ) {
 		return;
 	}
 
-	if ( 'product' !== get_post_type( $post_id ) || 'modified' === get_post_meta( $post_id,
-			ET_BUILDER_WC_PRODUCT_PAGE_CONTENT_STATUS_META_KEY, true ) ) {
+	if ( 'product' !== get_post_type( $post_id ) || 'modified' === get_post_meta(
+		$post_id,
+		ET_BUILDER_WC_PRODUCT_PAGE_CONTENT_STATUS_META_KEY,
+		true
+	) ) {
 		return;
 	}
 
 	update_post_meta( $post_id, ET_BUILDER_WC_PRODUCT_PAGE_CONTENT_STATUS_META_KEY, 'modified' );
+}
+
+/**
+ * Gets Woocommerce Tabs for the given Product ID.
+ *
+ * @since 4.4.2
+ */
+function et_builder_get_woocommerce_tabs() {
+	// Nonce verification.
+	et_core_security_check( 'edit_posts', 'et_builder_get_woocommerce_tabs', 'nonce' );
+
+	$_          = et_();
+	$product_id = $_->array_get( $_POST, 'product', 0 );
+
+	if ( null === $product_id || ! et_is_woocommerce_plugin_active() ) {
+		wp_send_json_error();
+	}
+
+	// Allow Latest Product ID which is a string 'latest'.
+	// `This Product` tabs are defined in et_fb_current_page_params()
+	if ( ! in_array( $product_id, array( 'current', 'latest' ) ) && 0 === absint( $product_id ) ) {
+		wp_send_json_error();
+	}
+
+	$tabs = ET_Builder_Module_Woocommerce_Tabs::get_tabs( array( 'product' => $product_id ) );
+
+	wp_send_json_success( $tabs );
 }
 
 /**
@@ -1111,6 +1168,67 @@ function et_builder_trigger_extra_product_options( $hook ) {
 }
 
 /**
+ * Strip Builder shortcodes to avoid nested parsing.
+ *
+ * @see   https://github.com/elegantthemes/Divi/issues/18682
+ *
+ * @param string $content
+ *
+ * @since 4.3.3
+ *
+ * @return string
+ */
+function et_builder_avoid_nested_shortcode_parsing( $content ) {
+	// Strip shortcodes only on non-builder pages that contain Builder shortcodes.
+	if ( et_pb_is_pagebuilder_used( get_the_ID() ) ) {
+		return $content;
+	}
+
+	// WooCommerce layout loads when builder is not enabled.
+	// So strip builder shortcodes from Post content.
+	if ( function_exists( 'is_product' ) && is_product() ) {
+		return et_strip_shortcodes( $content );
+	}
+
+	// Strip builder shortcodes from non-product pages.
+	// Only Tabs shortcode is checked since that causes nested rendering.
+	if ( has_shortcode( $content, 'et_pb_wc_tabs' ) ) {
+		return et_strip_shortcodes( $content );
+	}
+
+	return $content;
+}
+
+/**
+ * Parses Product description to
+ *
+ * - converts any [embed][/embed] shortcode to its respective HTML.
+ * - strips `et_` shortcodes to avoid nested rendering in Woo Tabs module.
+ * - adds <p> tag to keep the paragraph sanity.
+ * - runs other shortcodes if any using do_shortcode.
+ *
+ * @since 4.4.1
+ *
+ * @param string $description
+ *
+ * @return string
+ */
+function et_builder_wc_parse_description( $description ) {
+	if ( ! is_string( $description ) ) {
+		return $description;
+	}
+
+	global $wp_embed;
+
+	$parsed_description = et_strip_shortcodes( $description );
+	$parsed_description = $wp_embed->run_shortcode( $parsed_description );
+	$parsed_description = do_shortcode( $parsed_description );
+	$parsed_description = wpautop( $parsed_description );
+
+	return $parsed_description;
+}
+
+/**
  * Entry point for the woocommerce-modules.php file.
  *
  * @since 3.29
@@ -1123,7 +1241,6 @@ function et_builder_wc_init() {
 	add_filter( 'body_class', 'et_builder_wc_add_body_class' );
 	add_filter( 'et_builder_inner_content_class', 'et_builder_wc_add_inner_content_class' );
 	add_filter( 'et_builder_outer_content_class', 'et_builder_wc_add_outer_content_class' );
-
 
 	// Load WooCommerce related scripts
 	add_action( 'wp_enqueue_scripts', 'et_builder_wc_load_scripts', 15 );
@@ -1177,10 +1294,23 @@ function et_builder_wc_init() {
 	add_action( 'et_update_post', 'et_builder_set_product_content_status' );
 
 	/*
+	 * Handle get Woocommerce tabs AJAX call initiated by Tabs checkbox in settings modal.
+	 */
+	add_action( 'wp_ajax_et_builder_get_woocommerce_tabs', 'et_builder_get_woocommerce_tabs' );
+
+	/*
 	 * Fix Woo Extra Product Options addon compatibility.
 	 * @see https://github.com/elegantthemes/Divi/issues/17909
 	 */
 	add_filter( 'thwepof_hook_name_before_single_product', 'et_builder_trigger_extra_product_options' );
+
+	/*
+	 * Fix nested parsing on non-builder product pages w/ shortcode content.
+	 * @see https://github.com/elegantthemes/Divi/issues/18682
+	 */
+	add_filter( 'the_content', 'et_builder_avoid_nested_shortcode_parsing' );
+
+	add_filter( 'et_builder_wc_description', 'et_builder_wc_parse_description' );
 }
 
 et_builder_wc_init();

@@ -46,9 +46,9 @@ class ET_Builder_Plugin_Compat_Events_Manager extends ET_Builder_Plugin_Compat_B
 	 * @since 3.10
 	 *
 	 * @param string $replace
-	 * @param mixed $event
+	 * @param mixed  $event
 	 * @param string $full_result
-	 * @param mixed $target
+	 * @param mixed  $target
 	 *
 	 * @return string
 	 */
@@ -68,4 +68,4 @@ class ET_Builder_Plugin_Compat_Events_Manager extends ET_Builder_Plugin_Compat_B
 	}
 }
 
-new ET_Builder_Plugin_Compat_Events_Manager;
+new ET_Builder_Plugin_Compat_Events_Manager();

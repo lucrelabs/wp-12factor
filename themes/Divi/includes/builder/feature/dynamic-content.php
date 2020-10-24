@@ -42,8 +42,8 @@ function et_builder_get_product_dynamic_content_fields() {
 			'type'  => 'text',
 		),
 		'product_reviews_tab'            => array(
-			'label'  => esc_html__( 'Product Reviews', 'et_builder' ),
-			'type'   => 'url',
+			'label' => esc_html__( 'Product Reviews', 'et_builder' ),
+			'type'  => 'url',
 		),
 	);
 }
@@ -64,13 +64,14 @@ function et_builder_get_built_in_dynamic_content_fields( $post_id ) {
 		return et_core_cache_get( $cache_key );
 	}
 
-	$post_type              = get_post_type( $post_id );
-	$post_type              = $post_type ? $post_type : 'post';
-	$post_type_object       = get_post_type_object( $post_type );
-	$post_type_label        = $post_type_object->labels->singular_name;
-	$post_taxonomy_types    = et_builder_get_taxonomy_types( $post_type );
-	$tag_taxonomy_post_type = $post_type;
-	$fields                 = array();
+	$post_type                = get_post_type( $post_id );
+	$post_type                = $post_type ? $post_type : 'post';
+	$post_type_object         = get_post_type_object( $post_type );
+	$post_type_label          = $post_type_object->labels->singular_name;
+	$post_taxonomy_types      = et_builder_get_taxonomy_types( $post_type );
+	$tag_taxonomy_post_type   = $post_type;
+	$fields                   = array();
+	$before_after_field_types = array( 'text', 'any' );
 
 	if ( et_theme_builder_is_layout_post_type( $post_type ) ) {
 		$post_type_label        = esc_html__( 'Post', 'et_builder' );
@@ -98,7 +99,7 @@ function et_builder_get_built_in_dynamic_content_fields( $post_id ) {
 	}
 
 	$date_format_options = array(
-		'default' => esc_html__( 'Default', 'et_builder' ),
+		'default' => et_builder_i18n( 'Default' ),
 		'M j, Y'  => esc_html__( 'Aug 6, 1999 (M j, Y)', 'et_builder' ),
 		'F d, Y'  => esc_html__( 'August 06, 1999 (F d, Y)', 'et_builder' ),
 		'm/d/Y'   => esc_html__( '08/06/1999 (m/d/Y)', 'et_builder' ),
@@ -163,8 +164,8 @@ function et_builder_get_built_in_dynamic_content_fields( $post_id ) {
 				'label'   => esc_html__( 'Link to Comments Area', 'et_builder' ),
 				'type'    => 'yes_no_button',
 				'options' => array(
-					'on'  => esc_html__( 'Yes', 'et_builder' ),
-					'off' => esc_html__( 'No', 'et_builder' ),
+					'on'  => et_builder_i18n( 'Yes' ),
+					'off' => et_builder_i18n( 'No' ),
 				),
 				'default' => 'on',
 			),
@@ -181,17 +182,17 @@ function et_builder_get_built_in_dynamic_content_fields( $post_id ) {
 					'label'   => esc_html__( 'Link to Category Index Pages', 'et_builder' ),
 					'type'    => 'yes_no_button',
 					'options' => array(
-						'on'  => esc_html__( 'Yes', 'et_builder' ),
-						'off' => esc_html__( 'No', 'et_builder' ),
+						'on'  => et_builder_i18n( 'Yes' ),
+						'off' => et_builder_i18n( 'No' ),
 					),
 					'default' => 'on',
 				),
-				'separator'             => array(
+				'separator'         => array(
 					'label'   => esc_html__( 'Categories Separator', 'et_builder' ),
 					'type'    => 'text',
 					'default' => ' | ',
 				),
-				'category_type'         => array(
+				'category_type'     => array(
 					'label'   => esc_html__( 'Category Type', 'et_builder' ),
 					'type'    => 'select',
 					'options' => $post_taxonomy_types,
@@ -202,7 +203,7 @@ function et_builder_get_built_in_dynamic_content_fields( $post_id ) {
 	}
 
 	// Fill in tag taxonomies.
-	if ( isset( $post_taxonomy_types["{$tag_taxonomy_post_type}_tag"] ) ) {
+	if ( isset( $post_taxonomy_types[ "{$tag_taxonomy_post_type}_tag" ] ) ) {
 		$fields['post_tags'] = array(
 			// Translators: %1$s: Post type name
 			'label'  => esc_html( sprintf( __( '%1$s Tags', 'et_builder' ), $post_type_label ) ),
@@ -212,17 +213,17 @@ function et_builder_get_built_in_dynamic_content_fields( $post_id ) {
 					'label'   => esc_html__( 'Link to Tag Index Pages', 'et_builder' ),
 					'type'    => 'yes_no_button',
 					'options' => array(
-						'on'  => esc_html__( 'Yes', 'et_builder' ),
-						'off' => esc_html__( 'No', 'et_builder' ),
+						'on'  => et_builder_i18n( 'Yes' ),
+						'off' => et_builder_i18n( 'No' ),
 					),
 					'default' => 'on',
 				),
-				'separator'        => array(
+				'separator'         => array(
 					'label'   => esc_html__( 'Tags Separator', 'et_builder' ),
 					'type'    => 'text',
 					'default' => ' | ',
 				),
-				'category_type'    => array(
+				'category_type'     => array(
 					'label'   => esc_html__( 'Category Type', 'et_builder' ),
 					'type'    => 'select',
 					'options' => $post_taxonomy_types,
@@ -281,8 +282,8 @@ function et_builder_get_built_in_dynamic_content_fields( $post_id ) {
 				'label'   => esc_html__( 'Link Name', 'et_builder' ),
 				'type'    => 'yes_no_button',
 				'options' => array(
-					'on'  => esc_html__( 'Yes', 'et_builder' ),
-					'off' => esc_html__( 'No', 'et_builder' ),
+					'on'  => et_builder_i18n( 'Yes' ),
+					'off' => et_builder_i18n( 'No' ),
 				),
 				'default' => 'off',
 			),
@@ -346,32 +347,32 @@ function et_builder_get_built_in_dynamic_content_fields( $post_id ) {
 
 	$fields['post_link_url'] = array(
 		// Translators: %1$s: Post type name
-		'label'  => esc_html( sprintf( __( 'Current %1$s Link', 'et_builder' ), $post_type_label ) ),
-		'type'   => 'url',
+		'label' => esc_html( sprintf( __( 'Current %1$s Link', 'et_builder' ), $post_type_label ) ),
+		'type'  => 'url',
 	);
 
 	$fields['post_author_url'] = array(
-		'label'  => esc_html__( 'Author Page Link', 'et_builder' ),
-		'type'   => 'url',
+		'label' => esc_html__( 'Author Page Link', 'et_builder' ),
+		'type'  => 'url',
 	);
 
 	$fields['home_url'] = array(
-		'label'  => esc_html__( 'Homepage Link', 'et_builder' ),
-		'type'   => 'url',
+		'label' => esc_html__( 'Homepage Link', 'et_builder' ),
+		'type'  => 'url',
 	);
 
 	// Fill in post type URL options.
 	$post_types = et_builder_get_public_post_types();
 	foreach ( $post_types as $public_post_type ) {
 		$public_post_type_label = $public_post_type->labels->singular_name;
-		$key = 'post_link_url_' . $public_post_type->name;
+		$key                    = 'post_link_url_' . $public_post_type->name;
 
 		$fields[ $key ] = array(
 			// Translators: %1$s: Post type name
 			'label'  => esc_html( sprintf( __( '%1$s Link', 'et_builder' ), $public_post_type_label ) ),
 			'type'   => 'url',
 			'fields' => array(
-				'post_id'            => array(
+				'post_id' => array(
 					'label'     => $public_post_type_label,
 					'type'      => 'select_post',
 					'post_type' => $public_post_type->name,
@@ -382,20 +383,47 @@ function et_builder_get_built_in_dynamic_content_fields( $post_id ) {
 	}
 
 	$fields['post_featured_image'] = array(
-		'label'  => esc_html__( 'Featured Image', 'et_builder' ),
-		'type'   => 'image',
+		'label' => esc_html__( 'Featured Image', 'et_builder' ),
+		'type'  => 'image',
 	);
 
 	$fields['post_author_profile_picture'] = array(
 		// Translators: %1$s: Post type name
-		'label'  => esc_html__( 'Author Profile Picture', 'et_builder' ),
-		'type'   => 'image',
+		'label' => esc_html__( 'Author Profile Picture', 'et_builder' ),
+		'type'  => 'image',
 	);
 
 	$fields['site_logo'] = array(
-		'label'  => esc_html__( 'Site Logo', 'et_builder' ),
-		'type'   => 'image',
+		'label' => esc_html__( 'Site Logo', 'et_builder' ),
+		'type'  => 'image',
 	);
+
+	if ( et_builder_tb_enabled() ) {
+		$fields['post_meta_key'] = array(
+			'label'  => esc_html__( 'Manual Custom Field Name', 'et_builder' ),
+			'type'   => 'any',
+			'group'  => esc_html__( 'Custom Fields', 'et_builder' ),
+			'fields' => array(
+				'meta_key' => array(
+					'label' => esc_html__( 'Field Name', 'et_builder' ),
+					'type'  => 'text',
+				),
+			),
+		);
+
+		if ( current_user_can( 'unfiltered_html' ) ) {
+			$fields['post_meta_key']['fields']['enable_html'] = array(
+				'label'   => esc_html__( 'Enable raw HTML', 'et_builder' ),
+				'type'    => 'yes_no_button',
+				'options' => array(
+					'on'  => et_builder_i18n( 'Yes' ),
+					'off' => et_builder_i18n( 'No' ),
+				),
+				'default' => 'off',
+				'show_on' => 'text',
+			);
+		}
+	}
 
 	/*
 	 * Include Product dynamic fields on Product post type.
@@ -411,22 +439,25 @@ function et_builder_get_built_in_dynamic_content_fields( $post_id ) {
 	// Fill in boilerplate.
 	foreach ( $fields as $key => $field ) {
 		$fields[ $key ]['custom'] = false;
-		$fields[ $key ]['group']  = 'Default';
+		$fields[ $key ]['group']  = et_()->array_get( $fields, "{$key}.group", 'Default' );
 
-		if ( 'text' === $field['type'] ) {
+		if ( in_array( $field['type'], $before_after_field_types, true ) ) {
 			$settings = isset( $field['fields'] ) ? $field['fields'] : array();
-			$settings = array_merge( array(
-				'before' => array(
-					'label'   => esc_html__( 'Before', 'et_builder' ),
-					'type'    => 'text',
-					'default' => '',
+			$settings = array_merge(
+				array(
+					'before' => array(
+						'label'   => et_builder_i18n( 'Before' ),
+						'type'    => 'text',
+						'default' => '',
+					),
+					'after'  => array(
+						'label'   => et_builder_i18n( 'After' ),
+						'type'    => 'text',
+						'default' => '',
+					),
 				),
-				'after'  => array(
-					'label'   => esc_html__( 'After', 'et_builder' ),
-					'type'    => 'text',
-					'default' => '',
-				),
-			), $settings );
+				$settings
+			);
 
 			$fields[ $key ]['fields'] = $settings;
 		}
@@ -476,6 +507,115 @@ function et_builder_get_taxonomy_types( $post_type ) {
 }
 
 /**
+ * Get a user-friendly custom field label for the given meta key.
+ *
+ * @since 4.4.4
+ *
+ * @param string $key
+ *
+ * @return string
+ */
+function et_builder_get_dynamic_content_custom_field_label( $key ) {
+	$label = str_replace( array( '_', '-' ), ' ', $key );
+	$label = ucwords( $label );
+	$label = trim( $label );
+	return $label;
+}
+
+/**
+ * Get all dynamic content fields in a given string.
+ *
+ * @since 4.4.4
+ *
+ * @param string $content
+ *
+ * @return array
+ */
+function et_builder_get_dynamic_contents( $content ) {
+	$is_matched = preg_match_all( ET_THEME_BUILDER_DYNAMIC_CONTENT_REGEX, $content, $matches );
+
+	if ( ! $is_matched ) {
+		return array();
+	}
+
+	return $matches[0];
+}
+
+/**
+ * Get all meta keys used as dynamic content in the content of a post.
+ *
+ * @param integer $post_id
+ *
+ * @return array
+ */
+function et_builder_get_used_dynamic_content_meta_keys( $post_id ) {
+	$transient      = 'et_builder_dynamic_content_used_meta_keys_' . $post_id;
+	$used_meta_keys = get_transient( $transient );
+
+	if ( false !== $used_meta_keys ) {
+		return $used_meta_keys;
+	}
+
+	// The most used meta keys will change from time to time so we will also retrieve the used meta keys in the layout
+	// content to make sure that the previously selected meta keys always stay in the list even if they are not in the
+	// most used meta keys list anymore.
+	$layout_post      = get_post( $post_id );
+	$used_meta_keys   = array();
+	$dynamic_contents = et_builder_get_dynamic_contents( $layout_post->post_content );
+
+	foreach ( $dynamic_contents as $dynamic_content ) {
+		$dynamic_content = et_builder_parse_dynamic_content( $dynamic_content );
+		$key             = $dynamic_content->get_content();
+
+		if ( et_()->starts_with( $key, 'custom_meta_' ) ) {
+			$meta_key         = substr( $key, strlen( 'custom_meta_' ) );
+			$used_meta_keys[] = $meta_key;
+		}
+	}
+
+	set_transient( $transient, $used_meta_keys, 5 * MINUTE_IN_SECONDS );
+
+	return $used_meta_keys;
+}
+
+/**
+ * Get most used meta keys on public post types.
+ *
+ * @since 4.4.4
+ *
+ * @param integer $post_id
+ *
+ * @return string[]
+ */
+function et_builder_get_most_used_post_meta_keys() {
+	global $wpdb;
+
+	$most_used_meta_keys = get_transient( 'et_builder_most_used_meta_keys' );
+	if ( false !== $most_used_meta_keys ) {
+		return $most_used_meta_keys;
+	}
+
+	$public_post_types      = array_keys( et_builder_get_public_post_types() );
+	$post_type_placeholders = implode( ',', array_fill( 0, count( $public_post_types ), '%s' ) );
+
+	$sql = $wpdb->prepare(
+		"SELECT DISTINCT pm.meta_key FROM {$wpdb->postmeta} pm
+		INNER JOIN {$wpdb->posts} p ON ( p.ID = pm.post_id AND p.post_type IN ({$post_type_placeholders}) )
+		WHERE pm.meta_key NOT LIKE '\_%'
+		GROUP BY pm.meta_key
+		ORDER BY COUNT(pm.meta_key) DESC
+		LIMIT 50",
+		$public_post_types
+	);
+
+	$most_used_meta_keys = $wpdb->get_col( $sql );
+
+	set_transient( 'et_builder_most_used_meta_keys', $most_used_meta_keys, 5 * MINUTE_IN_SECONDS );
+
+	return $most_used_meta_keys;
+}
+
+/**
  * Get custom dynamic content fields.
  *
  * @since 3.17.2
@@ -504,6 +644,15 @@ function et_builder_get_custom_dynamic_content_fields( $post_id ) {
 	 */
 	$display_hidden_meta_keys = apply_filters( 'et_builder_dynamic_content_display_hidden_meta_keys', array(), $post_id );
 
+	// Custom dynamic fields to be displayed on the TB.
+	if ( et_theme_builder_is_layout_post_type( get_post_type( $post_id ) ) ) {
+		$raw_custom_fields = array_merge(
+			$raw_custom_fields,
+			array_flip( et_builder_get_most_used_post_meta_keys() ),
+			array_flip( et_builder_get_used_dynamic_content_meta_keys( $post_id ) )
+		);
+	}
+
 	foreach ( $raw_custom_fields as $key => $values ) {
 		if ( substr( $key, 0, 1 ) === '_' && ! in_array( $key, $display_hidden_meta_keys ) ) {
 			// Ignore hidden meta keys.
@@ -515,9 +664,7 @@ function et_builder_get_custom_dynamic_content_fields( $post_id ) {
 			continue;
 		}
 
-		$label = str_replace( array( '_', '-' ), ' ', $key );
-		$label = ucwords( $label );
-		$label = trim( $label );
+		$label = et_builder_get_dynamic_content_custom_field_label( $key );
 
 		/**
 		 * Filter the display label for a custom field.
@@ -534,13 +681,13 @@ function et_builder_get_custom_dynamic_content_fields( $post_id ) {
 			'type'     => 'any',
 			'fields'   => array(
 				'before' => array(
-					'label'   => esc_html__( 'Before', 'et_builder' ),
+					'label'   => et_builder_i18n( 'Before' ),
 					'type'    => 'text',
 					'default' => '',
 					'show_on' => 'text',
 				),
 				'after'  => array(
-					'label'   => esc_html__( 'After', 'et_builder' ),
+					'label'   => et_builder_i18n( 'After' ),
 					'type'    => 'text',
 					'default' => '',
 					'show_on' => 'text',
@@ -556,8 +703,8 @@ function et_builder_get_custom_dynamic_content_fields( $post_id ) {
 				'label'   => esc_html__( 'Enable raw HTML', 'et_builder' ),
 				'type'    => 'yes_no_button',
 				'options' => array(
-					'on'  => esc_html__( 'Yes', 'et_builder' ),
-					'off' => esc_html__( 'No', 'et_builder' ),
+					'on'  => et_builder_i18n( 'Yes' ),
+					'off' => et_builder_i18n( 'No' ),
 				),
 				'default' => 'off',
 				'show_on' => 'text',
@@ -589,7 +736,7 @@ function et_builder_get_custom_dynamic_content_fields( $post_id ) {
  * @since 3.17.2
  *
  * @param integer $post_id
- * @param string $context
+ * @param string  $context
  *
  * @return array[]
  */
@@ -629,10 +776,12 @@ function et_builder_get_dynamic_content_fields( $post_id, $context ) {
 function et_builder_sort_dynamic_content_fields( $a, $b ) {
 	global $__et_dynamic_content_fields_index_map;
 
-	$top = array_flip( array(
-		'Default',
-		__( 'Custom Fields', 'et_builder' ),
-	) );
+	$top = array_flip(
+		array(
+			'Default',
+			__( 'Custom Fields', 'et_builder' ),
+		)
+	);
 
 	$a_group  = et_()->array_get( $a, 'group', 'Default' );
 	$a_is_top = isset( $top[ $a_group ] );
@@ -663,8 +812,8 @@ function et_builder_sort_dynamic_content_fields( $a, $b ) {
  * @since 3.17.2
  *
  * @param integer $post_id
- * @param string $field
- * @param string $setting
+ * @param string  $field
+ * @param string  $setting
  *
  * @return string
  */
@@ -680,11 +829,11 @@ function et_builder_get_dynamic_attribute_field_default( $post_id, $field, $sett
  *
  * @since 3.17.2
  *
- * @param string $name
- * @param array $settings
+ * @param string  $name
+ * @param array   $settings
  * @param integer $post_id
- * @param string $context
- * @param array $overrides
+ * @param string  $context
+ * @param array   $overrides
  *
  * @return string
  */
@@ -720,6 +869,8 @@ function et_builder_resolve_dynamic_content( $name, $settings, $post_id, $contex
 	 */
 	$content = apply_filters( "et_builder_resolve_dynamic_content_{$name}", $content, $settings, $post_id, $context, $overrides );
 
+	$content = et_maybe_enable_embed_shortcode( $content, $is_content );
+
 	return $is_content ? do_shortcode( $content ) : $content;
 }
 
@@ -729,9 +880,9 @@ function et_builder_resolve_dynamic_content( $name, $settings, $post_id, $contex
  * @since 3.17.2
  *
  * @param integer $post_id
- * @param string $name
- * @param string $value
- * @param array $settings
+ * @param string  $name
+ * @param string  $value
+ * @param array   $settings
  *
  * @return string
  */
@@ -745,7 +896,7 @@ function et_builder_wrap_dynamic_content( $post_id, $name, $value, $settings ) {
 	$user_id     = get_post_field( 'post_author', $cap_post_id );
 
 	if ( ! user_can( $user_id, 'unfiltered_html' ) ) {
-		$whitelist = array_merge(
+		$allowlist = array_merge(
 			wp_kses_allowed_html( '' ),
 			array(
 				'h1'   => array(),
@@ -762,8 +913,8 @@ function et_builder_wrap_dynamic_content( $post_id, $name, $value, $settings ) {
 			)
 		);
 
-		$before = wp_kses( $before, $whitelist );
-		$after  = wp_kses( $after, $whitelist );
+		$before = wp_kses( $before, $allowlist );
+		$after  = wp_kses( $after, $allowlist );
 	}
 
 	return $before . $value . $after;
@@ -774,16 +925,16 @@ function et_builder_wrap_dynamic_content( $post_id, $name, $value, $settings ) {
  *
  * @since 3.17.2
  *
- * @param string $content
- * @param string $name
- * @param array $settings
- * @param string $context
+ * @param string  $content
+ * @param string  $name
+ * @param array   $settings
+ * @param string  $context
  * @param integer $post_id
  *
  * @return string
  */
 function et_builder_filter_resolve_default_dynamic_content( $content, $name, $settings, $post_id, $context, $overrides ) {
-	global $shortname;
+	global $shortname, $wp_query;
 
 	$_       = ET_Core_Data_Utils::instance();
 	$def     = 'et_builder_get_dynamic_attribute_field_default';
@@ -794,7 +945,7 @@ function et_builder_filter_resolve_default_dynamic_content( $content, $name, $se
 
 	if ( $post ) {
 		$author = get_userdata( $post->post_author );
-	} else if ( is_author() ) {
+	} elseif ( is_author() ) {
 		$author = get_queried_object();
 	}
 
@@ -815,9 +966,9 @@ function et_builder_filter_resolve_default_dynamic_content( $content, $name, $se
 				break;
 			}
 
-			$words      = (int) $_->array_get( $settings, 'words', $def( $post_id, $name, 'words' ) );
-			$read_more  = $_->array_get( $settings, 'read_more_label', $def( $post_id, $name, 'read_more_label' ) );
-			$content    = isset( $overrides[ $name ] ) ? $overrides[ $name ] : get_the_excerpt( $post_id );
+			$words     = (int) $_->array_get( $settings, 'words', $def( $post_id, $name, 'words' ) );
+			$read_more = $_->array_get( $settings, 'read_more_label', $def( $post_id, $name, 'read_more_label' ) );
+			$content   = isset( $overrides[ $name ] ) ? $overrides[ $name ] : get_the_excerpt( $post_id );
 
 			if ( $words > 0 ) {
 				$content = wp_trim_words( $content, $words );
@@ -876,7 +1027,10 @@ function et_builder_filter_resolve_default_dynamic_content( $content, $name, $se
 				break;
 			}
 
-			$overrides_map   = array( 'category' => 'post_categories', 'post_tag' => 'post_tags' );
+			$overrides_map   = array(
+				'category' => 'post_categories',
+				'post_tag' => 'post_tags',
+			);
 			$post_taxonomies = et_builder_get_taxonomy_types( get_post_type( $post_id ) );
 			$taxonomy        = $_->array_get( $settings, 'category_type', '' );
 
@@ -895,7 +1049,12 @@ function et_builder_filter_resolve_default_dynamic_content( $content, $name, $se
 			$separator = ! empty( $separator ) ? $separator : $def( $post_id, $name, 'separator' );
 			$ids_key   = isset( $overrides_map[ $taxonomy ] ) ? $overrides_map[ $taxonomy ] : '';
 			$ids       = isset( $overrides[ $ids_key ] ) ? array_filter( array_map( 'intval', explode( ',', $overrides[ $ids_key ] ) ) ) : array();
-			$terms     = ! empty( $ids ) ? get_terms( array( 'taxonomy' => $taxonomy, 'include'  => $ids ) ) : get_the_terms( $post_id, $taxonomy );
+			$terms     = ! empty( $ids ) ? get_terms(
+				array(
+					'taxonomy' => $taxonomy,
+					'include'  => $ids,
+				)
+			) : get_the_terms( $post_id, $taxonomy );
 			if ( is_array( $terms ) ) {
 				$content = et_builder_list_terms( $terms, $link, $separator );
 			} else {
@@ -932,7 +1091,7 @@ function et_builder_filter_resolve_default_dynamic_content( $content, $name, $se
 				break;
 			}
 
-			switch( $name_format ) {
+			switch ( $name_format ) {
 				case 'display_name':
 					$label = $author->display_name;
 					break;
@@ -1033,8 +1192,8 @@ function et_builder_filter_resolve_default_dynamic_content( $content, $name, $se
 			break;
 
 		case 'any_post_link_url':
-			$selected_post_id  = $_->array_get( $settings, 'post_id', $def( $post_id, $name, 'post_id' ) );
-			$content           = esc_url( get_permalink( $selected_post_id ) );
+			$selected_post_id = $_->array_get( $settings, 'post_id', $def( $post_id, $name, 'post_id' ) );
+			$content          = esc_url( get_permalink( $selected_post_id ) );
 			break;
 
 		case 'product_reviews_tab':
@@ -1042,13 +1201,15 @@ function et_builder_filter_resolve_default_dynamic_content( $content, $name, $se
 			break;
 
 		case 'post_featured_image':
+			$is_blog_query = isset( $wp_query->et_pb_blog_query ) && $wp_query->et_pb_blog_query;
+
 			if ( isset( $overrides[ $name ] ) ) {
 				$id      = (int) $overrides[ $name ];
 				$content = wp_get_attachment_image_url( $id, 'full' );
 				break;
 			}
 
-			if ( is_category() || is_tag() || is_tax() ) {
+			if ( ! $is_blog_query && ( is_category() || is_tag() || is_tax() ) ) {
 				$term_id       = (int) get_queried_object_id();
 				$attachment_id = (int) get_term_meta( $term_id, 'thumbnail_id', true );
 				$url           = wp_get_attachment_image_url( $attachment_id, 'full' );
@@ -1059,6 +1220,58 @@ function et_builder_filter_resolve_default_dynamic_content( $content, $name, $se
 			if ( $post ) {
 				$url     = get_the_post_thumbnail_url( $post_id, 'full' );
 				$content = $url ? esc_url( $url ) : '';
+				break;
+			}
+
+			break;
+
+		case 'post_featured_image_alt_text':
+			$is_blog_query = isset( $wp_query->et_pb_blog_query ) && $wp_query->et_pb_blog_query;
+
+			if ( isset( $overrides[ $name ] ) ) {
+				$id      = (int) $overrides[ $name ];
+				$img_alt = $id ? get_post_meta( $id, '_wp_attachment_image_alt', true ) : '';
+				$content = $img_alt ? esc_attr( $img_alt ) : '';
+				break;
+			}
+
+			if ( ! $is_blog_query && ( is_category() || is_tag() || is_tax() ) ) {
+				$term_id       = (int) get_queried_object_id();
+				$attachment_id = (int) get_term_meta( $term_id, 'thumbnail_id', true );
+				$img_alt       = $attachment_id ? get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ) : '';
+				$content       = $img_alt ? esc_attr( $img_alt ) : '';
+				break;
+			}
+
+			if ( $post ) {
+				$img_alt = get_post_thumbnail_id() ? get_post_meta( get_post_thumbnail_id(), '_wp_attachment_image_alt', true ) : '';
+				$content = $img_alt ? esc_attr( $img_alt ) : '';
+				break;
+			}
+
+			break;
+
+		case 'post_featured_image_title_text':
+			$is_blog_query = isset( $wp_query->et_pb_blog_query ) && $wp_query->et_pb_blog_query;
+
+			if ( isset( $overrides[ $name ] ) ) {
+				$id        = (int) $overrides[ $name ];
+				$img_title = $id ? get_the_title( $id ) : '';
+				$content   = $img_title ? esc_attr( $img_title ) : '';
+				break;
+			}
+
+			if ( ! $is_blog_query && ( is_category() || is_tag() || is_tax() ) ) {
+				$term_id       = (int) get_queried_object_id();
+				$attachment_id = (int) get_term_meta( $term_id, 'thumbnail_id', true );
+				$img_title     = $attachment_id ? get_the_title( $attachment_id ) : '';
+				$content       = $img_title ? esc_attr( $img_title ) : '';
+				break;
+			}
+
+			if ( $post ) {
+				$img_title = get_post_thumbnail_id() ? get_the_title( get_post_thumbnail_id() ) : '';
+				$content   = $img_title ? esc_attr( $img_title ) : '';
 				break;
 			}
 
@@ -1091,9 +1304,11 @@ function et_builder_filter_resolve_default_dynamic_content( $content, $name, $se
 
 			if ( $dynamic_product ) {
 				$is_woo  = true;
-				$content = ET_Builder_Module_Woocommerce_Breadcrumb::get_breadcrumb( array(
-					'product' => $dynamic_product->get_id(),
-				) );
+				$content = ET_Builder_Module_Woocommerce_Breadcrumb::get_breadcrumb(
+					array(
+						'product' => $dynamic_product->get_id(),
+					)
+				);
 			} else {
 				$content = '';
 			}
@@ -1108,9 +1323,11 @@ function et_builder_filter_resolve_default_dynamic_content( $content, $name, $se
 
 			if ( $dynamic_product ) {
 				$is_woo  = true;
-				$content = ET_Builder_Module_Woocommerce_Price::get_price( array(
-					'product' => $dynamic_product->get_id(),
-				) );
+				$content = ET_Builder_Module_Woocommerce_Price::get_price(
+					array(
+						'product' => $dynamic_product->get_id(),
+					)
+				);
 			} else {
 				$content = '';
 			}
@@ -1125,10 +1342,12 @@ function et_builder_filter_resolve_default_dynamic_content( $content, $name, $se
 
 			if ( $dynamic_product ) {
 				$is_woo  = true;
-				$content = ET_Builder_Module_Woocommerce_Description::get_description( array(
-					'product'          => $dynamic_product->get_id(),
-					'description_type' => 'description',
-				) );
+				$content = ET_Builder_Module_Woocommerce_Description::get_description(
+					array(
+						'product'          => $dynamic_product->get_id(),
+						'description_type' => 'description',
+					)
+				);
 			} else {
 				$content = '';
 			}
@@ -1143,10 +1362,12 @@ function et_builder_filter_resolve_default_dynamic_content( $content, $name, $se
 
 			if ( $dynamic_product ) {
 				$is_woo  = true;
-				$content = ET_Builder_Module_Woocommerce_Description::get_description( array(
-					'product'          => $dynamic_product->get_id(),
-					'description_type' => 'short_description',
-				) );
+				$content = ET_Builder_Module_Woocommerce_Description::get_description(
+					array(
+						'product'          => $dynamic_product->get_id(),
+						'description_type' => 'short_description',
+					)
+				);
 			} else {
 				$content = '';
 			}
@@ -1200,17 +1421,20 @@ function et_builder_filter_resolve_default_dynamic_content( $content, $name, $se
 				break;
 			}
 
-			$is_woo  = true;
+			$is_woo = true;
 
 			// Product description refers to Product short description.
 			// Product short description is nothing but post excerpt.
 			$args        = array( 'post_id' => $dynamic_product->get_id() );
 			$comments    = get_comments( $args );
 			$total_pages = get_comment_pages_count( $comments );
-			$content     = wp_list_comments( array(
-				'callback' => 'woocommerce_comments',
-				'echo'     => false,
-			), $comments );
+			$content     = wp_list_comments(
+				array(
+					'callback' => 'woocommerce_comments',
+					'echo'     => false,
+				),
+				$comments
+			);
 
 			// Pass $dynamic_product, $reviews to unify the flow of data.
 			$reviews_title        = ET_Builder_Module_Helper_Woocommerce_Modules::get_reviews_title( $dynamic_product );
@@ -1243,14 +1467,17 @@ function et_builder_filter_resolve_default_dynamic_content( $content, $name, $se
 
 				$pagination = paginate_links( $args );
 			} else {
-				$pagination = paginate_comments_links( array(
-					'echo'  => false,
-					'type'  => 'list',
-					'total' => $total_pages
-				) );
+				$pagination = paginate_comments_links(
+					array(
+						'echo'  => false,
+						'type'  => 'list',
+						'total' => $total_pages,
+					)
+				);
 			}
 
-			$content = sprintf( '
+			$content = sprintf(
+				'
 						<div id="reviews" class="woocommerce-Reviews">
 								<h2 class="woocommerce-Reviews-title">
 									%1$s
@@ -1287,11 +1514,25 @@ function et_builder_filter_resolve_default_dynamic_content( $content, $name, $se
 
 			if ( $dynamic_product ) {
 				$is_woo  = true;
-				$content = ET_Builder_Module_Woocommerce_Additional_Info::get_additional_info( array(
-					'product' => $dynamic_product->get_id(),
-				) );
+				$content = ET_Builder_Module_Woocommerce_Additional_Info::get_additional_info(
+					array(
+						'product' => $dynamic_product->get_id(),
+					)
+				);
 			} else {
 				$content = '';
+			}
+			break;
+
+		case 'post_meta_key':
+			$meta_key = $_->array_get( $settings, 'meta_key' );
+			$content  = '';
+			if ( ! empty( $meta_key ) ) {
+				$content     = get_post_meta( $post_id, $meta_key, true );
+				$enable_html = $_->array_get( $settings, 'enable_html' );
+				if ( 'on' !== $enable_html ) {
+					$content = esc_html( $content );
+				}
 			}
 			break;
 	}
@@ -1305,8 +1546,8 @@ function et_builder_filter_resolve_default_dynamic_content( $content, $name, $se
 			continue;
 		}
 
-		$selected_post_id  = $_->array_get( $settings, 'post_id', $def( $post_id, $name, 'post_id' ) );
-		$content           = esc_url( get_permalink( $selected_post_id ) );
+		$selected_post_id = $_->array_get( $settings, 'post_id', $def( $post_id, $name, 'post_id' ) );
+		$content          = esc_url( get_permalink( $selected_post_id ) );
 		break;
 	}
 
@@ -1330,10 +1571,10 @@ add_filter( 'et_builder_resolve_dynamic_content', 'et_builder_filter_resolve_def
  *
  * @since 3.17.2
  *
- * @param string $content
- * @param string $name
- * @param array $settings
- * @param string $context
+ * @param string  $content
+ * @param string  $name
+ * @param array   $settings
+ * @param string  $context
  * @param integer $post_id
  *
  * @return string
@@ -1390,10 +1631,10 @@ add_filter( 'et_builder_resolve_dynamic_content', 'et_builder_filter_resolve_cus
  *
  * @since 3.17.2
  *
- * @param string $field
- * @param array $settings
+ * @param string  $field
+ * @param array   $settings
  * @param integer $post_id
- * @param array $overrides
+ * @param array   $overrides
  * @param boolean $is_content
  *
  * @return string
@@ -1428,13 +1669,35 @@ function et_builder_clean_dynamic_content( $value ) {
  * @return ET_Builder_Value|null
  */
 function et_builder_parse_dynamic_content_json( $json ) {
+	$post_types         = array_keys( et_builder_get_public_post_types() );
 	$dynamic_content    = json_decode( $json, true );
 	$is_dynamic_content = is_array( $dynamic_content ) && isset( $dynamic_content['dynamic'] ) && (bool) $dynamic_content['dynamic'];
 	$has_content        = is_array( $dynamic_content ) && isset( $dynamic_content['content'] ) && is_string( $dynamic_content['content'] );
 	$has_settings       = is_array( $dynamic_content ) && isset( $dynamic_content['settings'] ) && is_array( $dynamic_content['settings'] );
+	$has_category_type  = is_array( $dynamic_content ) && isset( $dynamic_content['settings'] ) && isset( $dynamic_content['settings']['category_type'] );
+
+	// When adding a section from library get_post_type() will not work, and post type has to be fetched from $_POST
+	$is_added_from_library = isset( $_POST['et_post_type'] );
 
 	if ( ! $is_dynamic_content || ! $has_content || ! $has_settings ) {
 		return null;
+	}
+
+	// Replaces layout_category with proper category_type depending on the post type on which the layout is added
+	if ( $has_category_type && 'post_categories' === $dynamic_content['content'] && ! 0 === substr_compare( $dynamic_content['settings']['category_type'], '_tag', - 4 ) ) {
+		if ( $is_added_from_library ) {
+			$correct_post_type = sanitize_text_field( $_POST['et_post_type'] );
+			$correct_post_type = in_array( $correct_post_type, $post_types ) ? $correct_post_type : 'post';
+		} else {
+			$correct_post_type = get_post_type();
+			$correct_post_type = in_array( $correct_post_type, $post_types ) ? $correct_post_type : 'post';
+		}
+
+		if ( 'post' === $correct_post_type ) {
+			$dynamic_content['settings']['category_type'] = 'category';
+		} else {
+			$dynamic_content['settings']['category_type'] = $correct_post_type . '_category';
+		}
 	}
 
 	return new ET_Builder_Value(
@@ -1484,13 +1747,16 @@ function et_builder_parse_dynamic_content( $content ) {
 function et_builder_serialize_dynamic_content( $dynamic, $content, $settings ) {
 	// JSON_UNESCAPED_SLASHES is only supported from 5.4.
 	$options = defined( 'JSON_UNESCAPED_SLASHES' ) ? JSON_UNESCAPED_SLASHES : 0;
-	$result  = wp_json_encode( array(
-		'dynamic' => $dynamic,
-		'content' => $content,
-		// Force object type for keyed arrays as empty arrays will be encoded to
-		// javascript arrays instead of empty objects.
-		'settings' => (object) $settings,
-	), $options );
+	$result  = wp_json_encode(
+		array(
+			'dynamic'  => $dynamic,
+			'content'  => $content,
+			// Force object type for keyed arrays as empty arrays will be encoded to
+			// javascript arrays instead of empty objects.
+			'settings' => (object) $settings,
+		),
+		$options
+	);
 
 	// Use fallback if needed
 	$result = 0 === $options ? str_replace( '\/', '/', $result ) : $result;
@@ -1516,7 +1782,7 @@ function et_builder_strip_dynamic_content( $content ) {
  *
  * @since 3.20.2
  *
- * @param string $post_excerpt
+ * @param string  $post_excerpt
  * @param integer $post_id
  *
  * @return string
@@ -1555,7 +1821,7 @@ function et_builder_reencode_legacy_dynamic_content_in_excerpt_callback( $matche
  *
  * @since 3.17.2
  *
- * @param string $post_excerpt
+ * @param string  $post_excerpt
  * @param integer $post_id
  *
  * @return string
@@ -1566,7 +1832,7 @@ function et_builder_resolve_dynamic_content_in_excerpt( $post_excerpt, $post_id 
 	global $_et_brdcie_post_id;
 
 	$_et_brdcie_post_id = $post_id;
-	$post_excerpt = preg_replace_callback( '/@ET-DC@.*?@/', 'et_builder_resolve_dynamic_content_in_excerpt_callback', $post_excerpt );
+	$post_excerpt       = preg_replace_callback( '/@ET-DC@.*?@/', 'et_builder_resolve_dynamic_content_in_excerpt_callback', $post_excerpt );
 	$_et_brdcie_post_id = 0;
 
 	return $post_excerpt;

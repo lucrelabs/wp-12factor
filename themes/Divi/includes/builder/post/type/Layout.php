@@ -105,7 +105,7 @@ class ET_Builder_Post_Type_Layout extends ET_Core_Post_Type {
 			'not_found_in_trash' => esc_html__( 'Nothing found in Trash', 'et_builder' ),
 			'parent_item_colon'  => '',
 			'search_items'       => esc_html__( 'Search Layouts', 'et_builder' ),
-			'singular_name'      => esc_html__( 'Layout', 'et_builder' ),
+			'singular_name'      => et_builder_i18n( 'Layout' ),
 			'view_item'          => esc_html__( 'View Layout', 'et_builder' ),
 		);
 	}
@@ -122,7 +122,7 @@ class ET_Builder_Post_Type_Layout extends ET_Core_Post_Type {
 	 */
 	public static function instance( $type = 'cpt', $name = 'et_pb_layout' ) {
 		if ( ! $instance = parent::instance( $type, $name ) ) {
-			$instance = new self;
+			$instance = new self();
 		}
 
 		return $instance;

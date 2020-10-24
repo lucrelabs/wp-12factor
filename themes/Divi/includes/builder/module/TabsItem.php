@@ -10,20 +10,20 @@ class ET_Builder_Module_Tabs_Item extends ET_Builder_Module {
 		$this->child_title_var             = 'title';
 		$this->advanced_setting_title_text = esc_html__( 'New Tab', 'et_builder' );
 		$this->settings_text               = esc_html__( 'Tab Settings', 'et_builder' );
-		$this->main_css_element = '%%order_class%%';
+		$this->main_css_element            = '%%order_class%%';
 
 		$this->settings_modal_toggles = array(
-			'general'  => array(
+			'general' => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Text', 'et_builder' ),
+					'main_content' => et_builder_i18n( 'Text' ),
 				),
 			),
 		);
 
 		$this->advanced_fields = array(
-			'fonts'                 => array(
-				'body'   => array(
-					'label'          => esc_html__( 'Body', 'et_builder' ),
+			'fonts'          => array(
+				'body' => array(
+					'label'          => et_builder_i18n( 'Body' ),
 					'css'            => array(
 						'main'         => ".et_pb_tabs .et_pb_all_tabs {$this->main_css_element}.et_pb_tab",
 						'line_height'  => ".et_pb_tabs {$this->main_css_element}.et_pb_tab p",
@@ -41,14 +41,14 @@ class ET_Builder_Module_Tabs_Item extends ET_Builder_Module {
 						'bb_icons_support'  => true,
 					),
 				),
-				'tab'   => array(
-					'label'    => esc_html__( 'Tab', 'et_builder' ),
-					'css'      => array(
+				'tab'  => array(
+					'label'           => esc_html__( 'Tab', 'et_builder' ),
+					'css'             => array(
 						'main'      => ".et_pb_tabs .et_pb_tabs_controls li{$this->main_css_element}, .et_pb_tabs .et_pb_tabs_controls li{$this->main_css_element} a",
 						'color'     => ".et_pb_tabs .et_pb_tabs_controls li{$this->main_css_element} a",
 						'important' => 'all',
 					),
-					'line_height' => array(
+					'line_height'     => array(
 						'range_settings' => array(
 							'min'  => '1',
 							'max'  => '100',
@@ -58,62 +58,63 @@ class ET_Builder_Module_Tabs_Item extends ET_Builder_Module {
 					'hide_text_align' => true,
 				),
 			),
-			'background'            => array(
-				'css' => array(
+			'background'     => array(
+				'css'      => array(
 					'main' => ".et_pb_tabs {$this->main_css_element}.et_pb_tab",
 				),
 				'settings' => array(
 					'color' => 'alpha',
 				),
 			),
-			'borders'               => array(
+			'borders'        => array(
 				'default' => false,
 			),
 			'margin_padding' => array(
-				'use_margin'  => false,
-				'css'         => array(
+				'use_margin' => false,
+				'css'        => array(
 					'padding' => '.et_pb_tabs .et_pb_tab%%order_class%%',
 				),
 			),
-			'box_shadow'            => array(
+			'box_shadow'     => array(
 				'default' => false,
 			),
-			'text'                  => false,
-			'max_width'             => false,
-			'height'                => false,
-			'button'                => false,
-			'scroll_effects'        => false,
+			'text'           => false,
+			'max_width'      => false,
+			'height'         => false,
+			'button'         => false,
+			'scroll_effects' => false,
+			'sticky'         => false,
 		);
 
 		$this->custom_css_fields = array(
 			'main_element' => array(
-				'label'    => esc_html__( 'Main Element', 'et_builder' ),
+				'label'    => et_builder_i18n( 'Main Element' ),
 				'selector' => ".et_pb_tabs div{$this->main_css_element}.et_pb_tab",
-			)
+			),
 		);
 	}
 
 	function get_fields() {
 		$fields = array(
-			'title' => array(
-				'label'           => esc_html__( 'Title', 'et_builder' ),
+			'title'   => array(
+				'label'           => et_builder_i18n( 'Title' ),
 				'type'            => 'text',
 				'description'     => esc_html__( 'The title will be used within the tab button for this tab.', 'et_builder' ),
 				'toggle_slug'     => 'main_content',
 				'dynamic_content' => 'text',
 				'option_category' => 'basic_option',
-				'mobile_options'     => true,
-				'hover'              => 'tabs',
+				'mobile_options'  => true,
+				'hover'           => 'tabs',
 			),
 			'content' => array(
-				'label'           => esc_html__( 'Body', 'et_builder' ),
+				'label'           => et_builder_i18n( 'Body' ),
 				'type'            => 'tiny_mce',
 				'description'     => esc_html__( 'Here you can define the content that will be placed within the current tab.', 'et_builder' ),
 				'toggle_slug'     => 'main_content',
 				'dynamic_content' => 'text',
 				'option_category' => 'basic_option',
-				'mobile_options'     => true,
-				'hover'              => 'tabs',
+				'mobile_options'  => true,
+				'hover'           => 'tabs',
 			),
 		);
 		return $fields;
@@ -140,6 +141,7 @@ class ET_Builder_Module_Tabs_Item extends ET_Builder_Module {
 	 * Return the Product ID when set. Otherwise return parent::get_the_ID()
 	 *
 	 * $this->props['product'] is set using
+	 *
 	 * @see ET_Builder_Module_Tabs_Item->maybe_inherit_values()
 	 *
 	 * @return bool|int
@@ -161,7 +163,7 @@ class ET_Builder_Module_Tabs_Item extends ET_Builder_Module {
 
 		$multi_view = et_pb_multi_view_options( $this );
 
-		$video_background = $this->video_background();
+		$video_background          = $this->video_background();
 		$parallax_image_background = $this->get_parallax_image_background();
 
 		$i = 0;
@@ -172,27 +174,33 @@ class ET_Builder_Module_Tabs_Item extends ET_Builder_Module {
 		$et_pb_tab_classes[] = ET_Builder_Element::get_module_order_class( $render_slug );
 
 		// Module classnames
-		$this->add_classname( array(
-			'clearfix',
-			$this->get_text_orientation_classname(),
-		) );
+		$this->add_classname(
+			array(
+				'clearfix',
+				$this->get_text_orientation_classname(),
+			)
+		);
 
 		if ( 1 === count( $et_pb_tab_titles ) ) {
 			$this->add_classname( 'et_pb_active_content' );
 		}
 
 		// Remove automatically added classnames
-		$this->remove_classname( array(
-			'et_pb_module',
-		) );
+		$this->remove_classname(
+			array(
+				'et_pb_module',
+			)
+		);
 
-		$content = $multi_view->render_element( array(
-			'tag'     => 'div',
-			'content' => '{{content}}',
-			'attrs'   => array(
-				'class' => 'et_pb_tab_content',
-			),
-		) );
+		$content = $multi_view->render_element(
+			array(
+				'tag'     => 'div',
+				'content' => '{{content}}',
+				'attrs'   => array(
+					'class' => 'et_pb_tab_content',
+				),
+			)
+		);
 
 		$output = sprintf(
 			'<div class="%2$s">
@@ -210,4 +218,4 @@ class ET_Builder_Module_Tabs_Item extends ET_Builder_Module {
 	}
 }
 
-new ET_Builder_Module_Tabs_Item;
+new ET_Builder_Module_Tabs_Item();

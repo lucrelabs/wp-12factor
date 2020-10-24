@@ -1,14 +1,14 @@
 <?php
 
 class ET_Builder_Module_Helper_Motion {
-	private $START_LIMIT = 0;
+	private $START_LIMIT  = 0;
 	private $START_MIDDLE = 1;
-	private $END_MIDDLE = 2;
-	private $END_LIMIT = 3;
-	private $START_VALUE = 4;
+	private $END_MIDDLE   = 2;
+	private $END_LIMIT    = 3;
+	private $START_VALUE  = 4;
 	private $MIDDLE_VALUE = 5;
-	private $END_VALUE = 6;
-	private $LENGTH = 7;
+	private $END_VALUE    = 6;
+	private $LENGTH       = 7;
 
 	private static $instance;
 
@@ -35,7 +35,7 @@ class ET_Builder_Module_Helper_Motion {
 			return $saved_value;
 		}
 
-		return implode( '|', array_map( array( 'ET_Builder_Module_Helper_Motion', 'getNonEmpty' ) , $saved_array, $default_array ) );
+		return implode( '|', array_map( array( 'ET_Builder_Module_Helper_Motion', 'getNonEmpty' ), $saved_array, $default_array ) );
 	}
 
 	/**
@@ -72,7 +72,7 @@ class ET_Builder_Module_Helper_Motion {
 	 * - is lower then 0, set limit to 0
 	 * - is higher then start middle, set limit equal to start middle
 	 *
-	 * @param int $value
+	 * @param int    $value
 	 * @param string $multi_value
 	 *
 	 * @return string
@@ -103,7 +103,7 @@ class ET_Builder_Module_Helper_Motion {
 	 * - is lower then end middle, set limit equal to end middle
 	 * - is higher then 100, set limit equal to 100
 	 *
-	 * @param int $value
+	 * @param int    $value
 	 * @param string $multi_value
 	 *
 	 * @return string
@@ -134,7 +134,7 @@ class ET_Builder_Module_Helper_Motion {
 	 * - is lower then start limit, set limit equal to start limit
 	 * - is higher then end middle, set limit equal to end middle
 	 *
-	 * @param int $value
+	 * @param int    $value
 	 * @param string $multi_value
 	 *
 	 * @return string
@@ -165,7 +165,7 @@ class ET_Builder_Module_Helper_Motion {
 	 * - is lower then start middle limit, set limit equal to start middle limit
 	 * - is higher then end limit, set limit equal to end limit
 	 *
-	 * @param int $value
+	 * @param int    $value
 	 * @param string $multi_value
 	 *
 	 * @return string
@@ -321,7 +321,7 @@ class ET_Builder_Module_Helper_Motion {
 	/**
 	 * Returns specific key value
 	 *
-	 * @param int $key
+	 * @param int    $key
 	 * @param string $value
 	 *
 	 * @return mixed
@@ -333,7 +333,7 @@ class ET_Builder_Module_Helper_Motion {
 	}
 
 	/**
-	 * @param int $key
+	 * @param int    $key
 	 * @param $value
 	 * @param string $multi_value
 	 *

@@ -98,6 +98,10 @@ function et_setup_theme() {
 	add_filter( 'et_load_unminified_styles', 'et_divi_load_unminified_styles' );
 
 	et_divi_version_rollback()->enable();
+
+	if ( wp_doing_cron() ) {
+		et_register_updates_component();
+	}
 }
 add_action( 'after_setup_theme', 'et_setup_theme' );
 
@@ -173,8 +177,9 @@ function et_divi_fonts_url() {
 
 		$protocol = is_ssl() ? 'https' : 'http';
 		$query_args = array(
-			'family' => implode( '%7C', $font_families ),
-			'subset' => 'latin,latin-ext',
+			'family'  => implode( '%7C', $font_families ),
+			'subset'  => 'latin,latin-ext',
+			'display' => 'swap',
 		);
 		$fonts_url = add_query_arg( $query_args, "$protocol://fonts.googleapis.com/css" );
 	}
@@ -311,7 +316,7 @@ add_action( 'wp_enqueue_scripts', 'et_divi_load_scripts_styles' );
  */
 function et_divi_replace_stylesheet() {
 	// Apply to Custom Post Types when Builder used only.
-	if ( ! et_builder_is_custom_post_type_archive() && ( ! et_builder_post_is_of_custom_post_type( get_the_ID() ) || ! et_pb_is_pagebuilder_used( get_the_ID() ) ) ) {
+	if ( is_search() || ! et_builder_is_custom_post_type_archive() && ( ! et_builder_post_is_of_custom_post_type( get_the_ID() ) || ! et_pb_is_pagebuilder_used( get_the_ID() ) ) ) {
 		return;
 	}
 
@@ -369,35 +374,6 @@ function et_add_viewport_meta(){
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />';
 }
 add_action( 'wp_head', 'et_add_viewport_meta' );
-
-function et_maybe_add_scroll_to_anchor_fix() {
-	$add_scroll_to_anchor_fix = et_get_option( 'divi_scroll_to_anchor_fix' );
-
-	if ( 'on' === $add_scroll_to_anchor_fix ) {
-		echo '<script>
-				document.addEventListener( "DOMContentLoaded", function( event ) {
-					window.et_location_hash = window.location.hash.replace(/[^a-zA-Z0-9-_#]/g, "");
-					if ( "" !== window.et_location_hash ) {
-						// Prevent jump to anchor - Firefox
-						window.scrollTo( 0, 0 );
-						var et_anchor_element = document.getElementById( window.et_location_hash.substring( 1 ) );
-						if( et_anchor_element === null ) {
-						    return;
-						}
-						// bypass auto scrolling, if supported
-						if ("scrollRestoration" in history) {
-							history.scrollRestoration = "manual";
-						} else {
-							// Prevent jump to anchor - Other Browsers
-							window.et_location_hash_style = et_anchor_element.style.display;
-							et_anchor_element.style.display = "none";
-						}
-					}
-				} );
-		</script>';
-	}
-}
-add_action( 'wp_head', 'et_maybe_add_scroll_to_anchor_fix', 9 );
 
 function et_remove_additional_stylesheet( $stylesheet ){
 	global $default_colorscheme;
@@ -3728,6 +3704,7 @@ function et_divi_add_customizer_css() {
 		$post_id     = et_core_page_resource_get_the_ID();
 		$is_preview  = is_preview() || isset( $_GET['et_pb_preview_nonce'] ) || is_customize_preview();
 		$is_singular = et_core_page_resource_is_singular();
+		$is_cpt      = et_builder_is_custom_post_type_archive() || ( et_builder_post_is_of_custom_post_type( $post_id ) && et_pb_is_pagebuilder_used( $post_id ) );
 
 		$disabled_global = 'off' === et_get_option( 'et_pb_static_css_file', 'on' );
 		$disabled_post   = $disabled_global || ( $is_singular && 'off' === get_post_meta( $post_id, '_et_pb_static_css_file', true ) );
@@ -3738,7 +3715,7 @@ function et_divi_add_customizer_css() {
 		$unified_styles = $is_singular && ! $forced_inline && ! $builder_in_footer && et_core_is_builder_used_on_current_request();
 		$resource_owner = $unified_styles ? 'core' : 'divi';
 		$resource_slug  = $unified_styles ? 'unified' : 'customizer';
-		$resource_slug .= $unified_styles && et_builder_post_is_of_custom_post_type( $post_id ) && et_pb_is_pagebuilder_used( $post_id ) ? '-cpt' : '';
+		$resource_slug .= $is_cpt ? '-cpt' : '';
 		$css            = 'et_builder_maybe_wrap_css_selector';
 
 		if ( $is_preview ) {
@@ -4166,14 +4143,19 @@ function et_divi_add_customizer_css() {
 		<?php if ( $menu_link_active !== '#2ea3f2' ) { ?>
 			#top-menu li.current-menu-ancestor > a,
 			#top-menu li.current-menu-item > a,
+			#top-menu li.current_page_item > a,
 			.et_color_scheme_red #top-menu li.current-menu-ancestor > a,
 			.et_color_scheme_red #top-menu li.current-menu-item > a,
+			.et_color_scheme_red #top-menu li.current_page_item > a,
 			.et_color_scheme_pink #top-menu li.current-menu-ancestor > a,
 			.et_color_scheme_pink #top-menu li.current-menu-item > a,
+			.et_color_scheme_pink #top-menu li.current_page_item> a,
 			.et_color_scheme_orange #top-menu li.current-menu-ancestor > a,
 			.et_color_scheme_orange #top-menu li.current-menu-item > a,
+			.et_color_scheme_orange #top-menu li.current_page_item > a,
 			.et_color_scheme_green #top-menu li.current-menu-ancestor > a,
-			.et_color_scheme_green #top-menu li.current-menu-item > a { color: <?php echo esc_html( $menu_link_active ); ?>; }
+			.et_color_scheme_green #top-menu li.current-menu-item > a,
+			.et_color_scheme_green #top-menu li.current_page_item > a { color: <?php echo esc_html( $menu_link_active ); ?>; }
 		<?php } ?>
 		<?php if ( $footer_bg !== '#222222' ) { ?>
 			#main-footer { background-color: <?php echo esc_html( $footer_bg ); ?>; }
@@ -4459,7 +4441,7 @@ function et_divi_add_customizer_css() {
 					 color: <?php echo esc_html( $button_text_color_hover ); ?> !important;
 				<?php } ?>
 				<?php if ( 'rgba(255,255,255,0.2)' !== $button_bg_color_hover ) { ?>
-					background: <?php echo esc_html( $button_bg_color_hover ); ?> !important;
+					background-color: <?php echo esc_html( $button_bg_color_hover ); ?> !important;
 				<?php } ?>
 				<?php if ( 'rgba(0,0,0,0)' !== $button_border_color_hover ) { ?>
 					border-color: <?php echo esc_html( $button_border_color_hover ); ?> !important;
@@ -4702,7 +4684,8 @@ function et_divi_add_customizer_css() {
 			<?php } ?>
 			<?php if ( $fixed_menu_link_active !== '#2ea3f2' ) { ?>
 				.et-fixed-header #top-menu li.current-menu-ancestor > a,
-				.et-fixed-header #top-menu li.current-menu-item > a { color: <?php echo esc_html( $fixed_menu_link_active ); ?> !important; }
+				.et-fixed-header #top-menu li.current-menu-item > a,
+				.et-fixed-header #top-menu li.current_page_item > a { color: <?php echo esc_html( $fixed_menu_link_active ); ?> !important; }
 			<?php } ?>
 			<?php if ( '#ffffff' !== $fixed_secondary_menu_link ) { ?>
 				.et-fixed-header#top-header a { color: <?php echo esc_html( $fixed_secondary_menu_link ); ?>; }
@@ -6563,13 +6546,22 @@ function et_divi_customize_preview_class( $classes ) {
 add_filter( 'body_class', 'et_divi_customize_preview_class' );
 
 function et_modify_shop_page_columns_num( $columns_num ) {
-	$default_sidebar_class = is_rtl() ? 'et_left_sidebar' : 'et_right_sidebar';
-
-	if ( class_exists( 'woocommerce' ) && is_shop() ) {
-		$columns_num = 'et_full_width_page' !== et_get_option( 'divi_shop_page_sidebar', $default_sidebar_class )
-			? 3
-			: 4;
+	if ( ! et_is_woocommerce_plugin_active() ) {
+		return $columns_num;
 	}
+
+	// WooCommerce plugin active check ensures that archive function can be used.
+	$is_archive_page = is_shop() || is_product_category() || is_product_tag();
+
+	if ( ! $is_archive_page ) {
+		return $columns_num;
+	}
+
+	$default_sidebar_class  = is_rtl() ? 'et_left_sidebar' : 'et_right_sidebar';
+	$divi_shop_page_sidebar = et_get_option( 'divi_shop_page_sidebar', $default_sidebar_class );
+
+	// Assignment is intentional for readability.
+	$columns_num = 'et_full_width_page' === $divi_shop_page_sidebar ? 4 : 3;
 
 	return $columns_num;
 }
@@ -6901,7 +6893,7 @@ add_action( 'admin_init', 'et_divi_register_customizer_portability' );
 function et_register_updates_component() {
 	et_core_enable_automatic_updates( get_template_directory_uri(), ET_CORE_VERSION );
 }
-add_action( 'admin_init', 'et_register_updates_component' );
+add_action( 'admin_init', 'et_register_updates_component', 9 );
 
 /**
  * Register theme and modules Customizer portability link.
@@ -6943,8 +6935,7 @@ endif;
 
 if ( ! function_exists( 'et_get_original_footer_credits' ) ) :
 function et_get_original_footer_credits() {
-    // TODO get URL and name from databasegit
-	return sprintf( __( '© %1$s | Built by %2$s', 'Divi' ), '<a href="http://www.mightycricket.co" >Mighty Cricket</a>', '<a href="https://lucrelabs.com" style="color: gold;">LUCRElabs</a>' );
+	return sprintf( __( 'Designed by %1$s | Powered by %2$s', 'Divi' ), '<a href="http://www.elegantthemes.com" title="Premium WordPress Themes">Elegant Themes</a>', '<a href="http://www.wordpress.org">WordPress</a>' );
 }
 endif;
 

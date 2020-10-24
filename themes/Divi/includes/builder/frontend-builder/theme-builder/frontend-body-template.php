@@ -11,4 +11,5 @@ et_theme_builder_frontend_render_body(
 );
 ?>
 
-<?php get_footer(); ?>
+<?php
+get_footer();

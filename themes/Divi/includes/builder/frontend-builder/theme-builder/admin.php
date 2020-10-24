@@ -12,11 +12,14 @@ function et_theme_builder_load_portability() {
 	}
 
 	et_core_load_component( 'portability' );
-	et_core_portability_register( 'et_theme_builder', array(
-		'name' => esc_html__( 'Divi Theme Builder', 'et_builder' ),
-		'type' => 'theme_builder',
-		'view' => 'et_theme_builder' === et_()->array_get( $_GET, 'page' ),
-	) );
+	et_core_portability_register(
+		'et_theme_builder',
+		array(
+			'name' => esc_html__( 'Divi Theme Builder', 'et_builder' ),
+			'type' => 'theme_builder',
+			'view' => 'et_theme_builder' === et_()->array_get( $_GET, 'page' ), // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- No need to use nonce.
+		)
+	);
 }
 add_action( 'admin_init', 'et_theme_builder_load_portability' );
 
@@ -114,7 +117,7 @@ function et_theme_builder_enqueue_scripts() {
 
 	if ( ! wp_script_is( 'wp-hooks', 'registered' ) ) {
 		// Use bundled wp-hooks script when WP < 5.0
-		wp_enqueue_script( 'wp-hooks', ET_BUILDER_URI. '/frontend-builder/assets/backports/hooks.js' );
+		wp_enqueue_script( 'wp-hooks', ET_BUILDER_URI . '/frontend-builder/assets/backports/hooks.js', array(), $asset_ver, false );
 	}
 
 	et_fb_enqueue_react();
@@ -128,7 +131,7 @@ function et_theme_builder_enqueue_scripts() {
 	wp_enqueue_script( $asset_id, $asset_uri, $dependencies, $asset_ver, true );
 
 	// Strip 'validate' key from settings as it is used server-side only.
-	$default_settings   = et_theme_builder_get_template_settings_options();
+	$default_settings = et_theme_builder_get_template_settings_options();
 	foreach ( $default_settings as $group_key => $group ) {
 		foreach ( $group['settings'] as $setting_key => $setting ) {
 			unset( $default_settings[ $group_key ]['settings'][ $setting_key ]['validate'] );
@@ -145,47 +148,51 @@ function et_theme_builder_enqueue_scripts() {
 	$animation   = true === $animation || 'true' === $animation;
 	$i18n        = require ET_BUILDER_DIR . 'frontend-builder/i18n.php';
 
-	wp_localize_script( 'et-theme-builder', 'et_theme_builder_bundle', array(
-		'config' => array(
-			'distPath'              => ET_BUILDER_URI . '/frontend-builder/build/',
-			'api'                   => admin_url( 'admin-ajax.php' ),
-			'apiErrors'             => ET_Theme_Builder_Api_Errors::getMap(),
-			'diviLibraryUrl'        => ET_BUILDER_DIVI_LIBRARY_URL,
-			'diviLibraryCustomTabs' => apply_filters( 'et_builder_library_modal_custom_tabs', array(), 'theme-builder' ),
-			'nonces'                => array(
-				'et_builder_library_get_layouts_data'        => wp_create_nonce( 'et_builder_library_get_layouts_data' ),
-				'et_theme_builder_api_duplicate_layout'      => wp_create_nonce( 'et_theme_builder_api_duplicate_layout' ),
-				'et_theme_builder_api_create_layout'         => wp_create_nonce( 'et_theme_builder_api_create_layout' ),
-				'et_theme_builder_api_get_layout_url'        => wp_create_nonce( 'et_theme_builder_api_get_layout_url' ),
-				'et_theme_builder_api_save'                  => wp_create_nonce( 'et_theme_builder_api_save' ),
-				'et_theme_builder_api_drop_autosave'         => wp_create_nonce( 'et_theme_builder_api_drop_autosave' ),
-				'et_theme_builder_api_get_template_settings' => wp_create_nonce( 'et_theme_builder_api_get_template_settings' ),
-				'et_theme_builder_api_reset'                 => wp_create_nonce( 'et_theme_builder_api_reset' ),
-				'et_theme_builder_api_export_theme_builder'  => wp_create_nonce( 'et_theme_builder_api_export_theme_builder' ),
-				'et_theme_builder_api_import_theme_builder'  => wp_create_nonce( 'et_theme_builder_api_import_theme_builder' ),
-				'et_builder_library_update_account'          => wp_create_nonce( 'et_builder_library_update_account' ),
+	wp_localize_script(
+		'et-theme-builder',
+		'et_theme_builder_bundle',
+		array(
+			'config' => array(
+				'distPath'              => ET_BUILDER_URI . '/frontend-builder/build/',
+				'api'                   => admin_url( 'admin-ajax.php' ),
+				'apiErrors'             => ET_Theme_Builder_Api_Errors::getMap(),
+				'diviLibraryUrl'        => ET_BUILDER_DIVI_LIBRARY_URL,
+				'diviLibraryCustomTabs' => apply_filters( 'et_builder_library_modal_custom_tabs', array(), 'theme-builder' ),
+				'nonces'                => array(
+					'et_builder_library_get_layouts_data' => wp_create_nonce( 'et_builder_library_get_layouts_data' ),
+					'et_theme_builder_api_duplicate_layout' => wp_create_nonce( 'et_theme_builder_api_duplicate_layout' ),
+					'et_theme_builder_api_create_layout'  => wp_create_nonce( 'et_theme_builder_api_create_layout' ),
+					'et_theme_builder_api_get_layout_url' => wp_create_nonce( 'et_theme_builder_api_get_layout_url' ),
+					'et_theme_builder_api_save'           => wp_create_nonce( 'et_theme_builder_api_save' ),
+					'et_theme_builder_api_drop_autosave'  => wp_create_nonce( 'et_theme_builder_api_drop_autosave' ),
+					'et_theme_builder_api_get_template_settings' => wp_create_nonce( 'et_theme_builder_api_get_template_settings' ),
+					'et_theme_builder_api_reset'          => wp_create_nonce( 'et_theme_builder_api_reset' ),
+					'et_theme_builder_api_export_theme_builder' => wp_create_nonce( 'et_theme_builder_api_export_theme_builder' ),
+					'et_theme_builder_api_import_theme_builder' => wp_create_nonce( 'et_theme_builder_api_import_theme_builder' ),
+					'et_builder_library_update_account'   => wp_create_nonce( 'et_builder_library_update_account' ),
+				),
+				'rtl'                   => is_rtl(),
+				'animation'             => $animation,
+				'templateSettings'      => array(
+					'default'   => $default_settings,
+					'preloaded' => $preloaded_settings,
+				),
+				'etAccount'             => et_core_get_et_account(),
+				'capabilities'          => isset( $role_capabilities[ $user_role ] ) ? $role_capabilities[ $user_role ] : array(),
+				'templates'             => array(
+					'hasDraft' => 0 !== et_theme_builder_get_theme_builder_post_id( false, false ),
+					'live'     => et_theme_builder_get_theme_builder_templates( true ),
+					'draft'    => et_theme_builder_get_theme_builder_templates( false ),
+				),
 			),
-			'rtl'              => is_rtl(),
-			'animation'        => $animation,
-			'templateSettings' => array(
-				'default'   => $default_settings,
-				'preloaded' => $preloaded_settings,
+			'i18n'   => array(
+				'generic'      => $i18n['generic'],
+				'portability'  => $i18n['portability'],
+				'library'      => $i18n['library'],
+				'themeBuilder' => $i18n['themeBuilder'],
 			),
-			'etAccount'        => et_core_get_et_account(),
-			'capabilities'     => isset( $role_capabilities[ $user_role ] ) ? $role_capabilities[ $user_role ] : array(),
-			'templates' => array(
-				'hasDraft' => 0 !== et_theme_builder_get_theme_builder_post_id( false, false ),
-				'live'     => et_theme_builder_get_theme_builder_templates( true ),
-				'draft'    => et_theme_builder_get_theme_builder_templates( false ),
-			),
-		),
-		'i18n' => array(
-			'generic'      => $i18n['generic'],
-			'portability'  => $i18n['portability'],
-			'library'      => $i18n['library'],
-			'themeBuilder' => $i18n['themeBuilder'],
-		),
-	));
+		)
+	);
 }
 add_action( 'admin_enqueue_scripts', 'et_theme_builder_enqueue_scripts' );
 

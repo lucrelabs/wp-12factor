@@ -34,7 +34,7 @@ if ( et_is_woocommerce_plugin_active() ) {
 			}
 
 			if ( absint( $maybe_product_id ) === 0
-			     && ! in_array( $maybe_product_id, array( 'current', 'latest' ) ) ) {
+				 && ! in_array( $maybe_product_id, array( 'current', 'latest' ) ) ) {
 				return false;
 			}
 
@@ -62,18 +62,23 @@ if ( et_is_woocommerce_plugin_active() ) {
 				}
 			}
 
-			if ( ! in_array( $valid_product_attr, array(
+			if ( ! in_array(
+				$valid_product_attr,
+				array(
 					'current',
 					'latest',
-				) ) && false === get_post_status( $valid_product_attr ) ) {
+				)
+			) && false === get_post_status( $valid_product_attr ) ) {
 				$valid_product_attr = 'latest';
 			}
 
 			if ( 'current' === $valid_product_attr ) {
 				$product_id = ET_Builder_Element::get_current_post_id();
-			} else if ( 'latest' === $valid_product_attr ) {
+			} elseif ( 'latest' === $valid_product_attr ) {
 				$args = array(
-					'limit' => 1,
+					'limit'       => 1,
+					'post_status' => array( 'publish', 'private' ),
+					'perm'        => 'readable',
 				);
 
 				$products = wc_get_products( $args );
@@ -82,17 +87,19 @@ if ( et_is_woocommerce_plugin_active() ) {
 				} else {
 					return 0;
 				}
-			} else if ( is_numeric( $valid_product_attr ) && 'product' !== get_post_type( $valid_product_attr ) ) {
+			} elseif ( is_numeric( $valid_product_attr ) && 'product' !== get_post_type( $valid_product_attr ) ) {
 				// There is a condition that $valid_product_attr value passed here is not the product ID.
 				// For example when you set product breadcrumb as Blurb Title when building layout in TB.
 				// So we get the most recent product ID in date descending order.
-				$query = new WC_Product_Query( array(
-					'limit'   => 1,
-					'orderby' => 'date',
-					'order'   => 'DESC',
-					'return'  => 'ids',
-					'status'  => array( 'publish' ),
-				) );
+				$query = new WC_Product_Query(
+					array(
+						'limit'   => 1,
+						'orderby' => 'date',
+						'order'   => 'DESC',
+						'return'  => 'ids',
+						'status'  => array( 'publish' ),
+					)
+				);
 
 				$products = $query->get_products();
 
@@ -318,8 +325,10 @@ if ( et_is_woocommerce_plugin_active() ) {
 			$has_reviews = empty( $comments ) ? false : true;
 			ob_start();
 			?>
-			<?php if ( get_option( 'woocommerce_review_rating_verification_required' ) === 'no' ||
-			           wc_customer_bought_product( '', get_current_user_id(), $product->get_id() ) ) : ?>
+			<?php
+			if ( get_option( 'woocommerce_review_rating_verification_required' ) === 'no' ||
+					   wc_customer_bought_product( '', get_current_user_id(), $product->get_id() ) ) :
+				?>
 
 				<div id="review_form_wrapper">
 					<div id="review_form">
@@ -334,9 +343,9 @@ if ( et_is_woocommerce_plugin_active() ) {
 							'comment_notes_after' => '',
 							'fields'              => array(
 								'author' => '<p class="comment-form-author">' . '<label for="author">' . esc_html__( 'Name', 'woocommerce' ) . '&nbsp;<span class="required">*</span></label> ' .
-								            '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" required /></p>',
+											'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" required /></p>',
 								'email'  => '<p class="comment-form-email"><label for="email">' . esc_html__( 'Email', 'woocommerce' ) . '&nbsp;<span class="required">*</span></label> ' .
-								            '<input id="email" name="email" type="email" value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="30" required /></p>',
+											'<input id="email" name="email" type="email" value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="30" required /></p>',
 							),
 							'label_submit'        => esc_html__( 'Submit', 'et_builder' ),
 							'submit_button'       => '<button name="%1$s" type="submit" id="%2$s" class="et_pb_button %3$s" />%4$s</button>',
@@ -545,7 +554,7 @@ if ( et_is_woocommerce_plugin_active() ) {
 
 			$page_layout = get_post_meta( $post_id, '_et_pb_page_layout', true );
 
-			if ( $page_layout && 'et_full_width_page' !== $page_layout  && ! ET_Builder_Element::is_theme_builder_layout() ) {
+			if ( $page_layout && 'et_full_width_page' !== $page_layout && ! ET_Builder_Element::is_theme_builder_layout() ) {
 				return '3'; // Set to 3 if page has sidebar.
 			}
 
@@ -601,22 +610,26 @@ if ( et_is_woocommerce_plugin_active() ) {
 		 * @return array
 		 */
 		public static function output_data_icon_attrs( $outer_wrapper_attrs, $this_class ) {
-			$hover_icon        = et_()->array_get( $this_class->props, 'hover_icon', '' );
-			$hover_icon_values = et_pb_responsive_options()->get_property_values( $this_class->props, 'hover_icon' );
-			$hover_icon_tablet = et_()->array_get( $hover_icon_values, 'tablet', '' );
-			$hover_icon_phone  = et_()->array_get( $hover_icon_values, 'phone', '' );
-
-			$overlay_attributes = ET_Builder_Module_Helper_Overlay::get_attributes( array(
-				'icon'        => $hover_icon,
-				'icon_tablet' => $hover_icon_tablet,
-				'icon_phone'  => $hover_icon_phone,
-			) );
+			$hover_icon         = et_()->array_get( $this_class->props, 'hover_icon', '' );
+			$hover_icon_values  = et_pb_responsive_options()->get_property_values( $this_class->props, 'hover_icon' );
+			$hover_icon_tablet  = et_()->array_get( $hover_icon_values, 'tablet', '' );
+			$hover_icon_phone   = et_()->array_get( $hover_icon_values, 'phone', '' );
+			$hover_icon_sticky  = et_pb_sticky_options()->get_value( 'hover_icon', $this_class->props );
+			$overlay_attributes = ET_Builder_Module_Helper_Overlay::get_attributes(
+				array(
+					'icon'        => $hover_icon,
+					'icon_tablet' => $hover_icon_tablet,
+					'icon_phone'  => $hover_icon_phone,
+					'icon_sticky' => $hover_icon_sticky,
+				)
+			);
 
 			return array_merge( $outer_wrapper_attrs, $overlay_attributes );
 		}
 
 		/**
-		 * Return all possible product tabs. See woocommerce_default_product_tabs() in woocommerce/includes/wc-template-functions.php
+		 * Return all possible product tabs.
+		 * See woocommerce_default_product_tabs() in woocommerce/includes/wc-template-functions.php
 		 *
 		 * @return array
 		 */
@@ -640,6 +653,25 @@ if ( et_is_woocommerce_plugin_active() ) {
 			);
 
 			return $tabs;
+		}
+
+		public static function get_default_tab_options() {
+			$tabs    = self::get_default_product_tabs();
+			$options = array();
+
+			foreach ( $tabs as $name => $tab ) {
+				if ( ! isset( $tab['title'] ) ) {
+					continue;
+				}
+
+				$options[ $name ] = array(
+					'value' => $name,
+					'label' => 'reviews' === $name ? esc_html__( 'Reviews', 'et_builder' ) :
+						esc_html( $tab['title'] ),
+				);
+			}
+
+			return $options;
 		}
 
 		/**
@@ -766,10 +798,13 @@ if ( et_is_woocommerce_plugin_active() ) {
 
 				// Generate style for hover.
 				if ( et_builder_is_hover_enabled( $prop, $attrs ) && ! empty( $hover_value ) ) {
-					ET_Builder_Element::set_style( $render_slug, array(
-						'selector'    => $hover_selector,
-						'declaration' => self::get_rating_style( $prop, $hover_value, 'hover', true ),
-					) );
+					ET_Builder_Element::set_style(
+						$render_slug,
+						array(
+							'selector'    => $hover_selector,
+							'declaration' => self::get_rating_style( $prop, $hover_value, 'hover', true ),
+						)
+					);
 				}
 			}
 		}
@@ -827,6 +862,58 @@ if ( et_is_woocommerce_plugin_active() ) {
 		}
 
 		/**
+		 * Gets the WooCommerce Tabs defaults.
+		 *
+		 * Implementation based on
+		 *
+		 * @see   https://github.com/elegantthemes/submodule-builder/pull/6568
+		 *
+		 * @since 4.4.2
+		 *
+		 * @return array
+		 */
+		public static function get_woo_default_tabs() {
+			return array(
+				'filter',
+				'et_builder_get_woo_default_tabs',
+			);
+		}
+
+		/**
+		 * Gets the WooCommerce Tabs options for the given Product.
+		 *
+		 * @since 4.4.2
+		 *
+		 * @return string
+		 */
+		public static function get_woo_default_tabs_options() {
+			$maybe_product_id = self::get_product_default_value();
+			$product_id       = self::get_product( $maybe_product_id );
+
+			$current_product = wc_get_product( $product_id );
+			if ( ! $current_product ) {
+				return '';
+			}
+
+			global $product, $post;
+			$original_product = $product;
+			$original_post    = $post;
+			$product          = $current_product;
+			$post             = get_post( $product->get_id() );
+
+			$tabs = apply_filters( 'woocommerce_product_tabs', array() );
+			// Reset global $product.
+			$product = $original_product;
+			$post    = $original_post;
+
+			if ( ! empty( $tabs ) ) {
+				return implode( '|', array_keys( $tabs ) );
+			}
+
+			return '';
+		}
+
+		/**
 		 * Sets the Display type to render only Products.
 		 *
 		 * @since 4.1.0
@@ -841,8 +928,7 @@ if ( et_is_woocommerce_plugin_active() ) {
 		 *
 		 * @return string
 		 */
-		public static function set_display_type_to_render_only_products( $option_name,
-        $display_type = '' ) {
+		public static function set_display_type_to_render_only_products( $option_name, $display_type = '' ) {
 			$existing_display_type = get_option( $option_name );
 			update_option( $option_name, $display_type );
 
@@ -865,7 +951,6 @@ if ( et_is_woocommerce_plugin_active() ) {
 		public static function reset_display_type( $option_name, $display_type ) {
 			update_option( $option_name, $display_type );
 		}
-
 	}
 
 	add_filter(
@@ -881,6 +966,14 @@ if ( et_is_woocommerce_plugin_active() ) {
 		array(
 			'ET_Builder_Module_Helper_Woocommerce_Modules',
 			'get_product_default_value',
+		)
+	);
+
+	add_filter(
+		'et_builder_get_woo_default_tabs',
+		array(
+			'ET_Builder_Module_Helper_Woocommerce_Modules',
+			'get_woo_default_tabs_options',
 		)
 	);
 }

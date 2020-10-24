@@ -15,4 +15,4 @@ class ET_Builder_Module_PostContent extends ET_Builder_Module_Type_PostContent {
 	}
 }
 
-new ET_Builder_Module_PostContent;
+new ET_Builder_Module_PostContent();

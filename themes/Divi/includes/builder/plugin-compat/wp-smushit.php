@@ -86,6 +86,8 @@ class ET_Builder_Plugin_Compat_Smush extends ET_Builder_Plugin_Compat_Base {
 				}
 			}
 		}
+
+		add_filter( 'et_core_page_resource_get_data', array( $this, 'maybe_get_background_images_cdn' ), 10, 3 );
 	}
 
 	/**
@@ -135,6 +137,58 @@ class ET_Builder_Plugin_Compat_Smush extends ET_Builder_Plugin_Compat_Base {
 		if ( wp_script_is( 'smush-lazy-load', 'enqueued' ) ) {
 			wp_dequeue_script( 'smush-lazy-load' );
 		}
+	}
+
+	/**
+	 * Maybe convert background images local URL inside the styles into CDN before it's
+	 * saved as static resource.
+	 *
+	 * @since 4.4.9
+	 *
+	 * @param array                $data_resource
+	 * @param string               $context
+	 * @param ET_Core_PageResource $page_resource
+	 *
+	 * @return string
+	 */
+	public function maybe_get_background_images_cdn( $data_resource, $context, $page_resource ) {
+		// Bail early if the context is not 'file' or the data resource is empty or resource
+		// is not unified (single post & builder is being used).
+		if ( 'file' !== $context || empty( $data_resource ) || ! strpos( $page_resource->slug, 'unified' ) ) {
+			return $data_resource;
+		}
+
+		if ( ! class_exists( '\Smush\Core\Settings' ) || ! class_exists( '\Smush\Core\Modules\Helpers\Parser' ) ) {
+			return $data_resource;
+		}
+
+		$smush_settings    = Smush\Core\Settings::get_instance();
+		$cdn               = $smush_settings->get( 'cdn' );
+		$background_images = $smush_settings->get( 'background_images' );
+
+		// Both of CDN and Background Images modules should be activated.
+		if ( ! $cdn || ! $background_images ) {
+			return $data_resource;
+		}
+
+		$new_data_resource = $data_resource;
+		$smush_parser      = new Smush\Core\Modules\Helpers\Parser();
+
+		$smush_parser->enable( 'cdn' );
+		$smush_parser->enable( 'background_images' );
+
+		// Converting background images local URL into CDN.
+		foreach ( $data_resource as $priority => $data_part ) {
+			$new_data_part = array();
+
+			foreach ( $data_part as $data ) {
+				$new_data_part[] = $smush_parser->parse_page( $data );
+			}
+
+			$new_data_resource[ $priority ] = $new_data_part;
+		}
+
+		return $new_data_resource;
 	}
 }
 

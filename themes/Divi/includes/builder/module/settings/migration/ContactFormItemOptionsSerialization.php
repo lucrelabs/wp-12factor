@@ -16,12 +16,12 @@ class ET_Builder_Module_Settings_Migration_ContactFormItemOptionsSerialization e
 					'checkbox_options' => $this->get_modules(),
 				),
 			),
-			'radio_options' => array(
+			'radio_options'    => array(
 				'affected_fields' => array(
 					'radio_options' => $this->get_modules(),
 				),
 			),
-			'select_options' => array(
+			'select_options'   => array(
 				'affected_fields' => array(
 					'select_options' => $this->get_modules(),
 				),
@@ -50,7 +50,7 @@ class ET_Builder_Module_Settings_Migration_ContactFormItemOptionsSerialization e
 	}
 
 	public function escape_quotes( $matches ) {
-		return '{' . $matches[1] . preg_replace('/(?<!\\\\)"/', '\\"', $matches[2] ) . $matches[3] . $matches[4] . '}';
+		return '{' . $matches[1] . preg_replace( '/(?<!\\\\)"/', '\\"', $matches[2] ) . $matches[3] . $matches[4] . '}';
 	}
 }
 

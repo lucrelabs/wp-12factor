@@ -42,6 +42,7 @@ abstract class ET_Builder_Module_Helper_Sizing {
 
 	/**
 	 * Check if the sizing feature option is enabled
+	 *
 	 * @return bool
 	 */
 	public function is_enabled() {
@@ -51,7 +52,7 @@ abstract class ET_Builder_Module_Helper_Sizing {
 	/**
 	 * Returns sizing value
 	 *
-	 * @param array $props
+	 * @param array  $props
 	 * @param string $default
 	 *
 	 * @return string

@@ -4,12 +4,12 @@
  *
  * @since 4.0
  *
- * @param string $content
- * @param string $name
- * @param array $settings
- * @param integer $post_id
- * @param string $context
- * @param array $overrides
+ * @param string  $content   Content.
+ * @param string  $name      Name.
+ * @param array   $settings  Settings.
+ * @param integer $post_id   Post ID.
+ * @param string  $context   Context.
+ * @param array   $overrides Overrides.
  *
  * @return string
  */
@@ -21,33 +21,33 @@ function et_theme_builder_filter_resolve_default_dynamic_content( $content, $nam
 	}
 
 	$placeholders = array(
-		'post_title' => __( 'Your Dynamic Post Title Will Display Here', 'et_builder' ),
-		'post_excerpt' => __( 'Your dynamic post excerpt will display here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus auctor urna eleifend diam eleifend sollicitudin a fringilla turpis. Curabitur lectus enim.', 'et_builder' ),
-		'post_date' => time(),
-		'post_comment_count' => 12,
-		'post_categories' => array(
+		'post_title'          => __( 'Your Dynamic Post Title Will Display Here', 'et_builder' ),
+		'post_excerpt'        => __( 'Your dynamic post excerpt will display here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus auctor urna eleifend diam eleifend sollicitudin a fringilla turpis. Curabitur lectus enim.', 'et_builder' ),
+		'post_date'           => time(),
+		'post_comment_count'  => 12,
+		'post_categories'     => array(
 			__( 'Category 1', 'et_builder' ),
 			__( 'Category 2', 'et_builder' ),
 			__( 'Category 3', 'et_builder' ),
 		),
-		'post_tags' => array(
+		'post_tags'           => array(
 			__( 'Tag 1', 'et_builder' ),
 			__( 'Tag 2', 'et_builder' ),
 			__( 'Tag 3', 'et_builder' ),
 		),
-		'post_author' => array(
-			'display_name' => __( 'John Doe', 'et_builder' ),
+		'post_author'         => array(
+			'display_name'    => __( 'John Doe', 'et_builder' ),
 			'first_last_name' => __( 'John Doe', 'et_builder' ),
 			'last_first_name' => __( 'Doe, John', 'et_builder' ),
-			'first_name' => __( 'John', 'et_builder' ),
-			'last_name' => __( 'Doe', 'et_builder' ),
-			'nickname' => __( 'John', 'et_builder' ),
-			'username' => __( 'johndoe', 'et_builder' ),
+			'first_name'      => __( 'John', 'et_builder' ),
+			'last_name'       => __( 'Doe', 'et_builder' ),
+			'nickname'        => __( 'John', 'et_builder' ),
+			'username'        => __( 'johndoe', 'et_builder' ),
 		),
-		'post_author_bio' => __( 'Your dynamic author bio will display here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus auctor urna eleifend diam eleifend sollicitudin a fringilla turpis. Curabitur lectus enim.', 'et_builder' ),
+		'post_author_bio'     => __( 'Your dynamic author bio will display here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus auctor urna eleifend diam eleifend sollicitudin a fringilla turpis. Curabitur lectus enim.', 'et_builder' ),
 		'post_featured_image' => ET_BUILDER_PLACEHOLDER_LANDSCAPE_IMAGE_DATA,
-		'term_description' => __( 'Your dynamic category description will display here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus auctor urna eleifend diam eleifend sollicitudin a fringilla turpis. Curabitur lectus enim.', 'et_builder' ),
-		'site_logo' => 'https://www.elegantthemes.com/img/divi.png',
+		'term_description'    => __( 'Your dynamic category description will display here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus auctor urna eleifend diam eleifend sollicitudin a fringilla turpis. Curabitur lectus enim.', 'et_builder' ),
+		'site_logo'           => 'https://www.elegantthemes.com/img/divi.png',
 	);
 
 	$_       = et_();
@@ -60,9 +60,9 @@ function et_theme_builder_filter_resolve_default_dynamic_content( $content, $nam
 			break;
 
 		case 'post_excerpt':
-			$words      = (int) $_->array_get( $settings, 'words', $def( $post_id, $name, 'words' ) );
-			$read_more  = $_->array_get( $settings, 'read_more_label', $def( $post_id, $name, 'read_more_label' ) );
-			$content    = esc_html( $placeholders[ $name ] );
+			$words     = (int) $_->array_get( $settings, 'words', $def( $post_id, $name, 'words' ) );
+			$read_more = $_->array_get( $settings, 'read_more_label', $def( $post_id, $name, 'read_more_label' ) );
+			$content   = esc_html( $placeholders[ $name ] );
 
 			if ( $words > 0 ) {
 				$content = wp_trim_words( $content, $words );
@@ -119,7 +119,6 @@ function et_theme_builder_filter_resolve_default_dynamic_content( $content, $nam
 			foreach ( $content as $index => $item ) {
 				$content[ $index ] = esc_html( $item );
 
-
 				if ( $link ) {
 					$content[ $index ] = sprintf(
 						'<a href="%1$s" target="%2$s">%3$s</a>',
@@ -136,7 +135,7 @@ function et_theme_builder_filter_resolve_default_dynamic_content( $content, $nam
 		case 'post_link':
 			$text        = $_->array_get( $settings, 'text', $def( $post_id, $name, 'text' ) );
 			$custom_text = $_->array_get( $settings, 'custom_text', $def( $post_id, $name, 'custom_text' ) );
-			$label       = 'custom' === $text ? $custom_text : $placeholders[ 'post_title' ];
+			$label       = 'custom' === $text ? $custom_text : $placeholders['post_title'];
 			$content     = sprintf(
 				'<a href="%1$s">%2$s</a>',
 				'#',
@@ -191,10 +190,36 @@ function et_theme_builder_filter_resolve_default_dynamic_content( $content, $nam
 			}
 			break;
 
+		case 'post_meta_key':
+			$meta_key   = $_->array_get( $settings, 'meta_key' );
+			$meta_value = get_post_meta( $post_id, $meta_key, true );
+
+			if ( empty( $meta_value ) ) {
+				$content = et_builder_get_dynamic_content_custom_field_label( $meta_key );
+			} else {
+				$enable_html = $_->array_get( $settings, 'enable_html' );
+				if ( 'on' !== $enable_html ) {
+					$content = esc_html( $content );
+				}
+				$wrapped = true;
+			}
+
+			break;
+
 		default:
 			// Avoid unhandled cases being wrapped twice by the default resolve and this one.
 			$wrapped = true;
 			break;
+	}
+
+	if ( $_->starts_with( $name, 'custom_meta_' ) ) {
+		$meta_key   = substr( $name, strlen( 'custom_meta_' ) );
+		$meta_value = get_post_meta( $post_id, $meta_key, true );
+		if ( empty( $meta_value ) ) {
+			$content = et_builder_get_dynamic_content_custom_field_label( $meta_key );
+		} else {
+			$wrapped = true;
+		}
 	}
 
 	if ( ! $wrapped ) {

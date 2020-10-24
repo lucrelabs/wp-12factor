@@ -28,7 +28,7 @@ class ET_Builder_Module_Woocommerce_Price extends ET_Builder_Module {
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Content', 'et_builder' ),
+					'main_content' => et_builder_i18n( 'Content' ),
 				),
 			),
 			'advanced' => array(
@@ -110,10 +110,10 @@ class ET_Builder_Module_Woocommerce_Price extends ET_Builder_Module {
 				),
 			),
 			'text'           => array(
-				'css'     => array(
+				'css'         => array(
 					'text_shadow' => '%%order_class%%',
 				),
-				'options' => array(
+				'options'     => array(
 					'background_layout' => array(
 						'default' => 'light',
 						'hover'   => 'tabs',
@@ -147,7 +147,7 @@ class ET_Builder_Module_Woocommerce_Price extends ET_Builder_Module {
 
 		$this->help_videos = array(
 			array(
-				'id'   => esc_html( '7X03vBPYJ1o' ),
+				'id'   => '7X03vBPYJ1o',
 				'name' => esc_html__( 'Divi WooCommerce Modules', 'et_builder' ),
 			),
 		);

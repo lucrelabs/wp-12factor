@@ -12,31 +12,31 @@ class ET_Builder_Module_Sidebar extends ET_Builder_Module {
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Content', 'et_builder' ),
+					'main_content' => et_builder_i18n( 'Content' ),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
-					'layout'     => esc_html__( 'Layout', 'et_builder' ),
-					'text'       => array(
-						'title'    => esc_html__( 'Text', 'et_builder' ),
+					'layout' => et_builder_i18n( 'Layout' ),
+					'text'   => array(
+						'title'    => et_builder_i18n( 'Text' ),
 						'priority' => 49,
 					),
 				),
 			),
 		);
 
-		$this->advanced_fields = array(
-			'fonts'                 => array(
+		$this->advanced_fields   = array(
+			'fonts'          => array(
 				'header' => array(
-					'label'    => esc_html__( 'Title', 'et_builder' ),
-					'css'      => array(
+					'label' => et_builder_i18n( 'Title' ),
+					'css'   => array(
 						'main' => "{$this->main_css_element} h3:first-of-type, {$this->main_css_element} h4:first-of-type, {$this->main_css_element} h5:first-of-type, {$this->main_css_element} h6:first-of-type, {$this->main_css_element} h2:first-of-type, {$this->main_css_element} h1:first-of-type, {$this->main_css_element} .widget-title, {$this->main_css_element} .widgettitle",
 					),
 				),
 				'body'   => array(
-					'label'    => esc_html__( 'Body', 'et_builder' ),
-					'css'      => array(
+					'label' => et_builder_i18n( 'Body' ),
+					'css'   => array(
 						'main'        => "{$this->main_css_element}, {$this->main_css_element} li, {$this->main_css_element} li:before, {$this->main_css_element} a",
 						'line_height' => "{$this->main_css_element} p",
 					),
@@ -44,38 +44,38 @@ class ET_Builder_Module_Sidebar extends ET_Builder_Module {
 			),
 			'margin_padding' => array(
 				'css' => array(
-					'main' => '%%order_class%%',
+					'main'      => '%%order_class%%',
 					'important' => array( 'custom_margin' ), // needed to overwrite last module margin-bottom styling
 				),
 			),
-			'text'                  => array(
+			'text'           => array(
 				'use_background_layout' => true,
-				'options' => array(
+				'options'               => array(
 					'background_layout' => array(
 						'default' => 'light',
-						'hover' => 'tabs',
+						'hover'   => 'tabs',
 					),
 				),
-				'css' => array(
-					'main' => '%%order_class%%, %%order_class%% .widgettitle'
-				)
+				'css'                   => array(
+					'main' => '%%order_class%%, %%order_class%% .widgettitle',
+				),
 			),
-			'button'                => false,
+			'button'         => false,
 		);
 		$this->custom_css_fields = array(
 			'widget' => array(
 				'label'    => esc_html__( 'Widget', 'et_builder' ),
 				'selector' => '.et_pb_widget',
 			),
-			'title' => array(
-				'label'    => esc_html__( 'Title', 'et_builder' ),
+			'title'  => array(
+				'label'    => et_builder_i18n( 'Title' ),
 				'selector' => 'h4.widgettitle',
 			),
 		);
 
 		$this->help_videos = array(
 			array(
-				'id'   => esc_html( '468VROeyKq4' ),
+				'id'   => '468VROeyKq4',
 				'name' => esc_html__( 'An introduction to the Sidebar module', 'et_builder' ),
 			),
 		);
@@ -84,19 +84,19 @@ class ET_Builder_Module_Sidebar extends ET_Builder_Module {
 	function get_fields() {
 		$fields = array(
 			'orientation' => array(
-				'label'             => esc_html__( 'Alignment', 'et_builder' ),
-				'type'              => 'select',
-				'option_category'   => 'layout',
-				'options'           => array(
-					'left'  => esc_html__( 'Left', 'et_builder' ),
-					'right' => esc_html__( 'Right', 'et_builder' ),
+				'label'            => esc_html__( 'Alignment', 'et_builder' ),
+				'type'             => 'select',
+				'option_category'  => 'layout',
+				'options'          => array(
+					'left'  => et_builder_i18n( 'Left' ),
+					'right' => et_builder_i18n( 'Right' ),
 				),
-				'default_on_front'  => 'left',
-				'tab_slug'          => 'advanced',
-				'toggle_slug'       => 'layout',
-				'description'       => esc_html__( 'Choose which side of the page your sidebar will be on. This setting controls text orientation and border position.', 'et_builder' ),
+				'default_on_front' => 'left',
+				'tab_slug'         => 'advanced',
+				'toggle_slug'      => 'layout',
+				'description'      => esc_html__( 'Choose which side of the page your sidebar will be on. This setting controls text orientation and border position.', 'et_builder' ),
 			),
-			'area' => array(
+			'area'        => array(
 				'label'            => esc_html__( 'Widget Area', 'et_builder' ),
 				'type'             => 'select_sidebar',
 				'option_category'  => 'basic_option',
@@ -107,19 +107,19 @@ class ET_Builder_Module_Sidebar extends ET_Builder_Module {
 				),
 			),
 			'show_border' => array(
-				'label'           => esc_html__( 'Show Border Separator', 'et_builder' ),
-				'description'     => esc_html__( 'Disabling the border separator will remove the solid line that appears to the left or right of sidebar widgets.', 'et_builder' ),
-				'type'            => 'yes_no_button',
-				'option_category' => 'layout',
-				'options'         => array(
-					'on'  => esc_html__( 'Yes', 'et_builder' ),
-					'off' => esc_html__( 'No', 'et_builder' ),
+				'label'            => esc_html__( 'Show Border Separator', 'et_builder' ),
+				'description'      => esc_html__( 'Disabling the border separator will remove the solid line that appears to the left or right of sidebar widgets.', 'et_builder' ),
+				'type'             => 'yes_no_button',
+				'option_category'  => 'layout',
+				'options'          => array(
+					'on'  => et_builder_i18n( 'Yes' ),
+					'off' => et_builder_i18n( 'No' ),
 				),
 				'default_on_front' => 'on',
-				'tab_slug'        => 'advanced',
-				'toggle_slug'     => 'layout',
+				'tab_slug'         => 'advanced',
+				'toggle_slug'      => 'layout',
 			),
-			'__sidebars'          => array(
+			'__sidebars'  => array(
 				'type'                => 'computed',
 				'computed_callback'   => array( 'ET_Builder_Module_Sidebar', 'get_sidebar' ),
 				'computed_depends_on' => array(
@@ -141,7 +141,7 @@ class ET_Builder_Module_Sidebar extends ET_Builder_Module {
 			return array_shift( $sidebar_ids );
 		}
 
-		return "";
+		return '';
 	}
 
 	/**
@@ -182,9 +182,9 @@ class ET_Builder_Module_Sidebar extends ET_Builder_Module {
 	}
 
 	function render( $attrs, $content = null, $render_slug ) {
-		$orientation                     = $this->props['orientation'];
-		$area                            = "" === $this->props['area'] ? self::get_default_area() : $this->props['area'];
-		$show_border                     = $this->props['show_border'];
+		$orientation = $this->props['orientation'];
+		$area        = '' === $this->props['area'] ? self::get_default_area() : $this->props['area'];
+		$show_border = $this->props['show_border'];
 
 		$video_background          = $this->video_background();
 		$parallax_image_background = $this->get_parallax_image_background();
@@ -202,12 +202,14 @@ class ET_Builder_Module_Sidebar extends ET_Builder_Module {
 		ob_end_clean();
 
 		// Module classnames
-		$this->add_classname( array(
-			'et_pb_widget_area',
-			'clearfix',
-			"et_pb_widget_area_{$orientation}",
-			$this->get_text_orientation_classname(),
-		) );
+		$this->add_classname(
+			array(
+				'et_pb_widget_area',
+				'clearfix',
+				"et_pb_widget_area_{$orientation}",
+				$this->get_text_orientation_classname(),
+			)
+		);
 
 		// Background layout class names.
 		$background_layout_class_names = et_pb_background_layout_options()->get_background_layout_class( $this->props );
@@ -218,9 +220,11 @@ class ET_Builder_Module_Sidebar extends ET_Builder_Module {
 		}
 
 		// Remove automatically added classnames
-		$this->remove_classname( array(
-			$render_slug,
-		) );
+		$this->remove_classname(
+			array(
+				$render_slug,
+			)
+		);
 
 		// Background layout data attributes.
 		$data_background_layout = et_pb_background_layout_options()->get_background_layout_attrs( $this->props );
@@ -243,4 +247,4 @@ class ET_Builder_Module_Sidebar extends ET_Builder_Module {
 	}
 }
 
-new ET_Builder_Module_Sidebar;
+new ET_Builder_Module_Sidebar();

@@ -31,8 +31,10 @@
     init: function() {
       this._bindMethods(this);
 
-      // Execute the default page-level action
-      window.grecaptcha && grecaptcha.execute(this.site_key, this.page_action);
+      if (this.isEnabled()) {
+        // Execute the default page-level action
+        window.grecaptcha && grecaptcha.execute(this.site_key, this.page_action);
+      }
     },
 
     isEnabled: function() {
@@ -49,7 +51,7 @@
      * @return {Promise<string>} Interaction token to be verified on server.
      */
     interaction: function(action) {
-      if (! this.site_key || ! window.grecaptcha) {
+      if (! this.isEnabled()) {
         return Promise.resolve('');
       }
 

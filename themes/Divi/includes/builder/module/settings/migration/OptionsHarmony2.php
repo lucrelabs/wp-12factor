@@ -30,26 +30,26 @@ class ET_Builder_Module_Settings_Migration_OptionsHarmony2 extends ET_Builder_Mo
 	public function get_fields() {
 		return array(
 			// Form Field BG Color.
-			'form_field_background_color'  => array(
+			'form_field_background_color'                 => array(
 				'affected_fields' => array(
 					'form_background_color'  => $this->get_modules( 'form_bg_color' ),
 					'field_background_color' => $this->get_modules( 'field_bg_color' ),
 				),
 			),
-			'form_field_background_color__hover_enabled' => array(
+			'form_field_background_color__hover_enabled'  => array(
 				'affected_fields' => array(
-					'form_background_color__hover_enabled'  => $this->get_modules( 'contact_form' ),
+					'form_background_color__hover_enabled' => $this->get_modules( 'contact_form' ),
 					'field_background_color__hover_enabled' => $this->get_modules( 'contact_form_field' ),
 				),
 			),
-			'form_field_background_color__hover' => array(
+			'form_field_background_color__hover'          => array(
 				'affected_fields' => array(
 					'form_background_color__hover'  => $this->get_modules( 'contact_form' ),
 					'field_background_color__hover' => $this->get_modules( 'contact_form_field' ),
 				),
 			),
 			// Form Field Focus BG Color.
-			'form_field_focus_background_color'  => array(
+			'form_field_focus_background_color'           => array(
 				'affected_fields' => array(
 					'focus_background_color' => $this->get_modules( 'focus_bg_color' ),
 				),
@@ -59,145 +59,145 @@ class ET_Builder_Module_Settings_Migration_OptionsHarmony2 extends ET_Builder_Mo
 					'focus_background_color__hover_enabled' => $this->get_modules( 'login' ),
 				),
 			),
-			'form_field_focus_background_color__hover' => array(
+			'form_field_focus_background_color__hover'    => array(
 				'affected_fields' => array(
 					'focus_background_color__hover' => $this->get_modules( 'login' ),
 				),
 			),
 			// Form Field Focus Text Color.
-			'form_field_focus_text_color'  => array(
+			'form_field_focus_text_color'                 => array(
 				'affected_fields' => array(
 					'focus_text_color' => $this->get_modules( 'focus_bg_color' ),
 				),
 			),
-			'form_field_focus_text_color__hover_enabled' => array(
+			'form_field_focus_text_color__hover_enabled'  => array(
 				'affected_fields' => array(
 					'focus_text_color__hover_enabled' => $this->get_modules( 'login' ),
 				),
 			),
-			'form_field_focus_text_color__hover' => array(
+			'form_field_focus_text_color__hover'          => array(
 				'affected_fields' => array(
 					'focus_text_color__hover' => $this->get_modules( 'login' ),
 				),
 			),
 			// Form Field Font.
-			'form_field_text_color' => array(
+			'form_field_text_color'                       => array(
 				'affected_fields' => array(
 					'input_text_color' => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_text_color__hover_enabled' => array(
+			'form_field_text_color__hover_enabled'        => array(
 				'affected_fields' => array(
 					'input_text_color__hover_enabled' => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_text_color__hover' => array(
+			'form_field_text_color__hover'                => array(
 				'affected_fields' => array(
 					'input_text_color__hover' => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_font' => array(
+			'form_field_font'                             => array(
 				'affected_fields' => array(
 					'input_font' => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_text_align' => array(
+			'form_field_text_align'                       => array(
 				'affected_fields' => array(
 					'input_text_align' => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_font_size' => array(
+			'form_field_font_size'                        => array(
 				'affected_fields' => array(
 					'input_font_size' => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_font_size_last_edited' => array(
+			'form_field_font_size_last_edited'            => array(
 				'affected_fields' => array(
 					'input_font_size_last_edited' => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_font_size_tablet' => array(
+			'form_field_font_size_tablet'                 => array(
 				'affected_fields' => array(
 					'input_font_size_tablet' => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_font_size_phone' => array(
+			'form_field_font_size_phone'                  => array(
 				'affected_fields' => array(
 					'input_font_size_phone' => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_font_size__hover_enabled' => array(
+			'form_field_font_size__hover_enabled'         => array(
 				'affected_fields' => array(
-					'input_font_size__hover_enabled'  => $this->get_modules( 'search' ),
+					'input_font_size__hover_enabled' => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_font_size__hover'  => array(
+			'form_field_font_size__hover'                 => array(
 				'affected_fields' => array(
-					'input_font_size__hover'  => $this->get_modules( 'search' ),
+					'input_font_size__hover' => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_letter_spacing' => array(
+			'form_field_letter_spacing'                   => array(
 				'affected_fields' => array(
 					'input_letter_spacing' => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_letter_spacing_last_edited' => array(
+			'form_field_letter_spacing_last_edited'       => array(
 				'affected_fields' => array(
 					'input_letter_spacing_last_edited' => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_letter_spacing_tablet' => array(
+			'form_field_letter_spacing_tablet'            => array(
 				'affected_fields' => array(
 					'input_letter_spacing_tablet' => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_letter_spacing_phone' => array(
+			'form_field_letter_spacing_phone'             => array(
 				'affected_fields' => array(
 					'input_letter_spacing_phone' => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_letter_spacing__hover_enabled' => array(
+			'form_field_letter_spacing__hover_enabled'    => array(
 				'affected_fields' => array(
-					'input_letter_spacing__hover_enabled'  => $this->get_modules( 'search' ),
+					'input_letter_spacing__hover_enabled' => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_letter_spacing__hover'  => array(
+			'form_field_letter_spacing__hover'            => array(
 				'affected_fields' => array(
-					'input_letter_spacing__hover'  => $this->get_modules( 'search' ),
+					'input_letter_spacing__hover' => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_line_height' => array(
+			'form_field_line_height'                      => array(
 				'affected_fields' => array(
 					'input_line_height' => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_line_height_last_edited' => array(
+			'form_field_line_height_last_edited'          => array(
 				'affected_fields' => array(
 					'input_line_height_last_edited' => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_line_height_tablet' => array(
+			'form_field_line_height_tablet'               => array(
 				'affected_fields' => array(
 					'input_line_height_tablet' => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_line_height_phone' => array(
+			'form_field_line_height_phone'                => array(
 				'affected_fields' => array(
 					'input_line_height_phone' => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_line_height__hover_enabled' => array(
+			'form_field_line_height__hover_enabled'       => array(
 				'affected_fields' => array(
-					'input_line_height__hover_enabled'  => $this->get_modules( 'search' ),
+					'input_line_height__hover_enabled' => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_line_height__hover'  => array(
+			'form_field_line_height__hover'               => array(
 				'affected_fields' => array(
-					'input_line_height__hover'  => $this->get_modules( 'search' ),
+					'input_line_height__hover' => $this->get_modules( 'search' ),
 				),
 			),
 			// Form Field Text Shadow.
-			'form_field_text_shadow_horizontal_length' => array(
+			'form_field_text_shadow_horizontal_length'    => array(
 				'affected_fields' => array(
 					'fields_text_shadow_horizontal_length' => $this->get_modules( 'text_shadow' ),
 					'input_text_shadow_horizontal_length'  => $this->get_modules( 'search' ),
@@ -215,25 +215,25 @@ class ET_Builder_Module_Settings_Migration_OptionsHarmony2 extends ET_Builder_Mo
 					'input_text_shadow_horizontal_length__hover'  => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_text_shadow_vertical_length'    => array(
+			'form_field_text_shadow_vertical_length'      => array(
 				'affected_fields' => array(
 					'fields_text_shadow_vertical_length' => $this->get_modules( 'text_shadow' ),
 					'input_text_shadow_vertical_length'  => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_text_shadow_vertical_length__hover_enabled'   => array(
+			'form_field_text_shadow_vertical_length__hover_enabled' => array(
 				'affected_fields' => array(
 					'fields_text_shadow_vertical_length__hover_enabled' => $this->get_modules( 'text_shadow' ),
 					'input_text_shadow_vertical_length__hover_enabled'  => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_text_shadow_vertical_length__hover'   => array(
+			'form_field_text_shadow_vertical_length__hover' => array(
 				'affected_fields' => array(
 					'fields_text_shadow_vertical_length__hover' => $this->get_modules( 'text_shadow' ),
 					'input_text_shadow_vertical_length__hover'  => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_text_shadow_blur_strength' => array(
+			'form_field_text_shadow_blur_strength'        => array(
 				'affected_fields' => array(
 					'fields_text_shadow_blur_strength' => $this->get_modules( 'text_shadow' ),
 					'input_text_shadow_blur_strength'  => $this->get_modules( 'search' ),
@@ -251,7 +251,7 @@ class ET_Builder_Module_Settings_Migration_OptionsHarmony2 extends ET_Builder_Mo
 					'input_text_shadow_blur_strength__hover'  => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_text_shadow_color' => array(
+			'form_field_text_shadow_color'                => array(
 				'affected_fields' => array(
 					'fields_text_shadow_color' => $this->get_modules( 'text_shadow' ),
 					'input_text_shadow_color'  => $this->get_modules( 'search' ),
@@ -263,47 +263,47 @@ class ET_Builder_Module_Settings_Migration_OptionsHarmony2 extends ET_Builder_Mo
 					'input_text_shadow_color__hover_enabled'  => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_text_shadow_color__hover'  => array(
+			'form_field_text_shadow_color__hover'         => array(
 				'affected_fields' => array(
 					'fields_text_shadow_color__hover' => $this->get_modules( 'text_shadow' ),
 					'input_text_shadow_color__hover'  => $this->get_modules( 'search' ),
 				),
 			),
-			'form_field_text_shadow_style' => array(
+			'form_field_text_shadow_style'                => array(
 				'affected_fields' => array(
 					'fields_text_shadow_style' => $this->get_modules( 'text_shadow' ),
 					'input_text_shadow_style'  => $this->get_modules( 'search' ),
 				),
 			),
 			// Image.
-			'align_last_edited' => array(
+			'align_last_edited'                           => array(
 				'affected_fields' => array(
 					'always_center_on_mobile' => $this->get_modules( 'image' ),
 				),
 			),
-			'align_tablet' => array(
+			'align_tablet'                                => array(
 				'affected_fields' => array(
 					'always_center_on_mobile' => $this->get_modules( 'image' ),
 				),
 			),
 			// Price Excluded Color.
-			'excluded_text_color' => array(
+			'excluded_text_color'                         => array(
 				'affected_fields' => array(
 					'pricing_item_excluded_color' => $this->get_modules( 'pricing_table' ),
 				),
 			),
-			'excluded_text_color__hover_enabled' => array(
+			'excluded_text_color__hover_enabled'          => array(
 				'affected_fields' => array(
 					'pricing_item_excluded_color__hover_enabled' => $this->get_modules( 'pricing_table' ),
 				),
 			),
-			'excluded_text_color__hover'  => array(
+			'excluded_text_color__hover'                  => array(
 				'affected_fields' => array(
 					'pricing_item_excluded_color__hover' => $this->get_modules( 'pricing_table' ),
 				),
 			),
 			// Price Excluded Color.
-			'body_text_align' => array(
+			'body_text_align'                             => array(
 				'affected_fields' => array(
 					'center_list_items' => $this->get_modules( 'pricing_tables' ),
 				),
@@ -467,19 +467,19 @@ class ET_Builder_Module_Settings_Migration_OptionsHarmony2 extends ET_Builder_Mo
 	 */
 	public function get_form_field_text_shadow( $field_name = '' ) {
 		$text_shadow_properties = array(
-			'form_field_text_shadow_style'                            => 'fields_text_shadow_style',
-			'form_field_text_shadow_horizontal_length'                => 'fields_text_shadow_horizontal_length',
+			'form_field_text_shadow_style'                => 'fields_text_shadow_style',
+			'form_field_text_shadow_horizontal_length'    => 'fields_text_shadow_horizontal_length',
 			'form_field_text_shadow_horizontal_length__hover_enabled' => 'fields_text_shadow_horizontal_length__hover_enabled',
-			'form_field_text_shadow_horizontal_length__hover'         => 'fields_text_shadow_horizontal_length__hover',
-			'form_field_text_shadow_vertical_length'                  => 'fields_text_shadow_vertical_length',
-			'form_field_text_shadow_vertical_length__hover_enabled'   => 'fields_text_shadow_vertical_length__hover_enabled',
-			'form_field_text_shadow_vertical_length__hover'           => 'fields_text_shadow_vertical_length__hover',
-			'form_field_text_shadow_blur_strength'                    => 'fields_text_shadow_blur_strength',
-			'form_field_text_shadow_blur_strength__hover'             => 'fields_text_shadow_blur_strength__hover',
-			'form_field_text_shadow_blur_strength__hover_enabled'     => 'fields_text_shadow_blur_strength__hover_enabled',
-			'form_field_text_shadow_color'                            => 'fields_text_shadow_color',
-			'form_field_text_shadow_color__hover_enabled'             => 'fields_text_shadow_color__hover_enabled',
-			'form_field_text_shadow_color__hover'                     => 'fields_text_shadow_color__hover',
+			'form_field_text_shadow_horizontal_length__hover' => 'fields_text_shadow_horizontal_length__hover',
+			'form_field_text_shadow_vertical_length'      => 'fields_text_shadow_vertical_length',
+			'form_field_text_shadow_vertical_length__hover_enabled' => 'fields_text_shadow_vertical_length__hover_enabled',
+			'form_field_text_shadow_vertical_length__hover' => 'fields_text_shadow_vertical_length__hover',
+			'form_field_text_shadow_blur_strength'        => 'fields_text_shadow_blur_strength',
+			'form_field_text_shadow_blur_strength__hover' => 'fields_text_shadow_blur_strength__hover',
+			'form_field_text_shadow_blur_strength__hover_enabled' => 'fields_text_shadow_blur_strength__hover_enabled',
+			'form_field_text_shadow_color'                => 'fields_text_shadow_color',
+			'form_field_text_shadow_color__hover_enabled' => 'fields_text_shadow_color__hover_enabled',
+			'form_field_text_shadow_color__hover'         => 'fields_text_shadow_color__hover',
 		);
 
 		return isset( $text_shadow_properties[ $field_name ] ) ? $text_shadow_properties[ $field_name ] : '';

@@ -49,9 +49,9 @@ class ET_Builder_Module_Settings_Migration_BorderOptions extends ET_Builder_Modu
 
 		if ( in_array( $module_slug, $toggles_and_tabs ) ) {
 			$default_key = 'toggles_and_tabs';
-		} else if ( in_array( $module_slug, $post_based ) ) {
+		} elseif ( in_array( $module_slug, $post_based ) ) {
 			$default_key = 'post_based';
-		} else if ( isset( $this->defaults[ $module_slug ][ $field_name ] ) ) {
+		} elseif ( isset( $this->defaults[ $module_slug ][ $field_name ] ) ) {
 			$default_key = $module_slug;
 		}
 
@@ -134,7 +134,7 @@ class ET_Builder_Module_Settings_Migration_BorderOptions extends ET_Builder_Modu
 		return array(
 			'border_color_all'              => array(
 				'affected_fields' => array(
-					'use_border_color' => $this->get_modules( 'border'),
+					'use_border_color' => $this->get_modules( 'border' ),
 					'border_color'     => $this->get_modules( 'border' ),
 				),
 			),
@@ -149,23 +149,23 @@ class ET_Builder_Module_Settings_Migration_BorderOptions extends ET_Builder_Modu
 				),
 			),
 
-			'border_color_all_fullwidth' => array(
+			'border_color_all_fullwidth'    => array(
 				'affected_fields' => array(
-					'use_border_color' => $this->get_modules( 'border_fullwidth'),
+					'use_border_color' => $this->get_modules( 'border_fullwidth' ),
 					'border_color'     => $this->get_modules( 'border_fullwidth' ),
 				),
 			),
-			'border_width_all_fullwidth' => array(
+			'border_width_all_fullwidth'    => array(
 				'affected_fields' => array(
 					'border_width' => $this->get_modules( 'border_fullwidth' ),
 				),
 			),
-			'border_style_all_fullwidth' => array(
+			'border_style_all_fullwidth'    => array(
 				'affected_fields' => array(
 					'border_style' => $this->get_modules( 'border_fullwidth' ),
 				),
 			),
-			//migrate module image borders
+			// migrate module image borders
 			'border_color_all_image'        => array(
 				'affected_fields' => array(
 					'use_border_color' => $this->get_modules( 'image_border' ),
@@ -183,12 +183,12 @@ class ET_Builder_Module_Settings_Migration_BorderOptions extends ET_Builder_Modu
 				),
 			),
 
-			//migrate focus border color
+			// migrate focus border color
 			'border_color_all_fields_focus' => array(
 				'affected_fields' => array(
 					'use_focus_border_color' => $this->get_modules( 'use_focus_border_color' ),
 					'use_border_color'       => $this->get_modules( 'use_focus_border_color' ),
-					'focus_border_color'       => $this->get_modules( 'use_focus_border_color' ),
+					'focus_border_color'     => $this->get_modules( 'use_focus_border_color' ),
 				),
 			),
 			'border_width_all_fields_focus' => array(
@@ -202,7 +202,7 @@ class ET_Builder_Module_Settings_Migration_BorderOptions extends ET_Builder_Modu
 				),
 			),
 
-			'border_radii' => array(
+			'border_radii'                  => array(
 				'affected_fields' => array(
 					'border_radius'       => $this->get_modules( 'border_radius' ),
 					'input_border_radius' => $this->get_modules( 'input_border_radius' ),
@@ -210,7 +210,7 @@ class ET_Builder_Module_Settings_Migration_BorderOptions extends ET_Builder_Modu
 				),
 			),
 
-			'border_radii_portrait' => array(
+			'border_radii_portrait'         => array(
 				'affected_fields' => array(
 					'portrait_border_radius' => $this->get_modules( 'portrait_border_radius' ),
 				),
@@ -257,20 +257,20 @@ class ET_Builder_Module_Settings_Migration_BorderOptions extends ET_Builder_Modu
 
 			if ( 'on' === $attrs['use_focus_border_color'] ) {
 				switch ( $field_name ) {
-					case 'border_width_all_fields_focus' :
+					case 'border_width_all_fields_focus':
 						$current_value = '1px';
 						break;
-					case 'border_style_all_fields_focus' :
+					case 'border_style_all_fields_focus':
 						$current_value = 'solid';
 						break;
-					case 'border_color_all_fields_focus' :
+					case 'border_color_all_fields_focus':
 						$color = '#ffffff';
 						if ( isset( $attrs['focus_border_color'] ) ) {
 							$color = $attrs['focus_border_color'];
 						}
 						$current_value = $color;
 						break;
-					default :
+					default:
 						$current_value = '';
 				}
 

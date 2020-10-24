@@ -62,7 +62,7 @@ class ET_Builder_Post_Taxonomy_LayoutPack extends ET_Core_Post_Taxonomy {
 	 */
 	public static function instance( $type = 'taxonomy', $name = 'layout_pack' ) {
 		if ( ! $instance = parent::instance( $type, $name ) ) {
-			$instance = new self;
+			$instance = new self();
 		}
 
 		return $instance;

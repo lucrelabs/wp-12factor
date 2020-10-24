@@ -11,7 +11,7 @@ class ET_Builder_Module_Field_Attribute_Composite_Parser {
 	 * @return array Additional attributes for merging with rest of module attributes
 	 */
 	public static function parse( $type, $structure ) {
-		switch( $type ) {
+		switch ( $type ) {
 			case 'tabbed':
 			default:
 				require_once ET_BUILDER_DIR . 'module/field/attribute/composite/type/Tabbed.php';

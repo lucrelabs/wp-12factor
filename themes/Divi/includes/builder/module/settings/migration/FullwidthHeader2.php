@@ -5,11 +5,11 @@ class ET_Builder_Module_Settings_Migration_Fullwidth_Header2 extends ET_Builder_
 
 	public function get_fields() {
 		return array(
-			'text_orientation'    => array(
+			'text_orientation' => array(
 				'affected_fields' => array(
 					'text_orientation' => $this->get_modules(),
 				),
-				'map' => array(
+				'map'             => array(
 					'justified' => 'center',
 				),
 			),

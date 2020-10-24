@@ -5,6 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Plugin compatibility for easy-digital-downloads
+ *
  * @since 0.7 (builder version)
  * @link https://easydigitaldownloads.com
  */
@@ -13,7 +14,7 @@ class ET_Builder_Plugin_Compat_Easy_Digital_Downloads extends ET_Builder_Plugin_
 	 * Constructor
 	 */
 	function __construct() {
-		$this->plugin_id = "easy-digital-downloads/easy-digital-downloads.php";
+		$this->plugin_id = 'easy-digital-downloads/easy-digital-downloads.php';
 		$this->init_hooks();
 	}
 
@@ -21,6 +22,7 @@ class ET_Builder_Plugin_Compat_Easy_Digital_Downloads extends ET_Builder_Plugin_
 	 * Hook methods to WordPress
 	 * Note: once this issue is fixed in future version, run version_compare() to limit the scope of the hooked fix
 	 * Latest plugin version: 2.6.17
+	 *
 	 * @return void
 	 */
 	function init_hooks() {
@@ -31,7 +33,7 @@ class ET_Builder_Plugin_Compat_Easy_Digital_Downloads extends ET_Builder_Plugin_
 
 		// Up to: latest theme version
 		if ( ! is_admin() ) {
-			add_filter( 'edd_purchase_link_defaults',   array( $this, 'purchase_link_defaults' ) );
+			add_filter( 'edd_purchase_link_defaults', array( $this, 'purchase_link_defaults' ) );
 			add_filter( 'shortcode_atts_purchase_link', array( $this, 'purchase_link_defaults' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'add_compatibility_scripts' ), 15 );
 		} else {
@@ -41,10 +43,11 @@ class ET_Builder_Plugin_Compat_Easy_Digital_Downloads extends ET_Builder_Plugin_
 
 	/**
 	 * Appended et_pb_button for various EDD button so it matches Divi styled button
+	 *
 	 * @param  array initial link configuration
 	 * @return array moodified link configuration
 	 */
-	function purchase_link_defaults ( $args ) {
+	function purchase_link_defaults( $args ) {
 		if ( isset( $args['class'] ) ) {
 			$args['class'] = $args['class'] . ' et_pb_button';
 		}
@@ -54,6 +57,7 @@ class ET_Builder_Plugin_Compat_Easy_Digital_Downloads extends ET_Builder_Plugin_
 
 	/**
 	 * Addded et_pb_button class for checkout button which has no attribute filter
+	 *
 	 * @param string of HTML of the button
 	 * @return string of modified HTML of the button
 	 */
@@ -65,95 +69,102 @@ class ET_Builder_Plugin_Compat_Easy_Digital_Downloads extends ET_Builder_Plugin_
 
 	/**
 	 * Added additional styling & scripts for EDD on Divi
+	 *
 	 * @return void
 	 */
 	function add_compatibility_scripts() {
 		// Normalize UI for Divi Builder
 		if ( et_is_builder_plugin_active() ) {
-			wp_add_inline_style( 'et-builder-modules-style', "
-				" . ET_BUILDER_CSS_PREFIX . " .edd_download_inner {
+			wp_add_inline_style(
+				'et-builder-modules-style',
+				'
+				' . ET_BUILDER_CSS_PREFIX . ' .edd_download_inner {
 					padding: 0 8px 8px;
 					margin: 0 0 10px;
 				}
 
-				" . ET_BUILDER_CSS_PREFIX . " .edd_download_excerpt p {
+				' . ET_BUILDER_CSS_PREFIX . ' .edd_download_excerpt p {
 					margin-bottom: 25px;
 				}
 
-				" . ET_BUILDER_CSS_PREFIX . " .edd_purchase_submit_wrapper {
+				' . ET_BUILDER_CSS_PREFIX . ' .edd_purchase_submit_wrapper {
 					margin-top: 15px;
 					margin-bottom: 35px;
 				}
 
-				" . ET_BUILDER_CSS_PREFIX . " ul.edd-cart {
+				' . ET_BUILDER_CSS_PREFIX . ' ul.edd-cart {
 					border: 1px solid #eee;
 					margin-top: 0.8em;
 				}
 
-				" . ET_BUILDER_CSS_PREFIX . " ul.edd-cart li {
+				' . ET_BUILDER_CSS_PREFIX . ' ul.edd-cart li {
 					padding: 0.8em 1.387em;
 					border-bottom: 1px solid #eee;
 				}
 
-				" . ET_BUILDER_CSS_PREFIX . " ul.edd-cart li:last-child {
+				' . ET_BUILDER_CSS_PREFIX . ' ul.edd-cart li:last-child {
 					border-bottom: none;
 				}
 
-				" . ET_BUILDER_CSS_PREFIX . " ul.edd-cart .edd-cart-item span {
+				' . ET_BUILDER_CSS_PREFIX . ' ul.edd-cart .edd-cart-item span {
 					padding: 0 3px;
 				}
 
-				" . ET_BUILDER_CSS_PREFIX . " ul.edd-cart .edd-cart-item a {
+				' . ET_BUILDER_CSS_PREFIX . ' ul.edd-cart .edd-cart-item a {
 					text-decoration: underline !important;
 				}
 
-				" . ET_BUILDER_CSS_PREFIX . " .edd_cart_item_image {
+				' . ET_BUILDER_CSS_PREFIX . ' .edd_cart_item_image {
 					margin-right: 10px;
 					display: inline-block;
 					vertical-align: middle;
 				}
 
-				" . ET_BUILDER_CSS_PREFIX . " .edd-cart-meta.edd_subtotal,
-				" . ET_BUILDER_CSS_PREFIX . " .edd-cart-meta.edd_total {
+				' . ET_BUILDER_CSS_PREFIX . ' .edd-cart-meta.edd_subtotal,
+				' . ET_BUILDER_CSS_PREFIX . ' .edd-cart-meta.edd_total {
 					background: #f9f9f9;
 				}
 
-				" . ET_BUILDER_CSS_PREFIX . " .cart_item.edd_checkout {
+				' . ET_BUILDER_CSS_PREFIX . ' .cart_item.edd_checkout {
 					padding: 1.387em;
 				}
 
-				" . ET_BUILDER_CSS_PREFIX . " .et_pb_module a.edd_cart_remove_item_btn {
+				' . ET_BUILDER_CSS_PREFIX . ' .et_pb_module a.edd_cart_remove_item_btn {
 					text-decoration: underline !important;
 				}
 
-				" . ET_BUILDER_CSS_PREFIX . " #edd_profile_editor_form .edd-select,
-				" . ET_BUILDER_CSS_PREFIX . " #edd_profile_editor_form .edd-input {
+				' . ET_BUILDER_CSS_PREFIX . ' #edd_profile_editor_form .edd-select,
+				' . ET_BUILDER_CSS_PREFIX . ' #edd_profile_editor_form .edd-input {
 					margin-bottom: 5px;
 				}
 
-				" . ET_BUILDER_CSS_PREFIX . " #edd_final_total_wrap {
+				' . ET_BUILDER_CSS_PREFIX . ' #edd_final_total_wrap {
 					margin-bottom: 20px;
 				}
 
-				" . ET_BUILDER_CSS_PREFIX . " .et_pb_module .et_pb_button {
+				' . ET_BUILDER_CSS_PREFIX . ' .et_pb_module .et_pb_button {
 					border-bottom-style: solid;
 					border-bottom-width: 2px;
 				}
 
-				" . ET_BUILDER_CSS_PREFIX . " .et_pb_module input.et_pb_button:hover {
+				' . ET_BUILDER_CSS_PREFIX . ' .et_pb_module input.et_pb_button:hover {
 					padding-right: 1em;
 				}
-			" );
+			'
+			);
 		}
 
 		// Re-styled button with Divi's button UI using javascript due to lack of filter
-		wp_add_inline_script( 'et-builder-modules-script', "
+		wp_add_inline_script(
+			'et-builder-modules-script',
+			"
 			(function($){
 				$(document).ready( function(){
 					$('.cart_item.edd_checkout a, input[name=\"edd_register_submit\"], .edd_submit').addClass( 'et_pb_button' ).attr('style', 'padding-right: 1em;');
 				});
 			})(jQuery)
-		");
+		"
+		);
 	}
 }
-new ET_Builder_Plugin_Compat_Easy_Digital_Downloads;
+new ET_Builder_Plugin_Compat_Easy_Digital_Downloads();

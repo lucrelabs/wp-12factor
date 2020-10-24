@@ -15,7 +15,7 @@ class ET_Builder_Module_Helper_Multi_Value {
 	 * Parses an array and transforms it in an valid multi value array
 	 *
 	 * @param array $value
-	 * @param int $elements
+	 * @param int   $elements
 	 *
 	 * @return array
 	 */
@@ -44,7 +44,7 @@ class ET_Builder_Module_Helper_Multi_Value {
 	 * till array length will match the requested elements number
 	 *
 	 * @param string $value
-	 * @param int $elements
+	 * @param int    $elements
 	 *
 	 * @return array
 	 */
@@ -57,7 +57,7 @@ class ET_Builder_Module_Helper_Multi_Value {
 	 * Provide the `elements` parameter to get the result string of the necessary length
 	 *
 	 * @param array $value
-	 * @param int $elements
+	 * @param int   $elements
 	 *
 	 * @return string
 	 */
@@ -83,7 +83,7 @@ class ET_Builder_Module_Helper_Multi_Value {
 	 *
 	 * @param $value_1
 	 * @param $value_2
-	 * @param int $elements
+	 * @param int     $elements
 	 *
 	 * @return string
 	 */
@@ -103,10 +103,10 @@ class ET_Builder_Module_Helper_Multi_Value {
 	/**
 	 * Sets a value at specific position in provided multiValue.
 	 *
-	 * @param int $key
+	 * @param int    $key
 	 * @param string $value
 	 * @param string $motion_value
-	 * @param int $elements
+	 * @param int    $elements
 	 *
 	 * @return string
 	 */

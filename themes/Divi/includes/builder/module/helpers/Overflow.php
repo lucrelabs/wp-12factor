@@ -11,9 +11,9 @@ class ET_Builder_Module_Helper_Overflow {
 
 	const OVERFLOW_DEFAULT = '';
 	const OVERFLOW_VISIBLE = 'visible';
-	const OVERFLOW_HIDDEN = 'hidden';
-	const OVERFLOW_SCROLL = 'scroll';
-	const OVERFLOW_AUTO = 'auto';
+	const OVERFLOW_HIDDEN  = 'hidden';
+	const OVERFLOW_SCROLL  = 'scroll';
+	const OVERFLOW_AUTO    = 'auto';
 
 	private static $instance;
 
@@ -50,8 +50,8 @@ class ET_Builder_Module_Helper_Overflow {
 	/**
 	 * Return overflow X axis value
 	 *
-	 * @param array $props
-	 * @param mixed $default
+	 * @param array  $props
+	 * @param mixed  $default
 	 * @param string $prefix
 	 *
 	 * @return string
@@ -63,8 +63,8 @@ class ET_Builder_Module_Helper_Overflow {
 	/**
 	 * Return overflow Y axis value
 	 *
-	 * @param array $props
-	 * @param mixed $default
+	 * @param array  $props
+	 * @param mixed  $default
 	 * @param string $prefix
 	 *
 	 * @return string

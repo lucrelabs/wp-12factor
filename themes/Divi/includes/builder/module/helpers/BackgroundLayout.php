@@ -87,8 +87,8 @@ class ET_Builder_Module_Helper_BackgroundLayout {
 	 * @return string
 	 */
 	public function get_background_layout_attrs( $attrs ) {
-		// Background layout data attributes is only needed by hover effect.
-		if ( ! et_pb_hover_options()->is_enabled( 'background_layout', $attrs ) ) {
+		// Background layout data attributes is only needed by hover or sticky effect.
+		if ( ! et_pb_hover_options()->is_enabled( 'background_layout', $attrs ) && ! et_pb_sticky_options()->is_enabled( 'background_layout', $attrs ) ) {
 			return '';
 		}
 
@@ -97,17 +97,27 @@ class ET_Builder_Module_Helper_BackgroundLayout {
 		$background_layout        = et_()->array_get( $background_layouts, 'desktop', '' );
 		$background_layout_tablet = et_()->array_get( $background_layouts, 'tablet', '' );
 		$background_layout_phone  = et_()->array_get( $background_layouts, 'phone', '' );
-		$background_layout_hover  = et_pb_hover_options()->get_value( 'background_layout', $attrs, 'light' );
+		$background_layout_hover  = et_pb_hover_options()->get_value( 'background_layout', $attrs, '' );
+		$background_layout_sticky = et_pb_sticky_options()->get_value( 'background_layout', $attrs, '' );
 
 		$data_background_layout = sprintf(
 			' data-background-layout="%1$s"',
 			esc_attr( $background_layout )
 		);
 
-		$data_background_layout .= sprintf(
-			' data-background-layout-hover="%1$s"',
-			esc_attr( $background_layout_hover )
-		);
+		if ( ! empty( $background_layout_hover ) ) {
+			$data_background_layout .= sprintf(
+				' data-background-layout-hover="%1$s"',
+				esc_attr( $background_layout_hover )
+			);
+		}
+
+		if ( ! empty( $background_layout_sticky ) ) {
+			$data_background_layout .= sprintf(
+				' data-background-layout-sticky="%1$s"',
+				esc_attr( $background_layout_sticky )
+			);
+		}
 
 		if ( ! empty( $background_layout_tablet ) ) {
 			$data_background_layout .= sprintf(

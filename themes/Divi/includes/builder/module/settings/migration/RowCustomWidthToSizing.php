@@ -5,7 +5,7 @@ class ET_Builder_Module_Settings_Migration_RowCustomWidthToSizing extends ET_Bui
 	public $version = '3.22';
 
 	public function get_modules() {
-		return array( 'et_pb_row', 'et_pb_section', );
+		return array( 'et_pb_row', 'et_pb_section' );
 	}
 
 	public function get_fields() {
@@ -14,7 +14,7 @@ class ET_Builder_Module_Settings_Migration_RowCustomWidthToSizing extends ET_Bui
 				'affected_fields' => array(
 					'make_fullwidth' => $this->get_modules(),
 				),
-			)
+			),
 		);
 
 		foreach ( $this->get_modules() as $module ) {
@@ -22,14 +22,14 @@ class ET_Builder_Module_Settings_Migration_RowCustomWidthToSizing extends ET_Bui
 				$field            = $module === 'et_pb_section' ? "inner_$key" : $key;
 				$fields[ $field ] = array(
 					'affected_fields' => array(
-						'make_fullwidth'                      => array( $module ),
-						'use_custom_width'                    => array( $module ),
-						'width_unit'                          => array( $module ),
-						'custom_width_px'                     => array( $module ),
-						'custom_width_px__hover'              => array( $module ),
-						'custom_width_px__hover_enabled'      => array( $module ),
-						'custom_width_percent'                => array( $module ),
-						'custom_width_percent__hover'         => array( $module ),
+						'make_fullwidth'                 => array( $module ),
+						'use_custom_width'               => array( $module ),
+						'width_unit'                     => array( $module ),
+						'custom_width_px'                => array( $module ),
+						'custom_width_px__hover'         => array( $module ),
+						'custom_width_px__hover_enabled' => array( $module ),
+						'custom_width_percent'           => array( $module ),
+						'custom_width_percent__hover'    => array( $module ),
 						'custom_width_percent__hover_enabled' => array( $module ),
 					),
 				);
@@ -73,7 +73,6 @@ class ET_Builder_Module_Settings_Migration_RowCustomWidthToSizing extends ET_Bui
 				default:
 					return $saved_value;
 			}
-
 		}
 
 		if ( et_builder_module_prop( 'make_fullwidth', $attrs, '' ) === 'on' ) {
@@ -142,11 +141,11 @@ class ET_Builder_Module_Settings_Migration_RowCustomWidthToSizing extends ET_Bui
 
 	private function class_name( $module ) {
 		switch ( $module ) {
-			case 'et_pb_row' :
+			case 'et_pb_row':
 				return 'et_pb_row_fullwidth';
-			case 'et_pb_section' :
+			case 'et_pb_section':
 				return 'et_pb_specialty_fullwidth';
-			default :
+			default:
 				return '';
 		}
 	}

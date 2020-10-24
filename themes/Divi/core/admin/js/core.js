@@ -2,6 +2,24 @@
 
 	"use strict";
 
+	var top_window = window;
+	var is_iframe  = false;
+
+	if (window.top && window.top.__Cypress__) {
+		if (window.parent === window.top) {
+			top_window = window;
+			is_iframe  = false;
+
+		} else {
+			top_window = window.parent;
+			is_iframe  = true;
+		}
+
+	} else if (window.top) {
+		top_window = window.top;
+		is_iframe  = window.top !== window.self;
+	}
+
 	// Extend etCore since it is declared by localization.
 	$.extend( etCore, {
 
@@ -11,11 +29,7 @@
 		},
 
 		$selector: function(selector) {
-			if (window.ET_Builder) {
-				return window.ET_Builder.Frames.top.jQuery(selector);
-			}
-
-			return window.top ? window.top.jQuery(selector) : jQuery(selector);
+			return top_window.jQuery(selector);
 		},
 
 		applyMaxHeight: function() {

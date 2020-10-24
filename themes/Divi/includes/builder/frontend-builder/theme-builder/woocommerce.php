@@ -9,12 +9,12 @@
  */
 function et_theme_builder_wc_placeholders() {
 	return array(
-		'title'              => esc_html( 'Product name', 'et_builder' ),
-		'slug'               => 'product-name',
-		'short_description'  => esc_html( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris bibendum eget dui sed vehicula. Suspendisse potenti. Nam dignissim at elit non lobortis.', 'et_builder' ),
-		'description'        => esc_html( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris bibendum eget dui sed vehicula. Suspendisse potenti. Nam dignissim at elit non lobortis. Cras sagittis dui diam, a finibus nibh euismod vestibulum. Integer sed blandit felis. Maecenas commodo ante in mi ultricies euismod. Morbi condimentum interdum luctus. Mauris iaculis interdum risus in volutpat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent cursus odio eget cursus pharetra. Aliquam lacinia lectus a nibh ullamcorper maximus. Quisque at sapien pulvinar, dictum elit a, bibendum massa. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris non pellentesque urna.', 'et_builder' ),
-		'status'             => 'publish',
-		'comment_status'     => 'open',
+		'title'             => esc_html__( 'Product name', 'et_builder' ),
+		'slug'              => 'product-name',
+		'short_description' => esc_html__( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris bibendum eget dui sed vehicula. Suspendisse potenti. Nam dignissim at elit non lobortis.', 'et_builder' ),
+		'description'       => esc_html__( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris bibendum eget dui sed vehicula. Suspendisse potenti. Nam dignissim at elit non lobortis. Cras sagittis dui diam, a finibus nibh euismod vestibulum. Integer sed blandit felis. Maecenas commodo ante in mi ultricies euismod. Morbi condimentum interdum luctus. Mauris iaculis interdum risus in volutpat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent cursus odio eget cursus pharetra. Aliquam lacinia lectus a nibh ullamcorper maximus. Quisque at sapien pulvinar, dictum elit a, bibendum massa. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris non pellentesque urna.', 'et_builder' ),
+		'status'            => 'publish',
+		'comment_status'    => 'open',
 	);
 }
 
@@ -43,7 +43,7 @@ function et_theme_builder_wc_product_class() {
 function et_theme_builder_wc_review_placeholder() {
 	global $post;
 
-	$review = new stdClass();
+	$review                       = new stdClass();
 	$review->comment_ID           = 1;
 	$review->comment_author       = 'John Doe';
 	$review->comment_author_email = 'john@doe.com';
@@ -154,8 +154,8 @@ function et_theme_builder_wc_reset_global_objects() {
 	remove_filter( 'woocommerce_product_related_posts_force_display', '__return_true' );
 	remove_filter( 'comments_open', '__return_true' );
 
-	$post     = $tb_original_post;
-	$product  = $tb_original_product;
+	$post    = $tb_original_post; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- Need override the post with the theme builder post.
+	$product = $tb_original_product; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- Need override the product with the theme builder product.
 }
 
 /**

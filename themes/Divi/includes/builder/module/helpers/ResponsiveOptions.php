@@ -15,8 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 class ET_Builder_Module_Helper_ResponsiveOptions {
 
 	const DESKTOP = 'desktop';
-	const TABLET = 'tablet';
-	const PHONE = 'phone';
+	const TABLET  = 'tablet';
+	const PHONE   = 'phone';
 
 	public static function instance() {
 		static $instance;
@@ -58,8 +58,8 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 	 *
 	 * @since 3.23
 	 *
-	 * @param  array   $attrs All module attributes.
-	 * @param  string  $name  Option name.
+	 * @param  array  $attrs All module attributes.
+	 * @param  string $name  Option name.
 	 * @return boolean        Responsive settings status.
 	 */
 	public function is_responsive_enabled( $attrs, $name ) {
@@ -126,9 +126,9 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 	 *
 	 * @since 3.23
 	 *
-	 * @param  array  $args             Background values.
-	 * @param  array  $conditional_tags Conditional tags.
-	 * @param  array  $current_page     Current page info.
+	 * @param  array $args             Background values.
+	 * @param  array $conditional_tags Conditional tags.
+	 * @param  array $current_page     Current page info.
 	 * @return mixed                    Mixed background content generated as video markup.
 	 */
 	public static function get_video_background( $args = array(), $conditional_tags = array(), $current_page = array() ) {
@@ -137,20 +137,20 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 
 		// Build custom args.
 		$default_args = array(
-			"{$attr_prefix}video_mp4"    => isset( $args["{$attr_prefix}video_mp4"] ) ? $args["{$attr_prefix}video_mp4"] : '',
-			"{$attr_prefix}video_webm"   => isset( $args["{$attr_prefix}video_webm"] ) ? $args["{$attr_prefix}video_webm"] : '',
-			"{$attr_prefix}video_width"  => isset( $args["{$attr_prefix}video_width"] ) ? $args["{$attr_prefix}video_width"] : '',
-			"{$attr_prefix}video_height" => isset( $args["{$attr_prefix}video_height"] ) ? $args["{$attr_prefix}video_height"] : '',
+			"{$attr_prefix}video_mp4"    => isset( $args[ "{$attr_prefix}video_mp4" ] ) ? $args[ "{$attr_prefix}video_mp4" ] : '',
+			"{$attr_prefix}video_webm"   => isset( $args[ "{$attr_prefix}video_webm" ] ) ? $args[ "{$attr_prefix}video_webm" ] : '',
+			"{$attr_prefix}video_width"  => isset( $args[ "{$attr_prefix}video_width" ] ) ? $args[ "{$attr_prefix}video_width" ] : '',
+			"{$attr_prefix}video_height" => isset( $args[ "{$attr_prefix}video_height" ] ) ? $args[ "{$attr_prefix}video_height" ] : '',
 			'computed_variables'         => array(
 				'base_name' => $base_name,
 			),
 		);
 
 		$hover_args = array(
-			"{$attr_prefix}video_mp4__hover"    => isset( $args["{$attr_prefix}video_mp4__hover"] ) ? $args["{$attr_prefix}video_mp4__hover"] : '',
-			"{$attr_prefix}video_webm__hover"   => isset( $args["{$attr_prefix}video_webm__hover"] ) ? $args["{$attr_prefix}video_webm__hover"] : '',
-			"{$attr_prefix}video_width__hover"  => isset( $args["{$attr_prefix}video_width__hover"] ) ? $args["{$attr_prefix}video_width__hover"] : '',
-			"{$attr_prefix}video_height__hover" => isset( $args["{$attr_prefix}video_height__hover"] ) ? $args["{$attr_prefix}video_height__hover"] : '',
+			"{$attr_prefix}video_mp4__hover"    => isset( $args[ "{$attr_prefix}video_mp4__hover" ] ) ? $args[ "{$attr_prefix}video_mp4__hover" ] : '',
+			"{$attr_prefix}video_webm__hover"   => isset( $args[ "{$attr_prefix}video_webm__hover" ] ) ? $args[ "{$attr_prefix}video_webm__hover" ] : '',
+			"{$attr_prefix}video_width__hover"  => isset( $args[ "{$attr_prefix}video_width__hover" ] ) ? $args[ "{$attr_prefix}video_width__hover" ] : '',
+			"{$attr_prefix}video_height__hover" => isset( $args[ "{$attr_prefix}video_height__hover" ] ) ? $args[ "{$attr_prefix}video_height__hover" ] : '',
 			'computed_variables'                => array(
 				'base_name' => $base_name,
 				'device'    => '_hover',
@@ -158,10 +158,10 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 		);
 
 		$tablet_args = array(
-			"{$attr_prefix}video_mp4_tablet"    => isset( $args["{$attr_prefix}video_mp4_tablet"] ) ? $args["{$attr_prefix}video_mp4_tablet"] : '',
-			"{$attr_prefix}video_webm_tablet"   => isset( $args["{$attr_prefix}video_webm_tablet"] ) ? $args["{$attr_prefix}video_webm_tablet"] : '',
-			"{$attr_prefix}video_width_tablet"  => isset( $args["{$attr_prefix}video_width_tablet"] ) ? $args["{$attr_prefix}video_width_tablet"] : '',
-			"{$attr_prefix}video_height_tablet" => isset( $args["{$attr_prefix}video_height_tablet"] ) ? $args["{$attr_prefix}video_height_tablet"] : '',
+			"{$attr_prefix}video_mp4_tablet"    => isset( $args[ "{$attr_prefix}video_mp4_tablet" ] ) ? $args[ "{$attr_prefix}video_mp4_tablet" ] : '',
+			"{$attr_prefix}video_webm_tablet"   => isset( $args[ "{$attr_prefix}video_webm_tablet" ] ) ? $args[ "{$attr_prefix}video_webm_tablet" ] : '',
+			"{$attr_prefix}video_width_tablet"  => isset( $args[ "{$attr_prefix}video_width_tablet" ] ) ? $args[ "{$attr_prefix}video_width_tablet" ] : '',
+			"{$attr_prefix}video_height_tablet" => isset( $args[ "{$attr_prefix}video_height_tablet" ] ) ? $args[ "{$attr_prefix}video_height_tablet" ] : '',
 			'computed_variables'                => array(
 				'base_name' => $base_name,
 				'device'    => 'tablet',
@@ -169,10 +169,10 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 		);
 
 		$phone_args = array(
-			"{$attr_prefix}video_mp4_phone"    => isset( $args["{$attr_prefix}video_mp4_phone"] ) ? $args["{$attr_prefix}video_mp4_phone"] : '',
-			"{$attr_prefix}video_webm_phone"   => isset( $args["{$attr_prefix}video_webm_phone"] ) ? $args["{$attr_prefix}video_webm_phone"] : '',
-			"{$attr_prefix}video_width_phone"  => isset( $args["{$attr_prefix}video_width_phone"] ) ? $args["{$attr_prefix}video_width_phone"] : '',
-			"{$attr_prefix}video_height_phone" => isset( $args["{$attr_prefix}video_height_phone"] ) ? $args["{$attr_prefix}video_height_phone"] : '',
+			"{$attr_prefix}video_mp4_phone"    => isset( $args[ "{$attr_prefix}video_mp4_phone" ] ) ? $args[ "{$attr_prefix}video_mp4_phone" ] : '',
+			"{$attr_prefix}video_webm_phone"   => isset( $args[ "{$attr_prefix}video_webm_phone" ] ) ? $args[ "{$attr_prefix}video_webm_phone" ] : '',
+			"{$attr_prefix}video_width_phone"  => isset( $args[ "{$attr_prefix}video_width_phone" ] ) ? $args[ "{$attr_prefix}video_width_phone" ] : '',
+			"{$attr_prefix}video_height_phone" => isset( $args[ "{$attr_prefix}video_height_phone" ] ) ? $args[ "{$attr_prefix}video_height_phone" ] : '',
 			'computed_variables'               => array(
 				'base_name' => $base_name,
 				'device'    => 'phone',
@@ -197,7 +197,7 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 			$video_backgrounds['tablet'] = $background_video_tablet;
 		}
 
-		$background_video_phone  = ET_Builder_Element::get_video_background( $phone_args );
+		$background_video_phone = ET_Builder_Element::get_video_background( $phone_args );
 		if ( $background_video_phone ) {
 			$video_backgrounds['phone'] = $background_video_phone;
 		}
@@ -218,7 +218,7 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 	public function get_field_base_name( $name ) {
 		// Do not use rtim as it removes by character not by string. So, cases like `key_tablets`
 		// will be reduced to `key`.
-		$regex   = "/(.*)(_tablet|_phone)$/";
+		$regex   = '/(.*)(_tablet|_phone)$/';
 		$replace = '${1}';
 		return preg_replace( $regex, $replace, $name );
 	}
@@ -257,7 +257,7 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 	public function get_device_name( $name ) {
 		// Do not use rtim as it removes by character not by string. So, cases like `key_tablets`
 		// will be reduced to `key`.
-		$regex   = "/(.*)(tablet|phone)$/";
+		$regex   = '/(.*)(tablet|phone)$/';
 		$replace = '${2}';
 		$result  = preg_replace( $regex, $replace, $name );
 		return in_array( $result, array( 'tablet', 'phone' ) ) ? $result : 'desktop';
@@ -315,7 +315,7 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 	 *              we fetch the value for tablet, it will return pure empty string ('') because
 	 *              tablet value is equal with desktop value.
 	 *
-	 * 				We have Title Text Font Size -> desktop 30px, tablet '', phone ''. When
+	 *              We have Title Text Font Size -> desktop 30px, tablet '', phone ''. When
 	 *              we fetch the value for phone and force it to return any value, it will
 	 *              return 30px because phone and tablet value is empty and the function will
 	 *              look up to tablet or even desktop value.
@@ -444,6 +444,29 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 		}
 
 		return $values;
+	}
+
+	/**
+	 * Get property value after checking whether it uses responsive or not
+	 *
+	 * If responsive is used, automatically return array of all devices value.
+	 * If responsive is not used, return string of desktop value
+	 *
+	 * @since 4.6.0
+	 *
+	 * @param array   $attrs         List of all attributes and values.
+	 * @param string  $name          Property name.
+	 * @param mixed   $default_value Default value.
+	 * @param boolean $force_return  Force to return any values found.
+	 *
+	 * @return string|array String if not responsive, Pair of devices and the values if responsive.
+	 */
+	public function get_checked_property_value( $attrs, $name, $default_value = '', $force_return = false ) {
+		$is_responsive = $this->is_responsive_enabled( $attrs, $name );
+
+		return $is_responsive ?
+			$this->get_property_values( $attrs, $name, $default_value, $force_return ) :
+			$this->get_property_value( $attrs, $name, $default_value, 'desktop', $force_return );
 	}
 
 	/**
@@ -700,8 +723,8 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 	 *
 	 * @param $setting
 	 * @param $props
-	 * @param null $mode
-	 * @param string $default
+	 * @param null    $mode
+	 * @param string  $default
 	 *
 	 * @return mixed
 	 */
@@ -723,8 +746,8 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 	 * but can be used for a more explicit representation
 	 *
 	 * @param string $setting
-	 * @param array $props
-	 * @param mixed $default
+	 * @param array  $props
+	 * @param mixed  $default
 	 *
 	 * @return mixed
 	 */
@@ -736,8 +759,8 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 	 * Is the implementation of get_value specifically for tablet mode
 	 *
 	 * @param string $setting
-	 * @param array $props
-	 * @param mixed $default
+	 * @param array  $props
+	 * @param mixed  $default
 	 *
 	 * @return mixed
 	 */
@@ -749,8 +772,8 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 	 * Is the implementation of get_value specifically for phone mode
 	 *
 	 * @param string $setting
-	 * @param array $props
-	 * @param mixed $default
+	 * @param array  $props
+	 * @param mixed  $default
 	 *
 	 * @return mixed
 	 */
@@ -777,7 +800,7 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 	/**
 	 * Get breakpoint minimum widths
 	 *
-	 * @since ??
+	 * @since 4.3.2
 	 *
 	 * @return array
 	 */
@@ -800,17 +823,17 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 	 */
 	public function get_breakpoint_by_device( $device = 'desktop' ) {
 		switch ( $device ) {
-			case 'desktop_only' :
+			case 'desktop_only':
 				return 'min_width_981';
-			case 'tablet' :
+			case 'tablet':
 				return 'max_width_980';
-			case 'tablet_only' :
+			case 'tablet_only':
 				return '768_980';
-			case 'desktop_tablet_only' :
+			case 'desktop_tablet_only':
 				return 'min_width_768';
-			case 'phone' :
+			case 'phone':
 				return 'max_width_767';
-			default :
+			default:
 				return 'general';
 		}
 	}
@@ -838,7 +861,7 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 	 */
 	protected function mode_field( $mode ) {
 		switch ( $mode ) {
-			case $this->get_default_mode() :
+			case $this->get_default_mode():
 				return '';
 			default:
 				return "_$mode";
@@ -870,7 +893,7 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 			return;
 		}
 
-		foreach( $values_array as $device => $current_value ) {
+		foreach ( $values_array as $device => $current_value ) {
 			if ( empty( $current_value ) ) {
 				continue;
 			}
@@ -896,11 +919,11 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 
 			// Value can be provided as a string or array in following format:
 			// array(
-			// 		'property_1' => 'value_1', 'property_2' => 'value_2', ... ,
-			// 		'property_n' => 'value_n'
+			// 'property_1' => 'value_1', 'property_2' => 'value_2', ... ,
+			// 'property_n' => 'value_n'
 			// )
 			if ( is_array( $current_value ) ) {
-				foreach( $current_value as $this_property => $this_value ) {
+				foreach ( $current_value as $this_property => $this_value ) {
 					if ( empty( $this_property ) || '' === $this_value ) {
 						continue;
 					}
@@ -910,7 +933,7 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 					// backward compatibility.
 					$valid_value = $this_value;
 					if ( 'range' === $type ) {
-						$valid_value = et_builder_process_range_value( $this_value );
+						$valid_value = et_builder_process_range_value( $this_value, $this_property );
 					}
 
 					$declaration .= sprintf(
@@ -920,19 +943,20 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 						'' !== $additional_css ? $additional_css : ';'
 					);
 				}
-			} else if ( is_array( $css_property ) ) {
+			} elseif ( is_array( $css_property ) ) {
 				// Get valid value. Previously, it only works for range control value and run
 				// et_builder_process_range_value function directly.
 				$valid_value = $current_value;
-				if ( 'range' === $type ) {
-					$valid_value = et_builder_process_range_value( $current_value );
-				}
 
-				foreach( $css_property as $this_property ) {
+				foreach ( $css_property as $this_property ) {
 					if ( empty( $this_property ) ) {
 						continue;
 					}
 
+					if ( 'range' === $type ) {
+						$valid_value = et_builder_process_range_value( $current_value, $this_property );
+					}
+
 					$declaration .= sprintf(
 						'%1$s: %2$s%3$s',
 						$this_property,
@@ -940,12 +964,12 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 						'' !== $additional_css ? $additional_css : ';'
 					);
 				}
-			} else if ( ! empty( $css_property ) ) {
+			} elseif ( ! empty( $css_property ) ) {
 				// Get valid value. Previously, it only works for range control value and run
 				// et_builder_process_range_value function directly.
 				$valid_value = $current_value;
 				if ( 'range' === $type ) {
-					$valid_value = et_builder_process_range_value( $current_value );
+					$valid_value = et_builder_process_range_value( $current_value, $css_property );
 				}
 
 				$declaration = sprintf(
@@ -968,7 +992,7 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 			if ( 'desktop_only' === $device ) {
 				$style['media_query'] = ET_Builder_Element::get_media_query( 'min_width_981' );
 			} elseif ( 'desktop' !== $device ) {
-				$current_media_query = 'tablet' === $device ? 'max_width_980' : 'max_width_767';
+				$current_media_query  = 'tablet' === $device ? 'max_width_980' : 'max_width_767';
 				$style['media_query'] = ET_Builder_Element::get_media_query( $current_media_query );
 			}
 
@@ -1041,17 +1065,17 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 		$responsive_options = array();
 
 		// Add fields with responsive suffix for each devices.
-		$responsive_options["{$field_name}_tablet"] = array(
+		$responsive_options[ "{$field_name}_tablet" ]      = array(
 			'type'        => 'skip',
 			'tab_slug'    => $tab_slug,
 			'toggle_slug' => $toggle_slug,
 		);
-		$responsive_options["{$field_name}_phone"] = array(
+		$responsive_options[ "{$field_name}_phone" ]       = array(
 			'type'        => 'skip',
 			'tab_slug'    => $tab_slug,
 			'toggle_slug' => $toggle_slug,
 		);
-		$responsive_options["{$field_name}_last_edited"] = array(
+		$responsive_options[ "{$field_name}_last_edited" ] = array(
 			'type'        => 'skip',
 			'tab_slug'    => $tab_slug,
 			'toggle_slug' => $toggle_slug,
@@ -1059,10 +1083,10 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 
 		// Add computed effect field on mobile and hover fields.
 		if ( ! empty( $field['computed_affects'] ) && isset( $field['affects_mobile'] ) && true === $field['affects_mobile'] ) {
-			$responsive_options["{$field_name}_tablet"]['computed_affects'] = $field['computed_affects'];
-			$responsive_options["{$field_name}_phone"]['computed_affects']  = $field['computed_affects'];
+			$responsive_options[ "{$field_name}_tablet" ]['computed_affects'] = $field['computed_affects'];
+			$responsive_options[ "{$field_name}_phone" ]['computed_affects']  = $field['computed_affects'];
 
-			$responsive_options["{$field_name}__hover"] = array(
+			$responsive_options[ "{$field_name}__hover" ] = array(
 				'type'             => 'skip',
 				'tab_slug'         => $tab_slug,
 				'toggle_slug'      => $toggle_slug,
@@ -1077,16 +1101,16 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 			$default_tablet = ! empty( $field['default_on_tablet'] ) ? $field['default_on_tablet'] : $default_mobile;
 			$default_phone  = ! empty( $field['default_on_phone'] ) ? $field['default_on_phone'] : $default_mobile;
 
-			$responsive_options["{$field_name}_tablet"]['default'] = $default_tablet;
-			$responsive_options["{$field_name}_phone"]['default']  = $default_phone;
+			$responsive_options[ "{$field_name}_tablet" ]['default'] = $default_tablet;
+			$responsive_options[ "{$field_name}_phone" ]['default']  = $default_phone;
 		}
 
 		// Set default on hover if needed.
 		if ( ! empty( $field['default_on_hover'] ) ) {
-			$default        = ! empty( $field['default'] ) ? $field['default'] : '';
-			$default_hover  = ! empty( $field['default_on_hover'] ) ? $field['default_on_hover'] : $default_mobile;
+			$default       = ! empty( $field['default'] ) ? $field['default'] : '';
+			$default_hover = ! empty( $field['default_on_hover'] ) ? $field['default_on_hover'] : $default_mobile;
 
-			$responsive_options["{$field_name}__hover"]['default'] = $default_hover;
+			$responsive_options[ "{$field_name}__hover" ]['default'] = $default_hover;
 		}
 
 		return $responsive_options;
@@ -1109,13 +1133,13 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 	 *
 	 * @return string New value.
 	 */
-	public function get_inheritance_background_value( $attrs, $base_setting, $preview_mode, $background_base = 'background', $fields = array(), $value = '', $default_value = '') {
+	public function get_inheritance_background_value( $attrs, $base_setting, $preview_mode, $background_base = 'background', $fields = array(), $value = '', $default_value = '' ) {
 		// Default new value is same with the generated or active one.
 		$new_value = $value;
 
 		$enable_fields = array(
 			"{$background_base}_color"              => "{$background_base}_enable_color",
-			"use_background_color_gradient"         => "use_background_color_gradient",
+			'use_background_color_gradient'         => 'use_background_color_gradient',
 			"{$background_base}_use_color_gradient" => "{$background_base}_enable_use_color_gradient",
 			"{$background_base}_image"              => "{$background_base}_enable_image",
 			"video_{$background_base}_values"       => "video_{$background_base}_values",
@@ -1125,6 +1149,7 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 		$map_slugs = array(
 			'desktop' => array( '' ),
 			'hover'   => array( '__hover', '' ),
+			'sticky'  => array( '__sticky', '' ),
 			'tablet'  => array( '_tablet', '' ),
 			'phone'   => array( '_phone', '_tablet', '' ),
 		);
@@ -1144,7 +1169,7 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 		$origin_webm_enabled = '';
 		$origin_webm_data    = array();
 
-		foreach( $map_slugs[ $preview_mode ] as $slug ) {
+		foreach ( $map_slugs[ $preview_mode ] as $slug ) {
 
 			// BG Color.
 			if ( in_array( $base_setting, array( "{$background_base}_color", "{$background_base}_image" ) ) ) {
@@ -1158,13 +1183,13 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 				if ( '' !== $bg_value && $is_bg_enabled ) {
 					$new_value = $bg_value;
 					break;
-				} else if ( ! $is_bg_enabled ) {
+				} elseif ( ! $is_bg_enabled ) {
 					$new_value = '';
 					break;
 				}
 
-			// BG Gradient.
-			} else if ( in_array( $base_setting, array( 'use_background_color_gradient', "{$background_base}_use_color_gradient" ) ) ) {
+				// BG Gradient.
+			} elseif ( in_array( $base_setting, array( 'use_background_color_gradient', "{$background_base}_use_color_gradient" ) ) ) {
 
 				$new_value = 'off';
 
@@ -1191,17 +1216,17 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 				$gradient_end_value   = et_()->array_get( $attrs, $field_end, '' );
 				$is_gradient_enabled  = 'off' !== $use_gradient_value;
 
-				if ( ( '' !==  $gradient_start_value || '' !== $gradient_end_value ) && $is_gradient_enabled ) {
+				if ( ( '' !== $gradient_start_value || '' !== $gradient_end_value ) && $is_gradient_enabled ) {
 					$new_value = 'on';
 					break;
-				} else if ( ! $is_gradient_enabled ) {
+				} elseif ( ! $is_gradient_enabled ) {
 					$new_value = 'off';
 					break;
 				}
 
-			// BG Video.
-			} else if ( "video_{$background_base}_values" === $base_setting ) {
-				$base_slug    = preg_replace('/[_]+/', '', $slug);
+				// BG Video.
+			} elseif ( "video_{$background_base}_values" === $base_setting ) {
+				$base_slug    = preg_replace( '/[_]+/', '', $slug );
 				$current_mode = '' !== $base_slug ? $base_slug : 'desktop';
 
 				// Video markup.
@@ -1230,11 +1255,11 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 							'video_background' => $video_background,
 							'display'          => ! empty( $video_background ) ? 'self' : 'inherit',
 						);
-					} else if ( false === $is_mp4_enabled ) {
+					} elseif ( false === $is_mp4_enabled ) {
 						$origin_mp4_enabled = 'disabled';
 						$origin_mp4_data    = array();
 					}
-				} else if ( 'enabled' === $origin_mp4_enabled ) {
+				} elseif ( 'enabled' === $origin_mp4_enabled ) {
 					if ( isset( $origin_mp4_data['video_background'] ) && empty( $origin_mp4_data['video_background'] ) ) {
 						$origin_mp4_data['video_background'] = $video_background;
 					}
@@ -1263,11 +1288,11 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 							'video_background' => $video_background,
 							'display'          => ! empty( $video_background ) ? 'self' : 'inherit',
 						);
-					} else if ( ! $is_webm_enabled ) {
+					} elseif ( ! $is_webm_enabled ) {
 						$origin_webm_enabled = 'disabled';
 						$origin_webm_data    = array();
 					}
-				} else if ( 'enabled' === $origin_webm_enabled ) {
+				} elseif ( 'enabled' === $origin_webm_enabled ) {
 					if ( isset( $origin_webm_data['video_background'] ) && empty( $origin_webm_data['video_background'] ) ) {
 						$origin_webm_data['video_background'] = $video_background;
 					}
@@ -1305,7 +1330,7 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 					$new_video_display = 'hide';
 					if ( '' !== $mp4_enabled_display ) {
 						$new_video_display = $mp4_enabled_display;
-					} else if ( '' !== $webm_enabled_display ) {
+					} elseif ( '' !== $webm_enabled_display ) {
 						$new_video_display = $webm_enabled_display;
 					}
 
@@ -1313,7 +1338,7 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 					$new_video_background = '';
 					if ( '' !== $mp4_video_background ) {
 						$new_video_background = $mp4_video_background;
-					} else if ( '' !== $webm_video_background ) {
+					} elseif ( '' !== $webm_video_background ) {
 						$new_video_background = $webm_video_background;
 					}
 
@@ -1339,7 +1364,7 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 		// There are 4 types where the mobile_options exist on the options.
 		// 1. Exist on the option definition.
 		// 2. Exist on the computed field type, just like point 1 but we threat it differently
-		//    because there are some properties need to be updated and added.
+		// because there are some properties need to be updated and added.
 		// 3. Exist on the background-field.
 		// 4. Exist on the composite field.
 		foreach ( $additional_options as $field_name => $field ) {
@@ -1381,7 +1406,7 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 						}
 					}
 
-					$additional_options["{$field_name}"] = $field;
+					$additional_options[ "{$field_name}" ] = $field;
 
 					continue;
 				}
@@ -1411,7 +1436,7 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 				}
 
 				// 1. Mobile options property added directly on options definition. Add fields
-				//    with responsive suffix for each devices.
+				// with responsive suffix for each devices.
 				$additional_options = array_merge(
 					$additional_options,
 					et_pb_responsive_options()->generate_responsive_fields( $field_name, $toggle_slug, $tab_slug, $field )
@@ -1419,7 +1444,7 @@ class ET_Builder_Module_Helper_ResponsiveOptions {
 
 				// Additional last edited field just in case we need more last edited field.
 				if ( ! empty( $field_last_edited ) ) {
-					$additional_options["{$field_last_edited}_last_edited"] = array(
+					$additional_options[ "{$field_last_edited}_last_edited" ] = array(
 						'type'        => 'skip',
 						'tab_slug'    => $tab_slug,
 						'toggle_slug' => $toggle_slug,

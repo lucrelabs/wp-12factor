@@ -52,7 +52,7 @@ class ET_Post_Stack {
 	 * @since 4.0
 	 *
 	 * @param WP_Post|null $with
-	 * @param boolean $force
+	 * @param boolean      $force
 	 *
 	 * @return void
 	 */

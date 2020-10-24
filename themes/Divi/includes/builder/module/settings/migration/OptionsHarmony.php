@@ -11,166 +11,166 @@ class ET_Builder_Module_Settings_Migration_OptionsHarmony extends ET_Builder_Mod
 
 	public function get_fields() {
 		return array(
-			'parallax' => array(
+			'parallax'                   => array(
 				'affected_fields' => array(
 					'parallax_effect' => $this->get_modules( 'post_title' ),
 				),
 			),
-			'parallax_method' => array(
+			'parallax_method'            => array(
 				'affected_fields' => array(
 					'parallax_effect' => $this->get_modules( 'post_title' ),
 					'parallax_method' => $this->get_modules( 'slide' ),
 				),
-				'values' => array(
+				'values'          => array(
 					'off' => 'on',
 					'on'  => 'off',
 				),
 			),
-			'background_color' => array(
+			'background_color'           => array(
 				'affected_fields' => array(
-					'module_bg_color'  => $this->get_modules( 'post_title' ),
-					'field_bg'         => $this->get_modules( 'search' ),
-					'bg_color'         => $this->get_modules( 'social_media_follow_network' ),
-					'transparent_background' => $this->get_modules( 'section' ),
+					'module_bg_color'           => $this->get_modules( 'post_title' ),
+					'field_bg'                  => $this->get_modules( 'search' ),
+					'bg_color'                  => $this->get_modules( 'social_media_follow_network' ),
+					'transparent_background'    => $this->get_modules( 'section' ),
 					'transparent_background_fb' => $this->get_modules( 'section' ),
 				),
 			),
-			'custom_padding' => array(
+			'custom_padding'             => array(
 				'affected_fields' => array(
 					'bar_top_padding'    => $this->get_modules( 'bar_counters' ),
 					'bar_bottom_padding' => $this->get_modules( 'bar_counters' ),
-					'top_padding'    => $this->get_modules( 'slider' ),
-					'bottom_padding' => $this->get_modules( 'slider' ),
-					'custom_padding' => $this->get_modules( 'section' ),
+					'top_padding'        => $this->get_modules( 'slider' ),
+					'bottom_padding'     => $this->get_modules( 'slider' ),
+					'custom_padding'     => $this->get_modules( 'section' ),
 				),
 			),
-			'custom_padding_tablet' => array(
+			'custom_padding_tablet'      => array(
 				'affected_fields' => array(
-					'bar_top_padding_tablet'   => $this->get_modules( 'bar_counters' ),
-					'bar_bottom_padding_tablet'=> $this->get_modules( 'bar_counters' ),
-					'top_padding_tablet'       => $this->get_modules( 'slider' ),
-					'bottom_padding_tablet'    => $this->get_modules( 'slider' ),
-					'padding_mobile'           => $this->get_modules( 'section' ),
+					'bar_top_padding_tablet'    => $this->get_modules( 'bar_counters' ),
+					'bar_bottom_padding_tablet' => $this->get_modules( 'bar_counters' ),
+					'top_padding_tablet'        => $this->get_modules( 'slider' ),
+					'bottom_padding_tablet'     => $this->get_modules( 'slider' ),
+					'padding_mobile'            => $this->get_modules( 'section' ),
 				),
 			),
-			'custom_padding_phone' => array(
+			'custom_padding_phone'       => array(
 				'affected_fields' => array(
-					'bar_top_padding_phone'   => $this->get_modules( 'bar_counters' ),
-					'bar_bottom_padding_phone'=> $this->get_modules( 'bar_counters' ),
-					'top_padding_phone'       => $this->get_modules( 'slider' ),
-					'bottom_padding_phone'    => $this->get_modules( 'slider' ),
+					'bar_top_padding_phone'    => $this->get_modules( 'bar_counters' ),
+					'bar_bottom_padding_phone' => $this->get_modules( 'bar_counters' ),
+					'top_padding_phone'        => $this->get_modules( 'slider' ),
+					'bottom_padding_phone'     => $this->get_modules( 'slider' ),
 				),
 			),
 			'custom_padding_last_edited' => array(
 				'affected_fields' => array(
 					'bar_top_padding_last_edited'    => $this->get_modules( 'bar_counters' ),
 					'bar_bottom_padding_last_edited' => $this->get_modules( 'bar_counters' ),
-					'top_padding_last_edited'    => $this->get_modules( 'slider' ),
-					'bottom_padding_last_edited' => $this->get_modules( 'slider' ),
-					'padding_mobile' => $this->get_modules( 'section' ),
+					'top_padding_last_edited'        => $this->get_modules( 'slider' ),
+					'bottom_padding_last_edited'     => $this->get_modules( 'slider' ),
+					'padding_mobile'                 => $this->get_modules( 'section' ),
 				),
 			),
-			'background_video_mp4' => array(
+			'background_video_mp4'       => array(
 				'affected_fields' => array(
 					'video_bg_mp4' => $this->get_modules( 'slide' ),
 				),
 			),
-			'background_video_webm' => array(
+			'background_video_webm'      => array(
 				'affected_fields' => array(
 					'video_bg_webm' => $this->get_modules( 'slide' ),
 				),
 			),
-			'background_video_width' => array(
+			'background_video_width'     => array(
 				'affected_fields' => array(
 					'video_bg_width' => $this->get_modules( 'slide' ),
 				),
 			),
-			'background_video_height' => array(
+			'background_video_height'    => array(
 				'affected_fields' => array(
 					'video_bg_height' => $this->get_modules( 'slide' ),
 				),
 			),
-			'disabled_on' => array(
+			'disabled_on'                => array(
 				'affected_fields' => array(
 					'hide_on_mobile' => $this->get_modules( 'divider' ),
 				),
 			),
-			'show_prev' => array(
+			'show_prev'                  => array(
 				'affected_fields' => array(
 					'hide_prev' => $this->get_modules( 'post_nav' ),
 				),
 			),
-			'show_next' => array(
+			'show_next'                  => array(
 				'affected_fields' => array(
 					'hide_next' => $this->get_modules( 'post_nav' ),
 				),
 			),
-			'show_inner_shadow' => array(
+			'show_inner_shadow'          => array(
 				'affected_fields' => array(
 					'remove_inner_shadow' => $this->get_modules( 'slider' ),
 				),
 			),
-			'show_featured_drop_shadow' => array(
+			'show_featured_drop_shadow'  => array(
 				'affected_fields' => array(
 					'remove_featured_drop_shadow' => $this->get_modules( 'pricing_table' ),
 				),
 			),
-			'show_button' => array(
+			'show_button'                => array(
 				'affected_fields' => array(
 					'hide_button' => $this->get_modules( 'search' ),
 				),
 			),
-			'show_border' => array(
+			'show_border'                => array(
 				'affected_fields' => array(
 					'remove_border' => $this->get_modules( 'sidebar' ),
 				),
 			),
-			'show_image_overlay' => array(
+			'show_image_overlay'         => array(
 				'affected_fields' => array(
 					'show_image_overlay' => $this->get_modules( 'video_slider' ),
 				),
 			),
-			'show_content_on_mobile' => array(
+			'show_content_on_mobile'     => array(
 				'affected_fields' => array(
 					'hide_content_on_mobile' => $this->get_modules( 'slider' ),
 				),
 			),
-			'show_cta_on_mobile' => array(
+			'show_cta_on_mobile'         => array(
 				'affected_fields' => array(
 					'hide_cta_on_mobile' => $this->get_modules( 'slider' ),
 				),
 			),
-			'show_bottom_space' => array(
+			'show_bottom_space'          => array(
 				'affected_fields' => array(
 					'sticky' => $this->get_modules( 'image' ),
 				),
 			),
-			'image_max_width' => array(
+			'image_max_width'            => array(
 				'affected_fields' => array(
 					'max_width' => $this->get_modules( 'blurb' ),
 				),
 			),
-			'content_max_width' => array(
+			'content_max_width'          => array(
 				'affected_fields' => array(
 					'max_width' => $this->get_modules( 'fullwidth_header' ),
 				),
 			),
-			'max_width' => array(
+			'max_width'                  => array(
 				'affected_fields' => array(
 					'max_width' => $this->get_modules( 'reset_max_width' ),
 				),
 			),
-			'title_text_color' => array(
+			'title_text_color'           => array(
 				'affected_fields' => array(
 					'label_color' => $this->get_modules( 'bar_counter' ),
 				),
 			),
-			'percent_text_color' => array(
+			'percent_text_color'         => array(
 				'affected_fields' => array(
 					'percentage_color' => $this->get_modules( 'bar_counter' ),
 				),
 			),
-			'module_alignment' => array(
+			'module_alignment'           => array(
 				'affected_fields' => array(
 					'text_orientation' => $this->get_modules( 'text_orientation' ),
 				),
@@ -206,7 +206,7 @@ class ET_Builder_Module_Settings_Migration_OptionsHarmony extends ET_Builder_Mod
 			$modules[] = 'et_pb_fullwidth_header';
 		}
 
-		if ( in_array( $attr, array( '', 'text_orientation') ) ) {
+		if ( in_array( $attr, array( '', 'text_orientation' ) ) ) {
 			$modules[] = 'et_pb_text';
 			$modules[] = 'et_pb_search';
 		}
@@ -287,7 +287,7 @@ class ET_Builder_Module_Settings_Migration_OptionsHarmony extends ET_Builder_Mod
 		}
 
 		if ( '' !== $saved_value ) {
-			$spacings = explode( '|', $saved_value );
+			$spacings                    = explode( '|', $saved_value );
 			$spacings[ $location_index ] = $saved_value;
 		}
 
@@ -304,17 +304,21 @@ class ET_Builder_Module_Settings_Migration_OptionsHarmony extends ET_Builder_Mod
 
 	/**
 	 * Re-map value to new value. Originally add to reverse yes/no button value due to option migration
+	 *
 	 * @param string saved value
 	 * @param array  map of value, expected mapped value in key-value relationship
 	 * @param string default value
 	 * @return string mapped value
 	 */
 	public function migrate_remap_value( $value, $map = array(), $default = 'on' ) {
-		$map = wp_parse_args( $map, array(
-			''    => 'on',
-			'off' => 'on',
-			'on'  => 'off',
-		) );
+		$map = wp_parse_args(
+			$map,
+			array(
+				''    => 'on',
+				'off' => 'on',
+				'on'  => 'off',
+			)
+		);
 
 		return isset( $map[ $value ] ) ? $map[ $value ] : $default;
 	}
@@ -342,7 +346,7 @@ class ET_Builder_Module_Settings_Migration_OptionsHarmony extends ET_Builder_Mod
 				'bar_bottom_padding_phone',
 				'bottom_padding',
 				'bottom_padding_tablet',
-				'bottom_padding_phone'
+				'bottom_padding_phone',
 			);
 
 			if ( in_array( $saved_field_name, $bottom_padding_selectors ) ) {
@@ -351,7 +355,7 @@ class ET_Builder_Module_Settings_Migration_OptionsHarmony extends ET_Builder_Mod
 
 			if ( in_array( $saved_field_name, array( 'bar_top_padding_last_edited', 'bar_bottom_padding_last_edited' ) ) ) {
 				$last_edited_current_value = '' === $current_value ? array( '', '' ) : explode( '|', $current_value );
-				$last_edited_saved_value   = '' === $saved_value ? array( '', '' ) : explode( '|', $saved_value);
+				$last_edited_saved_value   = '' === $saved_value ? array( '', '' ) : explode( '|', $saved_value );
 				$last_edited_responsive    = in_array( 'on', array( $last_edited_current_value[0], $last_edited_saved_value[0] ) ) ? 'on' : 'off';
 				$last_edited_tabs          = array_filter( array( $last_edited_current_value[1], $last_edited_saved_value[1] ) );
 				$last_edited_tab           = empty( $last_edited_tabs ) ? 'desktop' : end( $last_edited_tabs );
@@ -372,7 +376,7 @@ class ET_Builder_Module_Settings_Migration_OptionsHarmony extends ET_Builder_Mod
 						$padding_sides[0],
 						'',
 						$padding_sides[1],
-						''
+						'',
 					);
 
 					return implode( '|', $full_padding_sides );
@@ -425,7 +429,7 @@ class ET_Builder_Module_Settings_Migration_OptionsHarmony extends ET_Builder_Mod
 
 			// Translate hide_on_mobile into disabled_on if hide_on_mobile is empty / on and saved_value isn't empty
 			if ( in_array( $current_value, array( '', 'on' ) ) && '' !== $saved_value ) {
-				$disabled_on_array = explode( '|', $saved_value );
+				$disabled_on_array    = explode( '|', $saved_value );
 				$disabled_on_array[0] = 'on';
 				$disabled_on_array[1] = 'on';
 
@@ -453,11 +457,15 @@ class ET_Builder_Module_Settings_Migration_OptionsHarmony extends ET_Builder_Mod
 
 		// Normalizing video slider's display image overlay's hide/show & select-based field into yes_no_button + on/off-based option
 		if ( 'et_pb_video_slider' === $module_slug && 'show_image_overlay' === $field_name ) {
-			return $this->migrate_remap_value( $current_value, array(
-				'hide' => 'off',
-				'show' => 'on',
-				''     => 'off',
-			), 'off' );
+			return $this->migrate_remap_value(
+				$current_value,
+				array(
+					'hide' => 'off',
+					'show' => 'on',
+					''     => 'off',
+				),
+				'off'
+			);
 		}
 
 		// Search's input background migration

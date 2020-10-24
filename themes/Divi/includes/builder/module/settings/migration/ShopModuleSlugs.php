@@ -16,13 +16,13 @@ class ET_Builder_Module_Settings_Migration_ShopModuleSlugs extends ET_Builder_Mo
 		}
 
 		switch ( $field_name ) {
-			case 'include_categories' :
-				$old_categories     = explode( ",", $current_value );
+			case 'include_categories':
+				$old_categories     = explode( ',', $current_value );
 				$new_categories     = array();
 				$product_categories = et_builder_get_shop_categories();
 				if ( is_array( $product_categories ) && ! empty( $product_categories ) ) {
 					foreach ( $product_categories as $category ) {
-						if ( is_object( $category ) && is_a($category, 'WP_Term') ) {
+						if ( is_object( $category ) && is_a( $category, 'WP_Term' ) ) {
 							if ( in_array( $category->slug, $old_categories ) ) {
 								array_push( $new_categories, $category->term_id );
 							}
@@ -30,10 +30,10 @@ class ET_Builder_Module_Settings_Migration_ShopModuleSlugs extends ET_Builder_Mo
 					}
 				}
 
-				return implode( ",", $new_categories );
-			case '_builder_version' :
+				return implode( ',', $new_categories );
+			case '_builder_version':
 				return ET_BUILDER_PRODUCT_VERSION;
-			default :
+			default:
 				return $current_value;
 		}
 	}
@@ -45,7 +45,7 @@ class ET_Builder_Module_Settings_Migration_ShopModuleSlugs extends ET_Builder_Mo
 					'include_categories' => $this->get_modules(),
 				),
 			),
-			'_builder_version' => array(
+			'_builder_version'   => array(
 				'affected_fields' => array(
 					'_builder_version' => $this->get_modules(),
 				),

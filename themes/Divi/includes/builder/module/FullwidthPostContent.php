@@ -16,4 +16,4 @@ class ET_Builder_Module_Fullwidth_PostContent extends ET_Builder_Module_Type_Pos
 	}
 }
 
-new ET_Builder_Module_Fullwidth_PostContent;
+new ET_Builder_Module_Fullwidth_PostContent();

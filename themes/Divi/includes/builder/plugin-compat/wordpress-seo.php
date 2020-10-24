@@ -21,6 +21,7 @@ class ET_Builder_Plugin_Compat_WordPress_SEO extends ET_Builder_Plugin_Compat_Ba
 	/**
 	 * Hook methods to WordPress
 	 * Latest plugin version: 3.1.1
+	 *
 	 * @return void
 	 */
 	public function init_hooks() {
@@ -74,4 +75,4 @@ class ET_Builder_Plugin_Compat_WordPress_SEO extends ET_Builder_Plugin_Compat_Ba
 	}
 }
 
-new ET_Builder_Plugin_Compat_WordPress_SEO;
+new ET_Builder_Plugin_Compat_WordPress_SEO();

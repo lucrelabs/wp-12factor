@@ -32,7 +32,7 @@ class ET_Builder_Module_Settings_Migration_DropShadowToBoxShadow extends ET_Buil
 					'box_shadow_style' => $this->get_modules(),
 				),
 			),
-			'box_shadow_color'     => array(
+			'box_shadow_color'      => array(
 				'affected_fields' => array(
 					'box_shadow_style' => $this->get_modules(),
 				),
@@ -55,17 +55,17 @@ class ET_Builder_Module_Settings_Migration_DropShadowToBoxShadow extends ET_Buil
 		}
 
 		switch ( $field_name ) {
-			case 'box_shadow_style' :
+			case 'box_shadow_style':
 				return 'none' !== $saved_value ? $saved_value : 'preset1';
-			case 'box_shadow_blur' :
+			case 'box_shadow_blur':
 				return 'none' === $current_value ? '5px' : $saved_value;
-			case 'box_shadow_horizontal' :
+			case 'box_shadow_horizontal':
 				return 'none' === $current_value ? '0px' : $saved_value;
-			case 'box_shadow_vertical' :
+			case 'box_shadow_vertical':
 				return 'none' === $current_value ? '1px' : $saved_value;
-			case 'box_shadow_spread' :
+			case 'box_shadow_spread':
 				return 'none' === $current_value ? '0px' : $saved_value;
-			case 'box_shadow_color' :
+			case 'box_shadow_color':
 				return 'none' === $current_value ? 'rgba(0,0,0,.1)' : $saved_value;
 		}
 

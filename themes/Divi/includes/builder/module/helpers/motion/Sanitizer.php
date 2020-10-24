@@ -58,5 +58,5 @@ abstract class ET_Builder_Module_Helper_Motion_Sanitizer extends ET_Builder_Modu
 		return parent::setEndValue( $this->sanitize( $value ), $multi_value );
 	}
 
-	protected abstract function sanitize( $value );
+	abstract protected function sanitize( $value );
 }

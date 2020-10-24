@@ -103,3 +103,19 @@ function et_divi_filter_theme_builder_template_after_page_wrappers() {
     get_template_part( 'theme-after-wrappers' );
 }
 add_action( 'et_theme_builder_template_after_page_wrappers', 'et_divi_filter_theme_builder_template_after_page_wrappers' );
+
+/**
+ * Disable TB hooks in order to be compatible with LearnDash's Focus mode.
+ *
+ * @since ??
+ */
+function et_divi_action_theme_builder_compatibility_learndash_focus_mode() {
+	remove_action( 'et_theme_builder_template_before_page_wrappers', 'et_divi_filter_theme_builder_template_before_page_wrappers' );
+	remove_action( 'et_theme_builder_template_before_header', 'et_divi_filter_theme_builder_template_before_header' );
+	remove_action( 'et_theme_builder_template_after_header', 'et_divi_filter_theme_builder_template_after_header' );
+	remove_action( 'et_theme_builder_template_before_body', 'et_divi_filter_theme_builder_template_before_body' );
+	remove_action( 'et_theme_builder_template_after_body', 'et_divi_filter_theme_builder_template_after_body' );
+	remove_action( 'et_theme_builder_template_after_footer', 'et_divi_filter_theme_builder_template_after_footer' );
+	remove_action( 'et_theme_builder_template_after_page_wrappers', 'et_divi_filter_theme_builder_template_after_page_wrappers' );
+}
+add_action( 'et_theme_builder_compatibility_learndash_focus_mode', 'et_divi_action_theme_builder_compatibility_learndash_focus_mode' );
