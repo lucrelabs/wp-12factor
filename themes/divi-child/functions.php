@@ -20,3 +20,12 @@ function login_redirect($redirect_to, $user)
 
     return $redirect_to;
 }
+
+/*
+ * Replace no shipping options available text
+ * */
+add_filter( 'woocommerce_cart_no_shipping_available_html', 'change_noship_message' );
+add_filter( 'woocommerce_no_shipping_available_html', 'change_noship_message' );
+function change_noship_message() {
+    print "Aya's market is not available in your area yet. We are expanding rapidly, please check back soon or call customer support.";
+}
