@@ -51,6 +51,7 @@
 		"lucrelabs/iconic-woo-delivery-slots-premium": "^1.10.0",
 		"lucrelabs/woocommerce-subscriptions": "^3.0.5",
 		"lucrelabs/wc-vendors-gateway-stripe-connect": "^2.0.8",
+		"lucrelabs/wp-site-migrate": "^4.62",
 		"wp-cli/wp-cli": "^1.1.0",
 		"landongw/Divi": "*",
 		"landongw/divi-child":  "*",
