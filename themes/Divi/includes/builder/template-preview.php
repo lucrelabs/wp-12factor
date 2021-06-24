@@ -1,7 +1,7 @@
 <?php
 // Prevent file from being loaded directly
 if ( ! defined( 'ABSPATH' ) ) {
-	die('-1');
+	die( '-1' );
 }
 
 et_core_security_check( 'edit_posts', 'et_pb_preview_nonce', '', '_GET' );
@@ -32,7 +32,7 @@ $post = get_post( $post_id );
 		$template_directory_uri = get_template_directory_uri();
 		?>
 
-		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
 		<script type="text/javascript">
 			document.documentElement.className = 'js';
@@ -43,37 +43,37 @@ $post = get_post( $post_id );
 	<body <?php body_class(); ?>>
 		<div id="page-container">
 			<div id="main-content">
-				<div class="container" style="<?php echo esc_attr($container_style); ?>">
+				<div class="container" style="<?php echo esc_attr( $container_style ); ?>">
 					<div id="<?php echo esc_attr( apply_filters( 'et_pb_preview_wrap_id', 'content' ) ); ?>">
 					<div class="<?php echo esc_attr( apply_filters( 'et_pb_preview_wrap_class', 'entry-content post-content entry content' ) ); ?>">
 
 					<?php
-						if ( isset( $_POST['shortcode' ] ) ) {
-							if ( $post ) {
-								// Setup postdata so post-dependent data like dynamic content
-								// can be resolved.
-								setup_postdata( $post );
-							}
-
-							// process content for builder plugin
-							if ( et_is_builder_plugin_active() ) {
-								$content = do_shortcode( wp_unslash( $_POST['shortcode'] ) );
-								$content = str_replace( ']]>', ']]&gt;', $content );
-
-								$content = et_builder_get_builder_content_opening_wrapper() . et_builder_get_layout_opening_wrapper() . $content . et_builder_get_layout_closing_wrapper() . et_builder_get_builder_content_closing_wrapper();
-							} else {
-								$content = apply_filters( 'the_content', wp_unslash( $_POST['shortcode'] ) );
-								$content = str_replace( ']]>', ']]&gt;', $content );
-							}
-
-							if ( $post ) {
-								wp_reset_postdata();
-							}
-
-							echo et_core_intentionally_unescaped( $content, 'html' );
-						} else {
-							printf( '<p class="et-pb-preview-loading"><span>%1$s</span></p>', esc_html__( 'Loading preview...', 'et_builder' ) );
+					if ( isset( $_POST['shortcode'] ) ) {
+						if ( $post ) {
+							// Setup postdata so post-dependent data like dynamic content
+							// can be resolved.
+							setup_postdata( $post );
 						}
+
+						// process content for builder plugin
+						if ( et_is_builder_plugin_active() ) {
+							$content = do_shortcode( wp_unslash( $_POST['shortcode'] ) );
+							$content = str_replace( ']]>', ']]&gt;', $content );
+
+							$content = et_builder_get_builder_content_opening_wrapper() . et_builder_get_layout_opening_wrapper() . $content . et_builder_get_layout_closing_wrapper() . et_builder_get_builder_content_closing_wrapper();
+						} else {
+							$content = apply_filters( 'the_content', wp_unslash( $_POST['shortcode'] ) );
+							$content = str_replace( ']]>', ']]&gt;', $content );
+						}
+
+						if ( $post ) {
+							wp_reset_postdata();
+						}
+
+						echo et_core_intentionally_unescaped( $content, 'html' );
+					} else {
+						printf( '<p class="et-pb-preview-loading"><span>%1$s</span></p>', esc_html__( 'Loading preview...', 'et_builder' ) );
+					}
 					?>
 
 					</div> <!-- .entry-content.post-content.entry -->

@@ -44,9 +44,9 @@ add_action( 'wp_ajax_et_builder_resolve_post_content', 'et_builder_ajax_resolve_
  *
  * @since 3.17.2
  *
- * @param array $terms
+ * @param array   $terms
  * @param boolean $link
- * @param string $separator
+ * @param string  $separator
  *
  * @return string
  */

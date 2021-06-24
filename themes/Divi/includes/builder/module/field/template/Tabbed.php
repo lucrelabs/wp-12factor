@@ -1,6 +1,6 @@
 <?php
 
-require_once( ET_BUILDER_DIR . 'module/field/template/Base.php' );
+require_once ET_BUILDER_DIR . 'module/field/template/Base.php';
 
 class ET_Builder_Module_Field_Template_Tabbed extends ET_Builder_Module_Field_Template_Base {
 	/**
@@ -14,7 +14,7 @@ class ET_Builder_Module_Field_Template_Tabbed extends ET_Builder_Module_Field_Te
 		if ( ! empty( $field['composite_structure'] ) && is_array( $field['composite_structure'] ) ) {
 			?>
 			<div class="et-pb-composite-tabbed-wrapper">
-				<div id="<?php echo esc_attr( $this->_wrap_field_name( $field['name'] ) ); ?>" class="<?php echo esc_attr( $this->_get_control_class() ); ?>" data-attr-suffix="<?php echo esc_attr( $field['attr_suffix'] )?>">
+				<div id="<?php echo esc_attr( $this->_wrap_field_name( $field['name'] ) ); ?>" class="<?php echo esc_attr( $this->_get_control_class() ); ?>" data-attr-suffix="<?php echo esc_attr( $field['attr_suffix'] ); ?>">
 					<div class="et-pb-outside-preview-container">
 						<?php echo et_core_esc_previously( $this->_render_outside_preview() ); ?>
 					</div>
@@ -45,7 +45,7 @@ class ET_Builder_Module_Field_Template_Tabbed extends ET_Builder_Module_Field_Te
 									<?php $control['name'] = $name; ?>
 									<?php $control['tab_slug'] = $field['tab_slug']; ?>
 									<?php $hidden = 'hidden' === $control['type'] ? ' et_pb_hidden' : ''; ?>
-									<div class="et-pb-composite-option et-pb-composite-tabbed-option et-pb-option<?php echo et_core_intentionally_unescaped( $hidden, 'fixed_string' ) ?>" data-control-index="<?php echo esc_attr( $name ) ?>" data-option_name="<?php echo esc_attr( $name ) ?>">
+									<div class="et-pb-composite-option et-pb-composite-tabbed-option et-pb-option<?php echo et_core_intentionally_unescaped( $hidden, 'fixed_string' ); ?>" data-control-index="<?php echo esc_attr( $name ); ?>" data-option_name="<?php echo esc_attr( $name ); ?>">
 										<?php echo et_core_esc_previously( $render_helper->wrap_settings_option_label( $control ) ); ?>
 										<?php echo et_core_esc_previously( $render_helper->wrap_settings_option_field( $control, $name ) ); ?>
 									</div>

@@ -241,7 +241,7 @@ class ET_Core_VersionRollback {
 
 		if ( is_wp_error( $success ) ) {
 			$error = $success->get_error_message();
-			if ( $success->get_error_code() === 'et_version_rollback_blacklisted' ) {
+			if ( $success->get_error_code() === 'et_version_rollback_blocklisted' ) {
 				$error = '
 					<p>
 						' . et_get_safe_localization( sprintf(
@@ -258,7 +258,7 @@ class ET_Core_VersionRollback {
 			}
 
 			wp_send_json_error( array(
-				'errorIsUnrecoverable' => in_array( $success->get_error_code(), array( 'et_version_rollback_not_available', 'et_version_rollback_blacklisted' ) ),
+				'errorIsUnrecoverable' => in_array( $success->get_error_code(), array( 'et_version_rollback_not_available', 'et_version_rollback_blocklisted' ) ),
 				'errorCode'            => $success->get_error_code(),
 				'error'                => $error,
 			), 400 );
@@ -283,7 +283,17 @@ class ET_Core_VersionRollback {
 		$available = $api->is_product_available( $this->product_name, $previous_version );
 
 		if ( is_wp_error( $available ) ) {
-			return $available;
+			$major_minor = implode( '.', array_slice( explode( '.', $previous_version ), 0, 2 ) );
+
+			if ( $major_minor . '.0' === $previous_version ) {
+				// Skip the trailing 0 in the version number and retry.
+				$previous_version = $major_minor;
+				$available        = $api->is_product_available( $this->product_name, $previous_version );	
+			}
+
+			if ( is_wp_error( $available ) ) {
+				return $available;
+			}
 		}
 
 		$download_url = $api->get_download_url( $this->product_name, $previous_version );
@@ -395,11 +405,11 @@ class ET_Core_VersionRollback {
 	 */
 	public function get_epanel_option() {
 		return array(
-			'name'            => esc_html__( 'Version Rollback', ET_CORE_VERSION ),
+			'name'            => esc_html__( 'Version Rollback', 'et-core' ),
 			'id'              => 'et_version_rollback',
 			'type'            => 'callback_function',
 			'function_name'   => array( $this, 'render_epanel_option' ),
-			'desc'            => et_get_safe_localization( __( '<em>Before you can receive product updates, you must first authenticate your Elegant Themes subscription. To do this, you need to enter both your Elegant Themes Username and your Elegant Themes API Key into the Updates Tab in your theme and plugin settings. To locate your API Key, <a href="https://www.elegantthemes.com/members-area/api/" target="_blank">log in</a> to your Elegant Themes account and navigate to the <strong>Account > API Key</strong> page. <a href="http://www.elegantthemes.com/gallery/divi/documentation/update/" target="_blank">Learn more here</a></em>. If you still get this message, please make sure that your Username and API Key have been entered correctly', ET_CORE_VERSION ) ),
+			'desc'            => et_get_safe_localization( __( '<em>Before you can receive product updates, you must first authenticate your Elegant Themes subscription. To do this, you need to enter both your Elegant Themes Username and your Elegant Themes API Key into the Updates Tab in your theme and plugin settings. To locate your API Key, <a href="https://www.elegantthemes.com/members-area/api/" target="_blank">log in</a> to your Elegant Themes account and navigate to the <strong>Account > API Key</strong> page. <a href="http://www.elegantthemes.com/gallery/divi/documentation/update/" target="_blank">Learn more here</a></em>. If you still get this message, please make sure that your Username and API Key have been entered correctly', 'et-core' ) ),
 		);
 	}
 

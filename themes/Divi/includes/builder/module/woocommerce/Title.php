@@ -26,7 +26,7 @@ class ET_Builder_Module_Woocommerce_Title extends ET_Builder_Module {
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Content', 'et_builder' ),
+					'main_content' => et_builder_i18n( 'Content' ),
 				),
 			),
 			'advanced' => array(
@@ -36,7 +36,7 @@ class ET_Builder_Module_Woocommerce_Title extends ET_Builder_Module {
 						'priority' => 49,
 					),
 					'width'  => array(
-						'title'    => esc_html__( 'Sizing', 'et_builder' ),
+						'title'    => et_builder_i18n( 'Sizing' ),
 						'priority' => 65,
 					),
 				),
@@ -46,7 +46,7 @@ class ET_Builder_Module_Woocommerce_Title extends ET_Builder_Module {
 		$this->advanced_fields = array(
 			'fonts'          => array(
 				'header' => array(
-					'label'        => esc_html__( 'Title', 'et_builder' ),
+					'label'        => et_builder_i18n( 'Title' ),
 					'css'          => array(
 						'main' => '%%order_class%% h1, %%order_class%% h2, %%order_class%% h3, %%order_class%% h4, %%order_class%% h5, %%order_class%% h6',
 					),
@@ -97,7 +97,7 @@ class ET_Builder_Module_Woocommerce_Title extends ET_Builder_Module {
 
 		$this->help_videos = array(
 			array(
-				'id'   => esc_html( '7X03vBPYJ1o' ),
+				'id'   => '7X03vBPYJ1o',
 				'name' => esc_html__( 'Divi WooCommerce Modules', 'et_builder' ),
 			),
 		);

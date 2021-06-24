@@ -124,22 +124,83 @@ class ET_Theme_Builder_Woocommerce_Product_Variable_Placeholder extends WC_Produ
 	}
 
 	/**
+	 * Get placeholder product as available variation. The method is basically identical to
+	 * `WC_Product_Variable->get_available_variation()` except for the checks which are removed
+	 * so placeholder value can be passed
+	 *
+	 * @since 4.3.3
+	 *
+	 * @param int|object $variation not needed since it will be overwritten by placeholder variation
+	 *                   but it needs to be kept for compatibility with base class' method
+	 *
+	 * @return array
+	 */
+	function get_available_variation( $variation = 0 ) {
+		$variation            = new ET_Theme_Builder_Woocommerce_Product_Variation_Placeholder();
+		$show_variation_price = apply_filters( 'woocommerce_show_variation_price', $variation->get_price() === '' || $this->get_variation_sale_price( 'min' ) !== $this->get_variation_sale_price( 'max' ) || $this->get_variation_regular_price( 'min' ) !== $this->get_variation_regular_price( 'max' ), $this, $variation );
+
+		// Set variation id; Prevent $product->get_id() returns falsey which usually triggers wc_product_get()
+		// in WC add ons; Valid $product->get_id() makes global $product being used most of the time
+		$variation->set_id( $this->get_id() );
+
+		// Set current product id as variation parent id so $product->get_parent_id() returns
+		// valid value (mostly when being called by WC add-ons). The absence of this value (in TB)
+		// triggers new `wc_get_product()` which most likely returned unwanted output
+		$variation->set_prop( 'parent_id', $this->get_id() );
+
+		// Returned array properties are identical to `WC_Product_Variable->get_available_variation()`
+		return apply_filters(
+			'woocommerce_available_variation',
+			array(
+				'attributes'            => $variation->get_variation_attributes(),
+				'availability_html'     => wc_get_stock_html( $variation ),
+				'backorders_allowed'    => $variation->backorders_allowed(),
+				'dimensions'            => $variation->get_dimensions( false ),
+				'dimensions_html'       => wc_format_dimensions( $variation->get_dimensions( false ) ),
+				'display_price'         => wc_get_price_to_display( $variation ),
+				'display_regular_price' => wc_get_price_to_display( $variation, array( 'price' => $variation->get_regular_price() ) ),
+				'image'                 => wc_get_product_attachment_props( $variation->get_image_id() ),
+				'image_id'              => $variation->get_image_id(),
+				'is_downloadable'       => $variation->is_downloadable(),
+				'is_in_stock'           => $variation->is_in_stock(),
+				'is_purchasable'        => $variation->is_purchasable(),
+				'is_sold_individually'  => $variation->is_sold_individually() ? 'yes' : 'no',
+				'is_virtual'            => $variation->is_virtual(),
+				'max_qty'               => 0 < $variation->get_max_purchase_quantity() ? $variation->get_max_purchase_quantity() : '',
+				'min_qty'               => $variation->get_min_purchase_quantity(),
+				'price_html'            => $show_variation_price ? '<span class="price">' . $variation->get_price_html() . '</span>' : '',
+				'sku'                   => $variation->get_sku(),
+				'variation_description' => wc_format_content( $variation->get_description() ),
+				'variation_id'          => $variation->get_id(),
+				'variation_is_active'   => $variation->variation_is_active(),
+				'variation_is_visible'  => $variation->variation_is_visible(),
+				'weight'                => $variation->get_weight(),
+				'weight_html'           => wc_format_weight( $variation->get_weight() ),
+			),
+			$this,
+			$variation
+		);
+	}
+
+	/**
 	 * Add to cart's <select> requires variable product type and get_available_variations() method
 	 * outputting product->children value. Filtering get_available_variations() can't be done so
 	 * extending WC_Product_Variable and set fixed value for get_available_variations() method
 	 *
+	 * @since 4.5.7 Introduced $return arg to fix compatibility issue {@link https://github.com/elegantthemes/Divi/issues/20985}
+	 * @since 4.3.3 `Replaced ET_Theme_Builder_Woocommerce_Product_Variable_Placeholder` with
+	 *              `ET_Theme_Builder_Woocommerce_Product_Variation_Placeholder` (which is now
+	 *              called at `get_available_variations()` method and similar to
+	 *              `WC_Product_Variation`'s method with no check). It has all variation-required
+	 *              methods and properties which makes it more reliable when WC add-ons are used
 	 * @since 4.0.1
 	 *
 	 * @return array
 	 */
-	function get_available_variations() {
-		// Use `ET_Theme_Builder_Woocommerce_Product_Variable_Placeholder` as variations because
-		// this product type has custom data store which bypass database value retrieval when
-		// product object is re-initialized using `wc_get_product()` in TB. This is necessary to
-		// avoid error since WC add-ons tend to do this instead of using global $product object
-		$variation_1 = new ET_Theme_Builder_Woocommerce_Product_Variable_Placeholder();
-
-		return array( $variation_1 );
+	public function get_available_variations( $return = 'array' ) {
+		return array(
+			$this->get_available_variation(),
+		);
 	}
 
 	/**
@@ -170,14 +231,14 @@ class ET_Theme_Builder_Woocommerce_Product_Variable_Placeholder extends WC_Produ
 		$defaults = array(
 			'limit' => 4,
 		);
-		$args = wp_parse_args( $args, $defaults );
+		$args     = wp_parse_args( $args, $defaults );
 
 		// Get recent products for upsells product; Any product will do since its purpose is
 		// for visual preview only
 		$recent_products_query = new WC_Product_Query( $args );
 		$recent_product_ids    = array();
 
-		foreach( $recent_products_query->get_products() as $recent_product ) {
+		foreach ( $recent_products_query->get_products() as $recent_product ) {
 			$recent_product_ids[] = $recent_product->get_id();
 		}
 

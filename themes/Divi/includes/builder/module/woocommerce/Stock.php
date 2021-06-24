@@ -26,7 +26,7 @@ class ET_Builder_Module_Woocommerce_Stock extends ET_Builder_Module {
 		$this->settings_modal_toggles = array(
 			'general' => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Content', 'et_builder' ),
+					'main_content' => et_builder_i18n( 'Content' ),
 				),
 			),
 		);
@@ -108,7 +108,7 @@ class ET_Builder_Module_Woocommerce_Stock extends ET_Builder_Module {
 
 		$this->help_videos = array(
 			array(
-				'id'   => esc_html( '7X03vBPYJ1o' ),
+				'id'   => '7X03vBPYJ1o',
 				'name' => esc_html__( 'Divi WooCommerce Modules', 'et_builder' ),
 			),
 		);

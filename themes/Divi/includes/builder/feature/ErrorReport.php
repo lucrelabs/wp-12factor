@@ -52,7 +52,7 @@ class ET_Builder_Error_Report {
 	 */
 	public static function instance() {
 		if ( ! self::$_instance ) {
-			self::$_instance = new self;
+			self::$_instance = new self();
 		}
 
 		self::$_ = ET_Core_Data_Utils::instance();
@@ -67,19 +67,19 @@ class ET_Builder_Error_Report {
 	 *
 	 * @return array
 	 */
-	static public function get_debug_info() {
+	public static function get_debug_info() {
 		$info = array(
-			'user' => array(
+			'user'         => array(
 				'role',
 			),
-			'errors' => array(
+			'errors'       => array(
 				'error_message',
 				'error_message_stack',
 				'error_stack',
 				'component_info',
 				'notes',
 			),
-			'page' => array(
+			'page'         => array(
 				'post_type',
 				'builder_settings',
 				'builder_history',
@@ -256,13 +256,13 @@ class ET_Builder_Error_Report {
 	protected function get_report_content( $data ) {
 		$report_content = '';
 
-		$debug_info     = self::get_debug_info();
+		$debug_info = self::get_debug_info();
 
 		$report_content = array();
 
 		foreach ( $debug_info as $items_title => $debug_items ) {
-			$item_key       = 'group_title-' . $items_title;
-			$items_title    = ucwords( $items_title );
+			$item_key    = 'group_title-' . $items_title;
+			$items_title = ucwords( $items_title );
 
 			$report_content[ $item_key ] = $items_title;
 
@@ -289,7 +289,7 @@ class ET_Builder_Error_Report {
 	protected function get_exported_layout_content( $data, $field ) {
 		// Set faux $_POST value that is required by portability
 		$_POST['post']    = $_POST['post_id'];
-		$_POST['content'] = self::$_instance->get_debug_value( $field , $data );
+		$_POST['content'] = self::$_instance->get_debug_value( $field, $data );
 
 		// Remove page value if it is equal to `false`, avoiding paginated images not accidentally triggered
 		if ( isset( $_POST['page'] ) && false === $_POST['page'] ) {
@@ -309,12 +309,14 @@ class ET_Builder_Error_Report {
 	 *
 	 * @since 3.21.4
 	 */
-	static public function endpoint() {
+	public static function endpoint() {
 		// Check for valid permission. Only administrator role can send error report
 		if ( ! et_core_security_check_passed( 'manage_options', 'et_fb_send_error_report' ) ) {
-			wp_send_json_error( array(
-				'message' => esc_html__( 'You do not have valid permission to send error report', 'et_builder' ),
-			) );
+			wp_send_json_error(
+				array(
+					'message' => esc_html__( 'You do not have valid permission to send error report', 'et_builder' ),
+				)
+			);
 			wp_die();
 		}
 
@@ -322,9 +324,11 @@ class ET_Builder_Error_Report {
 		$post_id = self::$_->array_get( $_POST, 'post_id', false );
 
 		if ( ! $post_id ) {
-			wp_send_json_error( array(
-				'message' => esc_html__( 'No valid post id found', 'et_builder' ),
-			) );
+			wp_send_json_error(
+				array(
+					'message' => esc_html__( 'No valid post id found', 'et_builder' ),
+				)
+			);
 			wp_die();
 		}
 
@@ -332,21 +336,25 @@ class ET_Builder_Error_Report {
 		$data = self::$_->array_get( $_POST, 'data', false );
 
 		if ( ! $data ) {
-			wp_send_json_error( array(
-				'message' => esc_html__( 'No valid report data found', 'et_builder' ),
-			) );
+			wp_send_json_error(
+				array(
+					'message' => esc_html__( 'No valid report data found', 'et_builder' ),
+				)
+			);
 			wp_die();
 		}
 
 		// Check for Elegant Themes username & API Key
-		$updates_options   = get_site_option( 'et_automatic_updates_options', array() );
-		$et_username       = self::$_->array_get( $updates_options, 'username', '' );
-		$et_api_key        = self::$_->array_get( $updates_options, 'api_key', '' );
+		$updates_options = get_site_option( 'et_automatic_updates_options', array() );
+		$et_username     = self::$_->array_get( $updates_options, 'username', '' );
+		$et_api_key      = self::$_->array_get( $updates_options, 'api_key', '' );
 
 		if ( '' === $et_username || '' === $et_api_key ) {
-			wp_send_json_error( array(
-				'message' => esc_html__( 'No Elegant Themes username or API key found', 'et_builder' ),
-			) );
+			wp_send_json_error(
+				array(
+					'message' => esc_html__( 'No Elegant Themes username or API key found', 'et_builder' ),
+				)
+			);
 			wp_die();
 		}
 
@@ -354,9 +362,11 @@ class ET_Builder_Error_Report {
 		$et_account_status = get_site_option( 'et_account_status', 'not_active' );
 
 		if ( 'active' !== $et_account_status ) {
-			wp_send_json_error( array(
-				'message' => esc_html__( 'Your Elegant Themes account is inactive', 'et_builder' ),
-			) );
+			wp_send_json_error(
+				array(
+					'message' => esc_html__( 'Your Elegant Themes account is inactive', 'et_builder' ),
+				)
+			);
 			wp_die();
 		}
 

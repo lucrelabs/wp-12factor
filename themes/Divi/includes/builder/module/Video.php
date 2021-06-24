@@ -11,13 +11,13 @@ class ET_Builder_Module_Video extends ET_Builder_Module {
 			'general'  => array(
 				'toggles' => array(
 					'main_content' => esc_html__( 'Video', 'et_builder' ),
-					'overlay'      => esc_html__( 'Overlay', 'et_builder' ),
+					'overlay'      => et_builder_i18n( 'Overlay' ),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
 					'play_icon' => esc_html__( 'Play Icon', 'et_builder' ),
-					'overlay'   => esc_html__( 'Overlay', 'et_builder' ),
+					'overlay'   => et_builder_i18n( 'Overlay' ),
 				),
 			),
 		);
@@ -30,32 +30,32 @@ class ET_Builder_Module_Video extends ET_Builder_Module {
 		);
 
 		$this->advanced_fields = array(
-			'background'            => array(
+			'background'      => array(
 				'options' => array(
 					'background_color' => array(
-						'depends_on'      => array(
+						'depends_on'            => array(
 							'custom_padding',
 						),
 						'depends_on_responsive' => array(
 							'custom_padding',
 						),
-						'depends_show_if_not' => array(
+						'depends_show_if_not'   => array(
 							'',
 							'|||',
 						),
-						'is_toggleable' => true,
+						'is_toggleable'         => true,
 					),
 				),
 			),
-			'box_shadow'            => array(
+			'box_shadow'      => array(
 				'default' => array(
 					'css' => array(
 						'overlay' => 'inset',
 					),
 				),
 			),
-			'margin_padding' => array(
-				'css' => array(
+			'margin_padding'  => array(
+				'css'            => array(
 					'important' => array( 'custom_margin' ), // needed to overwrite last module margin-bottom styling
 				),
 				'custom_padding' => array(
@@ -64,18 +64,18 @@ class ET_Builder_Module_Video extends ET_Builder_Module {
 					),
 				),
 			),
-			'fonts'                 => false,
-			'text'                  => false,
-			'button'                => false,
-			'link_options'          => false,
-			'position_fields'       => array(
+			'fonts'           => false,
+			'text'            => false,
+			'button'          => false,
+			'link_options'    => false,
+			'position_fields' => array(
 				'default' => 'relative',
 			),
 		);
 
 		$this->help_videos = array(
 			array(
-				'id'   => esc_html( '3jXN8CBz0TU' ),
+				'id'   => '3jXN8CBz0TU',
 				'name' => esc_html__( 'An introduction to the Video module', 'et_builder' ),
 			),
 		);
@@ -83,7 +83,7 @@ class ET_Builder_Module_Video extends ET_Builder_Module {
 
 	function get_fields() {
 		$fields = array(
-			'src' => array(
+			'src'                     => array(
 				'label'              => esc_html__( 'Video MP4 File Or Youtube URL', 'et_builder' ),
 				'type'               => 'upload',
 				'option_category'    => 'basic_option',
@@ -93,13 +93,13 @@ class ET_Builder_Module_Video extends ET_Builder_Module {
 				'update_text'        => esc_attr__( 'Set As Video', 'et_builder' ),
 				'description'        => esc_html__( 'Upload your desired video in .MP4 format, or type in the URL to the video you would like to display', 'et_builder' ),
 				'toggle_slug'        => 'main_content',
-				'computed_affects' => array(
+				'computed_affects'   => array(
 					'__video',
 				),
 				'mobile_options'     => true,
 				'hover'              => 'tabs',
 			),
-			'src_webm' => array(
+			'src_webm'                => array(
 				'label'              => esc_html__( 'Video WEBM File', 'et_builder' ),
 				'type'               => 'upload',
 				'option_category'    => 'basic_option',
@@ -109,66 +109,67 @@ class ET_Builder_Module_Video extends ET_Builder_Module {
 				'update_text'        => esc_attr__( 'Set As Video', 'et_builder' ),
 				'description'        => esc_html__( 'Upload the .WEBM version of your video here. All uploaded videos should be in both .MP4 .WEBM formats to ensure maximum compatibility in all browsers.', 'et_builder' ),
 				'toggle_slug'        => 'main_content',
-				'computed_affects' => array(
+				'computed_affects'   => array(
 					'__video',
 				),
 				'mobile_options'     => true,
 				'hover'              => 'tabs',
 			),
-			'image_src' => array(
-				'label'              => esc_html__( 'Overlay Image', 'et_builder' ),
-				'type'               => 'upload',
-				'option_category'    => 'basic_option',
-				'upload_button_text' => esc_attr__( 'Upload an image', 'et_builder' ),
-				'choose_text'        => esc_attr__( 'Choose an Image', 'et_builder' ),
-				'update_text'        => esc_attr__( 'Set As Image', 'et_builder' ),
-				'additional_button'  => sprintf(
+			'image_src'               => array(
+				'label'                   => esc_html__( 'Overlay Image', 'et_builder' ),
+				'type'                    => 'upload',
+				'option_category'         => 'basic_option',
+				'upload_button_text'      => et_builder_i18n( 'Upload an image' ),
+				'choose_text'             => esc_attr__( 'Choose an Image', 'et_builder' ),
+				'update_text'             => esc_attr__( 'Set As Image', 'et_builder' ),
+				'additional_button'       => sprintf(
 					'<input type="button" class="button et-pb-video-image-button" value="%1$s" />',
 					esc_attr__( 'Generate Image From Video', 'et_builder' )
 				),
-				'additional_button_type' => 'generate_image_url_from_video',
+				'additional_button_type'  => 'generate_image_url_from_video',
 				'additional_button_attrs' => array(
 					'video_source' => 'src',
 				),
-				'classes'            => 'et_pb_video_overlay',
-				'description'        => esc_html__( 'Upload your desired image, or type in the URL to the image you would like to display over your video. You can also generate a still image from your video.', 'et_builder' ),
-				'toggle_slug'        => 'overlay',
-				'computed_affects' => array(
+				'classes'                 => 'et_pb_video_overlay',
+				'description'             => esc_html__( 'Upload your desired image, or type in the URL to the image you would like to display over your video. You can also generate a still image from your video.', 'et_builder' ),
+				'toggle_slug'             => 'overlay',
+				'computed_affects'        => array(
 					'__video_cover_src',
 				),
-				'dynamic_content'   => 'image',
-				'mobile_options'    => true,
-				'hover'             => 'tabs',
+				'dynamic_content'         => 'image',
+				'mobile_options'          => true,
+				'hover'                   => 'tabs',
 			),
-			'play_icon_color' => array(
-				'label'             => esc_html__( 'Play Icon Color', 'et_builder' ),
-				'description'       => esc_html__( 'Here you can define a custom color for the play icon.', 'et_builder' ),
-				'type'              => 'color-alpha',
-				'custom_color'      => true,
-				'tab_slug'          => 'advanced',
-				'toggle_slug'       => 'play_icon',
-				'hover'             => 'tabs',
-				'mobile_options'    => true,
+			'play_icon_color'         => array(
+				'label'          => esc_html__( 'Play Icon Color', 'et_builder' ),
+				'description'    => esc_html__( 'Here you can define a custom color for the play icon.', 'et_builder' ),
+				'type'           => 'color-alpha',
+				'custom_color'   => true,
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'play_icon',
+				'hover'          => 'tabs',
+				'mobile_options' => true,
+				'sticky'         => true,
 			),
-			'__video' => array(
+			'__video'                 => array(
 				'type'                => 'computed',
 				'computed_callback'   => array( 'ET_Builder_Module_Video', 'get_video' ),
 				'computed_depends_on' => array(
 					'src',
 					'src_webm',
 				),
-				'computed_minimum' => array(
+				'computed_minimum'    => array(
 					'src',
 					'src_webm',
 				),
 			),
-			'__video_cover_src' => array(
+			'__video_cover_src'       => array(
 				'type'                => 'computed',
 				'computed_callback'   => array( 'ET_Builder_Module_Video', 'get_video_cover_src' ),
 				'computed_depends_on' => array(
 					'image_src',
 				),
-				'computed_minimum' => array(
+				'computed_minimum'    => array(
 					'image_src',
 				),
 			),
@@ -177,8 +178,8 @@ class ET_Builder_Module_Video extends ET_Builder_Module {
 				'description'      => esc_html__( 'If you would like to control the size of the icon, you must first enable this option.', 'et_builder' ),
 				'type'             => 'yes_no_button',
 				'options'          => array(
-					'off' => esc_html__( 'No', 'et_builder' ),
-					'on'  => esc_html__( 'Yes', 'et_builder' ),
+					'off' => et_builder_i18n( 'No' ),
+					'on'  => et_builder_i18n( 'Yes' ),
 				),
 				'default_on_front' => 'off',
 				'affects'          => array(
@@ -207,6 +208,7 @@ class ET_Builder_Module_Video extends ET_Builder_Module {
 				'mobile_options'   => true,
 				'depends_show_if'  => 'on',
 				'responsive'       => true,
+				'sticky'           => true,
 				'hover'            => 'tabs',
 			),
 			'thumbnail_overlay_color' => array(
@@ -218,6 +220,7 @@ class ET_Builder_Module_Video extends ET_Builder_Module {
 				'toggle_slug'      => 'overlay',
 				'default_on_front' => 'rgba(0,0,0,.6)',
 				'mobile_options'   => true,
+				'sticky'           => true,
 			),
 
 		);
@@ -253,9 +256,10 @@ class ET_Builder_Module_Video extends ET_Builder_Module {
 		$video_src = '';
 
 		if ( false !== et_pb_check_oembed_provider( esc_url( $args['src'] ) ) ) {
-			$video_src = wp_oembed_get( esc_url( $args['src'] ) );
+			$video_src = et_builder_get_oembed( esc_url( $args['src'] ) );
 		} else {
-			$video_src = sprintf( '
+			$video_src = sprintf(
+				'
 				<video controls>
 					%1$s
 					%2$s
@@ -272,7 +276,7 @@ class ET_Builder_Module_Video extends ET_Builder_Module {
 	}
 
 	static function get_video_cover_src( $args = array(), $conditional_tags = array(), $current_page = array() ) {
-		$post_id = isset( $current_page['id'] ) ? $current_page['id'] : self::get_current_post_id();
+		$post_id  = isset( $current_page['id'] ) ? $current_page['id'] : self::get_current_post_id();
 		$defaults = array(
 			'image_src' => '',
 		);
@@ -296,114 +300,100 @@ class ET_Builder_Module_Video extends ET_Builder_Module {
 	}
 
 	function render( $attrs, $content = null, $render_slug ) {
-		$multi_view               = et_pb_multi_view_options( $this );
-		$src                      = $this->props['src'];
-		$src_webm                 = $this->props['src_webm'];
-		$image_src                = $this->props['image_src'];
-		$use_icon_font_size       = $this->props['use_icon_font_size'];
-		$play_icon_color_values   = et_pb_responsive_options()->get_property_values( $this->props, 'play_icon_color' );
-		$play_icon_color_hover    = $this->get_hover_value( 'play_icon_color' );
-		$icon_font_size_values    = et_pb_responsive_options()->get_property_values( $this->props, 'icon_font_size' );
-		$icon_font_size_hover     = $this->get_hover_value( 'icon_font_size' );
-		$thumbnail_overlay_colors = et_pb_responsive_options()->get_property_values( $this->props, 'thumbnail_overlay_color' );
+		$multi_view         = et_pb_multi_view_options( $this );
+		$src                = $this->props['src'];
+		$src_webm           = $this->props['src_webm'];
+		$image_src          = $this->props['image_src'];
+		$use_icon_font_size = $this->props['use_icon_font_size'];
 
 		foreach ( $multi_view->get_modes() as $mode ) {
-			$video_srcs[ $mode ] = self::get_video( array(
-				'src'      => $multi_view->get_inherit_value( 'src', $mode ),
-				'src_webm' => $multi_view->get_inherit_value( 'src_webm', $mode ),
-			) );
+			$video_srcs[ $mode ] = self::get_video(
+				array(
+					'src'      => $multi_view->get_inherit_value( 'src', $mode ),
+					'src_webm' => $multi_view->get_inherit_value( 'src_webm', $mode ),
+				)
+			);
 		}
 
 		$multi_view->set_custom_prop( 'video_srcs', $video_srcs );
-		$video_src = $multi_view->render_element( array(
-			'tag'     => 'div',
-			'content' => '{{video_srcs}}',
-			'attrs' => array(
-				'class' => 'et_pb_video_box',
-			),
-		) );
+		$video_src = $multi_view->render_element(
+			array(
+				'tag'     => 'div',
+				'content' => '{{video_srcs}}',
+				'attrs'   => array(
+					'class' => 'et_pb_video_box',
+				),
+			)
+		);
 
 		$video_background          = $this->video_background();
 		$parallax_image_background = $this->get_parallax_image_background();
 
 		// Play Icon color.
-		et_pb_responsive_options()->generate_responsive_css( $play_icon_color_values, '%%order_class%% .et_pb_video_overlay .et_pb_video_play', 'color', $render_slug, '', 'color' );
-
-		if ( et_builder_is_hover_enabled( 'play_icon_color', $this->props ) ) {
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector' => '%%order_class%% .et_pb_video_overlay .et_pb_video_play:hover',
-				'declaration' => sprintf(
-					'color: %1$s;',
-					esc_html( $play_icon_color_hover )
-				),
-			) );
-		}
+		$this->generate_styles(
+			array(
+				'base_attr_name'                  => 'play_icon_color',
+				'selector'                        => '%%order_class%% .et_pb_video_overlay .et_pb_video_play',
+				'hover_pseudo_selector_location'  => 'suffix',
+				'sticky_pseudo_selector_location' => 'prefix',
+				'css_property'                    => 'color',
+				'render_slug'                     => $render_slug,
+				'type'                            => 'color',
+			)
+		);
 
 		// Icon Size.
-		$icon_selector = '%%order_class%% .et_pb_video_overlay .et_pb_video_play';
 		if ( 'off' !== $use_icon_font_size ) {
-			// Proccess for each devices.
-			foreach ( $icon_font_size_values as $font_size_key => $font_size_value ) {
-				if ( '' === $font_size_value ) {
-					continue;
-				}
+			// Icon Font Size.
+			$this->generate_styles(
+				array(
+					'base_attr_name'                  => 'icon_font_size',
+					'selector'                        => '%%order_class%% .et_pb_video_overlay .et_pb_video_play',
+					'hover_pseudo_selector_location'  => 'suffix',
+					'sticky_pseudo_selector_location' => 'prefix',
+					'render_slug'                     => $render_slug,
+					'type'                            => 'range',
 
-				$media_query = 'general';
-				if ( 'tablet' === $font_size_key ) {
-					$media_query = ET_Builder_Element::get_media_query( 'max_width_980' );
-				} elseif ( 'phone' === $font_size_key ) {
-					$media_query = ET_Builder_Element::get_media_query( 'max_width_767' );
-				}
-
-				$font_size_value_int  = (int) $font_size_value;
-				$font_size_value_unit = str_replace( $font_size_value_int, '', $font_size_value );
-				$font_size_value_half = 0 < $font_size_value_int ? $font_size_value_int / 2 : 0;
-				$font_size_value_half = (string) $font_size_value_half . $font_size_value_unit;
-				ET_Builder_Element::set_style( $render_slug, array(
-					'selector'    => $icon_selector,
-					'declaration' => sprintf(
-						'font-size:%1$s; line-height:%1$s; margin-top:-%2$s; margin-left:-%2$s;',
-						esc_html( $font_size_value ),
-						esc_html( $font_size_value_half )
+					// processed attr value can't be directly assigned to single css property so
+					// custom processor is needed to render this attr.
+					'processor'                       => array(
+						'ET_Builder_Module_Helper_Style_Processor',
+						'process_overlay_icon_font_size',
 					),
-					'media_query' => $media_query,
-				) );
-			}
-
-			// Icon hover styles.
-			if ( et_builder_is_hover_enabled( 'icon_font_size', $this->props ) && '' !== $icon_font_size_hover ) {
-				$icon_font_size_hover_int  = (int) $icon_font_size_hover;
-				$icon_font_size_hover_unit = str_replace( $icon_font_size_hover_int, '', $icon_font_size_hover );
-				$icon_font_size_hover_half = 0 < $icon_font_size_hover_int ? $icon_font_size_hover_int / 2 : 0;
-				$icon_font_size_hover_half = (string) $icon_font_size_hover_half . $icon_font_size_hover_unit;
-				ET_Builder_Element::set_style( $render_slug, array(
-					'selector'    => $this->add_hover_to_selectors( $icon_selector ),
-					'declaration' => sprintf(
-						'font-size:%1$s; line-height:%1$s; margin-top:-%2$s; margin-left:-%2$s;',
-						esc_html( $icon_font_size_hover ),
-						esc_html( $icon_font_size_hover_half )
-					),
-				) );
-			}
+				)
+			);
 		}
 
 		// Thumbnail Overlay Color.
-		et_pb_responsive_options()->generate_responsive_css( $thumbnail_overlay_colors, '%%order_class%% .et_pb_video_overlay_hover:hover', 'background-color', $render_slug, '', 'color' );
+		$this->generate_styles(
+			array(
+				'hover'                           => 'false',
+				'base_attr_name'                  => 'thumbnail_overlay_color',
+				'selector'                        => '%%order_class%% .et_pb_video_overlay_hover:hover',
+				'hover_pseudo_selector_location'  => 'suffix',
+				'sticky_pseudo_selector_location' => 'prefix',
+				'css_property'                    => 'background-color',
+				'render_slug'                     => $render_slug,
+				'type'                            => 'color',
+			)
+		);
 
-		$muti_view_video_overlay = $multi_view->render_element( array(
-			'tag'     => 'div',
-			'content' => '<div class="et_pb_video_overlay_hover"><a href="#" class="et_pb_video_play"></a></div>',
-			'attrs'   => array(
-				'class' =>  'et_pb_video_overlay',
-			),
-			'styles' => array(
-				'background-image' => 'url({{image_src}})',
-			),
-			'visibility' => array(
-				'image_src' => '__not_empty'
-			),
-			'required' => 'image_src',
-		) );
+		$muti_view_video_overlay = $multi_view->render_element(
+			array(
+				'tag'        => 'div',
+				'content'    => '<div class="et_pb_video_overlay_hover"><a href="#" class="et_pb_video_play"></a></div>',
+				'attrs'      => array(
+					'class' => 'et_pb_video_overlay',
+				),
+				'styles'     => array(
+					'background-image' => 'url({{image_src}})',
+				),
+				'visibility' => array(
+					'image_src' => '__not_empty',
+				),
+				'required'   => 'image_src',
+			)
+		);
 
 		$output = sprintf(
 			'<div%2$s class="%3$s">
@@ -447,13 +437,15 @@ class ET_Builder_Module_Video extends ET_Builder_Module {
 		$name = isset( $args['name'] ) ? $args['name'] : '';
 
 		if ( $raw_value && 'image_src' === $name ) {
-			$raw_value = self::get_video_cover_src( array(
-				'image_src' => $raw_value,
-			) );
+			$raw_value = self::get_video_cover_src(
+				array(
+					'image_src' => $raw_value,
+				)
+			);
 		}
 
 		return $raw_value;
 	}
 }
 
-new ET_Builder_Module_Video;
+new ET_Builder_Module_Video();

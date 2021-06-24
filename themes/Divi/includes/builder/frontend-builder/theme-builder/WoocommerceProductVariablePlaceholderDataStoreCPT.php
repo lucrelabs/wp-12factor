@@ -24,6 +24,7 @@ class ET_Theme_Builder_Woocommerce_Product_Variable_Placeholder_Data_Store_CPT e
 	 * Register product type data store
 	 *
 	 * @since 4.0.10
+	 * @since 4.3.3 register the store for tb-placeholder-variation product
 	 *
 	 * @param array $stores
 	 *
@@ -31,6 +32,11 @@ class ET_Theme_Builder_Woocommerce_Product_Variable_Placeholder_Data_Store_CPT e
 	 */
 	public static function register_store( $stores ) {
 		$stores['product-tb-placeholder'] = 'ET_Theme_Builder_Woocommerce_Product_Variable_Placeholder_Data_Store_CPT';
+
+		// Placeholder variation store requirement is identical to placeholder variable, which is
+		// loading defaults as value and skipping database value retrieval; thus best keep thing
+		// simple and reuse it for tb-placeholder-variation
+		$stores['product-tb-placeholder-variation'] = 'ET_Theme_Builder_Woocommerce_Product_Variable_Placeholder_Data_Store_CPT';
 
 		return $stores;
 	}

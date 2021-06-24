@@ -10,22 +10,16 @@ class ET_Builder_Module_Fullwidth_Code extends ET_Builder_Module {
 		$this->use_raw_content = true;
 
 		$this->settings_modal_toggles = array(
-			'general'  => array(
+			'general' => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Text', 'et_builder' ),
+					'main_content' => et_builder_i18n( 'Text' ),
 				),
 			),
 		);
 
 		$this->advanced_fields = array(
-			'borders'         => array(
-				'default' => false,
-			),
 			'text_shadow'     => array(
 				// Don't add text-shadow fields since they already are via font-options
-				'default' => false,
-			),
-			'box_shadow'      => array(
 				'default' => false,
 			),
 			'fonts'           => false,
@@ -40,7 +34,7 @@ class ET_Builder_Module_Fullwidth_Code extends ET_Builder_Module {
 
 		$this->help_videos = array(
 			array(
-				'id'   => esc_html( 'dTY6-Cbr00A' ),
+				'id'   => 'dTY6-Cbr00A',
 				'name' => esc_html__( 'An introduction to the Fullwidth Code module', 'et_builder' ),
 			),
 		);
@@ -75,13 +69,15 @@ class ET_Builder_Module_Fullwidth_Code extends ET_Builder_Module {
 
 		$this->add_classname( $this->get_text_orientation_classname() );
 
-		$raw_content = $multi_view->render_element( array(
-			'tag' => 'div',
-			'content' => '{{raw_content}}',
-			'attrs' => array(
-				'class' => 'et_pb_code_inner',
-			),
-		) );
+		$raw_content = $multi_view->render_element(
+			array(
+				'tag'     => 'div',
+				'content' => '{{raw_content}}',
+				'attrs'   => array(
+					'class' => 'et_pb_code_inner',
+				),
+			)
+		);
 
 		$output = sprintf(
 			'<div%2$s class="%3$s">
@@ -135,4 +131,4 @@ class ET_Builder_Module_Fullwidth_Code extends ET_Builder_Module {
 	}
 }
 
-new ET_Builder_Module_Fullwidth_Code;
+new ET_Builder_Module_Fullwidth_Code();

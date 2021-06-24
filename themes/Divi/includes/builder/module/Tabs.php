@@ -2,16 +2,16 @@
 
 class ET_Builder_Module_Tabs extends ET_Builder_Module {
 	function init() {
-		$this->name            = esc_html__( 'Tabs', 'et_builder' );
-		$this->plural          = esc_html__( 'Tabs', 'et_builder' );
-		$this->slug            = 'et_pb_tabs';
-		$this->vb_support      = 'on';
-		$this->child_slug      = 'et_pb_tab';
-		$this->child_item_text = esc_html__( 'Tab', 'et_builder' );
+		$this->name             = esc_html__( 'Tabs', 'et_builder' );
+		$this->plural           = esc_html__( 'Tabs', 'et_builder' );
+		$this->slug             = 'et_pb_tabs';
+		$this->vb_support       = 'on';
+		$this->child_slug       = 'et_pb_tab';
+		$this->child_item_text  = esc_html__( 'Tab', 'et_builder' );
 		$this->main_css_element = '%%order_class%%.et_pb_tabs';
 
 		$this->advanced_fields = array(
-			'borders'               => array(
+			'borders'        => array(
 				'default' => array(
 					'css'      => array(
 						'main' => array(
@@ -29,9 +29,9 @@ class ET_Builder_Module_Tabs extends ET_Builder_Module {
 					),
 				),
 			),
-			'fonts'                 => array(
+			'fonts'          => array(
 				'body' => array(
-					'label'          => esc_html__( 'Body', 'et_builder' ),
+					'label'          => et_builder_i18n( 'Body' ),
 					'css'            => array(
 						'main'         => "{$this->main_css_element} .et_pb_all_tabs .et_pb_tab",
 						'limited_main' => "{$this->main_css_element} .et_pb_all_tabs .et_pb_tab, {$this->main_css_element} .et_pb_all_tabs .et_pb_tab p",
@@ -56,8 +56,8 @@ class ET_Builder_Module_Tabs extends ET_Builder_Module {
 					),
 				),
 			),
-			'background'            => array(
-				'css' => array(
+			'background'     => array(
+				'css'      => array(
 					'main' => "{$this->main_css_element} .et_pb_all_tabs",
 				),
 				'settings' => array(
@@ -66,12 +66,12 @@ class ET_Builder_Module_Tabs extends ET_Builder_Module {
 			),
 			'margin_padding' => array(
 				'css' => array(
-					'padding' => '%%order_class%% .et_pb_tab',
+					'padding'   => '%%order_class%% .et_pb_tab',
 					'important' => array( 'custom_margin' ), // needed to overwrite last module margin-bottom styling
 				),
 			),
-			'text'                  => false,
-			'button'                => false,
+			'text'           => false,
+			'button'         => false,
 		);
 
 		$this->custom_css_fields = array(
@@ -79,15 +79,15 @@ class ET_Builder_Module_Tabs extends ET_Builder_Module {
 				'label'    => esc_html__( 'Tabs Controls', 'et_builder' ),
 				'selector' => '.et_pb_tabs_controls',
 			),
-			'tab' => array(
+			'tab'           => array(
 				'label'    => esc_html__( 'Tab', 'et_builder' ),
 				'selector' => '.et_pb_tabs_controls li',
 			),
-			'active_tab' => array(
+			'active_tab'    => array(
 				'label'    => esc_html__( 'Active Tab', 'et_builder' ),
 				'selector' => '.et_pb_tabs_controls li.et_pb_tab_active',
 			),
-			'tabs_content' => array(
+			'tabs_content'  => array(
 				'label'    => esc_html__( 'Tabs Content', 'et_builder' ),
 				'selector' => '.et_pb_tab',
 			),
@@ -95,7 +95,7 @@ class ET_Builder_Module_Tabs extends ET_Builder_Module {
 
 		$this->help_videos = array(
 			array(
-				'id'   => esc_html( 'xk2Ite-oFhg' ),
+				'id'   => 'xk2Ite-oFhg',
 				'name' => esc_html__( 'An introduction to the Tabs module', 'et_builder' ),
 			),
 		);
@@ -103,25 +103,27 @@ class ET_Builder_Module_Tabs extends ET_Builder_Module {
 
 	function get_fields() {
 		$fields = array(
-			'active_tab_background_color' => array(
-				'label'             => esc_html__( 'Active Tab Background Color', 'et_builder' ),
-				'description'       => esc_html__( 'Pick a color to be used for active tab backgrounds. You can assign a unique color to active tabs to differentiate them from inactive tabs.', 'et_builder' ),
-				'type'              => 'color-alpha',
-				'custom_color'      => true,
-				'tab_slug'          => 'advanced',
-				'toggle_slug'       => 'tab',
-				'hover'             => 'tabs',
-				'mobile_options'    => true,
+			'active_tab_background_color'   => array(
+				'label'          => esc_html__( 'Active Tab Background Color', 'et_builder' ),
+				'description'    => esc_html__( 'Pick a color to be used for active tab backgrounds. You can assign a unique color to active tabs to differentiate them from inactive tabs.', 'et_builder' ),
+				'type'           => 'color-alpha',
+				'custom_color'   => true,
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'tab',
+				'hover'          => 'tabs',
+				'mobile_options' => true,
+				'sticky'         => true,
 			),
 			'inactive_tab_background_color' => array(
-				'label'             => esc_html__( 'Inactive Tab Background Color', 'et_builder' ),
-				'description'       => esc_html__( 'Pick a color to be used for inactive tab backgrounds. You can assign a unique color to inactive tabs to differentiate them from active tabs.', 'et_builder' ),
-				'type'              => 'color-alpha',
-				'custom_color'      => true,
-				'tab_slug'          => 'advanced',
-				'toggle_slug'       => 'tab',
-				'hover'             => 'tabs',
-				'mobile_options'    => true,
+				'label'          => esc_html__( 'Inactive Tab Background Color', 'et_builder' ),
+				'description'    => esc_html__( 'Pick a color to be used for inactive tab backgrounds. You can assign a unique color to inactive tabs to differentiate them from active tabs.', 'et_builder' ),
+				'type'           => 'color-alpha',
+				'custom_color'   => true,
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'tab',
+				'hover'          => 'tabs',
+				'mobile_options' => true,
+				'sticky'         => true,
 			),
 			'active_tab_text_color'         => array(
 				'label'          => esc_html__( 'Active Tab Text Color', 'et_builder' ),
@@ -132,6 +134,7 @@ class ET_Builder_Module_Tabs extends ET_Builder_Module {
 				'toggle_slug'    => 'tab',
 				'hover'          => 'tabs',
 				'mobile_options' => true,
+				'sticky'         => true,
 			),
 		);
 		return $fields;
@@ -163,21 +166,24 @@ class ET_Builder_Module_Tabs extends ET_Builder_Module {
 
 		$i = 0;
 		if ( ! empty( $et_pb_tab_titles ) ) {
-			foreach ( $et_pb_tab_titles as $tab_title ){
+			foreach ( $et_pb_tab_titles as $tab_title ) {
 				++$i;
-				$tabs .= sprintf( '<li class="%3$s%1$s">%2$s</li>',
+				$tabs .= sprintf(
+					'<li class="%3$s%1$s">%2$s</li>',
 					( 1 === $i ? ' et_pb_tab_active' : '' ),
-					et_pb_multi_view_options( $this )->render_element( array(
-						'tag'     => 'a',
-						'content' => '{{tab_title}}',
-						'attrs'   => array(
-							'href' => '#',
-						),
-						'custom_props' => array(
-							'tab_title' => $tab_title,
+					et_pb_multi_view_options( $this )->render_element(
+						array(
+							'tag'          => 'a',
+							'content'      => '{{tab_title}}',
+							'attrs'        => array(
+								'href' => '#',
+							),
+							'custom_props' => array(
+								'tab_title' => $tab_title,
+							),
 						)
-					) ),
-					esc_attr( ltrim( $et_pb_tab_classes[ $i-1 ] ) )
+					),
+					esc_attr( ltrim( $et_pb_tab_classes[ $i - 1 ] ) )
 				);
 			}
 		}
@@ -198,68 +204,64 @@ class ET_Builder_Module_Tabs extends ET_Builder_Module {
 	}
 
 	function render( $attrs, $content = null, $render_slug ) {
-		$active_tab_background_color_hover    = $this->get_hover_value( 'active_tab_background_color' );
-		$active_tab_background_color_values   = et_pb_responsive_options()->get_property_values( $this->props, 'active_tab_background_color' );
-		$inactive_tab_background_color_hover  = $this->get_hover_value( 'inactive_tab_background_color' );
-		$inactive_tab_background_color_values = et_pb_responsive_options()->get_property_values( $this->props, 'inactive_tab_background_color' );
-		$active_tab_text_color_hover          = $this->get_hover_value( 'active_tab_text_color' );
-		$active_tab_text_color_values         = et_pb_responsive_options()->get_property_values( $this->props, 'active_tab_text_color' );
-
 		$all_tabs_content = $this->get_tabs_content();
 
 		global $et_pb_tab_titles;
 		global $et_pb_tab_classes;
 
 		// Inactive Tab Background Color.
-		et_pb_responsive_options()->generate_responsive_css( $inactive_tab_background_color_values, '%%order_class%% .et_pb_tabs_controls li', 'background-color', $render_slug, '', 'color' );
-
-		if ( et_builder_is_hover_enabled( 'inactive_tab_background_color', $this->props ) ) {
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => '%%order_class%% .et_pb_tabs_controls li:hover',
-				'declaration' => sprintf(
-					'background-color: %1$s;',
-					esc_html( $inactive_tab_background_color_hover )
-				),
-			) );
-		}
+		$this->generate_styles(
+			array(
+				'base_attr_name'                  => 'inactive_tab_background_color',
+				'selector'                        => '%%order_class%% .et_pb_tabs_controls li',
+				'hover_pseudo_selector_location'  => 'suffix',
+				'sticky_pseudo_selector_location' => 'prefix',
+				'css_property'                    => 'background-color',
+				'render_slug'                     => $render_slug,
+				'type'                            => 'color',
+			)
+		);
 
 		// Active Tab Background Color.
-		et_pb_responsive_options()->generate_responsive_css( $active_tab_background_color_values, '%%order_class%% .et_pb_tabs_controls li.et_pb_tab_active', 'background-color', $render_slug, '', 'color' );
-
-		if ( et_builder_is_hover_enabled( 'active_tab_background_color', $this->props ) ) {
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => '%%order_class%% .et_pb_tabs_controls li.et_pb_tab_active:hover',
-				'declaration' => sprintf(
-					'background-color: %1$s;',
-					esc_html( $active_tab_background_color_hover )
-				),
-			) );
-		}
+		$this->generate_styles(
+			array(
+				'base_attr_name'                  => 'active_tab_background_color',
+				'selector'                        => '%%order_class%% .et_pb_tabs_controls li.et_pb_tab_active',
+				'hover_pseudo_selector_location'  => 'suffix',
+				'sticky_pseudo_selector_location' => 'prefix',
+				'css_property'                    => 'background-color',
+				'render_slug'                     => $render_slug,
+				'type'                            => 'color',
+			)
+		);
 
 		// Active Text Color
-		et_pb_responsive_options()->generate_responsive_css( $active_tab_text_color_values, '%%order_class%%.et_pb_tabs .et_pb_tabs_controls li.et_pb_tab_active a', 'color', $render_slug, ' !important;', 'color' );
-
-		if ( et_builder_is_hover_enabled( 'active_tab_text_color', $this->props ) ) {
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => '%%order_class%% .et_pb_tabs_controls li.et_pb_tab_active:hover a',
-				'declaration' => sprintf(
-					'color: %1$s !important;',
-					esc_html( $active_tab_text_color_hover )
-				),
-			) );
-		}
+		$this->generate_styles(
+			array(
+				'base_attr_name'                  => 'active_tab_text_color',
+				'selector'                        => '%%order_class%%.et_pb_tabs .et_pb_tabs_controls li.et_pb_tab_active a',
+				'hover_selector'                  => '%%order_class%% .et_pb_tabs_controls li.et_pb_tab_active:hover a',
+				'sticky_pseudo_selector_location' => 'prefix',
+				'css_property'                    => 'color',
+				'important'                       => true,
+				'render_slug'                     => $render_slug,
+				'type'                            => 'color',
+			)
+		);
 
 		$tabs = $this->get_tabs_nav();
 
-		$video_background = $this->video_background();
+		$video_background          = $this->video_background();
 		$parallax_image_background = $this->get_parallax_image_background();
 
 		$et_pb_tab_titles = $et_pb_tab_classes = array();
 
 		// Module classnames
-		$this->add_classname( array(
-			$this->get_text_orientation_classname(),
-		) );
+		$this->add_classname(
+			array(
+				$this->get_text_orientation_classname(),
+			)
+		);
 
 		$output = sprintf(
 			'<div%3$s class="%4$s" %7$s>
@@ -279,7 +281,7 @@ class ET_Builder_Module_Tabs extends ET_Builder_Module {
 			$video_background,
 			$parallax_image_background,
 			/* 7$s */ 'et_pb_wc_tabs' === $render_slug ? $this->get_multi_view_attrs() : ''
- 		);
+		);
 
 		return $output;
 	}
@@ -297,11 +299,10 @@ class ET_Builder_Module_Tabs extends ET_Builder_Module {
 				),
 			);
 
-
 		}
 
 		parent::process_box_shadow( $function_name );
 	}
 }
 
-new ET_Builder_Module_Tabs;
+new ET_Builder_Module_Tabs();

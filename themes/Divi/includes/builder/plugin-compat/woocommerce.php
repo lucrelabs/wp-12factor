@@ -5,6 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Plugin compatibility for WooCommerce
+ *
  * @since 3.0.65 (builder version)
  * @link https://wordpress.org/plugins/woocommerce/
  */
@@ -20,6 +21,7 @@ class ET_Builder_Plugin_Compat_WooCommerce extends ET_Builder_Plugin_Compat_Base
 	/**
 	 * Hook methods to WordPress
 	 * Latest plugin version: 3.1.1
+	 *
 	 * @return void
 	 */
 	function init_hooks() {
@@ -108,21 +110,24 @@ class ET_Builder_Plugin_Compat_WooCommerce extends ET_Builder_Plugin_Compat_Base
 	}
 
 	/**
-	 * Whitelist hidden WooCommerce meta keys for dynamic content.
+	 * Allowlist hidden WooCommerce meta keys for dynamic content.
 	 *
 	 * @since 3.17.2
 	 *
 	 * @param string[] $meta_keys
-	 * @param integer $post_id
+	 * @param integer  $post_id
 	 *
 	 * @return string[]
 	 */
 	public function filter_dynamic_content_display_hidden_meta_keys( $meta_keys, $post_id ) {
-		return array_merge( $meta_keys, array(
-			'_stock_status',
-			'_regular_price',
-			'_sale_price',
-		) );
+		return array_merge(
+			$meta_keys,
+			array(
+				'_stock_status',
+				'_regular_price',
+				'_sale_price',
+			)
+		);
 	}
 
 	/**
@@ -155,8 +160,8 @@ class ET_Builder_Plugin_Compat_WooCommerce extends ET_Builder_Plugin_Compat_Base
 	 *
 	 * @since 3.17.2
 	 *
-	 * @param string $meta_value
-	 * @param string $meta_key
+	 * @param string  $meta_value
+	 * @param string  $meta_key
 	 * @param integer $post_id
 	 *
 	 * @return string
@@ -192,7 +197,7 @@ class ET_Builder_Plugin_Compat_WooCommerce extends ET_Builder_Plugin_Compat_Base
 	public function maybe_filter_theme_builder_template_settings_options( $options ) {
 		$woocommerce_options = array(
 			'woocommerce' => array(
-				'label' => esc_html__( 'WooCommerce Pages', 'et_builder' ),
+				'label'    => esc_html__( 'WooCommerce Pages', 'et_builder' ),
 				'settings' => array(
 					array(
 						'id'       => 'woocommerce:shop',
@@ -247,9 +252,9 @@ class ET_Builder_Plugin_Compat_WooCommerce extends ET_Builder_Plugin_Compat_Base
 	 *
 	 * @since 4.0
 	 *
-	 * @param string $type
-	 * @param string $subtype
-	 * @param integer $id
+	 * @param string   $type
+	 * @param string   $subtype
+	 * @param integer  $id
 	 * @param string[] $setting
 	 *
 	 * @return bool
@@ -267,9 +272,9 @@ class ET_Builder_Plugin_Compat_WooCommerce extends ET_Builder_Plugin_Compat_Base
 	 *
 	 * @since 4.0
 	 *
-	 * @param string $type
-	 * @param string $subtype
-	 * @param integer $id
+	 * @param string   $type
+	 * @param string   $subtype
+	 * @param integer  $id
 	 * @param string[] $setting
 	 *
 	 * @return bool
@@ -283,9 +288,9 @@ class ET_Builder_Plugin_Compat_WooCommerce extends ET_Builder_Plugin_Compat_Base
 	 *
 	 * @since 4.0
 	 *
-	 * @param string $type
-	 * @param string $subtype
-	 * @param integer $id
+	 * @param string   $type
+	 * @param string   $subtype
+	 * @param integer  $id
 	 * @param string[] $setting
 	 *
 	 * @return bool
@@ -299,9 +304,9 @@ class ET_Builder_Plugin_Compat_WooCommerce extends ET_Builder_Plugin_Compat_Base
 	 *
 	 * @since 4.0
 	 *
-	 * @param string $type
-	 * @param string $subtype
-	 * @param integer $id
+	 * @param string   $type
+	 * @param string   $subtype
+	 * @param integer  $id
 	 * @param string[] $setting
 	 *
 	 * @return bool
@@ -351,4 +356,4 @@ class ET_Builder_Plugin_Compat_WooCommerce extends ET_Builder_Plugin_Compat_Base
 		}
 	}
 }
-new ET_Builder_Plugin_Compat_WooCommerce;
+new ET_Builder_Plugin_Compat_WooCommerce();

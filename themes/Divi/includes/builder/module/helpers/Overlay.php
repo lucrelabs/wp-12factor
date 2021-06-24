@@ -32,6 +32,10 @@ class ET_Builder_Module_Helper_Overlay {
 			$attributes['data-icon-phone'] = esc_attr( et_pb_process_font_icon( $args['icon_phone'] ) );
 		}
 
+		if ( ! empty( $args['icon_sticky'] ) ) {
+			$attributes['data-icon-sticky'] = esc_attr( et_pb_process_font_icon( $args['icon_sticky'] ) );
+		}
+
 		return $attributes;
 	}
 
@@ -69,7 +73,8 @@ class ET_Builder_Module_Helper_Overlay {
 	 * @return string
 	 */
 	public static function render( $args ) {
-		$classes = array( 'et_overlay' );
+		$attributes = et_core_esc_previously( self::render_attributes( $args ) );
+		$classes    = array( 'et_overlay' );
 
 		if ( ! empty( $args['icon'] ) ) {
 			$classes[] = 'et_pb_inline_icon';
@@ -83,10 +88,14 @@ class ET_Builder_Module_Helper_Overlay {
 			$classes[] = 'et_pb_inline_icon_phone';
 		}
 
+		if ( ! empty( $args['icon_sticky'] ) ) {
+			$classes[] = 'et_pb_inline_icon_sticky';
+		}
+
 		return sprintf(
-			'<span class="%1$s" %2$s></span>',
+			'<span class="%1$s"%2$s></span>',
 			et_core_intentionally_unescaped( implode( ' ', $classes ), 'fixed_string' ),
-			et_core_esc_previously( self::render_attributes( $args ) )
+			( '' !== $attributes ? ' ' . $attributes : '' )
 		);
 	}
 }

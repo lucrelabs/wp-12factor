@@ -9,6 +9,7 @@
  * Copy of ET_Builder_Element::process_advanced_custom_margin_options().
  *
  * @since 3.23
+ * @since 4.6.0 Add sticky style support
  */
 class ET_Builder_Module_Field_MarginPadding extends ET_Builder_Module_Field_Base {
 
@@ -69,11 +70,12 @@ class ET_Builder_Module_Field_MarginPadding extends ET_Builder_Module_Field_Base
 			'use_padding'         => true,
 			'use_margin'          => true,
 			'mobile_options'      => true,
+			'sticky'              => true,
 			'hover'               => 'tabs',
 			'custom_padding'      => '',
 			'custom_margin'       => '',
 			'depends_show_if'     => 'on',
-			'priority'            => 90
+			'priority'            => 90,
 		);
 	}
 
@@ -161,13 +163,14 @@ class ET_Builder_Module_Field_MarginPadding extends ET_Builder_Module_Field_Base
 
 		// Custom margin.
 		if ( $config['use_margin'] ) {
-			$fields[ $custom_margin ] = array(
+			$fields[ $custom_margin ]        = array(
 				'label'           => sprintf( esc_html__( '%1$s Margin', 'et_builder' ), $config['label'] ),
 				'description'     => esc_html__( 'Margin adds extra space to the outside of the element, increasing the distance between the element and other items on the page.', 'et_builder' ),
 				'type'            => 'custom_margin',
 				'option_category' => $config['option_category'],
 				'mobile_options'  => $config['mobile_options'],
 				'hover'           => $config['hover'],
+				'sticky'          => $config['sticky'],
 				'depends_show_if' => $config['depends_show_if'],
 				'tab_slug'        => $tab_slug,
 				'toggle_slug'     => $toggle_slug,
@@ -221,13 +224,14 @@ class ET_Builder_Module_Field_MarginPadding extends ET_Builder_Module_Field_Base
 
 		// Custom padding.
 		if ( $config['use_padding'] ) {
-			$fields[ $custom_padding ] = array(
+			$fields[ $custom_padding ]        = array(
 				'label'           => sprintf( esc_html__( '%1$s Padding', 'et_builder' ), $config['label'] ),
 				'description'     => esc_html__( 'Padding adds extra space to the inside of the element, increasing the distance between the edge of the element and its inner contents.', 'et_builder' ),
 				'type'            => 'custom_padding',
 				'option_category' => $config['option_category'],
 				'mobile_options'  => $config['mobile_options'],
 				'hover'           => $config['hover'],
+				'sticky'          => $config['sticky'],
 				'depends_show_if' => $config['depends_show_if'],
 				'tab_slug'        => $tab_slug,
 				'toggle_slug'     => $toggle_slug,
@@ -263,6 +267,7 @@ class ET_Builder_Module_Field_MarginPadding extends ET_Builder_Module_Field_Base
 	 * Adds CSS rule.
 	 *
 	 * @since 3.23
+	 * @since 4.6.0 Add sticky style support
 	 *
 	 * @see ET_Builder_Element->process_advanced_custom_margin_options()
 	 *
@@ -276,6 +281,7 @@ class ET_Builder_Module_Field_MarginPadding extends ET_Builder_Module_Field_Base
 		$utils           = ET_Core_Data_Utils::instance();
 		$all_values      = $module->props;
 		$hover           = et_pb_hover_options();
+		$sticky          = et_pb_sticky_options();
 		$responsive      = ET_Builder_Module_Helper_ResponsiveOptions::instance();
 		$advanced_fields = $module->advanced_fields;
 		$css             = isset( $this->advanced_fields['margin_padding']['css'] ) ? $this->advanced_fields['margin_padding']['css'] : array();
@@ -286,6 +292,7 @@ class ET_Builder_Module_Field_MarginPadding extends ET_Builder_Module_Field_Base
 		$is_global_important    = $is_important_set && 'all' === $options['css']['important'];
 		$is_use_padding         = $utils->array_get( $options, 'use_padding', true );
 		$is_use_margin          = $utils->array_get( $options, 'use_margin', true );
+		$is_sticky_module       = $sticky->is_sticky_module( $all_values );
 
 		// Selectors.
 		$main_selector    = ! empty( $options['css']['main'] ) ? $options['css']['main'] : $module->main_css_element;
@@ -337,11 +344,47 @@ class ET_Builder_Module_Field_MarginPadding extends ET_Builder_Module_Field_Base
 					$padding_hover_selector_processed = $padding_hover_selector;
 				}
 
-				ET_Builder_Element::set_style( $function_name, array(
+				$el_style = array(
 					'selector'    => $padding_hover_selector_processed,
 					'declaration' => rtrim( et_builder_get_element_style_css( $custom_padding_hover, 'padding', true ) ),
 					'priority'    => 20,
-				) );
+				);
+				ET_Builder_Element::set_style( $function_name, $el_style );
+			}
+
+			// A.3. Sticky Padding.
+			$custom_padding_sticky = $sticky->get_value( "{$prefix}_custom_padding", $all_values, '' );
+
+			if ( '' !== $custom_padding_sticky && $sticky->is_enabled( "{$prefix}_custom_padding", $all_values ) ) {
+				$padding_sticky_selector = $sticky->add_sticky_to_order_class(
+					$padding_selector,
+					$is_sticky_module
+				);
+
+				$padding_sticky_selector_processed = $this->get_prefixed_selector(
+					$padding_sticky_selector,
+					$type,
+					$is_divi_builder_plugin
+				);
+
+				if ( $is_divi_builder_plugin && ! empty( $limited_selector ) ) {
+					$padding_sticky_selector_processed = $padding_sticky_selector;
+				}
+
+				ET_Builder_Element::set_style(
+					$function_name,
+					array(
+						'selector'    => $padding_sticky_selector_processed,
+						'declaration' => rtrim(
+							et_builder_get_element_style_css(
+								$custom_padding_sticky,
+								'padding',
+								true
+							)
+						),
+						'priority'    => 20,
+					)
+				);
 			}
 		}
 
@@ -384,11 +427,48 @@ class ET_Builder_Module_Field_MarginPadding extends ET_Builder_Module_Field_Base
 					$margin_hover_selector_processed = $margin_hover_selector;
 				}
 
-				ET_Builder_Element::set_style( $function_name, array(
+				$el_style = array(
 					'selector'    => $margin_hover_selector_processed,
-					'declaration' => rtrim( et_builder_get_element_style_css( $custom_margin_hover, 'padding', true ) ),
+					'declaration' => rtrim( et_builder_get_element_style_css( $custom_margin_hover, 'margin', true ) ),
 					'priority'    => 20,
-				) );
+				);
+				ET_Builder_Element::set_style( $function_name, $el_style );
+			}
+
+			// A.3. Hover margin.
+			$custom_margin_sticky = $sticky->get_value( "{$prefix}_custom_margin", $all_values, '' );
+
+			if ( '' !== $custom_margin_sticky && $sticky->is_enabled( "{$prefix}_custom_margin", $all_values ) ) {
+
+				$margin_sticky_selector = $sticky->add_sticky_to_order_class(
+					$margin_selector,
+					$is_sticky_module
+				);
+
+				$margin_sticky_selector_processed = $this->get_prefixed_selector(
+					$margin_sticky_selector,
+					$type,
+					$is_divi_builder_plugin
+				);
+
+				if ( $is_divi_builder_plugin && ! empty( $limited_selector ) ) {
+					$margin_sticky_selector_processed = $margin_sticky_selector;
+				}
+
+				ET_Builder_Element::set_style(
+					$function_name,
+					array(
+						'selector'    => $margin_sticky_selector_processed,
+						'declaration' => rtrim(
+							et_builder_get_element_style_css(
+								$custom_margin_sticky,
+								'margin',
+								true
+							)
+						),
+						'priority'    => 20,
+					)
+				);
 			}
 		}
 	}
@@ -413,21 +493,30 @@ class ET_Builder_Module_Field_MarginPadding extends ET_Builder_Module_Field_Base
 
 		$allowed_advanced_fields = array( 'form_field', 'button' );
 		foreach ( $allowed_advanced_fields as $advanced_field ) {
-			if ( ! empty( $advanced_fields[ $advanced_field ] ) ) {
-				foreach ( $advanced_fields[ $advanced_field ] as $label => $form_field ) {
-					$margin_key  = "{$label}_custom_margin";
-					$padding_key = "{$label}_custom_padding";
-					if ( '' !== $utils->array_get( $all_values, $margin_key, '' ) || '' !== $utils->array_get( $all_values, $padding_key, '' ) ) {
-						$settings = $utils->array_get( $form_field, 'margin_padding', array() );
+			if ( empty( $advanced_fields[ $advanced_field ] ) ) {
+				continue;
+			}
 
-						// Ensure main selector exists.
-						$form_field_margin_padding_css = $utils->array_get( $settings, 'css.main', '' );
-						if ( empty( $form_field_margin_padding_css ) ) {
-							$utils->array_set( $settings, 'css.main', $utils->array_get( $form_field, 'css.main', '' ) );
-						}
+			foreach ( $advanced_fields[ $advanced_field ] as $label => $form_field ) {
+				$margin_key  = "{$label}_custom_margin";
+				$padding_key = "{$label}_custom_padding";
+				$multi_view  = et_pb_multi_view_options( $module );
 
-						$this->update_styles( $module, $label, $settings, $function_name, $advanced_field );
+				$has_margin        = '' !== $utils->array_get( $all_values, $margin_key, '' );
+				$has_padding       = '' !== $utils->array_get( $all_values, $padding_key, '' );
+				$has_margin_hover  = $multi_view->hover_is_enabled( $margin_key );
+				$has_padding_hover = $multi_view->hover_is_enabled( $padding_key );
+
+				if ( $has_margin || $has_padding || $has_margin_hover || $has_padding_hover ) {
+					$settings = $utils->array_get( $form_field, 'margin_padding', array() );
+
+					// Ensure main selector exists.
+					$form_field_margin_padding_css = $utils->array_get( $settings, 'css.main', '' );
+					if ( empty( $form_field_margin_padding_css ) ) {
+						$utils->array_set( $settings, 'css.main', $utils->array_get( $form_field, 'css.main', '' ) );
 					}
+
+					$this->update_styles( $module, $label, $settings, $function_name, $advanced_field );
 				}
 			}
 		}

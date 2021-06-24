@@ -5,6 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Base class for plugin compatibility file
+ *
  * @since 0.7 (builder version)
  */
 class ET_Builder_Plugin_Compat_Base {
@@ -12,6 +13,7 @@ class ET_Builder_Plugin_Compat_Base {
 
 	/**
 	 * Get plugin dir path based on plugin_id
+	 *
 	 * @return sting
 	 */
 	function get_plugin_dir_path() {
@@ -20,6 +22,7 @@ class ET_Builder_Plugin_Compat_Base {
 
 	/**
 	 * Get plugin data based on initialized plugin_id
+	 *
 	 * @return array
 	 */
 	function get_plugin_data() {
@@ -28,6 +31,7 @@ class ET_Builder_Plugin_Compat_Base {
 
 	/**
 	 * Get plugin version based on initialized plugin_id
+	 *
 	 * @return string
 	 */
 	function get_plugin_version() {

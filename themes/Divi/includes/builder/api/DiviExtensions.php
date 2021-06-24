@@ -1,8 +1,19 @@
 <?php
+/**
+ * Extension API: DiviExtensions class.
+ *
+ * @package Builder
+ * @subpackage API
+ */
 
+/**
+ * Composite class to manage all Divi Extensions.
+ */
 class DiviExtensions {
 
 	/**
+	 * Utility class instance.
+	 *
 	 * @since 3.1
 	 *
 	 * @var ET_Core_Data_Utils
@@ -18,6 +29,8 @@ class DiviExtensions {
 	protected static $_debugging_extension;
 
 	/**
+	 * List of all instances of the Divi Extension.
+	 *
 	 * @since 3.1
 	 *
 	 * @var DiviExtension[] {
@@ -33,7 +46,7 @@ class DiviExtensions {
 	 *
 	 * @since 3.1
 	 *
-	 * @param DiviExtension $instance
+	 * @param DiviExtension $instance Instance.
 	 */
 	public static function add( $instance ) {
 		if ( ! isset( self::$_extensions[ $instance->name ] ) ) {
@@ -60,6 +73,9 @@ class DiviExtensions {
 		return self::$_->array_get( self::$_extensions, $name, null );
 	}
 
+	/**
+	 * Initialize the base `DiviExtension` class.
+	 */
 	public static function initialize() {
 		self::$_ = ET_Core_Data_Utils::instance();
 
@@ -89,7 +105,7 @@ class DiviExtensions {
 	 *
 	 * @since 3.1
 	 *
-	 * @param DiviExtension $instance
+	 * @param DiviExtension $instance Instance.
 	 *
 	 * @return bool Whether or not request was successful
 	 */

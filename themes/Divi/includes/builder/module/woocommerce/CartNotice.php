@@ -26,13 +26,13 @@ class ET_Builder_Module_Woocommerce_Cart_Notice extends ET_Builder_Module {
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Content', 'et_builder' ),
+					'main_content' => et_builder_i18n( 'Content' ),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
 					'text' => array(
-						'title'    => esc_html__( 'Text', 'et_builder' ),
+						'title'    => et_builder_i18n( 'Text' ),
 						'priority' => 45,
 					),
 				),
@@ -44,7 +44,7 @@ class ET_Builder_Module_Woocommerce_Cart_Notice extends ET_Builder_Module {
 		$this->advanced_fields = array(
 			'fonts'          => array(
 				'body' => array(
-					'label'           => esc_html__( 'Text', 'et_builder' ),
+					'label'           => et_builder_i18n( 'Text' ),
 					'css'             => array(
 						'main'      => '%%order_class%% .woocommerce-message',
 						// CPT style uses `!important` so outputting important is inevitable.
@@ -79,7 +79,7 @@ class ET_Builder_Module_Woocommerce_Cart_Notice extends ET_Builder_Module {
 			),
 			'button'         => array(
 				'button' => array(
-					'label'          => esc_html__( 'Button', 'et_builder' ),
+					'label'          => et_builder_i18n( 'Button' ),
 					'css'            => array(
 						'main'      => '%%order_class%% .wc-forward',
 						'important' => true,
@@ -129,22 +129,27 @@ class ET_Builder_Module_Woocommerce_Cart_Notice extends ET_Builder_Module {
 					'important' => 'all',
 				),
 			),
+			'border'         => array(
+				'css' => array(
+					'important' => true,
+				),
+			),
 		);
 
 		$this->custom_css_fields = array(
 			'text'   => array(
-				'label'    => esc_html__( 'Text', 'et_builder' ),
+				'label'    => et_builder_i18n( 'Text' ),
 				'selector' => '.woocommerce-message',
 			),
 			'button' => array(
-				'label'    => esc_html__( 'Button', 'et_builder' ),
+				'label'    => et_builder_i18n( 'Button' ),
 				'selector' => '.wc-forward',
 			),
 		);
 
 		$this->help_videos = array(
 			array(
-				'id'   => esc_html( '7X03vBPYJ1o' ),
+				'id'   => '7X03vBPYJ1o',
 				'name' => esc_html__( 'Divi WooCommerce Modules', 'et_builder' ),
 			),
 		);

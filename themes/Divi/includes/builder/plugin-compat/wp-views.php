@@ -100,11 +100,20 @@ class ET_Builder_Plugin_Compat_ToolsetViews extends ET_Builder_Plugin_Compat_Bas
 	 */
 	public function transform_shortcodes( $content ) {
 		/**
+		 * @see WPV_Frontend_Render_Filters::pre_process_shortcodes()
+		 *
+		 * @param string $content
+		 */
+		$content = apply_filters( 'wpv-pre-process-shortcodes', $content );
+
+		/**
 		 * @see Toolset_Shortcode_Transformer::replace_shortcode_placeholders_with_brackets()
 		 *
 		 * @param string $content
 		 */
-		return apply_filters( 'toolset_transform_shortcode_format', $content );
+		$content = apply_filters( 'toolset_transform_shortcode_format', $content );
+
+		return $content;
 	}
 }
 

@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Plugin compatibility for Wordpress Landing Pages
+ * Plugin compatibility for WordPress Landing Pages
  */
 class ET_Builder_Plugin_Compat_Landing_Pages extends ET_Builder_Plugin_Compat_Base {
 	/**

@@ -22,12 +22,12 @@ class ET_Builder_Module_Settings_Migration_DiscontinueHtmlEncoding extends ET_Bu
 
 	public function get_fields() {
 		return array(
-			'raw_content' => array(
+			'raw_content'    => array(
 				'affected_fields' => array(
 					'raw_content' => $this->get_modules( 'code' ),
 				),
 			),
-			'description' => array(
+			'description'    => array(
 				'affected_fields' => array(
 					'description' => $this->get_modules( 'signup' ),
 				),
@@ -46,7 +46,7 @@ class ET_Builder_Module_Settings_Migration_DiscontinueHtmlEncoding extends ET_Bu
 		$content = ET_Builder_Element::convert_smart_quotes_and_amp( $content );
 
 		// TODO, not sure about this, but single quotes were encoded so this seemed to be needed
-		$content = str_replace( "&#39;", "'", $content );
+		$content = str_replace( '&#39;', "'", $content );
 
 		$author_id = get_post_field( 'post_author', get_the_ID() ) || get_current_user_id();
 
@@ -109,14 +109,14 @@ class ET_Builder_Module_Settings_Migration_DiscontinueHtmlEncoding extends ET_Bu
 	}
 
 	private function _post_content_capability_check( $content ) {
-		$content = preg_replace_callback('/\[et_pb_code.*?\](.*)\[\/et_pb_code\]/mis', array( $this, '_sanitize_code_module_content_regex' ), $content );
-		$content = preg_replace_callback('/\[et_pb_fullwidth_code.*?\](.*)\[\/et_pb_fullwidth_code\]/mis', array( $this, '_sanitize_code_module_content_regex' ), $content );
+		$content = preg_replace_callback( '/\[et_pb_code.*?\](.*)\[\/et_pb_code\]/mis', array( $this, '_sanitize_code_module_content_regex' ), $content );
+		$content = preg_replace_callback( '/\[et_pb_fullwidth_code.*?\](.*)\[\/et_pb_fullwidth_code\]/mis', array( $this, '_sanitize_code_module_content_regex' ), $content );
 
 		return $content;
 	}
 
 	private function _sanitize_code_module_content_regex( $matches ) {
-		$sanitized_content = wp_kses_post( $matches[1] );
+		$sanitized_content   = wp_kses_post( $matches[1] );
 		$sanitized_shortcode = str_replace( $matches[1], $sanitized_content, $matches[0] );
 
 		return $sanitized_shortcode;

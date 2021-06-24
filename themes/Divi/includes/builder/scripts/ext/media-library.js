@@ -121,7 +121,7 @@ wp.media.view.MediaFrame.ETSelect = wp.media.view.MediaFrame.Select.extend({
     this.content.set( view );
 
     if ( ! wp.media.isTouchDevice ) {
-      view.url.focus();
+      view.url.input.focus();
     }
   },
 

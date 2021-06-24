@@ -32,4 +32,4 @@ class ET_Builder_Module_Settings_Migration_EmailOptinContent extends ET_Builder_
 	}
 }
 
-return new ET_Builder_Module_Settings_Migration_EmailOptinContent;
+return new ET_Builder_Module_Settings_Migration_EmailOptinContent();

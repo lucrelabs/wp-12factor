@@ -15,9 +15,19 @@
 
 let top_window = window;
 let is_iframe  = false;
+let top;
 
-if (window.top && window.top.__Cypress__) {
-  if (window.parent === window.top) {
+try {
+  // Have to access top window's prop (document) to trigger same-origin DOMException
+  // so we can catch it and act accordingly.
+  top = window.top.document ? window.top : false;
+} catch(e) {
+  // Can't access top, it means we're inside a different domain iframe.
+  top = false;
+}
+
+if (top && top.__Cypress__) {
+  if (window.parent === top) {
     top_window = window;
     is_iframe  = false;
 
@@ -26,11 +36,10 @@ if (window.top && window.top.__Cypress__) {
     is_iframe  = true;
   }
 
-} else if (window.top) {
-  top_window = window.top;
-  is_iframe  = window.top !== window.self;
+} else if (top) {
+  top_window = top;
+  is_iframe  = top !== window.self;
 }
-
 
 export {
   top_window,

@@ -29,7 +29,7 @@ class ET_Builder_Module_Woocommerce_Reviews extends ET_Builder_Module_Comments {
 
 		// Modify toggle settings.
 		$this->settings_modal_toggles['general']['toggles']['main_content'] = array(
-			'title'    => esc_html__( 'Content', 'et_builder' ),
+			'title'    => et_builder_i18n( 'Content' ),
 			'priority' => 1,
 		);
 
@@ -39,7 +39,7 @@ class ET_Builder_Module_Woocommerce_Reviews extends ET_Builder_Module_Comments {
 		);
 
 		$this->settings_modal_toggles['advanced']['toggles']['image'] = array(
-			'title'    => esc_html__( 'Image', 'et_builder' ),
+			'title'    => et_builder_i18n( 'Image' ),
 			'priority' => 30,
 		);
 
@@ -89,7 +89,7 @@ class ET_Builder_Module_Woocommerce_Reviews extends ET_Builder_Module_Comments {
 		$this->advanced_fields['image']['css']['main']                                = '%%order_class%%.et_pb_wc_reviews #reviews #comments ol.commentlist li img.avatar';
 
 		$this->advanced_fields['form_field']['form_field']['font_field']['css']['main'] = "{$this->main_css_element} #commentform textarea, {$this->main_css_element} #commentform input[type='text'], {$this->main_css_element} #commentform input[type='email'], {$this->main_css_element} #commentform input[type='url']";
-		$this->advanced_fields['form_field']['form_field']['font_field']['font_size'] = array(
+		$this->advanced_fields['form_field']['form_field']['font_field']['font_size']   = array(
 			'default' => '18px',
 		);
 
@@ -97,15 +97,15 @@ class ET_Builder_Module_Woocommerce_Reviews extends ET_Builder_Module_Comments {
 		unset( $this->advanced_fields['fonts']['title']['header_level'] );
 
 		$this->custom_css_fields = array(
-			'main_header' => array(
+			'main_header'     => array(
 				'label'    => esc_html__( 'Reviews Count', 'et_builder' ),
 				'selector' => '.woocommerce-Reviews-title',
 			),
-			'comment_body' => array(
+			'comment_body'    => array(
 				'label'    => esc_html__( 'Review Body', 'et_builder' ),
 				'selector' => '.comment_container',
 			),
-			'comment_meta' => array(
+			'comment_meta'    => array(
 				'label'    => esc_html__( 'Review Meta', 'et_builder' ),
 				'selector' => '#reviews #comments ol.commentlist li .comment-text p.meta',
 			),
@@ -113,27 +113,27 @@ class ET_Builder_Module_Woocommerce_Reviews extends ET_Builder_Module_Comments {
 				'label'    => esc_html__( 'Review Rating', 'et_builder' ),
 				'selector' => '.comment-form-rating',
 			),
-			'comment_avatar' => array(
+			'comment_avatar'  => array(
 				'label'    => esc_html__( 'Review Avatar', 'et_builder' ),
 				'selector' => '#reviews #comments ol.commentlist li img.avatar',
 			),
-			'new_title' => array(
+			'new_title'       => array(
 				'label'    => esc_html__( 'New Review Title', 'et_builder' ),
 				'selector' => '#reply-title',
 			),
-			'message_field' => array(
+			'message_field'   => array(
 				'label'    => esc_html__( 'Message Field', 'et_builder' ),
 				'selector' => '.comment-form-comment textarea#comment',
 			),
-			'name_field' => array(
+			'name_field'      => array(
 				'label'    => esc_html__( 'Name Field', 'et_builder' ),
 				'selector' => '.comment-form-author input#author',
 			),
-			'email_field' => array(
+			'email_field'     => array(
 				'label'    => esc_html__( 'Email Field', 'et_builder' ),
 				'selector' => '.comment-form-email input#email',
 			),
-			'submit_button' => array(
+			'submit_button'   => array(
 				'label'    => esc_html__( 'Submit Button', 'et_builder' ),
 				'selector' => '#submit',
 			),
@@ -141,7 +141,7 @@ class ET_Builder_Module_Woocommerce_Reviews extends ET_Builder_Module_Comments {
 
 		$this->help_videos = array(
 			array(
-				'id'   => esc_html( '7X03vBPYJ1o' ),
+				'id'   => '7X03vBPYJ1o',
 				'name' => esc_html__( 'Divi WooCommerce Modules', 'et_builder' ),
 			),
 		);
@@ -307,7 +307,12 @@ class ET_Builder_Module_Woocommerce_Reviews extends ET_Builder_Module_Comments {
 		$reviews_title = ET_Builder_Module_Helper_Woocommerce_Modules::get_reviews_title( $product );
 		// Product could be changed using the Product filter in the Settings modal.
 		// Hence supplying the Product ID to fetch data based on the selected Product.
-		$reviews         = get_comments( array( 'post_id' => $product->get_id() ) );
+		$reviews         = get_comments(
+			array(
+				'post_id' => $product->get_id(),
+				'status'  => 'approve',
+			)
+		);
 		$total_pages     = get_comment_pages_count( $reviews );
 		$reviews_content = wp_list_comments(
 			array(
@@ -407,7 +412,9 @@ class ET_Builder_Module_Woocommerce_Reviews extends ET_Builder_Module_Comments {
 	 *
 	 * @since 3.29
 	 */
-	public function before_comments_content() { /* intentionally empty*/ }
+	public function before_comments_content() {
+		/* intentionally empty*/
+	}
 
 	/**
 	 * Render review (comments) content
@@ -431,7 +438,9 @@ class ET_Builder_Module_Woocommerce_Reviews extends ET_Builder_Module_Comments {
 	 *
 	 * @since 3.29
 	 */
-	public function after_comments_content() { /* intentionally empty*/ }
+	public function after_comments_content() {
+		/* intentionally empty*/
+	}
 
 	/**
 	 * {@inheritdoc}
@@ -439,11 +448,8 @@ class ET_Builder_Module_Woocommerce_Reviews extends ET_Builder_Module_Comments {
 	function render( $attrs, $content = null, $render_slug ) {
 		// Image - CSS Filters.
 		if ( et_()->array_get( $this->advanced_fields, 'image.css', false ) ) {
-			$this->add_classname( $this->generate_css_filters(
-				$this->slug,
-				'child_',
-				et_()->array_get( $this->advanced_fields['image']['css'], 'main', '%%order_class%%' )
-			) );
+			$classes = $this->generate_css_filters( $this->slug, 'child_', et_()->array_get( $this->advanced_fields['image']['css'], 'main', '%%order_class%%' ) );
+			$this->add_classname( $classes );
 		}
 
 		ET_Builder_Module_Helper_Woocommerce_Modules::add_star_rating_style(

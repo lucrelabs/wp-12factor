@@ -5,7 +5,7 @@ class ET_Builder_Module_Settings_Migration_RowZeroGutter extends ET_Builder_Modu
 	public $version = '3.22.3';
 
 	public function get_modules() {
-		return array( 'et_pb_row', 'et_pb_section', );
+		return array( 'et_pb_row', 'et_pb_section' );
 	}
 
 	public function get_fields() {

@@ -496,8 +496,11 @@ if ( ! function_exists( 'get_thumbnail' ) ) {
 			$thumb_array['use_timthumb'] = false;
 
 			$et_fullpath = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
-			$thumb_array['fullpath'] = $et_fullpath[0];
-			$thumb_array['thumb'] = $thumb_array['fullpath'];
+
+			if ( is_array( $et_fullpath ) ) {
+				$thumb_array['fullpath'] = $et_fullpath[0];
+				$thumb_array['thumb'] = $thumb_array['fullpath'];
+			}
 		}
 
 		if ( empty( $thumb_array['thumb'] ) ) {
@@ -608,7 +611,7 @@ if ( ! function_exists( 'print_thumbnail' ) ) {
 					empty( $class ) ? '' : esc_attr( $class ),
 					$thumbnail_orig . ' 479w, ' . $thumbnail . ' 480w',
 					'(max-width:479px) 479px, 100vw',
-					apply_filters( 'et_print_thumbnail_dimensions', " width='" . esc_attr( $width ) . "' height='" . esc_attr( $height ) . "'" )
+					apply_filters( 'et_print_thumbnail_dimensions', ' width="' . esc_attr( $width ) . '" height="' . esc_attr( $height ) . '"' )
 				);
 			} else {
 				$output = sprintf(
@@ -616,7 +619,7 @@ if ( ! function_exists( 'print_thumbnail' ) ) {
 					$raw ? $thumbnail : esc_url( $thumbnail ),
 					esc_attr( wp_strip_all_tags( $alttext ) ),
 					empty( $class ) ? '' : esc_attr( $class ),
-					apply_filters( 'et_print_thumbnail_dimensions', " width='" . esc_attr( $width ) . "' height='" . esc_attr( $height ) . "'" )
+					apply_filters( 'et_print_thumbnail_dimensions', ' width="' . esc_attr( $width ) . '" height="' . esc_attr( $height ) . '"' )
 				);
 
 				if ( ! $raw ) {
@@ -893,7 +896,7 @@ function integration_single_top(){
 	}
 
 	$integration_single_top = et_get_option( $shortname . '_integration_single_top' );
-	if ( ! empty( $integration_single_top ) && et_get_option( $shortname . '_integrate_body_enable' ) === 'on' ) {
+	if ( ! empty( $integration_single_top ) && et_get_option( $shortname . '_integrate_singletop_enable' ) === 'on' ) {
 
 		$integration_single_top = et_core_fix_unclosed_html_tags( $integration_single_top );
 		echo et_core_intentionally_unescaped( $integration_single_top, 'html' );
@@ -911,7 +914,7 @@ function integration_single_bottom(){
 	}
 
 	$integration_single_bottom = et_get_option( $shortname . '_integration_single_bottom' );
-	if ( ! empty( $integration_single_bottom ) && et_get_option( $shortname . '_integrate_body_enable' ) === 'on' ) {
+	if ( ! empty( $integration_single_bottom ) && et_get_option( $shortname . '_integrate_singlebottom_enable' ) === 'on' ) {
 
 		$integration_single_bottom = et_core_fix_unclosed_html_tags( $integration_single_bottom );
 		echo et_core_intentionally_unescaped( $integration_single_bottom, 'html' );
@@ -1138,12 +1141,39 @@ if ( ! function_exists( 'elegant_titles_filter' ) ) {
 }
 add_filter( 'pre_get_document_title', 'elegant_titles_filter' );
 
+if ( ! function_exists( 'et_is_seo_plugin_active' ) ) {
+	/**
+	 * Determine if SEO plugin is active.
+	 *
+	 * @since ??
+	 * @return bool
+	 */
+	function et_is_seo_plugin_active() {
+		// WordPress SEO.
+		if ( class_exists( 'WPSEO_Frontend' ) ) {
+			return true;
+		}
+
+		// All In One SEO Pack.
+		if ( class_exists( 'All_in_One_SEO_Pack' ) ) {
+			return true;
+		}
+
+		// Rank Math SEO.
+		if ( class_exists( 'RankMath\Frontend\Frontend' ) ) {
+			return true;
+		}
+
+		return false;
+	}
+}
+
 /*this function controls the meta description display*/
 if ( ! function_exists( 'elegant_description' ) ) {
 
 	function elegant_description() {
-		// Don't use ePanel SEO if WordPress SEO or All In One SEO Pack plugins are active
-		if ( class_exists( 'WPSEO_Frontend' ) || class_exists( 'All_in_One_SEO_Pack' ) ) {
+		// Don't use ePanel SEO if a SEO plugin is active.
+		if ( et_is_seo_plugin_active() ) {
 			return;
 		}
 
@@ -1218,8 +1248,8 @@ if ( ! function_exists( 'elegant_description' ) ) {
 if ( ! function_exists( 'elegant_keywords' ) ) {
 
 	function elegant_keywords() {
-		// Don't use ePanel SEO if WordPress SEO or All In One SEO Pack plugins are active
-		if ( class_exists( 'WPSEO_Frontend' ) || class_exists( 'All_in_One_SEO_Pack' ) ) {
+		// Don't use ePanel SEO if a SEO plugin is active.
+		if ( et_is_seo_plugin_active() ) {
 			return;
 		}
 
@@ -1253,8 +1283,8 @@ if ( ! function_exists( 'elegant_keywords' ) ) {
 if ( ! function_exists( 'elegant_canonical' ) ) {
 
 	function elegant_canonical() {
-		// Don't use ePanel SEO if WordPress SEO or All In One SEO Pack plugins are active
-		if ( class_exists( 'WPSEO_Frontend' ) || class_exists( 'All_in_One_SEO_Pack' ) ) {
+		// Don't use ePanel SEO if a SEO plugin is active.
+		if ( et_is_seo_plugin_active() ) {
 			return;
 		}
 
@@ -1552,13 +1582,18 @@ function et_custom_posts_per_page( $query = false ) {
 		}
 		$query->set( 'posts_per_page', (int) et_get_option( $shortname . '_searchnum_posts', '5' ) );
 	} elseif ( $query->is_archive ) {
-		$posts_number = (int) et_get_option( $shortname . '_archivenum_posts', '5' );
 
 		if ( function_exists( 'is_woocommerce' ) && is_woocommerce() ) {
-			$posts_number = (int) et_get_option( $shortname . '_woocommerce_archive_num_posts', '9' );
+			// Plugin Compatibility :: Skip query->set if "loop_shop_per_page" filter is being used by 3rd party plugins
+			if ( ! has_filter( 'loop_shop_per_page' ) ) {
+				$posts_number = (int) et_get_option( $shortname . '_woocommerce_archive_num_posts', '9' );
+				$query->set( 'posts_per_page', $posts_number );
+			}
+		} else {
+			$posts_number = (int) et_get_option( $shortname . '_archivenum_posts', '5' );
+			$query->set( 'posts_per_page', $posts_number );
 		}
 
-		$query->set( 'posts_per_page', $posts_number );
 	}
 	// phpcs:enable
 }

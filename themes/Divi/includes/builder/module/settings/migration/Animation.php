@@ -7,30 +7,30 @@ class ET_Builder_Module_Settings_Migration_Animation extends ET_Builder_Module_S
 
 	public function get_fields() {
 		return array(
-			'animation_style'    => array(
+			'animation_style'           => array(
 				'affected_fields' => array(
 					'animation' => $this->get_modules( 'image' ),
 				),
-				'map' => array(
+				'map'             => array(
 					'off'     => 'none',
 					'fade_in' => 'fade',
 				),
 			),
-			'animation_duration'    => array(
+			'animation_duration'        => array(
 				'affected_fields' => array(
 					'animation' => $this->get_modules( 'image' ),
 				),
 			),
-			'animation_intensity_slide'    => array(
+			'animation_intensity_slide' => array(
 				'affected_fields' => array(
 					'animation' => $this->get_modules( 'image' ),
 				),
 			),
-			'animation_direction'    => array(
+			'animation_direction'       => array(
 				'affected_fields' => array(
 					'animation' => $this->get_modules( 'image' ),
 				),
-				'map' => array(
+				'map'             => array(
 					'off'     => '',
 					'fade_in' => 'center',
 					''        => 'left',

@@ -8,7 +8,7 @@
 function et_fb_app_boot( $content ) {
 	// Instances of React app
 	static $instances = 0;
-	$is_new_page = isset( $_GET['is_new_page'] ) && '1' === $_GET['is_new_page'];
+	$is_new_page      = isset( $_GET['is_new_page'] ) && '1' === $_GET['is_new_page']; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- No need to use nonce.
 
 	$main_query_post      = ET_Post_Stack::get_main_post();
 	$main_query_post_type = $main_query_post ? $main_query_post->post_type : '';
@@ -112,12 +112,13 @@ function et_fb_wp_footer() {
 	// present.
 	remove_all_filters( 'wp_audio_shortcode_library' );
 	remove_all_filters( 'wp_audio_shortcode' );
-	remove_all_filters( 'wp_audio_shortcode_class');
+	remove_all_filters( 'wp_audio_shortcode_class' );
 }
 add_action( 'wp_footer', 'et_fb_wp_footer' );
 
 /**
  * Added frontend builder specific body class
+ *
  * @todo load conditionally, only when the frontend builder is used
  *
  * @param array  initial <body> classes
@@ -144,6 +145,7 @@ add_filter( 'body_class', 'et_fb_add_body_class' );
 
 /**
  * Added BFB specific body class
+ *
  * @todo load conditionally, only when the frontend builder is used
  *
  * @param string initial <body> classes
@@ -162,7 +164,7 @@ function et_fb_add_admin_body_class( $classes ) {
 
 		// Add layout classes when on library page
 		if ( 'et_pb_layout' === $post_type ) {
-			$layout_type = et_fb_get_layout_type( $post_id );
+			$layout_type  = et_fb_get_layout_type( $post_id );
 			$layout_scope = et_fb_get_layout_term_slug( $post_id, 'scope' );
 
 			$classes .= " et_pb_library_page_top-${layout_type}";
@@ -193,7 +195,7 @@ function et_builder_inject_preboot_script() {
 		'is_TB'  => et_builder_tb_enabled(),
 	);
 
-	$preboot_path   = ET_BUILDER_DIR . 'frontend-builder/build/preboot.js';
+	$preboot_path = ET_BUILDER_DIR . 'frontend-builder/build/preboot.js';
 	if ( file_exists( $preboot_path ) ) {
 		$preboot_script = et_()->WPFS()->get_contents( $preboot_path );
 	} else {

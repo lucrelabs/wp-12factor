@@ -17,11 +17,14 @@ function et_fb_load_portability() {
 	et_core_load_component( 'portability' );
 
 	// Register the Builder individual layouts portability.
-	et_core_portability_register( 'et_builder', array(
-		'name' =>  esc_html__( 'Divi Builder Layout', 'et_builder' ),
-		'type' => 'post',
-		'view' => true,
-	) );
+	et_core_portability_register(
+		'et_builder',
+		array(
+			'name' => esc_html__( 'Divi Builder Layout', 'et_builder' ),
+			'type' => 'post',
+			'view' => true,
+		)
+	);
 }
 
 function et_fb_get_dynamic_asset( $prefix, $post_type = false, $update = false ) {
@@ -136,7 +139,7 @@ function et_fb_app_only_bundle_deps( $deps = null ) {
 			'wp-hooks',
 
 			// If minified JS is served, minified JS script name is outputted instead
-			apply_filters( 'et_builder_modules_script_handle', 'et-builder-modules-script' )
+			apply_filters( 'et_builder_modules_script_handle', 'et-builder-modules-script' ),
 		);
 		$_deps = array_diff( $deps, $top );
 	}
@@ -218,7 +221,7 @@ function et_fb_enqueue_assets() {
 		foreach ( array( 'helpers', 'definitions' ) as $asset ) {
 			if ( $url = et_()->array_get( et_fb_get_dynamic_asset( $asset ), 'url' ) ) {
 				// The asset exists, we can add it to bundle's dependencies
-				$key                = "et-dynamic-asset-$asset";
+				$key = "et-dynamic-asset-$asset";
 				/**
 				 * Filters the dependencies of cached assets.
 				 *
@@ -239,7 +242,8 @@ function et_fb_enqueue_assets() {
 
 	// Adding concatenated script as dependencies for script debugging
 	if ( et_load_unminified_scripts() ) {
-		array_push( $fb_bundle_dependencies,
+		array_push(
+			$fb_bundle_dependencies,
 			'easypiechart',
 			'salvattore',
 			'hashchange'
@@ -247,7 +251,21 @@ function et_fb_enqueue_assets() {
 	}
 
 	if ( et_pb_enqueue_google_maps_script() ) {
-		wp_enqueue_script( 'google-maps-api', esc_url( add_query_arg( array( 'key' => et_pb_get_google_api_key(), 'callback' => 'initMap' ), is_ssl() ? 'https://maps.googleapis.com/maps/api/js' : 'http://maps.googleapis.com/maps/api/js' ) ), array(), '3', true );
+		wp_enqueue_script(
+			'google-maps-api',
+			esc_url(
+				add_query_arg(
+					array(
+						'key'      => et_pb_get_google_api_key(),
+						'callback' => 'initMap',
+					),
+					is_ssl() ? 'https://maps.googleapis.com/maps/api/js' : 'http://maps.googleapis.com/maps/api/js'
+				)
+			),
+			array(),
+			'3',
+			true
+		);
 	}
 
 	// enqueue the Avada script before 'et-frontend-builder' to make sure easypiechart ( and probably some others ) override the scripts from Avada.
@@ -287,19 +305,27 @@ function et_fb_enqueue_assets() {
 		$additional_bundles[] = "{$app}/build/" . basename( $chunk );
 	}
 	// Pass bundle path and additional bundles to preload
-	wp_localize_script( 'et-frontend-builder', 'et_webpack_bundle', array(
-		'path'    => "{$app}/build/",
-		'preload' => $additional_bundles,
-	));
+	wp_localize_script(
+		'et-frontend-builder',
+		'et_webpack_bundle',
+		array(
+			'path'    => "{$app}/build/",
+			'preload' => $additional_bundles,
+		)
+	);
 
 	// Enqueue failure notice script.
 	wp_enqueue_script( 'et-frontend-builder-failure', "{$assets}/scripts/failure_notice.js", array(), ET_BUILDER_PRODUCT_VERSION, true );
-	wp_localize_script( 'et-frontend-builder-failure', 'et_fb_options', array(
-		'ajaxurl'                    => admin_url( 'admin-ajax.php' ),
-		'et_admin_load_nonce'        => wp_create_nonce( 'et_admin_load_nonce' ),
-		'memory_limit_increased'     => esc_html__( 'Your memory limit has been increased', 'et_builder' ),
-		'memory_limit_not_increased' => esc_html__( "Your memory limit can't be changed automatically", 'et_builder' ),
-	) );
+	wp_localize_script(
+		'et-frontend-builder-failure',
+		'et_fb_options',
+		array(
+			'ajaxurl'                    => admin_url( 'admin-ajax.php' ),
+			'et_admin_load_nonce'        => wp_create_nonce( 'et_admin_load_nonce' ),
+			'memory_limit_increased'     => esc_html__( 'Your memory limit has been increased', 'et_builder' ),
+			'memory_limit_not_increased' => esc_html__( "Your memory limit can't be changed automatically", 'et_builder' ),
+		)
+	);
 
 	// WP Auth Check (allows user to log in again when session expires).
 	wp_enqueue_style( 'wp-auth-check' );
@@ -318,7 +344,7 @@ function et_fb_app_src( $tag, $handle, $src ) {
 	}
 
 	// Only load (most) bundle deps in app window.
-	if ( in_array( $handle, et_fb_app_only_bundle_deps() )) {
+	if ( in_array( $handle, et_fb_app_only_bundle_deps(), true ) ) {
 		return sprintf( '<script data-et-vb-app-src="%1$s"></script>', esc_url( $src ) );
 	}
 	return $tag;
@@ -358,7 +384,7 @@ function et_fb_output_wp_auth_check_html() {
 function et_fb_set_editor_available_cookie() {
 	global $post;
 	$post_id = isset( $post->ID ) ? $post->ID : false;
-	if ( ! headers_sent() && !empty( $post_id ) ) {
+	if ( ! headers_sent() && ! empty( $post_id ) ) {
 		setcookie( 'et-editor-available-post-' . $post_id . '-fb', 'fb', time() + ( MINUTE_IN_SECONDS * 30 ), SITECOOKIEPATH, false, is_ssl() );
 	}
 }

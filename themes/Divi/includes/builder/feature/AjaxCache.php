@@ -1,28 +1,43 @@
 <?php
+/**
+ * Ajax Cache.
+ *
+ * @package Builder
+ */
+
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed directly.
 }
 
 /**
- * Ajax Cache.
+ * Class to cache commonly used AJAX requests.
  */
 class ET_Builder_Ajax_Cache {
+
 	/**
+	 * Instance of this class.
+	 *
 	 * @var ET_Builder_Ajax_Cache
 	 */
 	private static $_instance;
 
 	/**
+	 * Transient name.
+	 *
 	 * @var string
 	 */
 	protected $_transient = 'et_builder_ajax_cache';
 
 	/**
+	 * Flag to determine whether to save cache or not on `shutdown` hook.
+	 *
 	 * @var bool
 	 */
 	protected $_dirty = false;
 
 	/**
+	 * List of all ajax cache.
+	 *
 	 * @var Array
 	 */
 	protected $_cache;
@@ -53,7 +68,7 @@ class ET_Builder_Ajax_Cache {
 	 *
 	 * @since 4.0.10
 	 *
-	 * @return void
+	 * @return bool
 	 */
 	public function is_empty() {
 		$this->load();
@@ -65,7 +80,7 @@ class ET_Builder_Ajax_Cache {
 	 *
 	 * @since 4.0.10
 	 *
-	 * @param array $deps Dependencies array.
+	 * @param array  $deps Dependencies array.
 	 * @param string $key Script handle.
 	 *
 	 * @return array
@@ -84,7 +99,7 @@ class ET_Builder_Ajax_Cache {
 		// Enqueue ajax cache as definitions dependency.
 		$handle = 'et-ajax-cache';
 		$deps[] = $handle;
-		wp_register_script( $handle, $this->get_url(), array(), ET_BUILDER_VERSION );
+		wp_register_script( $handle, $this->get_url(), array(), ET_BUILDER_VERSION, false );
 
 		return $deps;
 	}
@@ -98,7 +113,7 @@ class ET_Builder_Ajax_Cache {
 	 */
 	public function load() {
 		if ( is_array( $this->_cache ) ) {
-			// Cache was already loaded
+			// Cache was already loaded.
 			return;
 		}
 
@@ -118,7 +133,7 @@ class ET_Builder_Ajax_Cache {
 	 * @return void
 	 */
 	public function save() {
-		// Ensure cache is loaded
+		// Ensure cache is loaded.
 		$this->load();
 
 		if ( $this->_dirty ) {
@@ -132,7 +147,7 @@ class ET_Builder_Ajax_Cache {
 	 *
 	 * @since 4.0.10
 	 *
-	 * @return void
+	 * @return bool
 	 */
 	public function write_file() {
 		if ( $this->is_empty() ) {
@@ -170,7 +185,7 @@ class ET_Builder_Ajax_Cache {
 	 * @since 4.0.10
 	 *
 	 * @param string $key Cache key.
-	 * @param string $value Cache value.
+	 * @param string $content Cache value.
 	 *
 	 * @return void
 	 */
@@ -228,7 +243,7 @@ class ET_Builder_Ajax_Cache {
 
 		wp_mkdir_p( $cache );
 
-		// Create uniq filename
+		// Create uniq filename.
 		$uniq = str_replace( '.', '', (string) microtime( true ) );
 		$file = "{$cache}/{$prefix}-{$uniq}.js";
 
@@ -240,7 +255,7 @@ class ET_Builder_Ajax_Cache {
 	 *
 	 * @since 4.0.10
 	 *
-	 * @return void
+	 * @return string
 	 */
 	public function get_url() {
 		$file = $this->get_file_name();
@@ -258,7 +273,7 @@ class ET_Builder_Ajax_Cache {
 	 */
 	public static function instance() {
 		if ( ! self::$_instance ) {
-			self::$_instance = new self;
+			self::$_instance = new self();
 		}
 
 		return self::$_instance;

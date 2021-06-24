@@ -54,7 +54,7 @@ class ET_Builder_Plugin_Compat_Advanced_Custom_Fields extends ET_Builder_Plugin_
 		}
 
 		add_filter( 'et_builder_dynamic_content_meta_value', array( $this, 'maybe_filter_dynamic_content_meta_value' ), 10, 3 );
-		add_filter( 'et_builder_custom_dynamic_content_fields', array( $this, 'maybe_filter_dynamic_content_fields'), 10, 3 );
+		add_filter( 'et_builder_custom_dynamic_content_fields', array( $this, 'maybe_filter_dynamic_content_fields' ), 10, 3 );
 	}
 
 	/**
@@ -62,8 +62,8 @@ class ET_Builder_Plugin_Compat_Advanced_Custom_Fields extends ET_Builder_Plugin_
 	 *
 	 * @since 3.17.2
 	 *
-	 * @param string $meta_value
-	 * @param string $meta_key
+	 * @param string  $meta_value
+	 * @param string  $meta_key
 	 * @param integer $post_id
 	 *
 	 * @return string
@@ -77,10 +77,10 @@ class ET_Builder_Plugin_Compat_Advanced_Custom_Fields extends ET_Builder_Plugin_
 		}
 
 		if ( is_category() || is_tag() || is_tax() ) {
-			$term = get_queried_object();
+			$term       = get_queried_object();
 			$identifier = "{$term->taxonomy}_{$term->term_id}";
-		} else if ( is_author() ) {
-			$user = get_queried_object();
+		} elseif ( is_author() ) {
+			$user       = get_queried_object();
 			$identifier = "user_{$user->ID}";
 		}
 
@@ -140,22 +140,22 @@ class ET_Builder_Plugin_Compat_Advanced_Custom_Fields extends ET_Builder_Plugin_
 			foreach ( $fields as $field ) {
 				if ( 'group' === $field['type'] ) {
 					// Remove all group fields as ACF stores empty values for them.
-					unset( $custom_fields["custom_meta_{$field['name']}"] );
+					unset( $custom_fields[ "custom_meta_{$field['name']}" ] );
 					continue;
 				}
 
 				$settings = array(
-					'label'  => esc_html( $field['label'] ),
-					'type'   => 'any',
-					'fields' => array(
+					'label'    => esc_html( $field['label'] ),
+					'type'     => 'any',
+					'fields'   => array(
 						'before' => array(
-							'label'   => esc_html__( 'Before', 'et_builder' ),
+							'label'   => et_builder_i18n( 'Before' ),
 							'type'    => 'text',
 							'default' => '',
 							'show_on' => 'text',
 						),
 						'after'  => array(
-							'label'   => esc_html__( 'After', 'et_builder' ),
+							'label'   => et_builder_i18n( 'After' ),
 							'type'    => 'text',
 							'default' => '',
 							'show_on' => 'text',
@@ -171,8 +171,8 @@ class ET_Builder_Plugin_Compat_Advanced_Custom_Fields extends ET_Builder_Plugin_
 						'label'   => esc_html__( 'Enable raw HTML', 'et_builder' ),
 						'type'    => 'yes_no_button',
 						'options' => array(
-							'on'  => esc_html__( 'Yes', 'et_builder' ),
-							'off' => esc_html__( 'No', 'et_builder' ),
+							'on'  => et_builder_i18n( 'Yes' ),
+							'off' => et_builder_i18n( 'No' ),
 						),
 						// Set enable_html default to `on` for taxonomy fields so builder
 						// automatically renders taxonomy list properly as unescaped HTML.
@@ -181,7 +181,7 @@ class ET_Builder_Plugin_Compat_Advanced_Custom_Fields extends ET_Builder_Plugin_
 					);
 				}
 
-				$custom_fields["custom_meta_{$field['name']}"] = $settings;
+				$custom_fields[ "custom_meta_{$field['name']}" ] = $settings;
 			}
 		}
 
@@ -194,8 +194,8 @@ class ET_Builder_Plugin_Compat_Advanced_Custom_Fields extends ET_Builder_Plugin_
 	 * @since 4.0.9
 	 *
 	 * @param array[] $fields
-	 * @param string $name_prefix
-	 * @param string $label_prefix
+	 * @param string  $name_prefix
+	 * @param string  $label_prefix
 	 *
 	 * @return array[]
 	 */
@@ -203,12 +203,17 @@ class ET_Builder_Plugin_Compat_Advanced_Custom_Fields extends ET_Builder_Plugin_
 		$expanded = array();
 
 		foreach ( $fields as $field ) {
-			$expanded[] = array( array_merge( $field, array(
-				'name'  => $name_prefix . $field['name'],
-				'label' => $label_prefix . $field['label'],
-			) ) );
+			$expanded[] = array(
+				array_merge(
+					$field,
+					array(
+						'name'  => $name_prefix . $field['name'],
+						'label' => $label_prefix . $field['label'],
+					)
+				),
+			);
 
-			if ('group' === $field['type']) {
+			if ( 'group' === $field['type'] ) {
 				$expanded[] = $this->expand_fields(
 					$field['sub_fields'],
 					$name_prefix . $field['name'] . '_',
@@ -267,13 +272,18 @@ class ET_Builder_Plugin_Compat_Advanced_Custom_Fields extends ET_Builder_Plugin_
 				break;
 
 			case 'true_false':
-				$value = $value ? __( 'Yes', 'et_builder' ) : esc_html__( 'No', 'et_builder' );
+				$value = et_builder_i18n( $value ? 'Yes' : 'No' );
 				break;
 
 			case 'taxonomy':
 				// If taxonomy configuration exist, get HTML output of given value (ids).
 				if ( isset( $field['taxonomy'] ) ) {
-					$terms     = get_terms( array( 'taxonomy' => $field['taxonomy'], 'include'  => $value ) );
+					$terms     = get_terms(
+						array(
+							'taxonomy' => $field['taxonomy'],
+							'include'  => $value,
+						)
+					);
 					$link      = 'on';
 					$separator = ', ';
 
@@ -300,7 +310,7 @@ class ET_Builder_Plugin_Compat_Advanced_Custom_Fields extends ET_Builder_Plugin_
 	/**
 	 * Format a placeholder value based on the field type.
 	 *
-	 * @param string $meta_key
+	 * @param string  $meta_key
 	 * @param integer $post_id
 	 *
 	 * @return mixed
@@ -316,11 +326,13 @@ class ET_Builder_Plugin_Compat_Advanced_Custom_Fields extends ET_Builder_Plugin_
 			return esc_html__( 'Your ACF Field Value Will Display Here', 'et_builder' );
 		}
 
-		$value = esc_html( sprintf(
-			// Translators: %1$s: ACF Field name
-			__( 'Your "%1$s" ACF Field Value Will Display Here', 'et_builder' ),
-			$field['label']
-		) );
+		$value = esc_html(
+			sprintf(
+				// Translators: %1$s: ACF Field name
+				__( 'Your "%1$s" ACF Field Value Will Display Here', 'et_builder' ),
+				$field['label']
+			)
+		);
 
 		switch ( $field['type'] ) {
 			case 'image':
@@ -328,11 +340,16 @@ class ET_Builder_Plugin_Compat_Advanced_Custom_Fields extends ET_Builder_Plugin_
 				break;
 
 			case 'taxonomy':
-				$value = esc_html( implode( ', ', array(
-					__( 'Category 1', 'et_builder' ),
-					__( 'Category 2', 'et_builder' ),
-					__( 'Category 3', 'et_builder' ),
-				) ) );
+				$value = esc_html(
+					implode(
+						', ',
+						array(
+							__( 'Category 1', 'et_builder' ),
+							__( 'Category 2', 'et_builder' ),
+							__( 'Category 3', 'et_builder' ),
+						)
+					)
+				);
 				break;
 		}
 
@@ -340,4 +357,4 @@ class ET_Builder_Plugin_Compat_Advanced_Custom_Fields extends ET_Builder_Plugin_
 	}
 }
 
-new ET_Builder_Plugin_Compat_Advanced_Custom_Fields;
+new ET_Builder_Plugin_Compat_Advanced_Custom_Fields();

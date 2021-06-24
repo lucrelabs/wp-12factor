@@ -49,7 +49,7 @@ class ET_Builder_Plugin_Compat_Divi_Woo_Layout_Injector extends ET_Builder_Plugi
 
 		if ( $is_tb ) {
 			remove_filter( 'the_content', 'sb_et_woo_li_content_filter', 999 );
-		} else if ( did_action( 'plugins_loaded' ) && ! has_action( 'the_content', 'sb_et_woo_li_content_filter' ) ) {
+		} elseif ( did_action( 'plugins_loaded' ) && ! has_action( 'the_content', 'sb_et_woo_li_content_filter' ) ) {
 			add_filter( 'the_content', 'sb_et_woo_li_content_filter', 999 );
 		}
 

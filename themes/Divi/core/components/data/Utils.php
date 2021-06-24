@@ -359,6 +359,26 @@ class ET_Core_Data_Utils {
 		$this->array_set( $array, $path, array_merge( $current_value, $value ) );
 	}
 
+	/**
+	 * Whether or not a string ends with a substring.
+	 *
+	 * @since 4.5.3
+	 *
+	 * @param string $haystack The string to look in.
+	 * @param string $needle   The string to look for.
+	 *
+	 * @return bool
+	 */
+	public function ends_with( $haystack, $needle ) {
+		$length = strlen( $needle );
+
+		if ( 0 === $length ) {
+			return true;
+		}
+
+		return ( substr( $haystack, -$length ) === $needle );
+	}
+
 	public function ensure_directory_exists( $path ) {
 		if ( file_exists( $path ) ) {
 			return is_dir( $path );
@@ -872,6 +892,23 @@ class ET_Core_Data_Utils {
 	}
 
 	/**
+	 * Returns a string with a valid CSS property value.
+	 * 
+	 * With some locales (ex: ro_RO) the decimal point can be ',' (comma) and
+	 * we need to convert that to a '.' (period) decimal point to ensure that
+	 * the value is a valid CSS property value.
+	 *
+	 * @since 4.4.8
+	 *
+	 * @param float $float Original float value.
+	 *
+	 * @return string
+	 */
+	public function to_css_decimal( $float ) {	
+		return strtr( $float, ',', '.' );
+	}
+
+	/**
 	 * Sort using a custom function accounting for the common undefined order
 	 * pitfall due to a return value of 0.
 	 *
@@ -943,6 +980,62 @@ class ET_Core_Data_Utils {
 		}
 
 		return $a_order - $b_order;
+	}
+
+	/**
+	 * Returns RFC 4211 compliant Universally Unique Identifier (UUID) version 4
+	 * https://tools.ietf.org/html/rfc4122
+	 *
+	 * @since 4.5.0
+	 *
+	 * @param array $random_sequence The initial random sequence. Mostly used for test purposes.
+	 *
+	 * @return string
+	 */
+	public static function uuid_v4( $random_sequence = null ) {
+		$buffer = array();
+
+		for ( $i = 0; $i < 16; $i++) {
+			$buffer[] = isset( $random_sequence[ $i ] ) ? $random_sequence[ $i ] : mt_rand(0, 0xff);
+		}
+
+		// The high field of the timestamp multiplexed with the version number
+		$buffer[6] = ( $buffer[6] & 0x0f ) | 0x40;
+
+		// The high field of the clock sequence multiplexed with the variant
+		$buffer[8] = ( $buffer[8] & 0x3f ) | 0x80;
+
+		return sprintf(
+			'%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x',
+
+			// Time low
+			$buffer[0],
+			$buffer[1],
+			$buffer[2],
+			$buffer[3],
+
+			// Time mid
+			$buffer[4],
+			$buffer[5],
+
+			// Time hi and version
+			$buffer[6],
+			$buffer[7],
+
+			// Clock seq hi and reserved
+			$buffer[8],
+
+			// Clock seq low
+			$buffer[9],
+
+			// Node
+			$buffer[10],
+			$buffer[11],
+			$buffer[12],
+			$buffer[13],
+			$buffer[14],
+			$buffer[15]
+		);
 	}
 }
 

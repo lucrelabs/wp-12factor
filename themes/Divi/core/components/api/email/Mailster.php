@@ -15,11 +15,6 @@ class ET_Core_API_Email_Mailster extends ET_Core_API_Email_Provider {
 	/**
 	 * @inheritDoc
 	 */
-	public $custom_fields = 'dynamic';
-
-	/**
-	 * @inheritDoc
-	 */
 	public $name = 'Mailster';
 
 	/**
@@ -56,6 +51,35 @@ class ET_Core_API_Email_Mailster extends ET_Core_API_Email_Provider {
 		);
 	}
 
+	protected function _fetch_custom_fields( $list_id = '', $list = array() ) {
+		static $fields = null;
+
+		if ( is_null( $fields ) ) {
+			$customfields = mailster()->get_custom_fields();
+
+			if ( empty( $customfields ) ) {
+				return $fields;
+			}
+			
+			$field_types = self::$_->array_get( $this->data_keys, 'custom_field_type' );
+			foreach ( $customfields as $field_id => $field ) {
+				$field             = $this->transform_data_to_our_format( $field, 'custom_field' );
+				$type              = self::$_->array_get( $field, 'type', 'any' );
+				$field['field_id'] = $field_id;
+
+				if ( $field_types && ! isset( $field_types[ $type ] ) ) {
+					// Unsupported field type. Make it 'text' instead.
+					$type = 'textfield';
+				}
+				$field['type'] = self::$_->array_get( $this->data_keys, "custom_field_type.{$type}", 'input' );
+
+				$fields[ $field_id ] = $field;
+			}
+		}
+
+		return $fields;
+	}
+
 	protected function _process_custom_fields( $args ) {
 		if ( ! isset( $args['custom_fields'] ) ) {
 			return $args;
@@ -64,10 +88,16 @@ class ET_Core_API_Email_Mailster extends ET_Core_API_Email_Provider {
 		$fields = $args['custom_fields'];
 
 		unset( $args['custom_fields'] );
-
+		$registered_custom_fields = self::$_->array_get( $this->data, 'custom_fields', array() );
 		foreach ( $fields as $field_id => $value ) {
+			$field_type = isset( $registered_custom_fields[ $field_id ] ) && isset( $registered_custom_fields[ $field_id ]['type'] ) ? $registered_custom_fields[ $field_id ]['type'] : false;
+			// Mailster doesn't support multiple checkboxes and if it appears here that means the checkbox is checked
+			if ( 'checkbox' === $field_type ) {
+				$value = 1;
+			}
+
 			if ( is_array( $value ) && $value ) {
-				// This is a multiple choice field (eg. checkbox, radio, select)
+				// This is a multiple choice field (eg. radio, select)
 				$value = array_values( $value );
 
 				if ( count( $value ) > 1 ) {
@@ -107,6 +137,23 @@ class ET_Core_API_Email_Mailster extends ET_Core_API_Email_Provider {
 				'name'          => 'firstname',
 				'custom_fields' => 'custom_fields',
 			),
+			'custom_field'      => array(
+				'name'     => 'name',
+				'type'     => 'type',
+				'options'  => 'values',
+				'hidden'   => 'hidden',
+			),
+			'custom_field_type' => array(
+				// Us => Them
+				'textarea'   => 'textarea',
+				'radio'      => 'radio',
+				'checkbox'   => 'checkbox',
+				'input'      => 'textfield',
+				'select'     => 'dropdown',
+				// Them => Us
+				'textfield'  => 'input',
+				'dropdown'   => 'select',
+			),
 		);
 
 		return parent::get_data_keymap( $keymap );
@@ -124,6 +171,7 @@ class ET_Core_API_Email_Mailster extends ET_Core_API_Email_Provider {
 			$error_message               = 'success';
 			$this->data['lists']         = $this->_process_subscriber_lists( $lists );
 			$this->data['is_authorized'] = true;
+			$this->data['custom_fields'] = $this->_fetch_custom_fields();
 			$this->save_data();
 		}
 
@@ -148,10 +196,10 @@ class ET_Core_API_Email_Mailster extends ET_Core_API_Email_Provider {
 		);
 
 		$params        = array_merge( $params, $extra_params );
-		$subscriber_id = mailster( 'subscribers' )->add( $params, false );
+		$subscriber_id = mailster( 'subscribers' )->merge( $params );
 
 		if ( is_wp_error( $subscriber_id ) ) {
-			$result = $subscriber_id->get_error_message();
+			$result = htmlspecialchars_decode( $subscriber_id->get_error_message() );
 		} else if ( mailster( 'subscribers' )->assign_lists( $subscriber_id, $args['list_id'], false ) ) {
 			$result = 'success';
 		} else {

@@ -57,13 +57,13 @@ function et_safe_mode_maybe_disable_plugins( $plugins = array() ) {
 	}
 
 	/** @var array Collection of plugins that we will NOT disable when Safe Mode is activated. */
-	$plugins_whitelist = get_option( 'et_safe_mode_plugins_whitelist' );
+	$plugins_allowlist = get_option( 'et_safe_mode_plugins_allowlist' );
 
 	$clean_plugins = $plugins;
 
 	foreach ( $clean_plugins as $key => &$plugin ) {
-		// Check whether this plugin appears in our whitelist
-		if ( ! in_array( $plugin, $plugins_whitelist ) ) {
+		// Check whether this plugin appears in our allowlist
+		if ( ! in_array( $plugin, $plugins_allowlist ) ) {
 			if ( $DEBUG_ET_SUPPORT_CENTER ) {
 				error_log( 'ET Support Center :: Safe Mode: Unsetting plugin: ' . json_encode( $plugin ) );
 			}

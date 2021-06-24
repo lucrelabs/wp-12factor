@@ -13,7 +13,7 @@ class ET_Builder_Module_Bar_Counters_Item extends ET_Builder_Module {
 		$this->main_css_element            = '%%order_class%%';
 
 		$this->advanced_fields = array(
-			'borders'               => array(
+			'borders'        => array(
 				'default' => array(
 					'css' => array(
 						'main' => array(
@@ -23,7 +23,7 @@ class ET_Builder_Module_Bar_Counters_Item extends ET_Builder_Module {
 					),
 				),
 			),
-			'box_shadow'            => array(
+			'box_shadow'     => array(
 				'default' => array(
 					'css' => array(
 						'main'    => '%%order_class%% span.et_pb_counter_container',
@@ -31,9 +31,9 @@ class ET_Builder_Module_Bar_Counters_Item extends ET_Builder_Module {
 					),
 				),
 			),
-			'fonts'                 => array(
+			'fonts'          => array(
 				'title'   => array(
-					'label' => esc_html__( 'Title', 'et_builder' ),
+					'label' => et_builder_i18n( 'Title' ),
 					'css'   => array(
 						'main' => ".et_pb_counters {$this->main_css_element} .et_pb_counter_title",
 					),
@@ -46,7 +46,7 @@ class ET_Builder_Module_Bar_Counters_Item extends ET_Builder_Module {
 					),
 				),
 			),
-			'background'            => array(
+			'background'     => array(
 				'use_background_color' => 'fields_only',
 				'css'                  => array(
 					'main' => ".et_pb_counters li{$this->main_css_element} .et_pb_counter_container",
@@ -55,44 +55,45 @@ class ET_Builder_Module_Bar_Counters_Item extends ET_Builder_Module {
 			'margin_padding' => array(
 				'draggable_margin'  => false,
 				'draggable_padding' => false,
-				'css' => array(
+				'css'               => array(
 					'margin'  => ".et_pb_counters {$this->main_css_element}",
 					'padding' => ".et_pb_counters {$this->main_css_element} .et_pb_counter_amount",
 				),
 			),
-			'max_width'             => array(
+			'max_width'      => array(
 				'css' => array(
 					'module_alignment' => ".et_pb_counters {$this->main_css_element}",
 				),
 			),
-			'text'                  => array(
+			'text'           => array(
 				'css' => array(
 					'text_orientation' => '%%order_class%% .et_pb_counter_title, %%order_class%% .et_pb_counter_amount',
 				),
 			),
-			'button'                => false,
-			'height'                => array(
+			'button'         => false,
+			'sticky'         => false,
+			'height'         => array(
 				'css' => array(
-					'main' => '%%order_class%% .et_pb_counter_container, %%order_class%% .et_pb_counter_container .et_pb_counter_amount'
-				)
+					'main' => '%%order_class%% .et_pb_counter_container, %%order_class%% .et_pb_counter_container .et_pb_counter_amount',
+				),
 			),
 		);
 
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Text', 'et_builder' ),
+					'main_content' => et_builder_i18n( 'Text' ),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
-					'bar'        => esc_html__( 'Bar Counter', 'et_builder' ),
+					'bar' => esc_html__( 'Bar Counter', 'et_builder' ),
 				),
 			),
 		);
 
 		$this->custom_css_fields = array(
-			'counter_title' => array(
+			'counter_title'     => array(
 				'label'    => esc_html__( 'Counter Title', 'et_builder' ),
 				'selector' => '.et_pb_counter_title',
 			),
@@ -100,7 +101,7 @@ class ET_Builder_Module_Bar_Counters_Item extends ET_Builder_Module {
 				'label'    => esc_html__( 'Counter Container', 'et_builder' ),
 				'selector' => '.et_pb_counter_container',
 			),
-			'counter_amount' => array(
+			'counter_amount'    => array(
 				'label'    => esc_html__( 'Counter Amount', 'et_builder' ),
 				'selector' => '.et_pb_counter_amount',
 			),
@@ -109,8 +110,8 @@ class ET_Builder_Module_Bar_Counters_Item extends ET_Builder_Module {
 
 	function get_fields() {
 		$fields = array(
-			'content' => array(
-				'label'           => esc_html__( 'Title', 'et_builder' ),
+			'content'              => array(
+				'label'           => et_builder_i18n( 'Title' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
 				'description'     => esc_html__( 'Input a title for your bar.', 'et_builder' ),
@@ -119,7 +120,7 @@ class ET_Builder_Module_Bar_Counters_Item extends ET_Builder_Module {
 				'mobile_options'  => true,
 				'hover'           => 'tabs',
 			),
-			'percent' => array(
+			'percent'              => array(
 				'label'            => esc_html__( 'Percent', 'et_builder' ),
 				'type'             => 'text',
 				'option_category'  => 'basic_option',
@@ -138,6 +139,7 @@ class ET_Builder_Module_Bar_Counters_Item extends ET_Builder_Module {
 				'tab_slug'       => 'advanced',
 				'toggle_slug'    => 'bar',
 				'mobile_options' => true,
+				'sticky'         => true,
 			),
 		);
 
@@ -147,7 +149,7 @@ class ET_Builder_Module_Bar_Counters_Item extends ET_Builder_Module {
 	public function get_transition_fields_css_props() {
 		$fields = parent::get_transition_fields_css_props();
 
-		$fields['background_layout'] = array( 'color' => '%%order_class%% .et_pb_counter_title' );
+		$fields['background_layout']    = array( 'color' => '%%order_class%% .et_pb_counter_title' );
 		$fields['bar_background_color'] = array( 'background-color' => '%%order_class%% .et_pb_counter_amount' );
 
 		return $fields;
@@ -165,14 +167,15 @@ class ET_Builder_Module_Bar_Counters_Item extends ET_Builder_Module {
 
 		if ( '' !== $background_image && 'on' == $parallax ) {
 			$parallax_classname = array(
-				'et_parallax_bg'
+				'et_parallax_bg',
 			);
 
 			if ( 'off' === $parallax_method ) {
 				$parallax_classname[] = 'et_pb_parallax_css';
 			}
 
-			$parallax_background = sprintf( '<div class="et_parallax_bg_wrap"><div
+			$parallax_background = sprintf(
+				'<div class="et_parallax_bg_wrap"><div
 					class="%1$s"
 					style="background-image: url(%2$s);"
 					></div></div>',
@@ -196,17 +199,19 @@ class ET_Builder_Module_Bar_Counters_Item extends ET_Builder_Module {
 		if ( ! empty( $args ) ) {
 			$background_video = self::get_video_background( $args );
 
-			$allow_player_pause     = isset( $args['allow_player_pause'] ) ? $args['allow_player_pause' ] : 'off';
+			$allow_player_pause     = isset( $args['allow_player_pause'] ) ? $args['allow_player_pause'] : 'off';
 			$pause_outside_viewport = isset( $args['background_video_pause_outside_viewport'] ) ? $args['background_video_pause_outside_viewport'] : 'on';
 		} else {
-			$background_video = self::get_video_background( array(
-				'background_video_mp4'    => $background_video_mp4,
-				'background_video_webm'   => $background_video_webm,
-				'background_video_width'  => $background_video_width,
-				'background_video_height' => $background_video_height,
-			) );
+			$background_video = self::get_video_background(
+				array(
+					'background_video_mp4'    => $background_video_mp4,
+					'background_video_webm'   => $background_video_webm,
+					'background_video_width'  => $background_video_width,
+					'background_video_height' => $background_video_height,
+				)
+			);
 
-			$allow_player_pause          = $use_counter_value ? $this->props['allow_player_pause'] : $et_pb_counters_settings['allow_player_pause'];
+			$allow_player_pause     = $use_counter_value ? $this->props['allow_player_pause'] : $et_pb_counters_settings['allow_player_pause'];
 			$pause_outside_viewport = $use_counter_value ? $this->props['background_video_pause_outside_viewport'] : $et_pb_counters_settings['background_video_pause_outside_viewport'];
 		}
 
@@ -266,7 +271,7 @@ class ET_Builder_Module_Bar_Counters_Item extends ET_Builder_Module {
 			}
 
 			// Background color and background color enable status.
-			foreach( array( 'background_color', 'background_enable_color' ) as $field ) {
+			foreach ( array( 'background_color', 'background_enable_color' ) as $field ) {
 				// Desktop. Simple inherit parent value if current item value is empty.
 				$value                 = self::$_->array_get( $this->props, $field, '' );
 				$parent_value          = self::$_->array_get( $et_pb_counters_settings, $field, '' );
@@ -274,13 +279,13 @@ class ET_Builder_Module_Bar_Counters_Item extends ET_Builder_Module {
 
 				// Hover. Inherit parent value only if current item hover is disabled.
 				if ( $is_inherit_parent_hover ) {
-					$this->props["{$field}__hover"] = self::$_->array_get( $et_pb_counters_settings, "{$field}__hover", '' );
+					$this->props[ "{$field}__hover" ] = self::$_->array_get( $et_pb_counters_settings, "{$field}__hover", '' );
 				}
 
 				// Responsive. Inherit parent value only if current item responsive is disabled.
 				if ( $is_inherit_parent_responsive ) {
-					$this->props["{$field}_tablet"] = self::$_->array_get( $et_pb_counters_settings, "{$field}_tablet", '' );
-					$this->props["{$field}_phone"]  = self::$_->array_get( $et_pb_counters_settings, "{$field}_phone", '' );
+					$this->props[ "{$field}_tablet" ] = self::$_->array_get( $et_pb_counters_settings, "{$field}_tablet", '' );
+					$this->props[ "{$field}_phone" ]  = self::$_->array_get( $et_pb_counters_settings, "{$field}_phone", '' );
 				}
 			}
 		}
@@ -295,7 +300,6 @@ class ET_Builder_Module_Bar_Counters_Item extends ET_Builder_Module {
 		$percent                       = $multi_view->get_value( 'percent' );
 		$bar_background_color          = self::$_->array_get( $this->props, 'bar_background_color' );
 		$bar_background_color          = empty( $bar_background_color ) ? $et_pb_counters_settings['bar_bg_color'] : $bar_background_color;
-		$bar_background_hover_color    = et_pb_hover_options()->get_value( 'bar_background_color', $this->props );
 		$background_image              = $this->props['background_image'];
 		$use_background_color_gradient = $this->props['use_background_color_gradient'];
 
@@ -303,7 +307,6 @@ class ET_Builder_Module_Bar_Counters_Item extends ET_Builder_Module {
 		$background_color        = et_pb_responsive_options()->get_inheritance_background_value( $this->props, 'background_color', 'desktop' );
 		$background_color_tablet = et_pb_responsive_options()->get_inheritance_background_value( $this->props, 'background_color', 'tablet' );
 		$background_color_phone  = et_pb_responsive_options()->get_inheritance_background_value( $this->props, 'background_color', 'phone' );
-		$background_color_hover  = et_pb_responsive_options()->get_inheritance_background_value( $this->props, 'background_color', 'hover' );
 
 		// Bar background color responsive. First of all, check if value from bar counters item is
 		// exist and responsive setting is enabled. If it doesn't exist, get it from bar counters
@@ -322,13 +325,19 @@ class ET_Builder_Module_Bar_Counters_Item extends ET_Builder_Module {
 		}
 
 		$background_color_style = $bar_bg_color_style = '';
+		$parent_bg_image        = isset( $et_pb_counters_settings['background_image'] ) ? $et_pb_counters_settings['background_image'] : '';
+		$parent_use_bg_gradient = isset( $et_pb_counters_settings['use_background_color_gradient'] ) ? $et_pb_counters_settings['use_background_color_gradient'] : 'off';
+		$parent_enable_bg_image = ! empty( $parent_bg_image ) || 'on' === $parent_use_bg_gradient;
 
-		if ( '' !== $background_color ) {
+		if ( '' !== $background_color && $parent_enable_bg_image ) {
 			if ( empty( $background_image ) && 'on' !== $use_background_color_gradient ) {
-				ET_Builder_Element::set_style( $render_slug, array(
-					'selector'    => '.et_pb_counters %%order_class%% .et_pb_counter_container',
-					'declaration' => 'background-image: none;',
-				) );
+				ET_Builder_Element::set_style(
+					$render_slug,
+					array(
+						'selector'    => '.et_pb_counters %%order_class%% .et_pb_counter_container',
+						'declaration' => 'background-image: none!important;',
+					)
+				);
 			}
 		}
 
@@ -340,16 +349,6 @@ class ET_Builder_Module_Bar_Counters_Item extends ET_Builder_Module {
 		);
 		et_pb_responsive_options()->generate_responsive_css( $background_color_values, '%%order_class%% .et_pb_counter_container', 'background-color', $render_slug, '', 'color' );
 
-		if ( '' !== $background_color_hover ) {
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => '%%order_class%% .et_pb_counter_container:hover',
-				'declaration' => sprintf(
-					'background-color: %1$s;',
-					esc_html( $background_color_hover )
-				),
-			) );
-		}
-
 		// Bar background color.
 		$bar_background_color_values = array(
 			'desktop' => esc_html( $bar_background_color ),
@@ -359,53 +358,86 @@ class ET_Builder_Module_Bar_Counters_Item extends ET_Builder_Module {
 		et_pb_responsive_options()->generate_responsive_css( $bar_background_color_values, '%%order_class%% .et_pb_counter_amount', 'background-color', $render_slug, '', 'color' );
 		et_pb_responsive_options()->generate_responsive_css( $bar_background_color_values, '%%order_class%% .et_pb_counter_amount.overlay', 'color', $render_slug, '', 'color' );
 
-		if ( '' !== $bar_background_hover_color ) {
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => '.et_pb_counters %%order_class%%:hover .et_pb_counter_amount',
-				'declaration' => sprintf(
-					'background-color: %1$s;',
-					esc_html( $bar_background_hover_color )
-				),
-			) );
+		// Extended (hover & sticky) style of bar and its background color
+		// Background Color.
+		$this->generate_styles(
+			array(
+				'responsive'                      => false,
+				'render_slug'                     => $render_slug,
+				'base_attr_name'                  => 'background_color',
+				'css_property'                    => 'background-color',
+				'selector'                        => '.et_pb_counters %%order_class%% .et_pb_counter_container',
+				'hover_pseudo_selector_location'  => 'suffix',
+				'sticky_pseudo_selector_location' => 'prefix',
+				'is_sticky_module'                => $et_pb_counters_settings['is_sticky_module'],
+			)
+		);
 
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => '.et_pb_counters %%order_class%%:hover .et_pb_counter_amount.overlay',
-				'declaration' => sprintf(
-					'color: %1$s;',
-					esc_html( $bar_background_hover_color )
-				),
-			) );
-		}
+		// Bar Background Color.
+		$this->generate_styles(
+			array(
+				'responsive'                      => false,
+				'render_slug'                     => $render_slug,
+				'base_attr_name'                  => 'bar_background_color',
+				'css_property'                    => 'background-color',
+				'selector'                        => '.et_pb_counters %%order_class%% .et_pb_counter_amount',
+				'hover_pseudo_selector_location'  => 'order_class',
+				'sticky_pseudo_selector_location' => 'prefix',
+				'is_sticky_module'                => $et_pb_counters_settings['is_sticky_module'],
+			)
+		);
 
-		$video_background = $this->video_background();
+		$this->generate_styles(
+			array(
+				'responsive'                      => false,
+				'render_slug'                     => $render_slug,
+				'attrs'                           => $this->props,
+				'base_attr_name'                  => 'bar_background_color',
+				'css_property'                    => 'color',
+				'selector'                        => '.et_pb_counters %%order_class%% .et_pb_counter_amount.overlay',
+				'hover_pseudo_selector_location'  => 'order_class',
+				'sticky_pseudo_selector_location' => 'prefix',
+				'is_sticky_module'                => $et_pb_counters_settings['is_sticky_module'],
+			)
+		);
+
+		$video_background          = $this->video_background();
 		$parallax_image_background = $this->get_parallax_image_background();
 
 		// Module classname
 		$this->add_classname( $this->get_text_orientation_classname() );
 
 		// Remove automatically added classnames
-		$this->remove_classname( array(
-			'et_pb_module',
-			$render_slug,
-		) );
+		$this->remove_classname(
+			array(
+				'et_pb_module',
+				$render_slug,
+			)
+		);
 
-		$multi_view_data_title = $multi_view->render_attrs( array(
-			'content' => '{{content}}',
-		) );
+		$multi_view_data_title = $multi_view->render_attrs(
+			array(
+				'content' => '{{content}}',
+			)
+		);
 
-		$multi_view_data_percent_attrs = $multi_view->render_attrs( array(
-			'attrs'   => array(
-				'data-width' => '{{percent}}',
-			),
-			'target' => '%%order_class%% .et_pb_counter_amount',
-		) );
+		$multi_view_data_percent_attrs = $multi_view->render_attrs(
+			array(
+				'attrs'  => array(
+					'data-width' => '{{percent}}',
+				),
+				'target' => '%%order_class%% .et_pb_counter_amount',
+			)
+		);
 
-		$multi_view_data_percent_content = $multi_view->render_attrs( array(
-			'content' => '{{percent}}',
-			'visibility' => array(
-				'use_percentages' => 'on',
-			),
-		) );
+		$multi_view_data_percent_content = $multi_view->render_attrs(
+			array(
+				'content'    => '{{percent}}',
+				'visibility' => array(
+					'use_percentages' => 'on',
+				),
+			)
+		);
 
 		$output = sprintf(
 			'<li class="et_pb_counter %6$s">
@@ -466,4 +498,4 @@ class ET_Builder_Module_Bar_Counters_Item extends ET_Builder_Module {
 	}
 }
 
-new ET_Builder_Module_Bar_Counters_Item;
+new ET_Builder_Module_Bar_Counters_Item();

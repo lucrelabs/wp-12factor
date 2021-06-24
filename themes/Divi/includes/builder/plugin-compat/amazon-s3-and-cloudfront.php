@@ -35,7 +35,7 @@ class ET_Builder_Plugin_Compat_WP_Offload_S3 extends ET_Builder_Plugin_Compat_Ba
 		}
 
 		// Up to: latest theme version
-		add_action( 'et_fb_ajax_save_verification_result', array( $this, 'override_fb_ajax_save_verification' )  );
+		add_action( 'et_fb_ajax_save_verification_result', array( $this, 'override_fb_ajax_save_verification' ) );
 
 		// Filter attachment IDs for images with an external/CDN URL.
 		add_filter( 'et_get_attachment_id_by_url_pre', array( $this, 'et_get_attachment_id_by_url_pre' ), 10, 2 );
@@ -55,8 +55,8 @@ class ET_Builder_Plugin_Compat_WP_Offload_S3 extends ET_Builder_Plugin_Compat_Ba
 	 *
 	 * @since 4.2.1
 	 *
-	 * @param bool|int   $attachment_id_pre Default value. Default is false.
-	 * @param string $url               URL of the image need to query.
+	 * @param bool|int $attachment_id_pre Default value. Default is false.
+	 * @param string   $url               URL of the image need to query.
 	 *
 	 * @return bool|int
 	 */

@@ -9,19 +9,19 @@
 function et_builder_ajax_search_posts() {
 	et_core_security_check( 'edit_posts', 'et_builder_search_posts', 'nonce', '_GET' );
 
-	$current_page     = isset( $_GET['page'] ) ? (int) $_GET['page'] : 0;
-	$current_page     = max( $current_page, 1 );
-	$post_type        = isset( $_GET['post_type'] ) ? sanitize_text_field( $_GET['post_type'] ) : '';
-	$value            = isset( $_GET['value'] ) ? sanitize_text_field( $_GET['value'] ) : '';
-	$search           = isset( $_GET['search'] ) ? sanitize_text_field( $_GET['search'] ) : '';
-	$prepend_value    = (int)$value > 0;
-	$results_per_page = 20;
-	$results          = array(
+	$current_page         = isset( $_GET['page'] ) ? (int) $_GET['page'] : 0;
+	$current_page         = max( $current_page, 1 );
+	$post_type            = isset( $_GET['post_type'] ) ? sanitize_text_field( $_GET['post_type'] ) : '';
+	$value                = isset( $_GET['value'] ) ? sanitize_text_field( $_GET['value'] ) : '';
+	$search               = isset( $_GET['search'] ) ? sanitize_text_field( $_GET['search'] ) : '';
+	$prepend_value        = (int) $value > 0;
+	$results_per_page     = 20;
+	$results              = array(
 		'results' => array(),
 		'meta'    => array(),
 	);
 	$include_current_post = '1' === (string) et_()->array_get( $_GET, 'include_current_post', '0' );
-	$include_latest_post = '1' === (string) et_()->array_get( $_GET, 'include_latest_post', '0' );
+	$include_latest_post  = '1' === (string) et_()->array_get( $_GET, 'include_latest_post', '0' );
 
 	$public_post_types = et_builder_get_public_post_types();
 
@@ -47,9 +47,9 @@ function et_builder_ajax_search_posts() {
 
 		if ( $value_post && 'publish' === $value_post->post_status && $value_post->post_type === $post_type ) {
 			$results['results'][] = array(
-				'value'     => $value,
-				'label'     => et_core_intentionally_unescaped( strip_tags( $value_post->post_title ), 'react_jsx' ),
-				'meta'      => array(
+				'value' => $value,
+				'label' => et_core_intentionally_unescaped( strip_tags( $value_post->post_title ), 'react_jsx' ),
+				'meta'  => array(
 					'post_type' => et_core_intentionally_unescaped( $post_type_label, 'react_jsx' ),
 				),
 			);
@@ -61,15 +61,15 @@ function et_builder_ajax_search_posts() {
 	}
 
 	if ( 'attachment' === $post_type ) {
-		add_filter( 'posts_join' , 'et_builder_ajax_search_posts_query_join' );
-		add_filter( 'posts_where' , 'et_builder_ajax_search_posts_query_where' );
+		add_filter( 'posts_join', 'et_builder_ajax_search_posts_query_join' );
+		add_filter( 'posts_where', 'et_builder_ajax_search_posts_query_where' );
 	}
 
 	$posts = new WP_Query( $query );
 
 	if ( 'attachment' === $post_type ) {
-		remove_filter( 'posts_join' , 'et_builder_ajax_search_posts_query_join' );
-		remove_filter( 'posts_where' , 'et_builder_ajax_search_posts_query_where' );
+		remove_filter( 'posts_join', 'et_builder_ajax_search_posts_query_join' );
+		remove_filter( 'posts_where', 'et_builder_ajax_search_posts_query_where' );
 	}
 
 	if ( $include_current_post && ! empty( $posts->posts ) ) {
@@ -94,8 +94,13 @@ function et_builder_ajax_search_posts() {
 		$results['results'][] = array(
 			'value' => 'latest',
 			// Translators: %1$s: Post type singular name.
-			'label' => et_core_intentionally_unescaped( sprintf( __( 'Latest %1$s', 'et_builder' ),
-				$post_type_label ), 'react_jsx' ),
+			'label' => et_core_intentionally_unescaped(
+				sprintf(
+					__( 'Latest %1$s', 'et_builder' ),
+					$post_type_label
+				),
+				'react_jsx'
+			),
 			'meta'  => array(
 				'post_type' => et_core_intentionally_unescaped( $post_type_label, 'react_jsx' ),
 			),
@@ -108,7 +113,7 @@ function et_builder_ajax_search_posts() {
 		$results['results'][] = array(
 			'value' => (int) $post->ID,
 			'label' => et_core_intentionally_unescaped( strip_tags( $post->post_title ), 'react_jsx' ),
-			'meta' => array(
+			'meta'  => array(
 				'post_type' => et_core_intentionally_unescaped( $post_type_label, 'react_jsx' ),
 			),
 		);
@@ -120,8 +125,8 @@ function et_builder_ajax_search_posts() {
 			'total'    => (int) $posts->found_posts,
 		),
 		'pages'   => array(
-			'current'  => (int) $current_page,
-			'total'    => (int) $posts->max_num_pages,
+			'current' => (int) $current_page,
+			'total'   => (int) $posts->max_num_pages,
 		),
 	);
 
@@ -165,13 +170,16 @@ function et_builder_ajax_search_posts_query_where( $where ) {
 	// - Cause the query to only return posts with no parent when there are no public post types.
 	$public_post_types[] = '';
 
-	$where .= $wpdb->prepare( " AND (
+	$where .= $wpdb->prepare(
+		' AND (
 		`parent`.`ID` IS NULL OR (
 			`parent`.`post_status` = %s
 			AND
-			`parent`.`post_type` IN (" . implode( ',', array_fill( 0, count( $public_post_types ), '%s' ) ) . ")
+			`parent`.`post_type` IN (' . implode( ',', array_fill( 0, count( $public_post_types ), '%s' ) ) . ')
 		)
-	)", array_merge( array( "publish" ), $public_post_types ) );
+	)',
+		array_merge( array( 'publish' ), $public_post_types )
+	);
 
 	return $where;
 }

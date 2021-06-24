@@ -18,17 +18,17 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 		$this->main_css_element = '%%order_class%%.' . self::$menu_slug;
 
 		$this->settings_modal_toggles = array(
-			'general'  => array(
+			'general'    => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Content', 'et_builder' ),
+					'main_content' => et_builder_i18n( 'Content' ),
 					'image'        => esc_html__( 'Logo', 'et_builder' ),
-					'elements'     => esc_html__( 'Elements', 'et_builder' ),
+					'elements'     => et_builder_i18n( 'Elements' ),
 				),
 			),
-			'advanced' => array(
+			'advanced'   => array(
 				'toggles' => array(
 					'layout'         => array(
-						'title'    => esc_html__( 'Layout', 'et_builder' ),
+						'title'    => et_builder_i18n( 'Layout' ),
 						'priority' => 19,
 					),
 					'menu'           => array(
@@ -44,14 +44,14 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 						'priority' => 49,
 					),
 					'image_settings' => array(
-						'title'      => esc_html__( 'Logo', 'et_builder' ),
-						'priority'   => 59,
+						'title'    => esc_html__( 'Logo', 'et_builder' ),
+						'priority' => 59,
 					),
 				),
 			),
 			'custom_css' => array(
 				'toggles' => array(
-					'animation' => array(
+					'animation'  => array(
 						'title'    => esc_html__( 'Animation', 'et_builder' ),
 						'priority' => 90,
 					),
@@ -106,8 +106,8 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 				'image'   => array(
 					'css'          => array(
 						'main' => array(
-							'border_radii'  => "%%order_class%% .et_pb_menu__logo-wrap .et_pb_menu__logo img",
-							'border_styles' => "%%order_class%% .et_pb_menu__logo-wrap .et_pb_menu__logo img",
+							'border_radii'  => '%%order_class%% .et_pb_menu__logo-wrap .et_pb_menu__logo img',
+							'border_styles' => '%%order_class%% .et_pb_menu__logo-wrap .et_pb_menu__logo img',
 						),
 					),
 					'label_prefix' => esc_html__( 'Logo', 'et_builder' ),
@@ -168,11 +168,11 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 		);
 
 		$this->custom_css_fields = array(
-			'menu_link' => array(
+			'menu_link'          => array(
 				'label'    => esc_html__( 'Menu Link', 'et_builder' ),
 				'selector' => '.et-menu-nav li a',
 			),
-			'active_menu_link' => array(
+			'active_menu_link'   => array(
 				'label'    => esc_html__( 'Active Menu Link', 'et_builder' ),
 				'selector' => '.et-menu-nav li.current-menu-item a',
 			),
@@ -180,11 +180,11 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 				'label'    => esc_html__( 'Dropdown Menu Container', 'et_builder' ),
 				'selector' => '.et-menu-nav li ul.sub-menu',
 			),
-			'dropdown_links' => array(
+			'dropdown_links'     => array(
 				'label'    => esc_html__( 'Dropdown Menu Links', 'et_builder' ),
 				'selector' => '.et-menu-nav li ul.sub-menu a',
 			),
-			'menu_logo' => array(
+			'menu_logo'          => array(
 				'label'    => esc_html__( 'Menu Logo', 'et_builder' ),
 				'selector' => '.et_pb_menu__logo',
 			),
@@ -192,7 +192,7 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 
 		$this->help_videos = array(
 			array(
-				'id'   => esc_html( 'Q2heZC2GbNg' ),
+				'id'   => 'Q2heZC2GbNg',
 				'name' => esc_html__( 'An introduction to the Fullwidth Menu module', 'et_builder' ),
 			),
 		);
@@ -203,12 +203,12 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 		$et_accent_color = et_builder_accent_color();
 
 		$fields = array(
-			'menu_id' => array(
-				'label'           => esc_html__( 'Menu', 'et_builder' ),
-				'type'            => 'select',
-				'option_category' => 'basic_option',
-				'options'         => et_builder_get_nav_menus_options(),
-				'description'     => sprintf(
+			'menu_id'                         => array(
+				'label'            => esc_html__( 'Menu', 'et_builder' ),
+				'type'             => 'select',
+				'option_category'  => 'basic_option',
+				'options'          => et_builder_get_nav_menus_options(),
+				'description'      => sprintf(
 					'<p class="description">%2$s. <a href="%1$s" target="_blank">%3$s</a>.</p>',
 					esc_url( admin_url( 'nav-menus.php' ) ),
 					esc_html__( 'Select a menu that should be used in the module', 'et_builder' ),
@@ -219,7 +219,7 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 					'__menu',
 				),
 			),
-			'menu_style' => array(
+			'menu_style'                      => array(
 				'label'           => esc_html__( 'Style', 'et_builder' ),
 				'type'            => 'select',
 				'option_category' => 'layout',
@@ -232,11 +232,11 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'layout',
 			),
-			'submenu_direction' => array(
-				'label'           => esc_html__( 'Dropdown Menu Direction', 'et_builder' ),
-				'type'            => 'select',
-				'option_category' => 'configuration',
-				'options'         => array(
+			'submenu_direction'               => array(
+				'label'            => esc_html__( 'Dropdown Menu Direction', 'et_builder' ),
+				'type'             => 'select',
+				'option_category'  => 'configuration',
+				'options'          => array(
 					'downwards' => esc_html__( 'Downwards', 'et_builder' ),
 					'upwards'   => esc_html__( 'Upwards', 'et_builder' ),
 				),
@@ -247,19 +247,19 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 					'__menu',
 				),
 			),
-			'fullwidth_menu' => array(
+			'fullwidth_menu'                  => array(
 				'label'           => esc_html__( 'Make Menu Links Fullwidth', 'et_builder' ),
 				'description'     => esc_html__( 'Menu width is limited by your website content width. Enabling this option will extend the menu the full width of the browser window.', 'et_builder' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'layout',
 				'options'         => array(
-					'off' => esc_html__( 'No', 'et_builder' ),
-					'on'  => esc_html__( 'Yes', 'et_builder' ),
+					'off' => et_builder_i18n( 'No' ),
+					'on'  => et_builder_i18n( 'Yes' ),
 				),
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'layout',
 			),
-			'active_link_color' => array(
+			'active_link_color'               => array(
 				'label'          => esc_html__( 'Active Link Color', 'et_builder' ),
 				'description'    => esc_html__( 'An active link is the page currently being visited. You can pick a color to be applied to active links to differentiate them from other links.', 'et_builder' ),
 				'type'           => 'color-alpha',
@@ -268,8 +268,9 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 				'toggle_slug'    => 'menu',
 				'hover'          => 'tabs',
 				'mobile_options' => true,
+				'sticky'         => true,
 			),
-			'dropdown_menu_bg_color' => array(
+			'dropdown_menu_bg_color'          => array(
 				'label'        => esc_html__( 'Dropdown Menu Background Color', 'et_builder' ),
 				'description'  => esc_html__( 'Pick a color to be applied to the background of dropdown menus. Dropdown menus appear when hovering over links with sub items.', 'et_builder' ),
 				'type'         => 'color-alpha',
@@ -277,8 +278,9 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 				'tab_slug'     => 'advanced',
 				'toggle_slug'  => 'dropdown',
 				'hover'        => 'tabs',
+				'sticky'       => true,
 			),
-			'dropdown_menu_line_color' => array(
+			'dropdown_menu_line_color'        => array(
 				'label'          => esc_html__( 'Dropdown Menu Line Color', 'et_builder' ),
 				'description'    => esc_html__( 'Pick a color to be used for the dividing line between links in dropdown menus. Dropdown menus appear when hovering over links with sub items.', 'et_builder' ),
 				'type'           => 'color-alpha',
@@ -287,8 +289,9 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 				'toggle_slug'    => 'dropdown',
 				'hover'          => 'tabs',
 				'mobile_options' => true,
+				'sticky'         => true,
 			),
-			'dropdown_menu_text_color' => array(
+			'dropdown_menu_text_color'        => array(
 				'label'        => esc_html__( 'Dropdown Menu Text Color', 'et_builder' ),
 				'description'  => esc_html__( 'Pick a color to be used for links in dropdown menus. Dropdown menus appear when hovering over links with sub items.', 'et_builder' ),
 				'type'         => 'color-alpha',
@@ -296,6 +299,7 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 				'tab_slug'     => 'advanced',
 				'toggle_slug'  => 'dropdown',
 				'hover'        => 'tabs',
+				'sticky'       => true,
 			),
 			'dropdown_menu_active_link_color' => array(
 				'label'        => esc_html__( 'Dropdown Menu Active Link Color', 'et_builder' ),
@@ -305,8 +309,9 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 				'tab_slug'     => 'advanced',
 				'toggle_slug'  => 'dropdown',
 				'hover'        => 'tabs',
+				'sticky'       => true,
 			),
-			'mobile_menu_bg_color' => array(
+			'mobile_menu_bg_color'            => array(
 				'label'          => esc_html__( 'Mobile Menu Background Color', 'et_builder' ),
 				'description'    => esc_html__( 'Pick a unique color to be used for the menu background color when viewed on a mobile device.', 'et_builder' ),
 				'type'           => 'color-alpha',
@@ -315,8 +320,9 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 				'toggle_slug'    => 'dropdown',
 				'hover'          => 'tabs',
 				'mobile_options' => true,
+				'sticky'         => true,
 			),
-			'mobile_menu_text_color' => array(
+			'mobile_menu_text_color'          => array(
 				'label'          => esc_html__( 'Mobile Menu Text Color', 'et_builder' ),
 				'description'    => esc_html__( 'Pick a color to be used for links in mobile menus.', 'et_builder' ),
 				'type'           => 'color-alpha',
@@ -325,8 +331,9 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 				'toggle_slug'    => 'dropdown',
 				'hover'          => 'tabs',
 				'mobile_options' => true,
+				'sticky'         => true,
 			),
-			'__menu' => array(
+			'__menu'                          => array(
 				'type'                => 'computed',
 				'computed_callback'   => array( 'ET_Builder_Module_Fullwidth_Menu', 'get_fullwidth_menu' ),
 				'computed_depends_on' => array(
@@ -334,11 +341,11 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 					'submenu_direction',
 				),
 			),
-			'logo' => array(
+			'logo'                            => array(
 				'label'              => esc_html__( 'Logo', 'et_builder' ),
 				'type'               => 'upload',
 				'option_category'    => 'basic_option',
-				'upload_button_text' => esc_attr__( 'Upload an image', 'et_builder' ),
+				'upload_button_text' => et_builder_i18n( 'Upload an image' ),
 				'choose_text'        => esc_attr__( 'Choose an Image', 'et_builder' ),
 				'update_text'        => esc_attr__( 'Set As Logo', 'et_builder' ),
 				'description'        => esc_html__( 'Upload an image to display beside your menu.', 'et_builder' ),
@@ -347,7 +354,7 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 				'mobile_options'     => true,
 				'hover'              => 'tabs',
 			),
-			'logo_url' => array(
+			'logo_url'                        => array(
 				'label'           => esc_html__( 'Logo Link URL', 'et_builder' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
@@ -355,19 +362,19 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 				'toggle_slug'     => 'link_options',
 				'dynamic_content' => 'url',
 			),
-			'logo_url_new_window' => array(
-				'label'           => esc_html__( 'Logo Link Target', 'et_builder' ),
-				'type'            => 'select',
-				'option_category' => 'configuration',
-				'options'         => array(
+			'logo_url_new_window'             => array(
+				'label'            => esc_html__( 'Logo Link Target', 'et_builder' ),
+				'type'             => 'select',
+				'option_category'  => 'configuration',
+				'options'          => array(
 					'off' => esc_html__( 'In The Same Window', 'et_builder' ),
 					'on'  => esc_html__( 'In The New Tab', 'et_builder' ),
 				),
-				'toggle_slug'     => 'link_options',
-				'description'     => esc_html__( 'Here you can choose whether or not your link opens in a new window', 'et_builder' ),
-				'default_on_front'=> 'off',
+				'toggle_slug'      => 'link_options',
+				'description'      => esc_html__( 'Here you can choose whether or not your link opens in a new window', 'et_builder' ),
+				'default_on_front' => 'off',
 			),
-			'logo_alt' => array(
+			'logo_alt'                        => array(
 				'label'           => esc_html__( 'Logo Alt Text', 'et_builder' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
@@ -376,7 +383,7 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 				'toggle_slug'     => 'attributes',
 				'dynamic_content' => 'text',
 			),
-			'logo_max_width' => array(
+			'logo_max_width'                  => array(
 				'label'           => esc_html__( 'Logo Max Width', 'et_builder' ),
 				'description'     => esc_html__( 'Adjust the maximum width of the logo.', 'et_builder' ),
 				'type'            => 'range',
@@ -384,6 +391,7 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'width',
 				'mobile_options'  => true,
+				'sticky'          => true,
 				'validate_unit'   => true,
 				'allowed_values'  => et_builder_get_acceptable_css_string_values( 'max-width' ),
 				'default'         => '100%',
@@ -396,7 +404,7 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 				'responsive'      => true,
 				'hover'           => 'tabs',
 			),
-			'logo_max_height' => array(
+			'logo_max_height'                 => array(
 				'label'           => esc_html__( 'Logo Max Height', 'et_builder' ),
 				'description'     => esc_html__( 'Adjust the maximum height of the logo.', 'et_builder' ),
 				'type'            => 'range',
@@ -404,6 +412,7 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'width',
 				'mobile_options'  => true,
+				'sticky'          => true,
 				'validate_unit'   => true,
 				'allowed_values'  => et_builder_get_acceptable_css_string_values( 'max-height' ),
 				'default'         => 'none',
@@ -416,123 +425,131 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 				'responsive'      => true,
 				'hover'           => 'tabs',
 			),
-			'show_cart_icon' => array(
+			'show_cart_icon'                  => array(
 				'label'           => esc_html__( 'Show Shopping Cart Icon', 'et_builder' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'layout',
 				'options'         => array(
-					'on'  => esc_html__( 'Yes', 'et_builder' ),
-					'off' => esc_html__( 'No', 'et_builder' ),
+					'on'  => et_builder_i18n( 'Yes' ),
+					'off' => et_builder_i18n( 'No' ),
 				),
 				'default'         => 'off',
 				'toggle_slug'     => 'elements',
 				'mobile_options'  => true,
+				'sticky'          => true,
 				'responsive'      => true,
 				'hover'           => 'tabs',
 			),
-			'show_search_icon' => array(
+			'show_search_icon'                => array(
 				'label'           => esc_html__( 'Show Search Icon', 'et_builder' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'layout',
 				'options'         => array(
-					'on'  => esc_html__( 'Yes', 'et_builder' ),
-					'off' => esc_html__( 'No', 'et_builder' ),
+					'on'  => et_builder_i18n( 'Yes' ),
+					'off' => et_builder_i18n( 'No' ),
 				),
 				'default'         => 'off',
 				'toggle_slug'     => 'elements',
 				'mobile_options'  => true,
+				'sticky'          => true,
 				'responsive'      => true,
 				'hover'           => 'tabs',
 			),
-			'cart_icon_color' => array(
-				'default'           => $et_accent_color,
-				'label'             => esc_html__( 'Shopping Cart Icon Color', 'et_builder' ),
-				'type'              => 'color-alpha',
-				'description'       => esc_html__( 'Here you can define a custom color for your shopping cart icon.', 'et_builder' ),
-				'tab_slug'          => 'advanced',
-				'toggle_slug'       => 'icon_settings',
-				'hover'             => 'tabs',
-				'mobile_options'    => true,
+			'cart_icon_color'                 => array(
+				'default'        => $et_accent_color,
+				'label'          => esc_html__( 'Shopping Cart Icon Color', 'et_builder' ),
+				'type'           => 'color-alpha',
+				'description'    => esc_html__( 'Here you can define a custom color for your shopping cart icon.', 'et_builder' ),
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'icon_settings',
+				'hover'          => 'tabs',
+				'mobile_options' => true,
+				'sticky'         => true,
 			),
-			'search_icon_color' => array(
-				'default'           => $et_accent_color,
-				'label'             => esc_html__( 'Search Icon Color', 'et_builder' ),
-				'type'              => 'color-alpha',
-				'description'       => esc_html__( 'Here you can define a custom color for your search icon.', 'et_builder' ),
-				'tab_slug'          => 'advanced',
-				'toggle_slug'       => 'icon_settings',
-				'hover'             => 'tabs',
-				'mobile_options'    => true,
+			'search_icon_color'               => array(
+				'default'        => $et_accent_color,
+				'label'          => esc_html__( 'Search Icon Color', 'et_builder' ),
+				'type'           => 'color-alpha',
+				'description'    => esc_html__( 'Here you can define a custom color for your search icon.', 'et_builder' ),
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'icon_settings',
+				'hover'          => 'tabs',
+				'mobile_options' => true,
+				'sticky'         => true,
 			),
-			'menu_icon_color' => array(
-				'default'           => $et_accent_color,
-				'label'             => esc_html__( 'Hamburger Menu Icon Color', 'et_builder' ),
-				'type'              => 'color-alpha',
-				'description'       => esc_html__( 'Here you can define a custom color for your hamburger menu icon.', 'et_builder' ),
-				'tab_slug'          => 'advanced',
-				'toggle_slug'       => 'icon_settings',
-				'hover'             => 'tabs',
-				'mobile_options'    => true,
+			'menu_icon_color'                 => array(
+				'default'        => $et_accent_color,
+				'label'          => esc_html__( 'Hamburger Menu Icon Color', 'et_builder' ),
+				'type'           => 'color-alpha',
+				'description'    => esc_html__( 'Here you can define a custom color for your hamburger menu icon.', 'et_builder' ),
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'icon_settings',
+				'hover'          => 'tabs',
+				'mobile_options' => true,
+				'sticky'         => true,
 			),
-			'cart_icon_font_size' => array(
-				'label'           => esc_html__( 'Shopping Cart Icon Font Size', 'et_builder' ),
-				'description'     => esc_html__( 'Control the size of the icon by increasing or decreasing the font size.', 'et_builder' ),
-				'type'            => 'range',
-				'option_category' => 'font_option',
-				'tab_slug'        => 'advanced',
-				'toggle_slug'     => 'icon_settings',
-				'default'         => '17px',
-				'default_unit'    => 'px',
-				'default_on_front'=> '',
-				'allowed_units'   => et_builder_get_acceptable_css_string_values( 'font-size' ),
-				'range_settings'  => array(
+			'cart_icon_font_size'             => array(
+				'label'            => esc_html__( 'Shopping Cart Icon Font Size', 'et_builder' ),
+				'description'      => esc_html__( 'Control the size of the icon by increasing or decreasing the font size.', 'et_builder' ),
+				'type'             => 'range',
+				'option_category'  => 'font_option',
+				'tab_slug'         => 'advanced',
+				'toggle_slug'      => 'icon_settings',
+				'default'          => '17px',
+				'default_unit'     => 'px',
+				'default_on_front' => '',
+				'allowed_units'    => et_builder_get_acceptable_css_string_values( 'font-size' ),
+				'range_settings'   => array(
 					'min'  => '1',
 					'max'  => '120',
 					'step' => '1',
 				),
-				'mobile_options'  => true,
-				'responsive'      => true,
-				'hover'           => 'tabs',
+				'mobile_options'   => true,
+				'responsive'       => true,
+				'sticky'           => true,
+				'hover'            => 'tabs',
 			),
-			'search_icon_font_size' => array(
-				'label'           => esc_html__( 'Search Icon Font Size', 'et_builder' ),
-				'description'     => esc_html__( 'Control the size of the icon by increasing or decreasing the font size.', 'et_builder' ),
-				'type'            => 'range',
-				'option_category' => 'font_option',
-				'tab_slug'        => 'advanced',
-				'toggle_slug'     => 'icon_settings',
-				'default'         => '17px',
-				'default_unit'    => 'px',
-				'default_on_front'=> '',
-				'allowed_units'   => et_builder_get_acceptable_css_string_values( 'font-size' ),
-				'range_settings'  => array(
+			'search_icon_font_size'           => array(
+				'label'            => esc_html__( 'Search Icon Font Size', 'et_builder' ),
+				'description'      => esc_html__( 'Control the size of the icon by increasing or decreasing the font size.', 'et_builder' ),
+				'type'             => 'range',
+				'option_category'  => 'font_option',
+				'tab_slug'         => 'advanced',
+				'toggle_slug'      => 'icon_settings',
+				'default'          => '17px',
+				'default_unit'     => 'px',
+				'default_on_front' => '',
+				'allowed_units'    => et_builder_get_acceptable_css_string_values( 'font-size' ),
+				'range_settings'   => array(
 					'min'  => '1',
 					'max'  => '120',
 					'step' => '1',
 				),
-				'mobile_options'  => true,
-				'responsive'      => true,
-				'hover'           => 'tabs',
+				'mobile_options'   => true,
+				'responsive'       => true,
+				'sticky'           => true,
+				'hover'            => 'tabs',
 			),
-			'menu_icon_font_size' => array(
-				'label'           => esc_html__( 'Hamburger Menu Icon Font Size', 'et_builder' ),
-				'description'     => esc_html__( 'Control the size of the icon by increasing or decreasing the font size.', 'et_builder' ),
-				'type'            => 'range',
-				'option_category' => 'font_option',
-				'tab_slug'        => 'advanced',
-				'toggle_slug'     => 'icon_settings',
-				'default'         => '32px',
-				'default_unit'    => 'px',
-				'default_on_front'=> '',
-				'allowed_units'   => et_builder_get_acceptable_css_string_values( 'font-size' ),
-				'range_settings'  => array(
+			'menu_icon_font_size'             => array(
+				'label'            => esc_html__( 'Hamburger Menu Icon Font Size', 'et_builder' ),
+				'description'      => esc_html__( 'Control the size of the icon by increasing or decreasing the font size.', 'et_builder' ),
+				'type'             => 'range',
+				'option_category'  => 'font_option',
+				'tab_slug'         => 'advanced',
+				'toggle_slug'      => 'icon_settings',
+				'default'          => '32px',
+				'default_unit'     => 'px',
+				'default_on_front' => '',
+				'allowed_units'    => et_builder_get_acceptable_css_string_values( 'font-size' ),
+				'range_settings'   => array(
 					'min'  => '1',
 					'max'  => '120',
 					'step' => '1',
 				),
-				'mobile_options'  => true,
-				'responsive'      => true,
-				'hover'           => 'tabs',
+				'mobile_options'   => true,
+				'sticky'           => true,
+				'responsive'       => true,
+				'hover'            => 'tabs',
 			),
 		);
 
@@ -644,7 +661,8 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 					%2$s',
 				esc_attr( $menuClass ),
 				( ! et_is_builder_plugin_active() && 'on' === et_get_option( 'divi_home_link' )
-					? sprintf( '<li%1$s><a href="%2$s">%3$s</a></li>',
+					? sprintf(
+						'<li%1$s><a href="%2$s">%3$s</a></li>',
 						( is_home() ? ' class="current_page_item"' : '' ),
 						esc_url( home_url( '/' ) ),
 						esc_html__( 'Home', 'et_builder' )
@@ -689,61 +707,56 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 	 * @return void
 	 */
 	protected function apply_logo_styles( $render_slug ) {
-		$max_width_selector = '%%order_class%% .et_pb_row > .et_pb_menu__logo-wrap .et_pb_menu__logo, %%order_class%% .et_pb_menu__logo-slot';
-		$max_width_values   = et_pb_responsive_options()->get_property_values( $this->props, 'logo_max_width' );
-		$max_width_hover    = $this->get_hover_value( 'logo_max_width' );
-
-		$max_height_selector = '%%order_class%% .et_pb_row > .et_pb_menu__logo-wrap .et_pb_menu__logo img, %%order_class%% .et_pb_menu__logo-slot .et_pb_menu__logo-wrap img';
-		$max_height_values   = et_pb_responsive_options()->get_property_values( $this->props, 'logo_max_height' );
-		$max_height_hover    = $this->get_hover_value( 'logo_max_height' );
-
 		// Remove default opacity if hover color is enabled for links.
 		if ( et_builder_is_hover_enabled( 'menu_text_color', $this->props ) ) {
-			ET_Builder_Element::set_style( $render_slug, array(
+			$el_style = array(
 				'selector'    => "{$this->main_css_element} nav > ul > li > a:hover",
 				'declaration' => 'opacity: 1;',
-			) );
+			);
+			ET_Builder_Element::set_style( $render_slug, $el_style );
 		}
 
 		if ( et_builder_is_hover_enabled( 'dropdown_menu_text_color', $this->props ) ) {
-			ET_Builder_Element::set_style( $render_slug, array(
+			$el_style = array(
 				'selector'    => "{$this->main_css_element} nav > ul > li li a:hover",
 				'declaration' => 'opacity: 1;',
-			) );
+			);
+			ET_Builder_Element::set_style( $render_slug, $el_style );
 		}
 
 		if ( et_builder_is_hover_enabled( 'dropdown_menu_active_link_color', $this->props ) ) {
-			ET_Builder_Element::set_style( $render_slug, array(
+			$el_style = array(
 				'selector'    => "{$this->main_css_element} nav > ul > li li.current-menu-item a:hover",
 				'declaration' => 'opacity: 1;',
-			) );
+			);
+			ET_Builder_Element::set_style( $render_slug, $el_style );
 		}
 
 		// Max width.
-		et_pb_responsive_options()->generate_responsive_css( $max_width_values, $max_width_selector, 'max-width', $render_slug );
-
-		if ( et_builder_is_hover_enabled( 'logo_max_width', $this->props ) ) {
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => et_pb_hover_options()->add_hover_to_selectors( $max_width_selector ),
-				'declaration' => sprintf(
-					'max-width: %1$s;',
-					esc_html( $max_width_hover )
-				),
-			) );
-		}
+		$this->generate_styles(
+			array(
+				'base_attr_name'                  => 'logo_max_width',
+				'selector'                        => '%%order_class%% .et_pb_row > .et_pb_menu__logo-wrap .et_pb_menu__logo, %%order_class%% .et_pb_menu__logo-slot',
+				'hover_pseudo_selector_location'  => 'suffix',
+				'sticky_pseudo_selector_location' => 'prefix',
+				'css_property'                    => 'max-width',
+				'render_slug'                     => $render_slug,
+				'type'                            => 'range',
+			)
+		);
 
 		// Max height.
-		et_pb_responsive_options()->generate_responsive_css( $max_height_values, $max_height_selector, 'max-height', $render_slug );
-
-		if ( et_builder_is_hover_enabled( 'logo_max_height', $this->props ) ) {
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => et_pb_hover_options()->add_hover_to_selectors( $max_height_selector ),
-				'declaration' => sprintf(
-					'max-height: %1$s;',
-					esc_html( $max_height_hover )
-				),
-			) );
-		}
+		$this->generate_styles(
+			array(
+				'base_attr_name'                  => 'logo_max_height',
+				'selector'                        => '%%order_class%% .et_pb_row > .et_pb_menu__logo-wrap .et_pb_menu__logo img, %%order_class%% .et_pb_menu__logo-slot .et_pb_menu__logo-wrap img',
+				'hover_pseudo_selector_location'  => 'suffix',
+				'sticky_pseudo_selector_location' => 'prefix',
+				'css_property'                    => 'max-height',
+				'render_slug'                     => $render_slug,
+				'type'                            => 'range',
+			)
+		);
 	}
 
 	/**
@@ -774,8 +787,11 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 	 * @return void
 	 */
 	protected function apply_icon_styles( $render_slug, $icon, $selector ) {
-		$font_size_prop = "{$icon}_icon_font_size";
-		$color_prop     = "{$icon}_icon_color";
+		$font_size_prop   = "{$icon}_icon_font_size";
+		$color_prop       = "{$icon}_icon_color";
+		$hover            = et_pb_hover_options();
+		$sticky           = et_pb_sticky_options();
+		$is_sticky_module = $sticky->is_sticky_module( $this->props );
 
 		if ( 'menu' !== $icon && $this->is_icon_enabled( $icon ) ) {
 			$icon_show_prop = "show_{$icon}_icon";
@@ -790,50 +806,56 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 				et_pb_responsive_options()->generate_responsive_css( $values, $selector, 'display', $render_slug, '', '' );
 			}
 
-			if ( et_builder_is_hover_enabled( $icon_show_prop, $this->props ) ) {
-				$hover = ( 'on' === $this->get_hover_value( $icon_show_prop ) ) ? 'flex' : 'none';
-
-				ET_Builder_Element::set_style( $render_slug, array(
+			if ( $hover->is_enabled( $icon_show_prop, $this->props ) ) {
+				$hover_display = ( 'on' === $this->get_hover_value( $icon_show_prop ) ) ? 'flex' : 'none';
+				$el_style      = array(
 					'selector'    => str_replace( '%%order_class%%', '%%order_class%%:hover', $selector ),
 					'declaration' => sprintf(
 						'display: %1$s;',
 						esc_html( $hover )
 					),
-				) );
+				);
+				ET_Builder_Element::set_style( $render_slug, $el_style );
+			}
+
+			if ( $sticky->is_enabled( $icon_show_prop, $this->props ) ) {
+				$sticky_display = ( 'on' === $sticky->get_value( $icon_show_prop, $this->props ) ) ? 'flex' : 'none';
+				$el_style       = array(
+					'selector'    => $sticky->add_sticky_to_selectors( $selector, $is_sticky_module ),
+					'declaration' => sprintf(
+						'display: %1$s;',
+						esc_html( $sticky_display )
+					),
+				);
+				ET_Builder_Element::set_style( $render_slug, $el_style );
 			}
 		}
 
-		$font_size_values = et_pb_responsive_options()->get_property_values( $this->props, $font_size_prop );
-		$font_size_hover  = $this->get_hover_value( $font_size_prop );
-
-		$color_values = et_pb_responsive_options()->get_property_values( $this->props, $color_prop );
-		$color_hover  = $this->get_hover_value( $color_prop );
-
 		// Font size.
-		et_pb_responsive_options()->generate_responsive_css( $font_size_values, $selector, 'font-size', $render_slug );
-
-		if ( et_builder_is_hover_enabled( $font_size_prop, $this->props ) ) {
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => et_pb_hover_options()->add_hover_to_selectors( $selector ),
-				'declaration' => sprintf(
-					'font-size: %1$s;',
-					esc_html( $font_size_hover )
-				),
-			) );
-		}
+		$this->generate_styles(
+			array(
+				'base_attr_name'                  => $font_size_prop,
+				'selector'                        => $selector,
+				'hover_pseudo_selector_location'  => 'suffix',
+				'sticky_pseudo_selector_location' => 'prefix',
+				'css_property'                    => 'font-size',
+				'render_slug'                     => $render_slug,
+				'type'                            => 'range',
+			)
+		);
 
 		// Color.
-		et_pb_responsive_options()->generate_responsive_css( $color_values, $selector, 'color', $render_slug, '', 'color' );
-
-		if ( et_builder_is_hover_enabled( $color_prop, $this->props ) ) {
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => et_pb_hover_options()->add_hover_to_selectors( $selector ),
-				'declaration' => sprintf(
-					'color: %1$s;',
-					esc_html( $color_hover )
-				),
-			) );
-		}
+		$this->generate_styles(
+			array(
+				'base_attr_name'                  => $color_prop,
+				'selector'                        => $selector,
+				'hover_pseudo_selector_location'  => 'suffix',
+				'sticky_pseudo_selector_location' => 'prefix',
+				'css_property'                    => 'color',
+				'render_slug'                     => $render_slug,
+				'type'                            => 'color',
+			)
+		);
 	}
 
 	/**
@@ -849,15 +871,27 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 		$logo_url            = $this->props['logo_url'];
 		$logo_url_new_window = $this->props['logo_url_new_window'];
 
-		$logo_html = $multi_view->render_element( array(
-			'tag'            => 'img',
-			'attrs'          => array(
-				'src' => '{{logo}}',
-				'alt' => $logo_alt,
-			),
-			'required'       => 'logo',
-			'hover_selector' => '%%order_class%% .et_pb_menu__logo-wrap .et_pb_menu__logo img',
-		) );
+		$logo_image_attrs = array(
+			'src'    => '{{logo}}',
+			'alt'    => $logo_alt,
+			'height' => 'auto',
+			'width'  => 'auto',
+		);
+
+		$logo_image_attachment_class = et_pb_media_options()->get_image_attachment_class( $this->props, 'logo' );
+
+		if ( ! empty( $logo_image_attachment_class ) ) {
+			$logo_image_attrs['class'] = esc_attr( $logo_image_attachment_class );
+		}
+
+		$logo_html = $multi_view->render_element(
+			array(
+				'tag'            => 'img',
+				'attrs'          => $logo_image_attrs,
+				'required'       => 'logo',
+				'hover_selector' => '%%order_class%% .et_pb_menu__logo-wrap .et_pb_menu__logo img',
+			)
+		);
 
 		if ( empty( $logo_html ) ) {
 			return '';
@@ -964,152 +998,129 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 	}
 
 	function render( $attrs, $content = null, $render_slug ) {
-		$menu_slug                       = self::$menu_slug;
-		$background_color                = $this->props['background_color'];
-		$menu_id                         = $this->props['menu_id'];
-		$submenu_direction               = $this->props['submenu_direction'];
-		$menu_style                      = $this->props['menu_style'];
+		$menu_slug         = self::$menu_slug;
+		$background_color  = $this->props['background_color'];
+		$menu_id           = $this->props['menu_id'];
+		$submenu_direction = $this->props['submenu_direction'];
+		$menu_style        = $this->props['menu_style'];
 
-		$dropdown_menu_bg_color          = $this->props['dropdown_menu_bg_color'];
-		$dropdown_menu_bg_color_hover    = $this->get_hover_value( 'dropdown_menu_bg_color' );
+		$dropdown_menu_bg_color  = $this->props['dropdown_menu_bg_color'];
+		$dropdown_menu_animation = $this->props['dropdown_menu_animation'];
 
-		$dropdown_menu_text_color        = $this->props['dropdown_menu_text_color'];
-		$dropdown_menu_text_color_hover  = $this->get_hover_value( 'dropdown_menu_text_color' );
-
-		$dropdown_menu_active_link_color        = et_()->array_get( $this->props, 'dropdown_menu_active_link_color', '' );
-		$dropdown_menu_active_link_color_hover  = $this->get_hover_value( 'dropdown_menu_active_link_color' );
-
-		$dropdown_menu_animation         = $this->props['dropdown_menu_animation'];
-		$active_link_color_values        = et_pb_responsive_options()->get_property_values( $this->props, 'active_link_color' );
-		$active_link_color_hover         = $this->get_hover_value( 'active_link_color' );
-		$dropdown_menu_line_color_values = et_pb_responsive_options()->get_property_values( $this->props, 'dropdown_menu_line_color' );
-		$dropdown_menu_line_color_hover  = $this->get_hover_value( 'dropdown_menu_line_color' );
-		$mobile_menu_text_color_values   = et_pb_responsive_options()->get_property_values( $this->props, 'mobile_menu_text_color' );
-		$mobile_menu_text_color_hover    = $this->get_hover_value( 'mobile_menu_text_color' );
-
-		$background_layout               = $this->props['background_layout'];
-		$background_layout_hover         = et_pb_hover_options()->get_value( 'background_layout', $this->props, 'light' );
-		$background_layout_hover_enabled = et_pb_hover_options()->is_enabled( 'background_layout', $this->props );
-		$background_layout_values        = et_pb_responsive_options()->get_property_values( $this->props, 'background_layout' );
-		$background_layout_tablet        = isset( $background_layout_values['tablet'] ) ? $background_layout_values['tablet'] : '';
-		$background_layout_phone         = isset( $background_layout_values['phone'] ) ? $background_layout_values['phone'] : '';
-
-		$mobile_menu_bg_color            = $this->props['mobile_menu_bg_color'];
-		$mobile_menu_bg_color_hover      = $this->get_hover_value( 'mobile_menu_bg_color' );
-		$mobile_menu_bg_color_values     = et_pb_responsive_options()->get_property_values( $this->props, 'mobile_menu_bg_color' );
-		$mobile_menu_bg_color_tablet     = isset( $mobile_menu_bg_color_values['tablet'] ) ? $mobile_menu_bg_color_values['tablet'] : '';
-		$mobile_menu_bg_color_phone      = isset( $mobile_menu_bg_color_values['phone'] ) ? $mobile_menu_bg_color_values['phone'] : '';
+		$mobile_menu_bg_color        = $this->props['mobile_menu_bg_color'];
+		$mobile_menu_bg_color_values = et_pb_responsive_options()->get_property_values( $this->props, 'mobile_menu_bg_color' );
+		$mobile_menu_bg_color_tablet = isset( $mobile_menu_bg_color_values['tablet'] ) ? $mobile_menu_bg_color_values['tablet'] : '';
+		$mobile_menu_bg_color_phone  = isset( $mobile_menu_bg_color_values['phone'] ) ? $mobile_menu_bg_color_values['phone'] : '';
 
 		$style = '';
 
 		$video_background          = $this->video_background();
 		$parallax_image_background = $this->get_parallax_image_background();
 
-		$menu = self::get_fullwidth_menu( array(
-			'menu_id'           => $menu_id,
-			'submenu_direction' => $submenu_direction,
-		) );
+		$menu = self::get_fullwidth_menu(
+			array(
+				'menu_id'           => $menu_id,
+				'submenu_direction' => $submenu_direction,
+			)
+		);
+
+		$is_sticky_module = et_pb_sticky_options()->is_sticky_module( $this->props );
 
 		// Active Link Color.
-		et_pb_responsive_options()->generate_responsive_css( $active_link_color_values, "%%order_class%%.{$menu_slug} ul li.current-menu-item a", 'color', $render_slug, ' !important;', 'color' );
-
-		if ( et_builder_is_hover_enabled( 'active_link_color', $this->props ) ) {
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => $this->add_hover_to_selectors( "%%order_class%%.{$menu_slug} ul li.current-menu-item a" ),
-				'declaration' => sprintf(
-					'color: %1$s !important;',
-					esc_html( $active_link_color_hover )
-				),
-			) );
-		}
+		$this->generate_styles(
+			array(
+				'base_attr_name'                  => 'active_link_color',
+				'selector'                        => "%%order_class%%.{$menu_slug} ul li.current-menu-item a",
+				'hover_pseudo_selector_location'  => 'suffix',
+				'sticky_pseudo_selector_location' => 'prefix',
+				'css_property'                    => 'color',
+				'render_slug'                     => $render_slug,
+				'important'                       => true,
+				'type'                            => 'color',
+			)
+		);
 
 		if ( '' !== $background_color || '' !== $dropdown_menu_bg_color ) {
 			$et_menu_bg_color = '' !== $dropdown_menu_bg_color ? $dropdown_menu_bg_color : $background_color;
 
-			ET_Builder_Element::set_style( $render_slug, array(
+			$el_style = array(
 				'selector'    => "%%order_class%%.{$menu_slug} .nav li ul",
 				'declaration' => sprintf(
 					'background-color: %1$s !important;',
 					esc_html( $et_menu_bg_color )
 				),
-			) );
+			);
+			ET_Builder_Element::set_style( $render_slug, $el_style );
 		}
 
-		if ( et_builder_is_hover_enabled( 'dropdown_menu_bg_color', $this->props ) ) {
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => $this->add_hover_to_selectors( "%%order_class%%.{$menu_slug} .nav li ul" ),
-				'declaration' => sprintf(
-					'background-color: %1$s !important;',
-					esc_html( $dropdown_menu_bg_color_hover )
-				),
-			) );
-		}
+		$this->generate_styles(
+			array(
+				'responsive'                      => false,
+				'base_attr_name'                  => 'dropdown_menu_bg_color',
+				'selector'                        => "%%order_class%%.{$menu_slug} .nav li ul",
+				'hover_pseudo_selector_location'  => 'suffix',
+				'sticky_pseudo_selector_location' => 'prefix',
+				'css_property'                    => 'background-color',
+				'render_slug'                     => $render_slug,
+				'important'                       => true,
+				'type'                            => 'color',
+			)
+		);
 
 		$dropdown_menu_line_color_selector = 'upwards' === $submenu_direction
 			? "%%order_class%%.{$menu_slug} .et-menu-nav > ul.upwards li ul"
 			: "%%order_class%%.{$menu_slug} .nav li ul";
 
+		$this->generate_styles(
+			array(
+				'base_attr_name'                  => 'dropdown_menu_line_color',
+				'selector'                        => $dropdown_menu_line_color_selector,
+				'hover_pseudo_selector_location'  => 'suffix',
+				'sticky_pseudo_selector_location' => 'prefix',
+				'css_property'                    => 'border-color',
+				'render_slug'                     => $render_slug,
+				'type'                            => 'color',
+			)
+		);
+
 		// Dropdown Menu Line Color.
-		et_pb_responsive_options()->generate_responsive_css( $dropdown_menu_line_color_values, $dropdown_menu_line_color_selector, 'border-color', $render_slug, '', 'color' );
-		et_pb_responsive_options()->generate_responsive_css( $dropdown_menu_line_color_values, "%%order_class%%.{$menu_slug} .et_mobile_menu", 'border-color', $render_slug, '', 'color' );
+		$this->generate_styles(
+			array(
+				'base_attr_name'                  => 'dropdown_menu_line_color',
+				'selector'                        => "%%order_class%%.{$menu_slug} .et_mobile_menu",
+				'hover_pseudo_selector_location'  => 'suffix',
+				'sticky_pseudo_selector_location' => 'prefix',
+				'css_property'                    => 'border-color',
+				'render_slug'                     => $render_slug,
+				'type'                            => 'color',
+			)
+		);
 
-		if ( et_builder_is_hover_enabled( 'dropdown_menu_line_color', $this->props ) ) {
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => $this->add_hover_to_selectors( $dropdown_menu_line_color_selector ),
-				'declaration' => sprintf(
-					'border-color: %1$s;',
-					esc_html( $dropdown_menu_line_color_hover )
-				),
-			) );
+		$this->generate_styles(
+			array(
+				'base_attr_name'                  => 'dropdown_menu_text_color',
+				'selector'                        => "%%order_class%%.{$menu_slug} .nav li ul.sub-menu a",
+				'hover_pseudo_selector_location'  => 'suffix',
+				'sticky_pseudo_selector_location' => 'prefix',
+				'css_property'                    => 'color',
+				'important'                       => true,
+				'render_slug'                     => $render_slug,
+				'type'                            => 'color',
+			)
+		);
 
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => $this->add_hover_to_selectors( "%%order_class%%.{$menu_slug} .et_mobile_menu" ),
-				'declaration' => sprintf(
-					'border-color: %1$s;',
-					esc_html( $dropdown_menu_line_color_hover )
-				),
-			) );
-		}
-
-		if ( '' !== $dropdown_menu_text_color ) {
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => "%%order_class%%.{$menu_slug} .nav li ul.sub-menu a",
-				'declaration' => sprintf(
-					'color: %1$s !important;',
-					esc_html( $dropdown_menu_text_color )
-				),
-			) );
-		}
-
-		if ( '' !== $dropdown_menu_active_link_color ) {
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => "%%order_class%%.{$menu_slug} .nav li ul.sub-menu li.current-menu-item a",
-				'declaration' => sprintf(
-					'color: %1$s !important;',
-					esc_html( $dropdown_menu_active_link_color )
-				),
-			) );
-		}
-
-		if ( et_builder_is_hover_enabled( 'dropdown_menu_text_color', $this->props ) ) {
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => $this->add_hover_to_selectors( "%%order_class%%.{$menu_slug} .nav li ul.sub-menu a" ),
-				'declaration' => sprintf(
-					'color: %1$s !important;',
-					esc_html( $dropdown_menu_text_color_hover )
-				),
-			) );
-		}
-
-		if ( et_builder_is_hover_enabled( 'dropdown_menu_active_link_color', $this->props ) ) {
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => $this->add_hover_to_selectors( "%%order_class%%.{$menu_slug} .nav li ul.sub-menu li.current-menu-item a" ),
-				'declaration' => sprintf(
-					'color: %1$s !important;',
-					esc_html( $dropdown_menu_active_link_color_hover )
-				),
-			) );
-		}
+		$this->generate_styles(
+			array(
+				'base_attr_name'                  => 'dropdown_menu_active_link_color',
+				'selector'                        => "%%order_class%%.{$menu_slug} .nav li ul.sub-menu li.current-menu-item a",
+				'hover_pseudo_selector_location'  => 'suffix',
+				'sticky_pseudo_selector_location' => 'prefix',
+				'css_property'                    => 'color',
+				'important'                       => true,
+				'render_slug'                     => $render_slug,
+				'type'                            => 'color',
+			)
+		);
 
 		// Mobile Menu Background Color.
 		$is_mobile_menu_bg_responsive = et_pb_responsive_options()->is_responsive_enabled( $this->props, 'mobile_menu_bg_color' );
@@ -1123,61 +1134,53 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 		);
 		et_pb_responsive_options()->generate_responsive_css( $mobile_menu_bg_color_values, "%%order_class%%.{$menu_slug} .et_mobile_menu, %%order_class%%.{$menu_slug} .et_mobile_menu ul", 'background-color', $render_slug, ' !important;', 'color' );
 
-		if ( et_builder_is_hover_enabled( 'mobile_menu_bg_color', $this->props ) ) {
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => $this->add_hover_to_selectors( "%%order_class%%.{$menu_slug} .et_mobile_menu, %%order_class%%.{$menu_slug} .et_mobile_menu ul" ) . ", %%order_class%%.{$menu_slug} .et_mobile_menu:hover ul",
-				'declaration' => sprintf(
-					'background-color: %1$s !important;',
-					esc_html( $mobile_menu_bg_color_hover )
-				),
-			) );
-		}
+		$this->generate_styles(
+			array(
+				'responsive'                      => false,
+				'base_attr_name'                  => 'mobile_menu_bg_color',
+				'selector'                        => "%%order_class%%.{$menu_slug} .et_mobile_menu, %%order_class%%.{$menu_slug} .et_mobile_menu ul",
+				'hover_selector'                  => "%%order_class%%.{$menu_slug} .et_mobile_menu:hover, %%order_class%%.{$menu_slug} .et_mobile_menu ul:hover, %%order_class%%.{$menu_slug} .et_mobile_menu:hover ul",
+				'sticky_pseudo_selector_location' => 'prefix',
+				'css_property'                    => 'background-color',
+				'important'                       => true,
+				'render_slug'                     => $render_slug,
+				'type'                            => 'color',
+			)
+		);
 
 		// Mobile Menu Text Color.
-		et_pb_responsive_options()->generate_responsive_css( $mobile_menu_text_color_values, "%%order_class%%.{$menu_slug} .et_mobile_menu a", 'color', $render_slug, ' !important;', 'color' );
-
-		if ( et_builder_is_hover_enabled( 'mobile_menu_text_color', $this->props ) ) {
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => $this->add_hover_to_selectors( "%%order_class%%.{$menu_slug} .et_mobile_menu a" ),
-				'declaration' => sprintf(
-					'color: %1$s !important;',
-					esc_html( $mobile_menu_text_color_hover )
-				),
-			) );
-		}
+		$this->generate_styles(
+			array(
+				'base_attr_name'                  => 'mobile_menu_text_color',
+				'selector'                        => "%%order_class%%.{$menu_slug} .et_mobile_menu a",
+				'hover_pseudo_selector_location'  => 'suffix',
+				'sticky_pseudo_selector_location' => 'prefix',
+				'css_property'                    => 'color',
+				'important'                       => true,
+				'render_slug'                     => $render_slug,
+				'type'                            => 'color',
+			)
+		);
 
 		$this->apply_logo_styles( $render_slug );
 		$this->apply_icon_styles( $render_slug, 'menu', '%%order_class%% .mobile_nav .mobile_menu_bar:before' );
 		$this->apply_icon_styles( $render_slug, 'search', '%%order_class%% .et_pb_menu__icon.et_pb_menu__search-button, %%order_class%% .et_pb_menu__icon.et_pb_menu__close-search-button' );
 		$this->apply_icon_styles( $render_slug, 'cart', '%%order_class%% .et_pb_menu__icon.et_pb_menu__cart-button' );
 
-		$data_background_layout       = '';
-		$data_background_layout_hover = '';
-		if ( $background_layout_hover_enabled ) {
-			$data_background_layout = sprintf(
-				' data-background-layout="%1$s"',
-				esc_attr( $background_layout )
-			);
-			$data_background_layout_hover = sprintf(
-				' data-background-layout-hover="%1$s"',
-				esc_attr( $background_layout_hover )
-			);
-		}
+		// Background layout data attributes.
+		$data_background_layout = et_pb_background_layout_options()->get_background_layout_attrs( $this->props );
+
+		// Background layout class names.
+		$background_layout_class_names = et_pb_background_layout_options()->get_background_layout_class( $this->props );
+		$this->add_classname( $background_layout_class_names );
 
 		// Module classnames
-		$this->add_classname( array(
-			"et_pb_bg_layout_{$background_layout}",
-			$this->get_text_orientation_classname(),
-			"et_dropdown_animation_{$dropdown_menu_animation}",
-		) );
-
-		if ( ! empty( $background_layout_tablet ) ) {
-			$this->add_classname( "et_pb_bg_layout_{$background_layout_tablet}_tablet" );
-		}
-
-		if ( ! empty( $background_layout_phone ) ) {
-			$this->add_classname( "et_pb_bg_layout_{$background_layout_phone}_phone" );
-		}
+		$this->add_classname(
+			array(
+				$this->get_text_orientation_classname(),
+				"et_dropdown_animation_{$dropdown_menu_animation}",
+			)
+		);
 
 		if ( 'on' === $this->props['fullwidth_menu'] ) {
 			$this->add_classname( "{$menu_slug}_fullwidth" );
@@ -1193,11 +1196,13 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 
 		// Logo: Add CSS Filters and Mix Blend Mode rules (if set).
 		if ( ! empty( $this->props['logo'] ) && array_key_exists( 'image', $this->advanced_fields ) && array_key_exists( 'css', $this->advanced_fields['image'] ) ) {
-			$this->add_classname( $this->generate_css_filters(
-				$render_slug,
-				'child_',
-				self::$data_utils->array_get( $this->advanced_fields['image']['css'], 'main', '%%order_class%%' )
-			) );
+			$this->add_classname(
+				$this->generate_css_filters(
+					$render_slug,
+					'child_',
+					self::$data_utils->array_get( $this->advanced_fields['image']['css'], 'main', '%%order_class%%' )
+				)
+			);
 		}
 
 		$mobile_menu = sprintf(
@@ -1211,20 +1216,20 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 
 		if ( 'inline_centered_logo' === $menu_style ) {
 			$output = sprintf(
-				'<div%4$s class="%3$s"%2$s%7$s%8$s>
+				'<div%4$s class="%3$s"%2$s%7$s>
 					%6$s
 					%5$s
 					<div class="et_pb_row clearfix">
-						%9$s
+						%8$s
 						<div class="et_pb_menu__wrap">
-							%10$s
+							%9$s
 							<div class="et_pb_menu__menu">
 								%1$s
 							</div>
+							%10$s
 							%11$s
-							%12$s
 						</div>
-						%13$s
+						%12$s
 					</div>
 				</div>',
 				$menu,
@@ -1234,7 +1239,6 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 				$video_background,
 				$parallax_image_background,
 				et_core_esc_previously( $data_background_layout ),
-				et_core_esc_previously( $data_background_layout_hover ),
 				et_core_esc_previously( $this->render_logo() ),
 				et_core_esc_previously( $this->render_cart() ),
 				et_core_esc_previously( $this->render_search() ),
@@ -1243,20 +1247,20 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 			);
 		} else {
 			$output = sprintf(
-				'<div%4$s class="%3$s"%2$s%7$s%8$s>
+				'<div%4$s class="%3$s"%2$s%7$s>
 					%6$s
 					%5$s
 					<div class="et_pb_row clearfix">
-						%9$s
+						%8$s
 						<div class="et_pb_menu__wrap">
 							<div class="et_pb_menu__menu">
 								%1$s
 							</div>
+							%9$s
 							%10$s
 							%11$s
-							%12$s
 						</div>
-						%13$s
+						%12$s
 					</div>
 				</div>',
 				$menu,
@@ -1266,7 +1270,6 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 				$video_background,
 				$parallax_image_background,
 				et_core_esc_previously( $data_background_layout ),
-				et_core_esc_previously( $data_background_layout_hover ),
 				et_core_esc_previously( $this->render_logo() ),
 				et_core_esc_previously( $this->render_cart() ),
 				et_core_esc_previously( $this->render_search() ),
@@ -1279,4 +1282,4 @@ class ET_Builder_Module_Fullwidth_Menu extends ET_Builder_Module {
 	}
 }
 
-new ET_Builder_Module_Fullwidth_Menu;
+new ET_Builder_Module_Fullwidth_Menu();

@@ -48,9 +48,9 @@ add_action( 'et_theme_builder_after_get_template_setting_child_options', 'et_the
  *
  * @since 4.2
  *
- * @param integer $id
- * @param string $type
- * @param string $subtype
+ * @param integer $id      WPML object ID.
+ * @param string  $type    Type.
+ * @param string  $subtype Subtype.
  *
  * @return integer
  */
@@ -65,9 +65,9 @@ add_filter( 'et_theme_builder_template_setting_filter_validation_id', 'et_theme_
  *
  * @since 4.2
  *
- * @param string $prioritized_setting
- * @param string $a
- * @param string $b
+ * @param string                   $prioritized_setting Prioritized setting.
+ * @param string                   $a                   First translated id.
+ * @param string                   $b                   Second translated id.
  * @param ET_Theme_Builder_Request $request
  *
  * @return string
@@ -81,30 +81,30 @@ function et_theme_builder_wpml_prioritize_translated_id( $prioritized_setting, $
 	$b_matches       = array();
 
 	// Match singular:post_type:<post_type>:id:<id>
-	$singular          = '/^singular:post_type:([^:]+):id:(\d+)$/i';
+	$singular = '/^singular:post_type:([^:]+):id:(\d+)$/i';
 	// Match singular:post_type:<post_type>:children:id:<id>
 	$singular_children = '/^singular:post_type:([^:]+):children:id:(\d+)$/i';
 	// Match singular:taxonomy:<taxonomy>:term:id:<id>
-	$singular_term     = '/^singular:taxonomy:([^:]+):term:id:(\d+)$/i';
+	$singular_term = '/^singular:taxonomy:([^:]+):term:id:(\d+)$/i';
 	// Match archive:taxonomy:<taxonomy>:term:id:<id>
-	$archive_term      = '/^archive:taxonomy:([^:]+):term:id:(\d+)$/i';
+	$archive_term = '/^archive:taxonomy:([^:]+):term:id:(\d+)$/i';
 
 	if ( preg_match( $singular, $a, $a_matches ) && preg_match( $singular, $b, $b_matches ) ) {
 		$a_id            = (int) $a_matches[2];
 		$a_id_translated = et_theme_builder_wpml_normalize_object_id( $a_id, 'post', $a_matches[1] );
 		$b_id            = (int) $b_matches[2];
 		$b_id_translated = et_theme_builder_wpml_normalize_object_id( $b_id, 'post', $b_matches[1] );
-	} else if ( preg_match( $singular_children, $a, $a_matches ) && preg_match( $singular_children, $b, $b_matches ) ) {
+	} elseif ( preg_match( $singular_children, $a, $a_matches ) && preg_match( $singular_children, $b, $b_matches ) ) {
 		$a_id            = (int) $a_matches[2];
 		$a_id_translated = et_theme_builder_wpml_normalize_object_id( $a_id, 'post', $a_matches[1] );
 		$b_id            = (int) $b_matches[2];
 		$b_id_translated = et_theme_builder_wpml_normalize_object_id( $b_id, 'post', $b_matches[1] );
-	} else if ( preg_match( $singular_term, $a, $a_matches ) && preg_match( $singular_term, $b, $b_matches ) ) {
+	} elseif ( preg_match( $singular_term, $a, $a_matches ) && preg_match( $singular_term, $b, $b_matches ) ) {
 		$a_id            = (int) $a_matches[2];
 		$a_id_translated = et_theme_builder_wpml_normalize_object_id( $a_id, 'taxonomy', $a_matches[1] );
 		$b_id            = (int) $b_matches[2];
 		$b_id_translated = et_theme_builder_wpml_normalize_object_id( $b_id, 'taxonomy', $b_matches[1] );
-	} else if ( preg_match( $archive_term, $a, $a_matches ) && preg_match( $archive_term, $b, $b_matches ) ) {
+	} elseif ( preg_match( $archive_term, $a, $a_matches ) && preg_match( $archive_term, $b, $b_matches ) ) {
 		$a_id            = (int) $a_matches[2];
 		$a_id_translated = et_theme_builder_wpml_normalize_object_id( $a_id, 'taxonomy', $a_matches[1] );
 		$b_id            = (int) $b_matches[2];

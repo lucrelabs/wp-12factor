@@ -87,6 +87,11 @@
   font-weight: 600;
 }
 
+body.rtl #et_support_center .et_card_cta a {
+  margin-right: 0;
+  margin-left: 2em;
+}
+
 #et_support_center #epanel .et-system-status-congratulations {
   display: none;
 }
@@ -132,6 +137,11 @@
   margin-right: 15px;
 }
 
+body.rtl #et_support_center #epanel-content .et_system_status_row {
+  margin-left: 15px;
+  margin-right: 0;
+}
+
 #et_support_center #epanel .et_system_status_row .setting,
 #et_support_center #epanel .et_system_status_row .results {
   padding: 10px 0;
@@ -143,6 +153,10 @@
   font-weight: 600;
 }
 
+body.rtl #et_support_center #epanel .et_system_status_row .results {
+  padding: 10px 2rem 10px 0;
+}
+
 #et_support_center .et_system_status_row .results:before {
   content: "";
   display: inline-block;
@@ -152,6 +166,11 @@
   height: 10px;
   border-radius: 300px;
   position: relative;
+}
+
+body.rtl #et_support_center .et_system_status_row .results:before {
+  margin-left: 1em;
+  margin-right: 0;
 }
 
 #et_support_center #epanel .et-epanel-box .et-box-description {
@@ -186,6 +205,11 @@
 #et_card_safe_mode ul {
   list-style-type: disc;
   margin-left: 2em;
+}
+
+body.rtl #et_card_safe_mode ul {
+  margin-left: 0;
+  margin-right: 2em;
 }
 
 /* WP_DEBUG Logs */
@@ -249,15 +273,24 @@
   padding: 0 10px 0 0;
 }
 
+body.rtl #et_support_center .et_docs_articles,
+body.rtl #et_support_center .et_docs_videos {
+  padding: 0 0 0 10px;
+}
+
 #et_support_center .et_docs_articles {
   padding: 0 0 0 10px;
+}
+
+body.rtl #et_support_center .et_docs_articles {
+  padding: 0 10px 0 0;
 }
 
 @media screen and (max-width: 782px) {
   #et_support_center .et_docs_articles,
   #et_support_center .et_docs_videos {
     width: auto;
-    padding: 0;
+    padding: 0 !important;
   }
 
   #et_support_center .et_docs_videos {
@@ -307,6 +340,11 @@
   vertical-align: middle;
 }
 
+body.rtl #et_support_center .et_documentation_videos_list .dashicons-arrow-right {
+  margin-left: 1em;
+  margin-right: 0;
+}
+
 #et_support_center .et_documentation_videos_list .active {
   background: #2B87DA; /* $info */
   color: #FFFFFF; /* $white */
@@ -340,6 +378,10 @@
   position: relative;
 }
 
+body.rtl #et_support_center .et-support-center-article a {
+  padding: 10px 50px 10px 0;
+}
+
 #et_support_center .et-support-center-article a:before {
   display: block;
   font-size: 20px;
@@ -351,6 +393,14 @@
   position: absolute;
   left: 0.7em;
   margin-right: 1em;
+}
+
+body.rtl #et_support_center .et-support-center-article a:before {
+  float: right;
+  left: auto;
+  right: 0.7em;
+  margin-left: 1em;
+  margin-right: 0;
 }
 
 #et_support_center .et_pb_yes_no_button {
@@ -371,4 +421,165 @@
 #et_support_center code {
   background: #f6f8fa;
   padding: 2px 4px;
+}
+
+/* Divi Hosting Card */
+#et_support_center #epanel .et_hosting_card--features {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#et_support_center #epanel .et_hosting_card--feature {
+  display: flex;
+  flex-grow: 1;
+  margin: 10px 10px 10px 0;
+}
+
+body.rtl #et_support_center #epanel .et_hosting_card--feature {
+  margin: 10px 0 10px 10px;
+}
+
+@media screen and (max-width: 439px) {
+  #et_support_center #epanel .et_hosting_card--feature:first-child {
+    margin-top: 0 !important;
+  }
+
+  #et_support_center #epanel .et_hosting_card--feature:last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+@media screen and (min-width: 440px) and (max-width: 620px) {
+  #et_support_center #epanel .et_hosting_card--feature {
+    width: 40%;
+  }
+}
+
+@media screen and (min-width: 621px) {
+  #et_support_center #epanel .et_hosting_card--feature {
+    width: 30%;
+  }
+}
+
+#et_support_center #epanel .et_hosting_card--feature > object {
+  width: 32px;
+}
+
+#et_support_center #epanel .et_hosting_card--feature > h4 {
+  cursor: default;
+  flex-grow: 2;
+  margin: 0 8px;
+  padding: 6px 0;
+}
+
+/* Tippy Theme for Divi */
+.tippy-box[data-theme~='et-tippy'] {
+  border-radius: 3px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+  line-height: 1.5em;
+}
+
+.tippy-box[data-theme~='et-tippy'] .tippy-content {
+  padding: 12px 10px;
+}
+
+.tippy-box[data-theme~='et-tippy'][data-placement^=top] > .tippy-svg-arrow {
+  bottom: 0;
+}
+
+.tippy-box[data-theme~='et-tippy'][data-placement^=top] > .tippy-svg-arrow:after,
+.tippy-box[data-theme~='et-tippy'][data-placement^=top] > .tippy-svg-arrow > svg {
+  top: 16px;
+  transform: rotate(180deg);
+}
+
+.tippy-box[data-theme~='et-tippy'][data-placement^=bottom] > .tippy-svg-arrow {
+  top: 0;
+}
+
+.tippy-box[data-theme~='et-tippy'][data-placement^=bottom] > .tippy-svg-arrow > svg {
+  bottom: 16px;
+}
+
+.tippy-box[data-theme~='et-tippy'][data-placement^=left] > .tippy-svg-arrow {
+  right: 0;
+}
+
+.tippy-box[data-theme~='et-tippy'][data-placement^=left] > .tippy-svg-arrow:after,
+.tippy-box[data-theme~='et-tippy'][data-placement^=left] > .tippy-svg-arrow > svg {
+  transform: rotate(90deg);
+  top: calc(50% - 3px);
+  left: 11px;
+}
+
+.tippy-box[data-theme~='et-tippy'][data-placement^=right] > .tippy-svg-arrow {
+  left: 0;
+}
+
+.tippy-box[data-theme~='et-tippy'][data-placement^=right] > .tippy-svg-arrow:after,
+.tippy-box[data-theme~='et-tippy'][data-placement^=right] > .tippy-svg-arrow > svg {
+  transform: rotate(-90deg);
+  top: calc(50% - 3px);
+  right: 11px;
+}
+
+.tippy-box[data-theme~='et-tippy'] .tippy-svg-arrow {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  fill: #333;
+  text-align: initial;
+}
+
+.tippy-box[data-theme~='et-tippy'] .tippy-svg-arrow > svg {
+  position: absolute;
+}
+
+/* Card Dismiss Button */
+#et_support_center #epanel .card.has-dismiss-button h2 {
+  margin-right: 18px;
+}
+
+#et_support_center .card .et-dismiss-button {
+  background: none;
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #a3b0c2; /* $button */
+  cursor: pointer;
+  height: 32px;
+  margin: 8px;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 32px;
+}
+
+body.rtl #et_support_center .card .et-dismiss-button {
+  left: 0;
+  right: auto;
+}
+
+#et_support_center .card .et-dismiss-button:hover {
+  color: #32373C; /* $toggle-label-text */
+}
+
+#et_support_center .card .et-dismiss-button:disabled,
+#et_support_center .card .et-dismiss-button[disabled] {
+  color: #a3b0c2; /* $button */
+  opacity: 0.5;
+}
+
+#et_support_center .card .et-dismiss-button:before {
+  content: 'M';
+  font: 23px 'ETmodules';
+  font-weight: 600;
+  line-height: 32px;
+}
+
+#et_support_center .card .et-dismiss-button .et-dismiss-button-label {
+  display: none;
 }

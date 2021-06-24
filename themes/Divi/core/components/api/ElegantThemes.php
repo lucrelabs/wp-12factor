@@ -213,8 +213,8 @@ class ET_Core_API_ElegantThemes {
 					esc_html( $product_name )
 				) );
 
-			case 'blacklisted':
-				return new WP_Error( 'et_version_rollback_blacklisted', et_get_safe_localization( sprintf(
+			case 'blocklisted':
+				return new WP_Error( 'et_version_rollback_blocklisted', et_get_safe_localization( sprintf(
 					__( 'For privacy and security reasons, you cannot rollback to <strong>Version %1$s</strong>.', 'et-core' ),
 					esc_html( $version )
 				) ) );

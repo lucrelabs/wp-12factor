@@ -2,18 +2,18 @@
 
 class ET_Builder_Module_Social_Media_Follow_Item extends ET_Builder_Module {
 	function init() {
-		$this->name                        = esc_html__( 'Social Network', 'et_builder' );
-		$this->plural                      = esc_html__( 'Social Networks', 'et_builder' );
-		$this->slug                        = 'et_pb_social_media_follow_network';
-		$this->vb_support                  = 'on';
-		$this->type                        = 'child';
-		$this->child_title_var             = 'content';
+		$this->name            = esc_html__( 'Social Network', 'et_builder' );
+		$this->plural          = esc_html__( 'Social Networks', 'et_builder' );
+		$this->slug            = 'et_pb_social_media_follow_network';
+		$this->vb_support      = 'on';
+		$this->type            = 'child';
+		$this->child_title_var = 'content';
 
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
 					'main_content' => esc_html__( 'Network', 'et_builder' ),
-					'link'         => esc_html__( 'Link', 'et_builder' ),
+					'link'         => et_builder_i18n( 'Link' ),
 				),
 			),
 			'advanced' => array(
@@ -27,47 +27,47 @@ class ET_Builder_Module_Social_Media_Follow_Item extends ET_Builder_Module {
 		$this->settings_text               = esc_html__( 'Social Network Settings', 'et_builder' );
 
 		$this->custom_css_fields = array(
-			'before' => array(
-				'label'    => esc_html__( 'Before', 'et_builder' ),
+			'before'        => array(
+				'label'    => et_builder_i18n( 'Before' ),
 				'selector' => '.et_pb_social_media_follow li%%order_class%%:before',
 			),
-			'main_element' => array(
-				'label'    => esc_html__( 'Main Element', 'et_builder' ),
+			'main_element'  => array(
+				'label'    => et_builder_i18n( 'Main Element' ),
 				'selector' => '.et_pb_social_media_follow li%%order_class%%',
 			),
-			'after' => array(
-				'label'    => esc_html__( 'After', 'et_builder' ),
+			'after'         => array(
+				'label'    => et_builder_i18n( 'After' ),
 				'selector' => '.et_pb_social_media_follow li%%order_class%%:after',
 			),
-			'social_icon' => array(
-				'label'    => esc_html__( 'Social Icon', 'et_builder' ),
-				'selector' => '.et_pb_social_network_link a.icon',
+			'social_icon'   => array(
+				'label'                    => esc_html__( 'Social Icon', 'et_builder' ),
+				'selector'                 => '.et_pb_social_network_link a.icon',
 				'no_space_before_selector' => true,
 			),
 			'follow_button' => array(
-				'label'    => esc_html__( 'Follow Button', 'et_builder' ),
-				'selector' => '.et_pb_social_network_link a.follow_button',
+				'label'                    => esc_html__( 'Follow Button', 'et_builder' ),
+				'selector'                 => '.et_pb_social_network_link a.follow_button',
 				'no_space_before_selector' => true,
 			),
 		);
 
 		$this->advanced_fields = array(
-			'background'            => array(
+			'background'     => array(
 				'css' => array(
 					'main'      => '%%order_class%% a.icon',
 					'important' => 'all',
 				),
 			),
-			'borders'               => array(
+			'borders'        => array(
 				'default' => array(
 					'css'      => array(
 						'main' => array(
-							'border_radii'  => "%%order_class%%.et_pb_social_icon a.icon",
-							'border_styles' => "%%order_class%%.et_pb_social_icon a.icon",
+							'border_radii'  => '%%order_class%%.et_pb_social_icon a.icon',
+							'border_styles' => '%%order_class%%.et_pb_social_icon a.icon',
 						),
 					),
 					'defaults' => array(
-						'border_radii' => 'on|3px|3px|3px|3px',
+						'border_radii'  => 'on|3px|3px|3px|3px',
 						'border_styles' => array(
 							'width' => '0px',
 							'color' => '#333333',
@@ -76,7 +76,7 @@ class ET_Builder_Module_Social_Media_Follow_Item extends ET_Builder_Module {
 					),
 				),
 			),
-			'box_shadow'            => array(
+			'box_shadow'     => array(
 				'default' => array(
 					'css' => array(
 						'main'      => '%%order_class%% a',
@@ -86,20 +86,20 @@ class ET_Builder_Module_Social_Media_Follow_Item extends ET_Builder_Module {
 			),
 			'margin_padding' => array(
 				'css' => array(
-					'padding' => '.et_pb_social_media_follow li%%order_class%% a',
-					'main'    => '%%order_class%%',
+					'padding'   => '.et_pb_social_media_follow li%%order_class%% a',
+					'main'      => '%%order_class%%',
 					'important' => array( 'custom_margin' ), // needed to overwrite last module margin-bottom styling
 				),
 			),
-			'fonts'                 => false,
-			'text'                  => false,
-			'max_width'             => false,
-			'height'                => false,
-			'button'                => array(
+			'fonts'          => false,
+			'text'           => false,
+			'max_width'      => false,
+			'height'         => false,
+			'button'         => array(
 				'button' => array(
 					'label'               => esc_html__( 'Follow Button', 'et_builder' ),
 					'css'                 => array(
-						'main' => ".et_pb_social_media_follow li%%order_class%% .follow_button",
+						'main' => '.et_pb_social_media_follow li%%order_class%% .follow_button',
 					),
 					'hide_icon'           => true,
 					'hide_custom_padding' => true,
@@ -112,23 +112,24 @@ class ET_Builder_Module_Social_Media_Follow_Item extends ET_Builder_Module {
 					),
 					'box_shadow'          => array(
 						'css' => array(
-							'main' => ".et_pb_social_media_follow li%%order_class%% .follow_button",
+							'main' => '.et_pb_social_media_follow li%%order_class%% .follow_button',
 						),
 					),
 				),
 			),
-			'link_options'          => false,
+			'link_options'   => false,
+			'sticky'         => false,
 		);
 	}
 
 	function get_fields() {
 		$fields = array(
-			'social_network' => array(
-				'label'           => esc_html__( 'Social Network', 'et_builder' ),
-				'type'            => 'select',
-				'option_category' => 'basic_option',
-				'class'           => 'et-pb-social-network',
-				'options' => array(
+			'social_network'     => array(
+				'label'              => esc_html__( 'Social Network', 'et_builder' ),
+				'type'               => 'select',
+				'option_category'    => 'basic_option',
+				'class'              => 'et-pb-social-network',
+				'options'            => array(
 					''            => esc_html__( 'Select a Network', 'et_builder' ),
 					'facebook'    => array(
 						'value' => esc_html__( 'Facebook', 'et_builder' ),
@@ -187,63 +188,63 @@ class ET_Builder_Module_Social_Media_Follow_Item extends ET_Builder_Module {
 						'data'  => array( 'color' => '#ff8a3c' ),
 					),
 				),
-				'affects'           => array(
+				'affects'            => array(
 					'url',
 					'skype_url',
 					'skype_action',
 				),
 				'overwrite_onchange' => array(
-					'background_color'
+					'background_color',
 				),
-				'description' => esc_html__( 'Choose the social network', 'et_builder' ),
-				'toggle_slug' => 'main_content',
+				'description'        => esc_html__( 'Choose the social network', 'et_builder' ),
+				'toggle_slug'        => 'main_content',
 			),
-			'content' => array(
-				'label'       => esc_html__( 'Body', 'et_builder' ),
+			'content'            => array(
+				'label'       => et_builder_i18n( 'Body' ),
 				'type'        => 'hidden',
 				'toggle_slug' => 'main_content',
 			),
-			'url' => array(
+			'url'                => array(
 				'label'               => esc_html__( 'Account Link URL', 'et_builder' ),
 				'type'                => 'text',
 				'option_category'     => 'basic_option',
 				'description'         => esc_html__( 'The URL for this social network link.', 'et_builder' ),
 				'depends_show_if_not' => 'skype',
 				'depends_on'          => array(
-					'social_network'
+					'social_network',
 				),
 				'toggle_slug'         => 'link',
 				'default_on_front'    => '#',
 				'dynamic_content'     => 'url',
 			),
-			'skype_url' => array(
+			'skype_url'          => array(
 				'label'           => esc_html__( 'Account Name', 'et_builder' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
 				'description'     => esc_html__( 'The Skype account name.', 'et_builder' ),
 				'depends_show_if' => 'skype',
-				'depends_on'          => array(
-					'social_network'
+				'depends_on'      => array(
+					'social_network',
 				),
 				'toggle_slug'     => 'main_content',
 			),
-			'skype_action' => array(
-				'label'           => esc_html__( 'Skype Button Action', 'et_builder' ),
-				'type'            => 'select',
-				'option_category' => 'basic_option',
-				'options'         => array(
+			'skype_action'       => array(
+				'label'            => esc_html__( 'Skype Button Action', 'et_builder' ),
+				'type'             => 'select',
+				'option_category'  => 'basic_option',
+				'options'          => array(
 					'call' => esc_html__( 'Call', 'et_builder' ),
 					'chat' => esc_html__( 'Chat', 'et_builder' ),
 				),
-				'depends_show_if' => 'skype',
-				'depends_on'          => array(
-					'social_network'
+				'depends_show_if'  => 'skype',
+				'depends_on'       => array(
+					'social_network',
 				),
-				'description'     => esc_html__( 'Here you can choose which action to execute on button click', 'et_builder' ),
-				'toggle_slug'     => 'main_content',
+				'description'      => esc_html__( 'Here you can choose which action to execute on button click', 'et_builder' ),
+				'toggle_slug'      => 'main_content',
 				'default_on_front' => 'call',
 			),
-			'icon_color'            => array(
+			'icon_color'         => array(
 				'label'          => esc_html__( 'Icon Color', 'et_builder' ),
 				'description'    => esc_html__( 'Here you can define a custom color for the social network icon.', 'et_builder' ),
 				'type'           => 'color-alpha',
@@ -252,14 +253,15 @@ class ET_Builder_Module_Social_Media_Follow_Item extends ET_Builder_Module {
 				'toggle_slug'    => 'icon',
 				'hover'          => 'tabs',
 				'mobile_options' => true,
+				'sticky'         => true,
 			),
-			'use_icon_font_size'    => array(
+			'use_icon_font_size' => array(
 				'label'            => esc_html__( 'Use Custom Icon Size', 'et_builder' ),
 				'description'      => esc_html__( 'If you would like to control the size of the icon, you must first enable this option.', 'et_builder' ),
 				'type'             => 'yes_no_button',
 				'options'          => array(
-					'off' => esc_html__( 'No', 'et_builder' ),
-					'on'  => esc_html__( 'Yes', 'et_builder' ),
+					'off' => et_builder_i18n( 'No' ),
+					'on'  => et_builder_i18n( 'Yes' ),
 				),
 				'default_on_front' => 'off',
 				'affects'          => array(
@@ -270,7 +272,7 @@ class ET_Builder_Module_Social_Media_Follow_Item extends ET_Builder_Module {
 				'toggle_slug'      => 'icon',
 				'option_category'  => 'font_option',
 			),
-			'icon_font_size'        => array(
+			'icon_font_size'     => array(
 				'label'            => esc_html__( 'Icon Font Size', 'et_builder' ),
 				'description'      => esc_html__( 'Control the size of the icon by increasing or decreasing the font size.', 'et_builder' ),
 				'type'             => 'range',
@@ -290,6 +292,7 @@ class ET_Builder_Module_Social_Media_Follow_Item extends ET_Builder_Module {
 				'depends_show_if'  => 'on',
 				'responsive'       => true,
 				'hover'            => 'tabs',
+				'sticky'           => true,
 			),
 		);
 
@@ -320,7 +323,7 @@ class ET_Builder_Module_Social_Media_Follow_Item extends ET_Builder_Module {
 	}
 
 	function get_network_name( $network ) {
-		$all_fields = $this->get_fields();
+		$all_fields            = $this->get_fields();
 		$network_names_mapping = $all_fields['social_network']['options'];
 
 		if ( isset( $network_names_mapping[ $network ] ) && isset( $network_names_mapping[ $network ]['value'] ) ) {
@@ -331,7 +334,8 @@ class ET_Builder_Module_Social_Media_Follow_Item extends ET_Builder_Module {
 	}
 
 	function render( $attrs, $content = null, $render_slug ) {
-		global $et_pb_social_media_follow_link;
+		global $et_pb_social_media_follow_link,
+			$et_pb_social_media_follow_sticky;
 
 		$multi_view = et_pb_multi_view_options( $this );
 		$multi_view->set_custom_prop( 'follow_button', $et_pb_social_media_follow_link['follow_button'] );
@@ -347,9 +351,6 @@ class ET_Builder_Module_Social_Media_Follow_Item extends ET_Builder_Module {
 		$is_skype              = false;
 		$network_name          = esc_attr( $this->get_network_name( trim( wp_strip_all_tags( $content ) ) ) );
 		$use_icon_font_size    = $this->props['use_icon_font_size'];
-		$icon_color_hover      = $this->get_hover_value('icon_color');
-		$icon_color_values     = et_pb_responsive_options()->get_property_values( $this->props, 'icon_color' );
-		$icon_font_size_hover  = $this->get_hover_value( 'icon_font_size' );
 		$icon_font_size_values = et_pb_responsive_options()->get_property_values( $this->props, 'icon_font_size' );
 
 		if ( 'skype' === $social_network ) {
@@ -358,15 +359,17 @@ class ET_Builder_Module_Social_Media_Follow_Item extends ET_Builder_Module {
 				sanitize_text_field( $skype_url ),
 				sanitize_text_field( $skype_action )
 			);
-			$is_skype = true;
+			$is_skype  = true;
 		}
 
 		if ( $multi_view->has_value( 'follow_button', 'on' ) ) {
-			$follow_button_multi_view_attr = $multi_view->render_attrs( array(
-				'visibility' => array(
-					'follow_button' => 'on',
-				),
-			) );
+			$follow_button_multi_view_attr = $multi_view->render_attrs(
+				array(
+					'visibility' => array(
+						'follow_button' => 'on',
+					),
+				)
+			);
 
 			$follow_button = sprintf(
 				'<a href="%1$s" class="follow_button" title="%2$s"%3$s%5$s>%4$s</a>',
@@ -379,93 +382,51 @@ class ET_Builder_Module_Social_Media_Follow_Item extends ET_Builder_Module {
 		}
 
 		if ( '' !== $custom_padding || '' !== $custom_padding_tablet || '' !== $custom_padding_phone ) {
-			ET_Builder_Element::set_style( $render_slug, array(
+			$el_style = array(
 				'selector'    => '.et_pb_social_media_follow li%%order_class%% a',
 				'declaration' => 'width: auto; height: auto;',
-			) );
+			);
+			ET_Builder_Element::set_style( $render_slug, $el_style );
 		}
 
 		// Icon Color.
-		et_pb_responsive_options()->generate_responsive_css( $icon_color_values, '.et_pb_social_media_follow %%order_class%%.et_pb_social_icon .icon:before', 'color', $render_slug, '', 'color' );
-
-		if ( et_builder_is_hover_enabled( 'icon_color', $this->props ) ) {
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => '.et_pb_social_media_follow %%order_class%%.et_pb_social_icon:hover .icon:before',
-				'declaration' => sprintf(
-					'color: %1$s;',
-					esc_html( $icon_color_hover )
-				),
-			) );
-		}
+		$this->generate_styles(
+			array(
+				'base_attr_name'                  => 'icon_color',
+				'selector'                        => '.et_pb_social_media_follow %%order_class%%.et_pb_social_icon .icon:before',
+				'hover_selector'                  => '.et_pb_social_media_follow %%order_class%%.et_pb_social_icon:hover .icon:before',
+				'sticky_pseudo_selector_location' => 'prefix',
+				'css_property'                    => 'color',
+				'render_slug'                     => $render_slug,
+				'type'                            => 'color',
+				'is_sticky_module'                => $et_pb_social_media_follow_sticky,
+			)
+		);
 
 		// Icon Size.
 		if ( 'off' !== $use_icon_font_size ) {
-			// Proccess for each devices.
-			foreach ( $icon_font_size_values as $font_size_key => $font_size_value ) {
-				if ( '' === $font_size_value ) {
-					continue;
-				}
+			// Calculate icon size + its wrapper dimension.
+			$this->generate_styles(
+				array(
+					'base_attr_name'                  => 'icon_font_size',
+					'selector'                        => '.et_pb_social_media_follow %%order_class%% .icon:before',
+					'selector_wrapper'                => '.et_pb_social_media_follow %%order_class%% .icon',
+					'hover_pseudo_selector_location'  => 'suffix',
+					'sticky_pseudo_selector_location' => 'prefix',
+					'render_slug'                     => $render_slug,
+					'type'                            => 'range',
+					'css_property'                    => 'right',
+					'is_sticky_module'                => $et_pb_social_media_follow_sticky,
 
-				$media_query = 'general';
-				if ( 'tablet' === $font_size_key ) {
-					$media_query = ET_Builder_Element::get_media_query( 'max_width_980' );
-				} elseif ( 'phone' === $font_size_key ) {
-					$media_query = ET_Builder_Element::get_media_query( 'max_width_767' );
-				}
-
-				$font_size_value_int    = (int) $font_size_value;
-				$font_size_value_unit   = str_replace( $font_size_value_int, '', $font_size_value );
-				$font_size_value_double = 0 < $font_size_value_int ? $font_size_value_int * 2 : 0;
-				$font_size_value_double = (string) $font_size_value_double . $font_size_value_unit;
-
-				// Icon.
-				ET_Builder_Element::set_style( $render_slug, array(
-					'selector'    => '.et_pb_social_media_follow %%order_class%% .icon:before',
-					'declaration' => sprintf(
-						'font-size:%1$s; line-height:%2$s; height:%2$s; width:%2$s;',
-						esc_html( $font_size_value ),
-						esc_html( $font_size_value_double )
+					// processed attr value can't be directly assigned to single css property so
+					// custom processor is needed to render this attr. Processor required is 100%
+					// identical to social media follow module's. Thus it is being re-used.
+					'processor'                       => array(
+						'ET_Builder_Module_Helper_Style_Processor',
+						'process_social_media_icon_font_size',
 					),
-					'media_query' => $media_query,
-				) );
-
-				// Icon Wrapper.
-				ET_Builder_Element::set_style( $render_slug, array(
-					'selector'    => '.et_pb_social_media_follow %%order_class%% .icon',
-					'declaration' => sprintf(
-						'height:%1$s; width:%1$s;',
-						esc_html( $font_size_value_double )
-					),
-					'media_query' => $media_query,
-				) );
-			}
-
-			// Icon hover styles.
-			if ( et_builder_is_hover_enabled( 'icon_font_size', $this->props ) && ! empty( $icon_font_size_hover ) ) {
-				$icon_font_size_hover_int    = (int) $icon_font_size_hover;
-				$icon_font_size_hover_unit   = str_replace( $icon_font_size_hover_int, '', $icon_font_size_hover );
-				$icon_font_size_hover_double = 0 < $icon_font_size_hover_int ? $icon_font_size_hover_int * 2 : 0;
-				$icon_font_size_hover_double = (string) $icon_font_size_hover_double . $icon_font_size_hover_unit;
-
-				// Icon.
-				ET_Builder_Element::set_style( $render_slug, array(
-					'selector'    => '.et_pb_social_media_follow %%order_class%% .icon:hover:before',
-					'declaration' => sprintf(
-						'font-size:%1$s; line-height:%2$s; height:%2$s; width:%2$s;',
-						esc_html( $icon_font_size_hover ),
-						esc_html( $icon_font_size_hover_double )
-					),
-				) );
-
-				// Icon Wrapper.
-				ET_Builder_Element::set_style( $render_slug, array(
-					'selector'    => '.et_pb_social_media_follow %%order_class%% .icon:hover',
-					'declaration' => sprintf(
-						'height:%1$s; width:%1$s;',
-						esc_html( $icon_font_size_hover_double )
-					),
-				) );
-			}
+				)
+			);
 		}
 
 		$social_network             = ET_Builder_Element::add_module_order_class( $social_network, $render_slug );
@@ -478,23 +439,27 @@ class ET_Builder_Module_Social_Media_Follow_Item extends ET_Builder_Module {
 		$attrs = $this->props;
 
 		// Module classnames
-		$this->add_classname( array(
-			'et_pb_social_icon',
-			'et_pb_social_network_link',
-		) );
+		$this->add_classname(
+			array(
+				'et_pb_social_icon',
+				'et_pb_social_network_link',
+			)
+		);
 
 		if ( '' !== $social_network ) {
 			$this->add_classname( sprintf( ' et-social-%s', esc_attr( $social_network ) ) );
 		}
 
 		// Remove automatically added classnames
-		$this->remove_classname( array(
-			$render_slug,
-			'et_pb_module',
-			'et_pb_section_video',
-			'et_pb_preload',
-			'et_pb_section_parallax',
-		) );
+		$this->remove_classname(
+			array(
+				$render_slug,
+				'et_pb_module',
+				'et_pb_section_video',
+				'et_pb_preload',
+				'et_pb_section_parallax',
+			)
+		);
 
 		// Format i18n link title
 		$social_network_link_title = sprintf(
@@ -508,14 +473,16 @@ class ET_Builder_Module_Social_Media_Follow_Item extends ET_Builder_Module {
 		// Prepare CSS classes for the link
 		$social_network_link_classes = array( 'icon', 'et_pb_with_border' );
 		if ( '' !== $video_background ) {
-			array_push( $social_network_link_classes,
+			array_push(
+				$social_network_link_classes,
 				'et_pb_section_video',
 				'et_pb_preload',
 				$video_background
 			);
 		}
 		if ( '' !== $parallax_image_background ) {
-			array_push( $social_network_link_classes,
+			array_push(
+				$social_network_link_classes,
 				'et_pb_section_parallax'
 			);
 		}
@@ -535,4 +502,4 @@ class ET_Builder_Module_Social_Media_Follow_Item extends ET_Builder_Module {
 	}
 }
 
-new ET_Builder_Module_Social_Media_Follow_Item;
+new ET_Builder_Module_Social_Media_Follow_Item();

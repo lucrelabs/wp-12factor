@@ -35,14 +35,14 @@ class ET_Builder_Module_Woocommerce_Breadcrumb extends ET_Builder_Module {
 			'general'  => array(
 				'toggles' => array(
 					'main_content' => array(
-						'title' => esc_html__( 'Content', 'et_builder' ),
+						'title' => et_builder_i18n( 'Content' ),
 					),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
 					'text' => array(
-						'title'             => esc_html__( 'Text', 'et_builder' ),
+						'title'             => et_builder_i18n( 'Text' ),
 						'priority'          => 45,
 						'tabbed_subtoggles' => true,
 						'bb_icons_support'  => true,
@@ -64,7 +64,7 @@ class ET_Builder_Module_Woocommerce_Breadcrumb extends ET_Builder_Module {
 		$this->advanced_fields = array(
 			'fonts'          => array(
 				'body' => array(
-					'label'           => esc_html__( 'Text', 'et_builder' ),
+					'label'           => et_builder_i18n( 'Text' ),
 					'css'             => array(
 						'main'       => '%%order_class%%, %%order_class%% .et_pb_module_inner, %%order_class%% .woocommerce-breadcrumb, %%order_class%% .woocommerce-breadcrumb a',
 						'text_align' => '%%order_class%%',
@@ -80,7 +80,7 @@ class ET_Builder_Module_Woocommerce_Breadcrumb extends ET_Builder_Module {
 					'hide_text_align' => true,
 				),
 				'link' => array(
-					'label'           => esc_html__( 'Link', 'et_builder' ),
+					'label'           => et_builder_i18n( 'Link' ),
 					'css'             => array(
 						'main' => '%%order_class%%.et_pb_wc_breadcrumb a, %%order_class%%.et_pb_wc_breadcrumb .woocommerce-breadcrumb a',
 					),
@@ -101,7 +101,7 @@ class ET_Builder_Module_Woocommerce_Breadcrumb extends ET_Builder_Module {
 				),
 			),
 			'margin_padding' => array(
-				'css'            => array(
+				'css' => array(
 					'margin'    => '%%order_class%% .woocommerce-breadcrumb',
 					'important' => 'all',
 				),
@@ -127,7 +127,7 @@ class ET_Builder_Module_Woocommerce_Breadcrumb extends ET_Builder_Module {
 
 		$this->help_videos = array(
 			array(
-				'id'   => esc_html( '7X03vBPYJ1o' ),
+				'id'   => '7X03vBPYJ1o',
 				'name' => esc_html__( 'Divi WooCommerce Modules', 'et_builder' ),
 			),
 		);
@@ -314,14 +314,19 @@ class ET_Builder_Module_Woocommerce_Breadcrumb extends ET_Builder_Module {
 		 * Breadcrumb separator cannot have Multi-view options as it is not enclosed in a HTML tag.
 		 * Element being enclose in a tag is essential for the Multi-view options to work.
 		 */
-		$multi_view_attrs = $multi_view->render_attrs( array(
-			'content' => '{{breadcrumb_home_text}}',
-			'attrs'   => array(
-				'href'                      => '{{breadcrumb_home_url}}',
-				'data-breadcrumb-separator' => '{{breadcrumb_separator}}',
+		$multi_view_attrs = $multi_view->render_attrs(
+			array(
+				'content' => '{{breadcrumb_home_text}}',
+				'attrs'   => array(
+					'href'                      => '{{breadcrumb_home_url}}',
+					'data-breadcrumb-separator' => '{{breadcrumb_separator}}',
+				),
+				'target'  => '%%order_class%% .woocommerce-breadcrumb a:first-child',
 			),
-			'target'  => '%%order_class%% .woocommerce-breadcrumb a:first-child',
-		), false, null, true );
+			false,
+			null,
+			true
+		);
 
 		if ( $multi_view_attrs && is_array( $multi_view_attrs ) ) {
 			$inner_wrapper_attrs = array_merge( $inner_wrapper_attrs, $multi_view_attrs );

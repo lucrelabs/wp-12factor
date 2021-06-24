@@ -31,7 +31,7 @@ class ET_Builder_Module_Woocommerce_Gallery extends ET_Builder_Module_Gallery {
 		unset( $this->settings_modal_toggles['general']['toggles']['main_content'] );
 
 		// Rename Elements Option group to Content.
-		$this->settings_modal_toggles['general']['toggles']['elements'] = esc_html__( 'Content', 'et_builder' );
+		$this->settings_modal_toggles['general']['toggles']['elements'] = et_builder_i18n( 'Content' );
 
 		// Intentionally removing inherited advanced options group.
 		$this->advanced_fields['link_options'] = false;
@@ -54,28 +54,28 @@ class ET_Builder_Module_Woocommerce_Gallery extends ET_Builder_Module_Gallery {
 		$this->advanced_fields['fonts']['caption']['line_height']    = array(
 			'default' => '1em',
 		);
-		$this->advanced_fields['position_fields']                           = array(
+		$this->advanced_fields['position_fields']                    = array(
 			'default' => 'relative',
 		);
 
 		$this->custom_css_fields = array(
-			'gallery_item' => array(
-				'label'       => esc_html__( 'Gallery Item', 'et_builder' ),
-				'selector'    => '.et_pb_gallery_item',
+			'gallery_item'              => array(
+				'label'    => esc_html__( 'Gallery Item', 'et_builder' ),
+				'selector' => '.et_pb_gallery_item',
 			),
-			'gallery_pagination' => array(
-				'label'       => esc_html__( 'Gallery Pagination', 'et_builder' ),
-				'selector'    => '.et-pb-controllers a',
+			'gallery_pagination'        => array(
+				'label'    => esc_html__( 'Gallery Pagination', 'et_builder' ),
+				'selector' => '.et-pb-controllers a',
 			),
 			'gallery_pagination_active' => array(
-				'label'       => esc_html__( 'Pagination Active Page', 'et_builder' ),
-				'selector'    => '.et-pb-controllers a.et-pb-active-control',
+				'label'    => esc_html__( 'Pagination Active Page', 'et_builder' ),
+				'selector' => '.et-pb-controllers a.et-pb-active-control',
 			),
 		);
 
 		$this->help_videos = array(
 			array(
-				'id'   => esc_html( '7X03vBPYJ1o' ),
+				'id'   => '7X03vBPYJ1o',
 				'name' => esc_html__( 'Divi WooCommerce Modules', 'et_builder' ),
 			),
 		);
@@ -191,7 +191,7 @@ class ET_Builder_Module_Woocommerce_Gallery extends ET_Builder_Module_Gallery {
 			global $product;
 		} else {
 			// Generate valid `gallery_ids` value based `product` attribute.
-			$product           = ET_Builder_Module_Helper_Woocommerce_Modules::get_product( $args['product'] );
+			$product = ET_Builder_Module_Helper_Woocommerce_Modules::get_product( $args['product'] );
 		}
 
 		$attachment_ids = array();
@@ -202,7 +202,7 @@ class ET_Builder_Module_Woocommerce_Gallery extends ET_Builder_Module_Gallery {
 		}
 
 		// Modify `gallery_ids` value.
-		$args['gallery_ids'] =  $attachment_ids;
+		$args['gallery_ids'] = $attachment_ids;
 
 		// Don't display Placeholder when no Gallery image is available.
 		// @see https://github.com/elegantthemes/submodule-builder/pull/6706#issuecomment-542275647

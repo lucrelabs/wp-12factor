@@ -12,14 +12,14 @@ class ET_Builder_Module_Login extends ET_Builder_Module {
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Text', 'et_builder' ),
+					'main_content' => et_builder_i18n( 'Text' ),
 					'redirect'     => esc_html__( 'Redirect', 'et_builder' ),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
-					'text'   => array(
-						'title'    => esc_html__( 'Text', 'et_builder' ),
+					'text' => array(
+						'title'    => et_builder_i18n( 'Text' ),
 						'priority' => 49,
 					),
 				),
@@ -27,11 +27,11 @@ class ET_Builder_Module_Login extends ET_Builder_Module {
 		);
 
 		$this->advanced_fields = array(
-			'fonts'                 => array(
+			'fonts'          => array(
 				'header' => array(
-					'label'    => esc_html__( 'Title', 'et_builder' ),
-					'css'      => array(
-						'main' => "{$this->main_css_element} h2, {$this->main_css_element} h1.et_pb_module_header, {$this->main_css_element} h3.et_pb_module_header, {$this->main_css_element} h4.et_pb_module_header, {$this->main_css_element} h5.et_pb_module_header, {$this->main_css_element} h6.et_pb_module_header",
+					'label'        => et_builder_i18n( 'Title' ),
+					'css'          => array(
+						'main'      => "{$this->main_css_element} h2, {$this->main_css_element} h1.et_pb_module_header, {$this->main_css_element} h3.et_pb_module_header, {$this->main_css_element} h4.et_pb_module_header, {$this->main_css_element} h5.et_pb_module_header, {$this->main_css_element} h6.et_pb_module_header",
 						'important' => 'all',
 					),
 					'header_level' => array(
@@ -39,8 +39,8 @@ class ET_Builder_Module_Login extends ET_Builder_Module {
 					),
 				),
 				'body'   => array(
-					'label'    => esc_html__( 'Body', 'et_builder' ),
-					'css'      => array(
+					'label'          => et_builder_i18n( 'Body' ),
+					'css'            => array(
 						'line_height' => "{$this->main_css_element} p",
 						'font'        => "{$this->main_css_element}, {$this->main_css_element} .et_pb_newsletter_description_content, {$this->main_css_element} p, {$this->main_css_element} span",
 						'text_shadow' => "{$this->main_css_element}, {$this->main_css_element} .et_pb_newsletter_description_content, {$this->main_css_element} p, {$this->main_css_element} span",
@@ -59,15 +59,15 @@ class ET_Builder_Module_Login extends ET_Builder_Module {
 					'important' => 'all',
 				),
 			),
-			'button'                => array(
+			'button'         => array(
 				'button' => array(
-					'label' => esc_html__( 'Button', 'et_builder' ),
-					'css' => array(
-						'main' => "{$this->main_css_element} .et_pb_newsletter_button.et_pb_button",
+					'label'          => et_builder_i18n( 'Button' ),
+					'css'            => array(
+						'main'         => "{$this->main_css_element} .et_pb_newsletter_button.et_pb_button",
 						'limited_main' => "{$this->main_css_element} .et_pb_newsletter_button.et_pb_button",
 					),
-					'no_rel_attr' => true,
-					'box_shadow'  => array(
+					'no_rel_attr'    => true,
+					'box_shadow'     => array(
 						'css' => array(
 							'main' => '%%order_class%% .et_pb_button',
 						),
@@ -79,39 +79,42 @@ class ET_Builder_Module_Login extends ET_Builder_Module {
 					),
 				),
 			),
-			'background'            => array(
+			'background'     => array(
 				'has_background_color_toggle' => true,
-				'use_background_color' => true,
-				'options' => array(
-					'background_color' => array(
-						'depends_show_if'  => 'on',
-						'default'          => et_builder_accent_color(),
+				'use_background_color'        => true,
+				'options'                     => array(
+					'background_color'     => array(
+						'depends_show_if' => 'on',
+						'default'         => et_builder_accent_color(),
 					),
 					'use_background_color' => array(
-						'default'          => 'on',
+						'default' => 'on',
 					),
 				),
 			),
-			'text'                  => array(
+			'text'           => array(
 				'use_background_layout' => true,
-				'options' => array(
+				'options'               => array(
 					'text_orientation'  => array(
-						'default'          => 'left',
+						'default' => 'left',
 					),
 					'background_layout' => array(
 						'default' => 'dark',
-						'hover' => 'tabs',
+						'hover'   => 'tabs',
 					),
 				),
-				'css' => array(
-					'main' => implode( ', ', array(
-						'%%order_class%% .et_pb_module_header',
-						'%%order_class%% .et_pb_newsletter_description_content',
-						'%%order_class%% .et_pb_forgot_password a',
-					) )
-				)
+				'css'                   => array(
+					'main' => implode(
+						', ',
+						array(
+							'%%order_class%% .et_pb_module_header',
+							'%%order_class%% .et_pb_newsletter_description_content',
+							'%%order_class%% .et_pb_forgot_password a',
+						)
+					),
+				),
 			),
-			'form_field'           => array(
+			'form_field'     => array(
 				'form_field' => array(
 					'label'         => esc_html__( 'Fields', 'et_builder' ),
 					'css'           => array(
@@ -137,7 +140,7 @@ class ET_Builder_Module_Login extends ET_Builder_Module {
 								'main' => array(
 									'border_radii'  => '%%order_class%% .et_pb_newsletter_form p input',
 									'border_styles' => '%%order_class%% .et_pb_newsletter_form p input',
-								)
+								),
 							),
 							'label_prefix' => esc_html__( 'Fields', 'et_builder' ),
 						),
@@ -147,13 +150,13 @@ class ET_Builder_Module_Login extends ET_Builder_Module {
 								'main' => array(
 									'border_radii'  => '%%order_class%% .et_pb_newsletter_form p input:focus',
 									'border_styles' => '%%order_class%% .et_pb_newsletter_form p input:focus',
-								)
+								),
 							),
 							'label_prefix' => esc_html__( 'Fields Focus', 'et_builder' ),
 						),
 					),
 					'font_field'    => array(
-						'css'         => array(
+						'css' => array(
 							'main'        => '%%order_class%% .et_pb_newsletter_form .input',
 							'hover'       => '%%order_class%% .et_pb_newsletter_form .input:hover',
 							'text_shadow' => "{$this->main_css_element} input",
@@ -165,7 +168,7 @@ class ET_Builder_Module_Login extends ET_Builder_Module {
 		);
 
 		$this->custom_css_fields = array(
-			'newsletter_title' => array(
+			'newsletter_title'       => array(
 				'label'    => esc_html__( 'Login Title', 'et_builder' ),
 				'selector' => "{$this->main_css_element} h2, {$this->main_css_element} h1.et_pb_module_header, {$this->main_css_element} h3.et_pb_module_header, {$this->main_css_element} h4.et_pb_module_header, {$this->main_css_element} h5.et_pb_module_header, {$this->main_css_element} h6.et_pb_module_header",
 			),
@@ -173,24 +176,24 @@ class ET_Builder_Module_Login extends ET_Builder_Module {
 				'label'    => esc_html__( 'Login Description', 'et_builder' ),
 				'selector' => '.et_pb_newsletter_description',
 			),
-			'newsletter_form' => array(
+			'newsletter_form'        => array(
 				'label'    => esc_html__( 'Login Form', 'et_builder' ),
 				'selector' => '.et_pb_newsletter_form',
 			),
-			'newsletter_fields' => array(
+			'newsletter_fields'      => array(
 				'label'    => esc_html__( 'Login Fields', 'et_builder' ),
 				'selector' => '.et_pb_newsletter_form input',
 			),
-			'newsletter_button' => array(
-				'label'    => esc_html__( 'Login Button', 'et_builder' ),
-				'selector' => '.et_pb_login .et_pb_login_form .et_pb_newsletter_button.et_pb_button',
+			'newsletter_button'      => array(
+				'label'                    => esc_html__( 'Login Button', 'et_builder' ),
+				'selector'                 => '.et_pb_login .et_pb_login_form .et_pb_newsletter_button.et_pb_button',
 				'no_space_before_selector' => true,
 			),
 		);
 
 		$this->help_videos = array(
 			array(
-				'id'   => esc_html( '6ZEw-Izfjg8' ),
+				'id'   => '6ZEw-Izfjg8',
 				'name' => esc_html__( 'An introduction to the Login module', 'et_builder' ),
 			),
 		);
@@ -198,8 +201,8 @@ class ET_Builder_Module_Login extends ET_Builder_Module {
 
 	function get_fields() {
 		$fields = array(
-			'title' => array(
-				'label'           => esc_html__( 'Title', 'et_builder' ),
+			'title'                 => array(
+				'label'           => et_builder_i18n( 'Title' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
 				'description'     => esc_html__( 'Choose a title of your login box.', 'et_builder' ),
@@ -209,26 +212,26 @@ class ET_Builder_Module_Login extends ET_Builder_Module {
 				'hover'           => 'tabs',
 			),
 			'current_page_redirect' => array(
-				'label'           => esc_html__( 'Redirect To The Current Page', 'et_builder' ),
-				'type'            => 'yes_no_button',
-				'option_category' => 'configuration',
-				'options'         => array(
-					'off' => esc_html__( 'No', 'et_builder' ),
-					'on'  => esc_html__( 'Yes', 'et_builder' ),
+				'label'            => esc_html__( 'Redirect To The Current Page', 'et_builder' ),
+				'type'             => 'yes_no_button',
+				'option_category'  => 'configuration',
+				'options'          => array(
+					'off' => et_builder_i18n( 'No' ),
+					'on'  => et_builder_i18n( 'Yes' ),
 				),
 				'default_on_front' => 'off',
-				'toggle_slug'     => 'redirect',
-				'description'     => esc_html__( 'Here you can choose whether the user should be redirected back to the current page after logging in.', 'et_builder' ),
+				'toggle_slug'      => 'redirect',
+				'description'      => esc_html__( 'Here you can choose whether the user should be redirected back to the current page after logging in.', 'et_builder' ),
 			),
-			'content' => array(
-				'label'             => esc_html__( 'Body', 'et_builder' ),
-				'type'              => 'tiny_mce',
-				'option_category'   => 'basic_option',
-				'description'       => esc_html__( 'Input the main text content for your module here.', 'et_builder' ),
-				'toggle_slug'       => 'main_content',
-				'dynamic_content'   => 'text',
-				'mobile_options'    => true,
-				'hover'             => 'tabs',
+			'content'               => array(
+				'label'           => et_builder_i18n( 'Body' ),
+				'type'            => 'tiny_mce',
+				'option_category' => 'basic_option',
+				'description'     => esc_html__( 'Input the main text content for your module here.', 'et_builder' ),
+				'toggle_slug'     => 'main_content',
+				'dynamic_content' => 'text',
+				'mobile_options'  => true,
+				'hover'           => 'tabs',
 			),
 		);
 
@@ -240,27 +243,29 @@ class ET_Builder_Module_Login extends ET_Builder_Module {
 	}
 
 	function render( $attrs, $content = null, $render_slug ) {
-		$multi_view                        = et_pb_multi_view_options( $this );
-		$module_id                         = $this->props['module_id'];
-		$title                             = $multi_view->render_element( array(
-			'tag'     => et_pb_process_header_level( $this->props['header_level'], 'h2' ),
-			'content' => '{{title}}',
-			'attrs'   => array(
-				'class' => 'et_pb_module_header',
-			),
-		) );
-		$background_color                  = $this->props['background_color'];
-		$use_background_color              = $this->props['use_background_color'];
-		$current_page_redirect             = $this->props['current_page_redirect'];
-		$button_custom                     = $this->props['custom_button'];
-		$header_level                      = $this->props['header_level'];
-		$content                           = $this->content;
-		$use_focus_border_color            = $this->props['use_focus_border_color'];
+		$multi_view             = et_pb_multi_view_options( $this );
+		$module_id              = $this->props['module_id'];
+		$title                  = $multi_view->render_element(
+			array(
+				'tag'     => et_pb_process_header_level( $this->props['header_level'], 'h2' ),
+				'content' => '{{title}}',
+				'attrs'   => array(
+					'class' => 'et_pb_module_header',
+				),
+			)
+		);
+		$background_color       = $this->props['background_color'];
+		$use_background_color   = $this->props['use_background_color'];
+		$current_page_redirect  = $this->props['current_page_redirect'];
+		$button_custom          = $this->props['custom_button'];
+		$header_level           = $this->props['header_level'];
+		$content                = $this->content;
+		$use_focus_border_color = $this->props['use_focus_border_color'];
 
-		$custom_icon_values                = et_pb_responsive_options()->get_property_values( $this->props, 'button_icon' );
-		$custom_icon                       = isset( $custom_icon_values['desktop'] ) ? $custom_icon_values['desktop'] : '';
-		$custom_icon_tablet                = isset( $custom_icon_values['tablet'] ) ? $custom_icon_values['tablet'] : '';
-		$custom_icon_phone                 = isset( $custom_icon_values['phone'] ) ? $custom_icon_values['phone'] : '';
+		$custom_icon_values = et_pb_responsive_options()->get_property_values( $this->props, 'button_icon' );
+		$custom_icon        = isset( $custom_icon_values['desktop'] ) ? $custom_icon_values['desktop'] : '';
+		$custom_icon_tablet = isset( $custom_icon_values['tablet'] ) ? $custom_icon_values['tablet'] : '';
+		$custom_icon_phone  = isset( $custom_icon_values['phone'] ) ? $custom_icon_values['phone'] : '';
 
 		$redirect_url = 'on' === $current_page_redirect
 			? ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
@@ -269,14 +274,15 @@ class ET_Builder_Module_Login extends ET_Builder_Module {
 		if ( is_user_logged_in() && ! is_customize_preview() && ! is_et_pb_preview() ) {
 			$current_user = wp_get_current_user();
 
-			$content .= sprintf( '<br/>%1$s <a href="%2$s">%3$s</a>',
+			$content .= sprintf(
+				'<br/>%1$s <a href="%2$s">%3$s</a>',
 				sprintf( esc_html__( 'Logged in as %1$s', 'et_builder' ), esc_html( $current_user->display_name ) ),
 				esc_url( wp_logout_url( $redirect_url ) ),
 				esc_html__( 'Log out', 'et_builder' )
 			);
 		}
 
-		$video_background = $this->video_background();
+		$video_background          = $this->video_background();
 		$parallax_image_background = $this->get_parallax_image_background();
 
 		$form = '';
@@ -285,7 +291,8 @@ class ET_Builder_Module_Login extends ET_Builder_Module {
 			$username = esc_html__( 'Username', 'et_builder' );
 			$password = esc_html__( 'Password', 'et_builder' );
 
-			$form = sprintf( '
+			$form = sprintf(
+				'
 				<div class="et_pb_newsletter_form et_pb_login_form">
 					<form action="%7$s" method="post">
 						<p class="et_pb_contact_form_field">
@@ -331,11 +338,13 @@ class ET_Builder_Module_Login extends ET_Builder_Module {
 		$data_background_layout = et_pb_background_layout_options()->get_background_layout_attrs( $this->props );
 
 		// Module classnames
-		$this->add_classname( array(
-			'et_pb_newsletter',
-			'clearfix',
-			$this->get_text_orientation_classname()
-		) );
+		$this->add_classname(
+			array(
+				'et_pb_newsletter',
+				'clearfix',
+				$this->get_text_orientation_classname(),
+			)
+		);
 
 		// Background layout class names.
 		$background_layout_class_names = et_pb_background_layout_options()->get_background_layout_class( $this->props );
@@ -357,39 +366,45 @@ class ET_Builder_Module_Login extends ET_Builder_Module {
 			$this->add_classname( 'et_pb_newsletter_description_no_content' );
 		}
 
-		$content = $multi_view->render_element( array(
-			'tag'      => 'div',
-			'content'  => '{{content}}',
-			'required' => false,
-			'attrs'    => array(
-				'class' => 'et_pb_newsletter_description_content',
-			),
-		) );
+		$content = $multi_view->render_element(
+			array(
+				'tag'      => 'div',
+				'content'  => '{{content}}',
+				'required' => false,
+				'attrs'    => array(
+					'class' => 'et_pb_newsletter_description_content',
+				),
+			)
+		);
 
-		$content_wrapper = $multi_view->render_element( array(
-			'tag'     => 'div',
-			'content' => "{$title}{$content}",
-			'attrs'   => array(
-				'class' => 'et_pb_newsletter_description',
-			),
-			'classes' => array(
-				'et_multi_view_hidden' => array(
-					'title'   => '__empty',
-					'content' => '__empty',
+		$content_wrapper = $multi_view->render_element(
+			array(
+				'tag'     => 'div',
+				'content' => "{$title}{$content}",
+				'attrs'   => array(
+					'class' => 'et_pb_newsletter_description',
 				),
-			),
-		) );
+				'classes' => array(
+					'et_multi_view_hidden' => array(
+						'title'   => '__empty',
+						'content' => '__empty',
+					),
+				),
+			)
+		);
 
-		$wrapper_multi_view_classes = $multi_view->render_attrs( array(
-			'classes' => array(
-				'et_pb_newsletter_description_no_title' => array(
-					'title' => '__empty',
+		$wrapper_multi_view_classes = $multi_view->render_attrs(
+			array(
+				'classes' => array(
+					'et_pb_newsletter_description_no_title' => array(
+						'title' => '__empty',
+					),
+					'et_pb_newsletter_description_no_content' => array(
+						'content' => '__empty',
+					),
 				),
-				'et_pb_newsletter_description_no_content' => array(
-					'content' => '__empty',
-				),
-			),
-		) );
+			)
+		);
 
 		$output = sprintf(
 			'<div%4$s class="%2$s"%7$s%7$s>
@@ -418,9 +433,9 @@ class ET_Builder_Module_Login extends ET_Builder_Module {
 	 *
 	 * @see ET_Builder_Module_Helper_MultiViewOptions::filter_value
 	 *
-	 * @param mixed $raw_value Props raw value.
-	 * @param array $args {
-	 *     Context data.
+	 * @param mixed                                     $raw_value Props raw value.
+	 * @param array                                     $args {
+	 *                                         Context data.
 	 *
 	 *     @type string $context      Context param: content, attrs, visibility, classes.
 	 *     @type string $name         Module options props name.
@@ -442,7 +457,8 @@ class ET_Builder_Module_Login extends ET_Builder_Module {
 				? ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
 				: '';
 
-			$raw_value .= sprintf( '%4$s%1$s <a href="%2$s">%3$s</a>',
+			$raw_value .= sprintf(
+				'%4$s%1$s <a href="%2$s">%3$s</a>',
 				sprintf( esc_html__( 'Logged in as %1$s', 'et_builder' ), esc_html( $current_user->display_name ) ),
 				esc_url( wp_logout_url( esc_url( $redirect_url ) ) ),
 				esc_html__( 'Log out', 'et_builder' ),
@@ -455,11 +471,11 @@ class ET_Builder_Module_Login extends ET_Builder_Module {
 		);
 
 		if ( $raw_value && in_array( $name, $fields_need_escape, true ) ) {
-			return $this->_esc_attr( $multi_view->get_name_by_mode( $name, $mode ) );
+			return $this->_esc_attr( $multi_view->get_name_by_mode( $name, $mode ), 'none', $raw_value );
 		}
 
 		return $raw_value;
 	}
 }
 
-new ET_Builder_Module_Login;
+new ET_Builder_Module_Login();

@@ -51,9 +51,8 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 	public function set_template() {
 		$template = $this->template;
 		if ( $template->is_enabled() && ! $template->has( 'border' ) ) {
-			$template->add(
-				'border',
-				$this->get_fields( $template->placeholders( array(
+			$template_placeholders = $template->placeholders(
+				array(
 					'suffix'          => null,
 					'label_prefix'    => null,
 					'tab_slug'        => null,
@@ -69,8 +68,9 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 							'style' => null,
 						),
 					),
-				) ) )
+				)
 			);
+			$template->add( 'border', $this->get_fields( $template_placeholders ) );
 		}
 	}
 
@@ -86,24 +86,27 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 	 * @return array Border fields.
 	 */
 	public function get_fields( array $args = array(), $return_template_id = false ) {
-		$settings = shortcode_atts( array(
-			'suffix'          => '',
-			'label_prefix'    => '',
-			'tab_slug'        => 'advanced',
-			'toggle_slug'     => 'border',
-			'color_type'      => 'color-alpha',
-			'depends_on'      => null,
-			'depends_show_if' => null,
-			'use_radius'      => true,
-			'defaults'        => array(
-				'border_radii'  => 'on||||',
-				'border_styles' => array(
-					'width' => '0px',
-					'color' => '#333333',
-					'style' => 'solid',
+		$settings = shortcode_atts(
+			array(
+				'suffix'          => '',
+				'label_prefix'    => '',
+				'tab_slug'        => 'advanced',
+				'toggle_slug'     => 'border',
+				'color_type'      => 'color-alpha',
+				'depends_on'      => null,
+				'depends_show_if' => null,
+				'use_radius'      => true,
+				'defaults'        => array(
+					'border_radii'  => 'on||||',
+					'border_styles' => array(
+						'width' => '0px',
+						'color' => '#333333',
+						'style' => 'solid',
+					),
 				),
 			),
-		), $args );
+			$args
+		);
 
 		if ( $this->template->is_enabled() && $this->template->has( 'border' ) ) {
 			return $this->template->create( 'border', $settings, $return_template_id );
@@ -115,7 +118,7 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 		$defaultUnit        = 'px';
 
 		if ( $settings['use_radius'] ) {
-			$additional_options["border_radii{$suffix}"] = array(
+			$additional_options[ "border_radii{$suffix}" ] = array(
 				'label'           => sprintf( '%1$s%2$s', '' !== $settings['label_prefix'] ? sprintf( '%1$s ', $settings['label_prefix'] ) : '', esc_html__( 'Rounded Corners', 'et_builder' ) ),
 				'type'            => 'border-radius',
 				'hover'           => 'tabs',
@@ -128,13 +131,14 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 				'description'     => esc_html__( 'Here you can control the corner radius of this element. Enable the link icon to control all four corners at once, or disable to define custom values for each.', 'et_builder' ),
 				'tooltip'         => esc_html__( 'Sync values', 'et_builder' ),
 				'mobile_options'  => true,
+				'sticky'          => true,
 				'allowed_units'   => array( '%', 'em', 'rem', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw' ),
 			);
 		} else {
-			$additional_options["border_radii{$suffix}"] = array();
+			$additional_options[ "border_radii{$suffix}" ] = array();
 		}
 
-		$additional_options["border_styles{$suffix}"] = array(
+		$additional_options[ "border_styles{$suffix}" ] = array(
 			'label'               => sprintf( '%1$s%2$s', '' !== $settings['label_prefix'] ? sprintf( '%1$s ', $settings['label_prefix'] ) : '', esc_html__( 'Border Styles', 'et_builder' ) ),
 			'description'         => esc_html__( 'You can add borders to any element, customize their appearance and assign unique styles to each edge.', 'et_builder' ),
 			'tab_slug'            => $settings['tab_slug'],
@@ -144,7 +148,7 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 			'option_category'     => 'border',
 			'composite_type'      => 'tabbed',
 			'composite_structure' => array(
-				"border_all"    => array(
+				'border_all'    => array(
 					'icon'     => 'border-all',
 					'controls' => array(
 						"border_width_all{$suffix}" => array(
@@ -156,31 +160,35 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 							'default_unit'   => $defaultUnit,
 							'allowed_units'  => array( 'em', 'rem', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw' ),
 							'range_settings' => array(
-								'min'  => 0,
-								'max'  => 50,
-								'step' => 1,
+								'min'       => 0,
+								'max'       => 50,
+								'step'      => 1,
+								'min_limit' => 0,
 							),
-							'context' => "border_styles{$suffix}",
+							'context'        => "border_styles{$suffix}",
 							'mobile_options' => true,
+							'sticky'         => true,
 						),
 						"border_color_all{$suffix}" => array(
-							'label'   => sprintf( '%1$s%2$s', '' !== $settings['label_prefix'] ? sprintf( '%1$s ', $settings['label_prefix'] ) : '', esc_html__( 'Border Color', 'et_builder' ) ),
-							'description' => esc_html__( 'Pick a color to be used for the border.', 'et_builder' ),
-							'type'    => $settings['color_type'],
-							'hover'   => 'tabs',
-							'default' => $defaults['color'],
-							'context' => "border_styles{$suffix}",
+							'label'          => sprintf( '%1$s%2$s', '' !== $settings['label_prefix'] ? sprintf( '%1$s ', $settings['label_prefix'] ) : '', esc_html__( 'Border Color', 'et_builder' ) ),
+							'description'    => esc_html__( 'Pick a color to be used for the border.', 'et_builder' ),
+							'type'           => $settings['color_type'],
+							'hover'          => 'tabs',
+							'default'        => $defaults['color'],
+							'context'        => "border_styles{$suffix}",
 							'mobile_options' => true,
+							'sticky'         => true,
 						),
 						"border_style_all{$suffix}" => array(
-							'label'   => sprintf( '%1$s%2$s', '' !== $settings['label_prefix'] ? sprintf( '%1$s ', $settings['label_prefix'] ) : '', esc_html__( 'Border Style', 'et_builder' ) ),
-							'description' => esc_html__( 'Borders support various different styles, each of which will change the shape of the border element.', 'et_builder' ),
-							'type'    => 'select',
-							'options' => et_builder_get_border_styles(),
-							'default' => $defaults['style'],
-							'context' => "border_styles{$suffix}",
-							'hover'   => 'tabs',
+							'label'          => sprintf( '%1$s%2$s', '' !== $settings['label_prefix'] ? sprintf( '%1$s ', $settings['label_prefix'] ) : '', esc_html__( 'Border Style', 'et_builder' ) ),
+							'description'    => esc_html__( 'Borders support various different styles, each of which will change the shape of the border element.', 'et_builder' ),
+							'type'           => 'select',
+							'options'        => et_builder_get_border_styles(),
+							'default'        => $defaults['style'],
+							'context'        => "border_styles{$suffix}",
+							'hover'          => 'tabs',
 							'mobile_options' => true,
+							'sticky'         => true,
 						),
 					),
 				),
@@ -197,31 +205,35 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 							'default_unit'   => $defaultUnit,
 							'allowed_units'  => array( 'em', 'rem', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw' ),
 							'range_settings' => array(
-								'min'  => 0,
-								'max'  => 50,
-								'step' => 1,
+								'min'       => 0,
+								'max'       => 50,
+								'step'      => 1,
+								'min_limit' => 0,
 							),
-							'context' => "border_styles{$suffix}",
+							'context'        => "border_styles{$suffix}",
 							'mobile_options' => true,
+							'sticky'         => true,
 						),
 						"border_color_top{$suffix}" => array(
-							'label'        => sprintf( '%1$s%2$s', '' !== $settings['label_prefix'] ? sprintf( '%1$s ', $settings['label_prefix'] ) : '', esc_html__( 'Top Border Color', 'et_builder' ) ),
-							'description'  => esc_html__( 'Pick a color to be used for the border.', 'et_builder' ),
-							'type'         => $settings['color_type'],
-							'hover'        => 'tabs',
-							'default_from' => "border_all.controls.border_color_all{$suffix}",
-							'context'      => "border_styles{$suffix}",
+							'label'          => sprintf( '%1$s%2$s', '' !== $settings['label_prefix'] ? sprintf( '%1$s ', $settings['label_prefix'] ) : '', esc_html__( 'Top Border Color', 'et_builder' ) ),
+							'description'    => esc_html__( 'Pick a color to be used for the border.', 'et_builder' ),
+							'type'           => $settings['color_type'],
+							'hover'          => 'tabs',
+							'default_from'   => "border_all.controls.border_color_all{$suffix}",
+							'context'        => "border_styles{$suffix}",
 							'mobile_options' => true,
+							'sticky'         => true,
 						),
 						"border_style_top{$suffix}" => array(
-							'label'        => sprintf( '%1$s%2$s', '' !== $settings['label_prefix'] ? sprintf( '%1$s ', $settings['label_prefix'] ) : '', esc_html__( 'Top Border Style', 'et_builder' ) ),
-							'description'  => esc_html__( 'Borders support various different styles, each of which will change the shape of the border element.', 'et_builder' ),
-							'type'         => 'select',
-							'options'      => et_builder_get_border_styles(),
-							'default_from' => "border_all.controls.border_style_all{$suffix}",
-							'context'      => "border_styles{$suffix}",
-							'hover'        => 'tabs',
+							'label'          => sprintf( '%1$s%2$s', '' !== $settings['label_prefix'] ? sprintf( '%1$s ', $settings['label_prefix'] ) : '', esc_html__( 'Top Border Style', 'et_builder' ) ),
+							'description'    => esc_html__( 'Borders support various different styles, each of which will change the shape of the border element.', 'et_builder' ),
+							'type'           => 'select',
+							'options'        => et_builder_get_border_styles(),
+							'default_from'   => "border_all.controls.border_style_all{$suffix}",
+							'context'        => "border_styles{$suffix}",
+							'hover'          => 'tabs',
 							'mobile_options' => true,
+							'sticky'         => true,
 						),
 					),
 				),
@@ -238,31 +250,35 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 							'default_unit'   => $defaultUnit,
 							'allowed_units'  => array( 'em', 'rem', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw' ),
 							'range_settings' => array(
-								'min'  => 0,
-								'max'  => 50,
-								'step' => 1,
+								'min'       => 0,
+								'max'       => 50,
+								'step'      => 1,
+								'min_limit' => 0,
 							),
-							'context' => "border_styles{$suffix}",
+							'context'        => "border_styles{$suffix}",
 							'mobile_options' => true,
+							'sticky'         => true,
 						),
 						"border_color_right{$suffix}" => array(
-							'label'        => sprintf( '%1$s%2$s', '' !== $settings['label_prefix'] ? sprintf( '%1$s ', $settings['label_prefix'] ) : '', esc_html__( 'Right Border Color', 'et_builder' ) ),
-							'description'  => esc_html__( 'Pick a color to be used for the border.', 'et_builder' ),
-							'type'         => $settings['color_type'],
-							'hover'        => 'tabs',
-							'default_from' => "border_all.controls.border_color_all{$suffix}",
-							'context'      => "border_styles{$suffix}",
+							'label'          => sprintf( '%1$s%2$s', '' !== $settings['label_prefix'] ? sprintf( '%1$s ', $settings['label_prefix'] ) : '', esc_html__( 'Right Border Color', 'et_builder' ) ),
+							'description'    => esc_html__( 'Pick a color to be used for the border.', 'et_builder' ),
+							'type'           => $settings['color_type'],
+							'hover'          => 'tabs',
+							'default_from'   => "border_all.controls.border_color_all{$suffix}",
+							'context'        => "border_styles{$suffix}",
 							'mobile_options' => true,
+							'sticky'         => true,
 						),
 						"border_style_right{$suffix}" => array(
-							'label'        => sprintf( '%1$s%2$s', '' !== $settings['label_prefix'] ? sprintf( '%1$s ', $settings['label_prefix'] ) : '', esc_html__( 'Right Border Style', 'et_builder' ) ),
-							'description'  => esc_html__( 'Borders support various different styles, each of which will change the shape of the border element.', 'et_builder' ),
-							'type'         => 'select',
-							'options'      => et_builder_get_border_styles(),
-							'default_from' => "border_all.controls.border_style_all{$suffix}",
-							'context'      => "border_styles{$suffix}",
-							'hover'        => 'tabs',
+							'label'          => sprintf( '%1$s%2$s', '' !== $settings['label_prefix'] ? sprintf( '%1$s ', $settings['label_prefix'] ) : '', esc_html__( 'Right Border Style', 'et_builder' ) ),
+							'description'    => esc_html__( 'Borders support various different styles, each of which will change the shape of the border element.', 'et_builder' ),
+							'type'           => 'select',
+							'options'        => et_builder_get_border_styles(),
+							'default_from'   => "border_all.controls.border_style_all{$suffix}",
+							'context'        => "border_styles{$suffix}",
+							'hover'          => 'tabs',
 							'mobile_options' => true,
+							'sticky'         => true,
 						),
 					),
 				),
@@ -279,31 +295,35 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 							'default_unit'   => $defaultUnit,
 							'allowed_units'  => array( 'em', 'rem', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw' ),
 							'range_settings' => array(
-								'min'  => 0,
-								'max'  => 50,
-								'step' => 1,
+								'min'       => 0,
+								'max'       => 50,
+								'step'      => 1,
+								'min_limit' => 0,
 							),
-							'context' => "border_styles{$suffix}",
+							'context'        => "border_styles{$suffix}",
 							'mobile_options' => true,
+							'sticky'         => true,
 						),
 						"border_color_bottom{$suffix}" => array(
-							'label'        => sprintf( '%1$s%2$s', '' !== $settings['label_prefix'] ? sprintf( '%1$s ', $settings['label_prefix'] ) : '', esc_html__( 'Bottom Border Color', 'et_builder' ) ),
-							'description'  => esc_html__( 'Pick a color to be used for the border.', 'et_builder' ),
-							'type'         => $settings['color_type'],
-							'hover'        => 'tabs',
-							'default_from' => "border_all.controls.border_color_all{$suffix}",
-							'context'      => "border_styles{$suffix}",
+							'label'          => sprintf( '%1$s%2$s', '' !== $settings['label_prefix'] ? sprintf( '%1$s ', $settings['label_prefix'] ) : '', esc_html__( 'Bottom Border Color', 'et_builder' ) ),
+							'description'    => esc_html__( 'Pick a color to be used for the border.', 'et_builder' ),
+							'type'           => $settings['color_type'],
+							'hover'          => 'tabs',
+							'default_from'   => "border_all.controls.border_color_all{$suffix}",
+							'context'        => "border_styles{$suffix}",
 							'mobile_options' => true,
+							'sticky'         => true,
 						),
 						"border_style_bottom{$suffix}" => array(
-							'label'        => sprintf( '%1$s%2$s', '' !== $settings['label_prefix'] ? sprintf( '%1$s ', $settings['label_prefix'] ) : '', esc_html__( 'Bottom Border Style', 'et_builder' ) ),
-							'description'  => esc_html__( 'Borders support various different styles, each of which will change the shape of the border element.', 'et_builder' ),
-							'type'         => 'select',
-							'options'      => et_builder_get_border_styles(),
-							'default_from' => "border_all.controls.border_style_all{$suffix}",
-							'context'      => "border_styles{$suffix}",
-							'hover'        => 'tabs',
+							'label'          => sprintf( '%1$s%2$s', '' !== $settings['label_prefix'] ? sprintf( '%1$s ', $settings['label_prefix'] ) : '', esc_html__( 'Bottom Border Style', 'et_builder' ) ),
+							'description'    => esc_html__( 'Borders support various different styles, each of which will change the shape of the border element.', 'et_builder' ),
+							'type'           => 'select',
+							'options'        => et_builder_get_border_styles(),
+							'default_from'   => "border_all.controls.border_style_all{$suffix}",
+							'context'        => "border_styles{$suffix}",
+							'hover'          => 'tabs',
 							'mobile_options' => true,
+							'sticky'         => true,
 						),
 					),
 				),
@@ -320,31 +340,35 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 							'default_unit'   => $defaultUnit,
 							'allowed_units'  => array( 'em', 'rem', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw' ),
 							'range_settings' => array(
-								'min'  => 0,
-								'max'  => 50,
-								'step' => 1,
+								'min'       => 0,
+								'max'       => 50,
+								'step'      => 1,
+								'min_limit' => 0,
 							),
-							'context' => "border_styles{$suffix}",
+							'context'        => "border_styles{$suffix}",
 							'mobile_options' => true,
+							'sticky'         => true,
 						),
 						"border_color_left{$suffix}" => array(
-							'label'        => sprintf( '%1$s%2$s', '' !== $settings['label_prefix'] ? sprintf( '%1$s ', $settings['label_prefix'] ) : '', esc_html__( 'Left Border Color', 'et_builder' ) ),
-							'description'  => esc_html__( 'Pick a color to be used for the border.', 'et_builder' ),
-							'type'         => $settings['color_type'],
-							'hover'        => 'tabs',
-							'default_from' => "border_all.controls.border_color_all{$suffix}",
-							'context'      => "border_styles{$suffix}",
+							'label'          => sprintf( '%1$s%2$s', '' !== $settings['label_prefix'] ? sprintf( '%1$s ', $settings['label_prefix'] ) : '', esc_html__( 'Left Border Color', 'et_builder' ) ),
+							'description'    => esc_html__( 'Pick a color to be used for the border.', 'et_builder' ),
+							'type'           => $settings['color_type'],
+							'hover'          => 'tabs',
+							'default_from'   => "border_all.controls.border_color_all{$suffix}",
+							'context'        => "border_styles{$suffix}",
 							'mobile_options' => true,
+							'sticky'         => true,
 						),
 						"border_style_left{$suffix}" => array(
-							'label'        => sprintf( '%1$s%2$s', '' !== $settings['label_prefix'] ? sprintf( '%1$s ', $settings['label_prefix'] ) : '', esc_html__( 'Left Border Style', 'et_builder' ) ),
-							'description'  => esc_html__( 'Borders support various different styles, each of which will change the shape of the border element.', 'et_builder' ),
-							'type'         => 'select',
-							'options'      => et_builder_get_border_styles(),
-							'default_from' => "border_all.controls.border_style_all{$suffix}",
-							'context'      => "border_styles{$suffix}",
-							'hover'        => 'tabs',
+							'label'          => sprintf( '%1$s%2$s', '' !== $settings['label_prefix'] ? sprintf( '%1$s ', $settings['label_prefix'] ) : '', esc_html__( 'Left Border Style', 'et_builder' ) ),
+							'description'    => esc_html__( 'Borders support various different styles, each of which will change the shape of the border element.', 'et_builder' ),
+							'type'           => 'select',
+							'options'        => et_builder_get_border_styles(),
+							'default_from'   => "border_all.controls.border_style_all{$suffix}",
+							'context'        => "border_styles{$suffix}",
+							'hover'          => 'tabs',
 							'mobile_options' => true,
+							'sticky'         => true,
 						),
 					),
 				),
@@ -355,7 +379,7 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 		// modules. For example, in Pricing Tables -> Pricing Area borders, we only want to set
 		// default value for border bottom width, but keep the rest to inherit from border all.
 		if ( ! empty( $settings['defaults']['composite'] ) ) {
-			$composites     = $additional_options["border_styles{$suffix}"]['composite_structure'];
+			$composites     = $additional_options[ "border_styles{$suffix}" ]['composite_structure'];
 			$new_composites = array();
 			foreach ( $settings['defaults']['composite'] as $border_position => $default_controls ) {
 				// Make sure the border position property exists on additional_options.
@@ -383,10 +407,10 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 			}
 
 			// Set composites structures back to additional options border styles.
-			$additional_options["border_styles{$suffix}"]['composite_structure'] = $composites;
+			$additional_options[ "border_styles{$suffix}" ]['composite_structure'] = $composites;
 		}
 
-		//Add options dependency
+		// Add options dependency
 		if ( ! is_null( $settings['depends_on'] ) ) {
 			foreach ( $additional_options as &$option ) {
 				$option['depends_on']      = $settings['depends_on'];
@@ -401,6 +425,7 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 	 * Get border radii CSS styles.
 	 *
 	 * @since 3.23 Add responsive setting support.
+	 * @since 4.6.0 Add sticky style support
 	 *
 	 * @param  array          $atts            All module attributes.
 	 * @param  array          $advanced_fields All module advanced fields definition.
@@ -408,9 +433,11 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 	 * @param  boolean|string $overflow        Overflow status or type.
 	 * @param  boolean        $is_hover        Hover options status.
 	 * @param  string         $device          Current active device.
+	 * @param boolean        $is_sticky       Sticky options status.
+	 *
 	 * @return string                          Generated border radii styles.
 	 */
-	public function get_radii_style( array $atts, array $advanced_fields, $suffix = '', $overflow = true, $is_hover = false, $device = 'desktop' ) {
+	public function get_radii_style( array $atts, array $advanced_fields, $suffix = '', $overflow = true, $is_hover = false, $device = 'desktop', $is_sticky = false ) {
 		$style = '';
 
 		$important = '';
@@ -425,8 +452,17 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 
 		// Border Radius CSS
 		$is_desktop   = 'desktop' === $device;
-		$value_suffix = true === $is_hover ? et_pb_hover_options()->get_suffix() : '';
-		$value_suffix = ! $is_hover && ! $is_desktop ? "_{$device}" : $value_suffix;
+		$value_suffix = '';
+
+		if ( $is_hover ) {
+			$value_suffix = et_pb_hover_options()->get_suffix();
+		}
+
+		if ( $is_sticky ) {
+			$value_suffix = et_pb_sticky_options()->get_suffix();
+		}
+
+		$value_suffix = ! $is_hover && ! $is_sticky && ! $is_desktop ? "_{$device}" : $value_suffix;
 
 		// Get border settings based on main border_radii field on option template.
 		// This used to refer to module's advanced_fields property but for performance reason
@@ -437,8 +473,8 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 		$border_fields           = $this->template->is_enabled() ? $this->template->rebuild_field_template( $border_template_id ) : array();
 
 		// Border radii settings
-		$settings     = self::$_->array_get( $border_fields, "border_radii{$suffix}", array() );
-		$radii        = isset( $atts["border_radii{$suffix}{$value_suffix}"] ) ? $atts["border_radii{$suffix}{$value_suffix}"] : false;
+		$settings = self::$_->array_get( $border_fields, "border_radii{$suffix}", array() );
+		$radii    = isset( $atts[ "border_radii{$suffix}{$value_suffix}" ] ) ? $atts[ "border_radii{$suffix}{$value_suffix}" ] : false;
 
 		// Bail early if current device value doesn't exist.
 		if ( false === $radii || empty( $radii ) ) {
@@ -455,7 +491,7 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 		if ( isset( $settings['default'] ) && ! $is_desktop ) {
 			// Get previous device value.
 			$previous_suffix = 'phone' === $device ? '_tablet' : '';
-			$radii_previous  = isset( $atts["border_radii{$suffix}{$previous_suffix}"] ) ? $atts["border_radii{$suffix}{$previous_suffix}"] : false;
+			$radii_previous  = isset( $atts[ "border_radii{$suffix}{$previous_suffix}" ] ) ? $atts[ "border_radii{$suffix}{$previous_suffix}" ] : false;
 			if ( $radii_previous ) {
 				$settings['default'] = $radii_previous;
 			}
@@ -470,7 +506,7 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 				$bottom_left_radius  = empty( $radii[4] ) ? '0' : esc_html( $radii[4] );
 
 				$important = et_core_intentionally_unescaped( $important, 'fixed_string' );
-				$style = "border-radius: {$top_left_radius} {$top_right_radius} {$bottom_right_radius} {$bottom_left_radius}{$important};";
+				$style     = "border-radius: {$top_left_radius} {$top_right_radius} {$bottom_right_radius} {$bottom_left_radius}{$important};";
 				if ( true === $overflow || in_array( $overflow, array( 'overflow-x', 'overflow-y' ) ) ) {
 					// $overflow can be either a boolean or a string: 'overflow-x' / 'overflow-y'
 					// If it is a boolean the CSS property is set to 'overflow'
@@ -487,24 +523,26 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 	 * Get border styles CSS styles.
 	 *
 	 * @since 3.23 Add responsive setting support.
+	 * @since 4.6.0 Add sticky style support
 	 *
 	 * @param  array   $attrs           All module attributes.
 	 * @param  array   $advanced_fields All module advanced fields definition.
 	 * @param  string  $suffix          Border options group or toggle name.
 	 * @param  boolean $is_hover        Hover options status.
 	 * @param  string  $device          Current active device.
+	 * @param  boolean $is_sticky       Sticky options status.
+	 *
 	 * @return string                   Generated border styles.
 	 */
-	public function get_borders_style( array $attrs, array $advanced_fields, $suffix = '', $is_hover = false, $device = 'desktop' ) {
-		$style     = '';
-		$important = '';
-		$hover = et_pb_hover_options();
+	public function get_borders_style( array $attrs, array $advanced_fields, $suffix = '', $is_hover = false, $device = 'desktop', $is_sticky = false ) {
+		$style         = '';
+		$important     = '';
+		$hover         = et_pb_hover_options();
+		$sticky        = et_pb_sticky_options();
 		$is_desktop    = 'desktop' === $device;
 		$device_suffix = ! $is_desktop ? "_{$device}" : '';
 
 		self::$_is_default = array();
-
-
 
 		if ( self::$_->array_get( $advanced_fields, "border{$suffix}.css.important", false ) ) {
 			if ( 'plugin_only' === self::$_->array_get( $advanced_fields, "border{$suffix}.css.important", '' ) ) {
@@ -529,14 +567,22 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 			return $style;
 		}
 
-		$styles        = array();
-		$properties    = array( 'width', 'style', 'color' );
-		$border_edges  = array( 'top', 'right', 'bottom', 'left' );
+		$styles       = array();
+		$properties   = array( 'width', 'style', 'color' );
+		$border_edges = array( 'top', 'right', 'bottom', 'left' );
 
 		// Individual edge tabs get their default values from the all edges tab. If a value in
 		// the all edges tab has been changed from the default, that value will be used as the
 		// default for the individual edge tabs, otherwise the all edges default value is used.
-		$value_suffix = true === $is_hover ? et_pb_hover_options()->get_suffix() : '';
+		$value_suffix = '';
+
+		if ( $is_hover ) {
+			$value_suffix = $hover->get_suffix();
+		}
+
+		if ( $is_sticky ) {
+			$value_suffix = $sticky->get_suffix();
+		}
 
 		foreach ( $border_edges as $edge ) {
 			$edge = "{$edge}";
@@ -558,10 +604,13 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 				$value = false;
 				if ( $is_hover ) {
 					$default_hover_value = $hover->is_enabled( $edge_key, $attrs ) ? $edge_desktop_value : false;
-					$value = $hover->get_value( $edge_key, $attrs, $default_hover_value );
-				} else if ( ! $is_desktop ) {
+					$value               = $hover->get_value( $edge_key, $attrs, $default_hover_value );
+				} elseif ( $is_sticky ) {
+					$default_sticky_value = $sticky->is_enabled( $edge_key, $attrs ) ? $edge_desktop_value : false;
+					$value                = $sticky->get_value( $edge_key, $attrs, $default_sticky_value );
+				} elseif ( ! $is_desktop ) {
 					$value = $is_edge_responsive ? et_pb_responsive_options()->get_any_value( $attrs, $edge_key_device, '', true ) : et_pb_responsive_options()->get_any_value( $attrs, $edge_key );
-				} else if ( $is_desktop ) {
+				} elseif ( $is_desktop ) {
 					$value = $edge_desktop_value;
 				}
 
@@ -570,8 +619,11 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 					$value = false;
 					if ( $is_hover ) {
 						$default_hover_value = $hover->is_enabled( $all_edges_key, $attrs ) ? $all_edges_desktop_value : false;
-						$value = $hover->get_value( $all_edges_key, $attrs, $default_hover_value );
-					} else if ( $is_desktop || ( ! $is_desktop && $is_all_edges_responsive ) ) {
+						$value               = $hover->get_value( $all_edges_key, $attrs, $default_hover_value );
+					} elseif ( $is_sticky ) {
+						$default_sticky_value = $sticky->is_enabled( $all_edges_key, $attrs ) ? $all_edges_desktop_value : false;
+						$value                = $sticky->get_value( $all_edges_key, $attrs, $default_sticky_value );
+					} elseif ( $is_desktop || ( ! $is_desktop && $is_all_edges_responsive ) ) {
 						$value = et_pb_responsive_options()->get_any_value( $attrs, $all_edges_key_device );
 					}
 
@@ -609,13 +661,13 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 				// All edges have the same value, so let's combine them into a single prop.
 				$style .= "border-{$prop}:{$all_values[0]}{$important};";
 
-			} else if ( $all_edges && $edges['top'] === $edges['bottom'] && $edges['left'] === $edges['right'] ) {
+			} elseif ( $all_edges && $edges['top'] === $edges['bottom'] && $edges['left'] === $edges['right'] ) {
 				// Let's combine them into a single prop.
 				$style .= "border-{$prop}:{$edges['top']} {$edges['left']}{$important};";
 
-			} else if ( $all_edges ) {
+			} elseif ( $all_edges ) {
 				// You know the drill.
-				$style  .= "border-{$prop}:{$edges['top']} {$edges['right']} {$edges['bottom']} {$edges['left']}{$important};";
+				$style .= "border-{$prop}:{$edges['top']} {$edges['right']} {$edges['bottom']} {$edges['left']}{$important};";
 
 			} else {
 				// We're not going to mess with the other shorthand variants, so separate styles it is!
@@ -667,7 +719,7 @@ class ET_Builder_Module_Field_Border extends ET_Builder_Module_Field_Base {
 	 * @return string
 	 */
 	public function add_border_reset_class( $output, $module_slug ) {
-		if ( in_array( $module_slug,  ET_Builder_Element::$uses_module_classname ) ) {
+		if ( in_array( $module_slug, ET_Builder_Element::$uses_module_classname ) ) {
 			return $output;
 		}
 

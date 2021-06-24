@@ -20,7 +20,7 @@ abstract class ET_Builder_Module_Settings_Migration {
 	public static $last_hook_check_decision;
 	public static $max_version = '3.27.4';
 
-	public static $migrated    = array();
+	public static $migrated   = array();
 	public static $migrations = array(
 		'3.0.48'  => 'BackgroundUI',
 		'3.0.72'  => 'Animation',

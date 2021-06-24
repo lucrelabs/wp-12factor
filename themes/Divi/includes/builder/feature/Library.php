@@ -59,7 +59,7 @@ class ET_Builder_Library {
 		$this->_register_hooks();
 		$this->_register_ajax_callbacks();
 
-		self::$_i18n = require( ET_BUILDER_DIR . '/frontend-builder/i18n/library.php' );
+		self::$_i18n = require ET_BUILDER_DIR . '/frontend-builder/i18n/library.php';
 
 		self::$_standard_post_types = self::_standard_post_types();
 	}
@@ -368,7 +368,7 @@ class ET_Builder_Library {
 		$posts = self::$_->array_sort_by( is_array( $posts ) ? $posts : array( $posts ), 'post_name' );
 
 		foreach ( $posts as $post ) {
-			$layout = new stdClass;
+			$layout = new stdClass();
 
 			setup_postdata( $post );
 
@@ -413,19 +413,19 @@ class ET_Builder_Library {
 				$layout->short_name = et_core_intentionally_unescaped( self::__( $short_name, '@layoutsShort' ), 'react_jsx' );
 			}
 
-			$layout->slug            = $post->post_name;
-			$layout->url             = esc_url( wp_make_link_relative( get_permalink( $post ) ) );
+			$layout->slug = $post->post_name;
+			$layout->url  = esc_url( wp_make_link_relative( get_permalink( $post ) ) );
 
 			$layout->thumbnail       = esc_url( get_the_post_thumbnail_url( $post->ID, $thumbnail ) );
 			$layout->thumbnail_small = esc_url( get_the_post_thumbnail_url( $post->ID, $thumbnail_small ) );
 			$layout->screenshot      = esc_url( get_the_post_thumbnail_url( $post->ID, $screenshot ) );
 
-			$layout->categories      = array();
-			$layout->category_ids    = array();
+			$layout->categories   = array();
+			$layout->category_ids = array();
 
-			$layout->is_global       = $this->layouts->is_global( $layout->id );
-			$layout->is_landing      = ! empty( $post->post_excerpt );
-			$layout->description     = '';
+			$layout->is_global   = $this->layouts->is_global( $layout->id );
+			$layout->is_landing  = ! empty( $post->post_excerpt );
+			$layout->description = '';
 
 			$this->_process_layout_categories( $post, $layout, $index, $layout_categories );
 			$this->_process_layout_packs( $post, $layout, $index, $layout_packs );
@@ -511,12 +511,13 @@ class ET_Builder_Library {
 		 *     }
 		 * }
 		 */
-		$saved_layouts_data = apply_filters( 'et_builder_library_saved_layouts', array(
+		$saved_layouts_data = array(
 			'categories' => $layout_categories,
 			'packs'      => $layout_packs,
 			'layouts'    => $layouts,
 			'sorted'     => self::_sort_builder_library_data( $layout_categories, $layout_packs ),
-		) );
+		);
+		$saved_layouts_data = apply_filters( 'et_builder_library_saved_layouts', $saved_layouts_data );
 
 		/**
 		 * Filters custom tabs layout data for the library modal. Custom tabs must be registered
@@ -532,9 +533,13 @@ class ET_Builder_Library {
 		 * }
 		 * @param array[] $saved_layouts_data {@see 'et_builder_library_saved_layouts'} for array structure.
 		 */
-		$custom_layouts_data = apply_filters( 'et_builder_library_custom_layouts', array(
-			'existing_pages' => $this->builder_library_modal_custom_tabs_existing_pages(),
-		), $saved_layouts_data );
+		$custom_layouts_data = apply_filters(
+			'et_builder_library_custom_layouts',
+			array(
+				'existing_pages' => $this->builder_library_modal_custom_tabs_existing_pages(),
+			),
+			$saved_layouts_data
+		);
 
 		return array(
 			'layouts_data'        => $saved_layouts_data,
@@ -709,7 +714,7 @@ class ET_Builder_Library {
 
 						$title = html_entity_decode( $post->post_title );
 
-						$slug  = $post->post_name;
+						$slug = $post->post_name;
 
 						if ( ! $slug ) {
 							// Generate a slug, if none is available - this is necessary as draft posts
@@ -731,36 +736,36 @@ class ET_Builder_Library {
 							? $post_type_obj->labels->singular_name
 							: $post_type;
 
-						$seen[ $slug ]              = true;
-						$layout                     = new stdClass();
-						$layout->index              = $index;
-						$layout->id                 = $post->ID;
-						$layout->date               = $post->post_date;
-						$layout->status             = $post->post_status;
-						$layout->icon               = 'layout';
-						$layout->type               = $type_label;
-						$layout->name               = et_core_intentionally_unescaped( $title, 'react_jsx' );
-						$layout->short_name         = et_core_intentionally_unescaped( $title, 'react_jsx' );
-						$layout->slug               = $slug;
-						$layout->url                = esc_url( wp_make_link_relative( get_permalink( $post ) ) );
+						$seen[ $slug ]      = true;
+						$layout             = new stdClass();
+						$layout->index      = $index;
+						$layout->id         = $post->ID;
+						$layout->date       = $post->post_date;
+						$layout->status     = $post->post_status;
+						$layout->icon       = 'layout';
+						$layout->type       = $type_label;
+						$layout->name       = et_core_intentionally_unescaped( $title, 'react_jsx' );
+						$layout->short_name = et_core_intentionally_unescaped( $title, 'react_jsx' );
+						$layout->slug       = $slug;
+						$layout->url        = esc_url( wp_make_link_relative( get_permalink( $post ) ) );
 
-						$layout->thumbnail          = esc_url( get_the_post_thumbnail_url( $post->ID, $thumbnail ) );
-						$layout->thumbnail_small    = esc_url( get_the_post_thumbnail_url( $post->ID, $thumbnail_small ) );
-						$layout->screenshot         = esc_url( get_the_post_thumbnail_url( $post->ID, $screenshot ) );
+						$layout->thumbnail       = esc_url( get_the_post_thumbnail_url( $post->ID, $thumbnail ) );
+						$layout->thumbnail_small = esc_url( get_the_post_thumbnail_url( $post->ID, $thumbnail_small ) );
+						$layout->screenshot      = esc_url( get_the_post_thumbnail_url( $post->ID, $screenshot ) );
 
-						$layout->categories         = array();
-						$layout->category_ids       = array( $category_id );
+						$layout->categories   = array();
+						$layout->category_ids = array( $category_id );
 
-						$layout->is_global          = false;
-						$layout->is_landing         = false;
-						$layout->description        = '';
-						$layout->category_slug      = $post_type;
+						$layout->is_global     = false;
+						$layout->is_landing    = false;
+						$layout->description   = '';
+						$layout->category_slug = $post_type;
 						// $layout_index is the array index, not the $post->ID
-						$category->layouts[]        = $layout_index;
+						$category->layouts[] = $layout_index;
 
-						$post_status_object         = get_post_status_object( $post->post_status );
+						$post_status_object = get_post_status_object( $post->post_status );
 
-						$layout->status             = isset( $post_status_object->label ) ? $post_status_object->label : $post->post_status;
+						$layout->status = isset( $post_status_object->label ) ? $post_status_object->label : $post->post_status;
 
 						$layouts[ $layout_index++ ] = $layout;
 
@@ -772,7 +777,7 @@ class ET_Builder_Library {
 			}
 		}
 
-		if ( count( $categories ) > 1) {
+		if ( count( $categories ) > 1 ) {
 			// Sort categories (post_type in this case) by slug
 			uasort( $categories, array( 'self', 'compare_by_slug' ) );
 		}
@@ -782,16 +787,16 @@ class ET_Builder_Library {
 			'packs'      => $packs,
 			'layouts'    => $layouts,
 			'options'    => array(
-				'content'    => array(
+				'content' => array(
 					'title' => array(
 						et_core_intentionally_unescaped( self::__( '%d Pages' ), 'react_jsx' ),
 						et_core_intentionally_unescaped( self::__( '%d Page' ), 'react_jsx' ),
 					),
 				),
-				'sidebar'    => array(
+				'sidebar' => array(
 					'title' => et_core_intentionally_unescaped( self::__( 'Find A Page' ), 'react_jsx' ),
 				),
-				'list'       => array(
+				'list'    => array(
 					'columns' => array(
 						'status' => et_core_intentionally_unescaped( self::__( 'Status' ), 'react_jsx' ),
 					),
@@ -874,7 +879,7 @@ class ET_Builder_Library {
 	 */
 	public static function instance() {
 		if ( ! self::$_instance ) {
-			self::$_instance = new self;
+			self::$_instance = new self();
 		}
 
 		return self::$_instance;
@@ -991,7 +996,7 @@ class ET_Builder_Library {
 					$result['savedShortcode'] = et_fb_process_shortcode( $result['savedShortcode'] );
 				} else {
 					$post_content_processed = do_shortcode( $result['shortcode'] );
-					$result['migrations'] = ET_Builder_Module_Settings_Migration::$migrated;
+					$result['migrations']   = ET_Builder_Module_Settings_Migration::$migrated;
 				}
 
 				unset( $result['shortcode'] );
@@ -1005,10 +1010,12 @@ class ET_Builder_Library {
 				break;
 		}
 
-		$response = wp_json_encode( array(
-			'success' => true,
-			'data'    => $result,
-		) );
+		$response = wp_json_encode(
+			array(
+				'success' => true,
+				'data'    => $result,
+			)
+		);
 
 		$tmp_dir = function_exists( 'sys_get_temp_dir' ) ? sys_get_temp_dir() : '/tmp';
 
@@ -1095,16 +1102,17 @@ class ET_Builder_Library {
 			$new_layout_modal = et_pb_generate_new_layout_modal();
 
 			wp_enqueue_style( 'library-styles', ET_BUILDER_URI . '/styles/library_pages.css', array( 'et-core-admin' ), ET_BUILDER_PRODUCT_VERSION );
-			wp_enqueue_script( 'library-scripts', ET_BUILDER_URI . '/scripts/library_scripts.js', array(
-				'jquery'
-			), ET_BUILDER_PRODUCT_VERSION );
-
-			wp_localize_script( 'library-scripts', 'et_pb_new_template_options', array(
-					'ajaxurl' => admin_url( 'admin-ajax.php' ),
-					'et_admin_load_nonce' => wp_create_nonce( 'et_admin_load_nonce' ),
-					'modal_output' => $new_layout_modal,
-				)
+			$deps = array(
+				'jquery',
 			);
+			wp_enqueue_script( 'library-scripts', ET_BUILDER_URI . '/scripts/library_scripts.js', $deps, ET_BUILDER_PRODUCT_VERSION );
+
+			$new_template_options_data = array(
+				'ajaxurl'             => admin_url( 'admin-ajax.php' ),
+				'et_admin_load_nonce' => wp_create_nonce( 'et_admin_load_nonce' ),
+				'modal_output'        => $new_layout_modal,
+			);
+			wp_localize_script( 'library-scripts', 'et_pb_new_template_options', $new_template_options_data );
 		} else {
 			wp_enqueue_script( 'et-builder-failure-notice', ET_BUILDER_URI . '/scripts/failure_notice.js', array( 'jquery' ), ET_BUILDER_PRODUCT_VERSION );
 		}

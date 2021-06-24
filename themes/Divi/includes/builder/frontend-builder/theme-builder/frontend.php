@@ -63,7 +63,7 @@ function et_theme_builder_frontend_add_body_classes( $classes ) {
 add_filter( 'body_class', 'et_theme_builder_frontend_add_body_classes', 9 );
 
 /**
- * Conditionally override the template being loaded by wordpress based on what the user
+ * Conditionally override the template being loaded by WordPress based on what the user
  * has created in their Theme Builder.
  * The header and footer are always dealt with as a pair - if the header is replaced the footer is replaced a well.
  *
@@ -91,6 +91,9 @@ function et_theme_builder_frontend_override_template( $template ) {
 	}
 
 	if ( $override_header || $override_footer ) {
+		// wp-version >= 5.2
+		remove_action( 'wp_body_open', 'wp_admin_bar_render', 0 );
+
 		add_action( 'get_header', 'et_theme_builder_frontend_override_header' );
 		add_action( 'get_footer', 'et_theme_builder_frontend_override_footer' );
 	}
@@ -124,13 +127,13 @@ function et_theme_builder_frontend_enqueue_styles( $layouts ) {
 		// Create styles managers so they can enqueue styles early enough.
 		// What styles are created and how they are enqueued:
 		// - In FE, singular post view:
-		//   -> TB + Post Styles are combined into et-*-tb-{HEADER_ID}-tb-{BODY_ID}-tb-{FOOTER_ID}-{POST_ID}-*.css
+		// -> TB + Post Styles are combined into et-*-tb-{HEADER_ID}-tb-{BODY_ID}-tb-{FOOTER_ID}-{POST_ID}-*.css
 		//
 		// - In FE, non-singular post view:
-		//   -> TB styles are separate with the usual filename: et-*-{LAYOUT_ID}-*.css
+		// -> TB styles are separate with the usual filename: et-*-{LAYOUT_ID}-*.css
 		//
 		// - In FE, singular post view in VB so post-specific DC works:
-		//   -> TB styles are separate with the current post ID prepended: et-*-tb-for-{POST_ID}-{LAYOUT_ID}-*.css
+		// -> TB styles are separate with the current post ID prepended: et-*-tb-for-{POST_ID}-{LAYOUT_ID}-*.css.
 
 		if ( $layouts[ ET_THEME_BUILDER_HEADER_LAYOUT_POST_TYPE ]['override'] ) {
 			ET_Builder_Element::setup_advanced_styles_manager( $layouts[ ET_THEME_BUILDER_HEADER_LAYOUT_POST_TYPE ]['id'] );
@@ -168,7 +171,7 @@ function et_theme_builder_frontend_override_partial( $partial, $name, $action = 
 	 * @link https://core.trac.wordpress.org/browser/tags/5.0.3/src/wp-includes/general-template.php#L33
 	 */
 	$templates = array();
-	$name = (string) $name;
+	$name      = (string) $name;
 	if ( '' !== $name ) {
 		$templates[] = "{$partial}-{$name}.php";
 	}
@@ -290,8 +293,8 @@ add_filter( 'et_builder_add_outer_content_wrap', 'et_theme_builder_frontend_filt
  *
  * @since 4.0
  *
- * @param string $layout_type
- * @param integer $layout_id
+ * @param string  $layout_type Layout Type.
+ * @param integer $layout_id   Layout ID.
  *
  * @return void
  */
@@ -586,8 +589,8 @@ function et_theme_builder_frontend_render_post_content() {
 	}
 
 	$__prevent_recursion = true;
-	$html     = '';
-	$buffered = ob_start();
+	$html                = '';
+	$buffered            = ob_start();
 
 	if ( $buffered ) {
 		ET_Post_Stack::replace( $main_query_post );

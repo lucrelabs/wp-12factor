@@ -42,22 +42,22 @@ class ET_Builder_Module_Settings_Migration_UIImprovement extends ET_Builder_Modu
 					'background_layout' => $this->get_modules( 'background_layout' ),
 				),
 			),
-			'background_color' => array(
+			'background_color'  => array(
 				'affected_fields' => array(
 					'background_color' => $this->get_modules( 'background_color' ),
 				),
 			),
-			'color' => array(
+			'color'             => array(
 				'affected_fields' => array(
 					'color' => $this->get_modules( 'divider' ),
 				),
 			),
-			'show_divider' => array(
+			'show_divider'      => array(
 				'affected_fields' => array(
 					'show_divider' => $this->get_modules( 'divider' ),
 				),
 			),
-			'_builder_version' => array(
+			'_builder_version'  => array(
 				'affected_fields' => array(
 					'_builder_version' => $this->get_modules( 'version' ),
 				),

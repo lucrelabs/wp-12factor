@@ -61,7 +61,7 @@ class ET_Builder_Module_Hover_Options {
 	 * Check if the setting has enabled hover options
 	 *
 	 * @param string $setting
-	 * @param array $attrs
+	 * @param array  $attrs
 	 *
 	 * @return bool
 	 */
@@ -69,6 +69,33 @@ class ET_Builder_Module_Hover_Options {
 		$name = $setting === 'background_color' ? 'background' : $setting;
 
 		return strpos( $this->util_get( $this->get_hover_enabled_field( $name ), $attrs ), 'on' ) === 0;
+	}
+
+	/**
+	 * Check if hover settings are enabled on one of the options list.
+	 *
+	 * @since 4.5.1
+	 *
+	 * @param  array $attrs All module attributes.
+	 * @param  array $list  Options list.
+	 * @return boolean      Hover settings status.
+	 */
+	public function is_any_hover_enabled( $attrs, $list ) {
+		// Ensure list is not empty and valid array.
+		if ( empty( $list ) || ! is_array( $list ) ) {
+			return false;
+		}
+
+		// Check the hover status one by one.
+		$is_any_hover_enabled = false;
+		foreach ( $list as $name ) {
+			if ( $this->is_enabled( $name, $attrs ) ) {
+				$is_any_hover_enabled = true;
+				break;
+			}
+		}
+
+		return $is_any_hover_enabled;
 	}
 
 	/**
@@ -100,8 +127,8 @@ class ET_Builder_Module_Hover_Options {
 	 * If it does not exist, return $default specified value
 	 *
 	 * @param string $setting
-	 * @param array $attrs
-	 * @param mixed $default
+	 * @param array  $attrs
+	 * @param mixed  $default
 	 *
 	 * @return mixed
 	 */
@@ -117,8 +144,8 @@ class ET_Builder_Module_Hover_Options {
 	 *
 	 * @param string $setting
 	 * @param string $option
-	 * @param array $attrs
-	 * @param mixed $default
+	 * @param array  $attrs
+	 * @param mixed  $default
 	 *
 	 * @return mixed
 	 */
@@ -133,8 +160,8 @@ class ET_Builder_Module_Hover_Options {
 	 * If it does not exist, return $default specified value
 	 *
 	 * @param string $setting
-	 * @param array $attrs
-	 * @param mixed $default
+	 * @param array  $attrs
+	 * @param mixed  $default
 	 *
 	 * @return mixed
 	 */
@@ -146,6 +173,9 @@ class ET_Builder_Module_Hover_Options {
 	 * Adds `:hover` in selector at the end of the selector
 	 * E.g: add_hover_to_selectors('%%order_class%%% .image') >>> '%%order_class%%% .image:hover'
 	 *
+	 * @since 4.6.0 moved the order of `-` in capturing group 4's character set so it captures
+	 *           `::-` prefixed pseudo selector like `::-moz-placeholder` correctly
+	 *
 	 * @param string $selector
 	 *
 	 * @return string
@@ -155,7 +185,7 @@ class ET_Builder_Module_Hover_Options {
 		$selectors = array_map( 'trim', $selectors );
 		// Add hover to the end of the selector, but prevent specific situations like this:
 		// .my-class:after => .my-class:after:hover, should be .my-class:hover:after
-		$selectors = preg_replace( '/(.+\s)*([^\::?]+)((::?[a-z|-|\(|\)|\[|\]]+)+)?$/i', '$1$2:hover$3', $selectors );
+		$selectors = preg_replace( '/(.+\s)*([^\::?]+)((::?[-|a-z|\(|\)|\[|\]]+)+)?$/i', '$1$2:hover$3', $selectors );
 
 		return implode( ', ', $selectors );
 	}

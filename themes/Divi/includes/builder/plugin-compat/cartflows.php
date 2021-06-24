@@ -78,4 +78,4 @@ class ET_Builder_Plugin_Compat_Cartflows extends ET_Builder_Plugin_Compat_Base {
 	}
 }
 
-new ET_Builder_Plugin_Compat_Cartflows;
+new ET_Builder_Plugin_Compat_Cartflows();

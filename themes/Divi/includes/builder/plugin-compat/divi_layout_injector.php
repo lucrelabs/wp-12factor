@@ -46,7 +46,7 @@ class ET_Builder_Plugin_Compat_Divi_Layout_Injector extends ET_Builder_Plugin_Co
 	function maybe_disable_in_tb() {
 		if ( et_builder_tb_enabled() ) {
 			remove_action( 'get_header', 'sb_divi_fe_record_start', 1 );
-			remove_filter('the_content', 'sb_divi_fe_content');
+			remove_filter( 'the_content', 'sb_divi_fe_content' );
 			remove_action( 'wp_footer', 'sb_divi_fe_footer_end' );
 		}
 	}
@@ -64,7 +64,7 @@ class ET_Builder_Plugin_Compat_Divi_Layout_Injector extends ET_Builder_Plugin_Co
 			if ( $override_header || $override_body || $override_footer ) {
 				remove_action( 'template_redirect', 'sb_divi_fe_404' );
 				remove_action( 'get_header', 'sb_divi_fe_record_start', 1 );
-				remove_filter('the_content', 'sb_divi_fe_content');
+				remove_filter( 'the_content', 'sb_divi_fe_content' );
 				remove_action( 'wp_footer', 'sb_divi_fe_footer_end' );
 			}
 		}

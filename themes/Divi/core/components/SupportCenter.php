@@ -153,7 +153,7 @@ class ET_Core_SupportCenter {
 	 *
 	 * @type array
 	 */
-	protected $safe_mode_plugins_whitelist = array(
+	protected $safe_mode_plugins_allowlist = array(
 		'etdev/etdev.php', // ET Development Workspace
 		'bloom/bloom.php', // ET Bloom Plugin
 		'monarch/monarch.php', // ET Monarch Plugin
@@ -181,8 +181,20 @@ class ET_Core_SupportCenter {
 	);
 
 	/**
+	 * Collection of Cards that has button to dismiss the Card.
+	 *
+	 * @since 4.4.7
+	 *
+	 * @type array
+	 */
+	protected $card_with_dismiss_button = array(
+		'et_hosting_card',
+	);
+
+	/**
 	 * Core functionality of the class
 	 *
+	 * @since 4.4.7 Added WP AJAX action for dismissible button for a card
 	 * @since 3.20
 	 *
 	 * @param string $parent Identifier for the parent theme or plugin activating the Support Center.
@@ -200,8 +212,8 @@ class ET_Core_SupportCenter {
 		// Set the Site ID data via Elegant Themes API & token
 		$this->maybe_set_site_id();
 
-		// Set the plugins whitelist for Safe Mode
-		$this->set_safe_mode_plugins_whitelist();
+		// Set the plugins allowlist for Safe Mode
+		$this->set_safe_mode_plugins_allowlist();
 	}
 
 	/**
@@ -284,6 +296,9 @@ class ET_Core_SupportCenter {
 		if ( et_core_is_safe_mode_active() ) {
 			remove_action( 'wp_head', 'wp_custom_css_cb', 101 );
 		}
+
+		// Support Center Card: Handle Dismiss Button
+		add_action( 'wp_ajax_et_dismiss_support_center_card', array( $this, 'dismiss_support_center_card_via_ajax' ) );
 	}
 
 	/**
@@ -537,14 +552,14 @@ class ET_Core_SupportCenter {
 	}
 
 	/**
-	 * Safe Mode temporarily deactivates all plugins *except* those in the whitelist option set here
+	 * Safe Mode temporarily deactivates all plugins *except* those in the allowlist option set here
 	 *
 	 * @since 3.20
 	 *
 	 * @return void
 	 */
-	public function set_safe_mode_plugins_whitelist() {
-		update_option( 'et_safe_mode_plugins_whitelist', $this->safe_mode_plugins_whitelist );
+	public function set_safe_mode_plugins_allowlist() {
+		update_option( 'et_safe_mode_plugins_allowlist', $this->safe_mode_plugins_allowlist );
 	}
 
 	/**
@@ -710,6 +725,7 @@ class ET_Core_SupportCenter {
 	 *
 	 * Take an array of attributes and build a WP Card block for display on the Divi Support Center page.
 	 *
+	 * @since 4.4.7 Added optional dismissible button
 	 * @since 3.20
 	 *
 	 * @param array $attrs
@@ -726,12 +742,105 @@ class ET_Core_SupportCenter {
 			$card_classes = array_merge( $card_classes, $attrs['additional_classes'] );
 		}
 
+		$dismiss_button = '';
+
+		if ( array_key_exists( 'dismiss_button', $attrs ) ) {
+			// Update card class to indicate the presence of the dismiss button
+			$card_classes = array_merge( $card_classes, array( 'has-dismiss-button' ) );
+
+			// Prepare Class for the Dismiss button
+			$dismiss_button_classes = array( 'et-dismiss-button' );
+
+			if ( array_key_exists( 'additional_classes', $attrs['dismiss_button'] ) ) {
+				$dismiss_button_classes = array_merge( $dismiss_button_classes, $attrs['dismiss_button']['additional_classes'] );
+			}
+
+			// Whether to display tooltip for the dismiss button
+			$dismiss_button_has_tooltip = array_key_exists( 'tooltip', $attrs['dismiss_button'] );
+
+			// HTML Template for the dismiss button
+			$dismiss_button = PHP_EOL . "\t" . sprintf(
+					'<button class="%2$s" data-key="%3$s" data-product="%4$s" %5$s type="button" ><span class="et-dismiss-button-label">%1$s</span></button>',
+					esc_html__( 'Dismiss', 'et-core' ),
+					esc_attr( implode( ' ', $dismiss_button_classes ) ),
+					esc_attr( $attrs['dismiss_button']['card_key'] ),
+					esc_attr( $this->parent ),
+					$dismiss_button_has_tooltip ? 'data-tippy-content="' . esc_attr( $attrs['dismiss_button']['tooltip'] ) . '"' : ''
+				);
+		}
+
 		$card = PHP_EOL . '<div class="' . esc_attr( implode( ' ', $card_classes ) ) . '">' .
 				PHP_EOL . "\t" . '<h2>' . esc_html( $attrs['title'] ) . '</h2>' .
 				PHP_EOL . "\t" . '<div class="main">' . et_core_intentionally_unescaped( $attrs['content'], 'html' ) . '</div>' .
+				et_core_esc_previously( $dismiss_button ) .
 				PHP_EOL . '</div>';
 
 		return $card;
+	}
+
+	/**
+	 * Divi Support Center :: Dismiss a Card via Ajax
+	 *
+	 * @since 4.4.7
+	 */
+	public function dismiss_support_center_card_via_ajax() {
+
+		et_core_security_check( 'manage_options', 'support_center', 'nonce' );
+
+		$response = array();
+
+		// Check the ET product that dismissing the card
+		$et_product = sanitize_key( $_POST['product'] );
+
+		// Confirm that this is a allowlisted product
+		$allowlisted_product = $this->is_allowlisted_product( $et_product );
+
+		if ( ! $allowlisted_product ) {
+			// Send a failure code and exit the function
+			header( "HTTP/1.0 403 Forbidden" );
+			print 'Bad or malformed ET product name.';
+			wp_die();
+		}
+
+		// Check the Card key against Cards that has a dismiss button
+		$card_key = sanitize_key( $_POST['card_key'] );
+
+		if ( ! in_array( $card_key, $this->card_with_dismiss_button, true ) ) {
+			// Send a failure code and exit the function
+			header( "HTTP/1.0 403 Forbidden" );
+			print 'Card does not exists.';
+			wp_die();
+		}
+
+		// Update option(s)
+		update_option( "{$card_key}_dismissed", true );
+
+		// For Divi Hosting Card, update the status via ET API
+		if ( $card_key === 'et_hosting_card' ) {
+			$settings    = $this->get_et_api_request_settings( 'disable_hosting_card' );
+			$et_username = et_()->array_get( $settings, 'body.username', '' );
+			$et_api_key  = et_()->array_get( $settings, 'body.api_key', '' );
+
+			// Exit if ET Username and/or ET API Key is not found
+			if ( $et_username === '' || $et_api_key === '' ) {
+				return;
+			}
+
+			et_maybe_update_hosting_card_status();
+		}
+
+		$response['message'] = sprintf(
+			esc_html__( 'Card (%1$s) has been dismissed successfully.', 'et-core' ),
+			$card_key
+		);
+
+		// `echo` data to return
+		if ( isset( $response ) ) {
+			wp_send_json_success( $response );
+		}
+
+		// `die` when we're done
+		wp_die();
 	}
 
 	/**
@@ -1170,6 +1279,29 @@ class ET_Core_SupportCenter {
 			return $log;
 		}
 
+		/**
+		 * At this point, we know:
+		 * (1) `$wp_debug_log_path` is set,
+		 * (2) it points to a valid location, and
+		 * (3) what it points to is readable.
+		 *
+		 * Before we continue, we'll ensure `$wp_debug_log_path` does not point to a directory.
+		 */
+
+		// Early exit: debug log definition points to a directory, not a file.
+		if ( is_dir( $wp_debug_log_path ) ) {
+			$log['error'] = esc_attr__(
+				'Divi Support Center :: WordPress debug log setting points to a directory, but should point to a file.',
+				'et-core'
+			);
+
+			if ( defined( 'ET_DEBUG' ) ) {
+				et_error( $log['error'] );
+			}
+
+			return $log;
+		}
+
 		// Load the debug.log file
 		$file = new SplFileObject( $wp_debug_log_path );
 
@@ -1181,7 +1313,7 @@ class ET_Core_SupportCenter {
 		if ( $lines_to_return > 0 ) {
 			$file->seek( PHP_INT_MAX );
 			$total_lines = $file->key();
-			// If the file is smaller than the number of lines requested, return the entire file
+			// If the file is smaller than the number of lines requested, return the entire file.
 			$reader         = new LimitIterator( $file, max( 0, $total_lines - $lines_to_return ) );
 			$log['entries'] = '';
 			foreach ( $reader as $line ) {
@@ -1262,7 +1394,7 @@ class ET_Core_SupportCenter {
 				'pass_minus_one' => false,
 				'pass_zero'      => true,
 				'minimum'        => null,
-				'recommended'    => '180',
+				'recommended'    => '120',
 				'actual'         => ini_get( 'max_execution_time' ),
 				'help_text'      => et_get_safe_localization( sprintf( __( 'Max Execution Time affects how long a page is allowed to load before it times out. If the limit is too low, you may not be able to import large layouts and files into the builder. You can adjust your max execution time within your <a href="%1$s">php.ini file</a>, or by contacting your host for assistance.', 'et-core' ), 'http://php.net/manual/en/info.configuration.php#ini.max-execution-time' ) ),
 				'learn_more'     => 'http://php.net/manual/en/info.configuration.php#ini.max-execution-time',
@@ -1286,7 +1418,7 @@ class ET_Core_SupportCenter {
 				'pass_minus_one' => true,
 				'pass_zero'      => true,
 				'minimum'        => null,
-				'recommended'    => '180',
+				'recommended'    => '60',
 				'actual'         => ini_get( 'max_input_time' ),
 				'help_text'      => et_get_safe_localization( sprintf( __( 'This sets the maximum time in seconds a script is allowed to parse input data. If the limit is too low, the Divi Builder may time out before it is allowed to load. You can adjust your max input time within your <a href="%1$s" target="_blank">php.ini file</a>, or by contacting your host for assistance.', 'et-core' ), 'http://php.net/manual/en/info.configuration.php#ini.max-input-time' ) ),
 				'learn_more'     => 'http://php.net/manual/en/info.configuration.php#ini.max-input-time',
@@ -2403,7 +2535,7 @@ class ET_Core_SupportCenter {
 	 */
 
 	/**
-	 * ET Product Whitelist
+	 * ET Product Allowlist
 	 *
 	 * @since 3.28
 	 *
@@ -2411,7 +2543,7 @@ class ET_Core_SupportCenter {
 	 *
 	 * @return string|false   If the product is on our list, we return the "nice name" we have for it. Otherwise, we return FALSE.
 	 */
-	protected function is_whitelisted_product( $product = '' ) {
+	protected function is_allowlisted_product( $product = '' ) {
 		switch ( $product ) {
 			case 'divi_builder_plugin':
 			case 'divi_theme':
@@ -2445,10 +2577,10 @@ class ET_Core_SupportCenter {
 			// Check the ET product that is activating Safe Mode
 			$safe_mode_activator = sanitize_key( $_POST['product'] );
 
-			// Confirm that this is a whitelisted product
-			$whitelisted_product = $this->is_whitelisted_product( $safe_mode_activator );
+			// Confirm that this is a allowlisted product
+			$allowlisted_product = $this->is_allowlisted_product( $safe_mode_activator );
 
-			if ( ! $whitelisted_product ) {
+			if ( ! $allowlisted_product ) {
 				// Send a failure code and exit the function
 				header( "HTTP/1.0 403 Forbidden" );
 				print 'Bad or malformed ET product name.';
@@ -2485,15 +2617,15 @@ class ET_Core_SupportCenter {
 	public function toggle_safe_mode( $activate = true, $product = '' ) {
 		$activate            = (bool) $activate;
 		$user_id             = get_current_user_id();
-		$whitelisted_product = $this->is_whitelisted_product( $product );
+		$allowlisted_product = $this->is_allowlisted_product( $product );
 
-		// Only proceed with an activation request if it comes from a whitelisted product
-		if ( $activate && ! $whitelisted_product ) {
+		// Only proceed with an activation request if it comes from a allowlisted product
+		if ( $activate && ! $allowlisted_product ) {
 			return;
 		}
 
 		update_user_meta( $user_id, '_et_support_center_safe_mode', $activate ? 'on' : 'off' );
-		update_user_meta( $user_id, '_et_support_center_safe_mode_product', $activate ? sanitize_text_field( $whitelisted_product ) : '' );
+		update_user_meta( $user_id, '_et_support_center_safe_mode_product', $activate ? sanitize_text_field( $allowlisted_product ) : '' );
 
 		$activate ? $this->maybe_add_mu_autoloader() : $this->maybe_remove_mu_autoloader();
 
@@ -2541,7 +2673,7 @@ class ET_Core_SupportCenter {
 
 		// Get the name of the ET product that activated Safe Mode
 		$safe_mode_activator = get_user_meta( get_current_user_id(), '_et_support_center_safe_mode_product', true );
-		$verified_activator  = $this->is_whitelisted_product( $safe_mode_activator );
+		$verified_activator  = $this->is_allowlisted_product( $safe_mode_activator );
 
 		?>
 		<script type="text/template" id="et-ajax-safe-mode-template">
@@ -2608,7 +2740,7 @@ class ET_Core_SupportCenter {
 		if ( et_core_is_safe_mode_active() ) {
 			// Get the name of the ET product that activated Safe Mode
 			$safe_mode_activator = get_user_meta( get_current_user_id(), '_et_support_center_safe_mode_product', true );
-			$verified_activator  = $this->is_whitelisted_product( $safe_mode_activator );
+			$verified_activator  = $this->is_allowlisted_product( $safe_mode_activator );
 
 			print sprintf( '<a class="%1$s" href="%2$s">%3$s</a>',
 				'et-safe-mode-indicator',
@@ -2639,6 +2771,8 @@ class ET_Core_SupportCenter {
 			$is_current_user_et_support = 2;
 		}
 
+		// Conditionally Display Divi Hosting Card
+		$this->maybe_display_divi_hosting_card();
 		?>
 		<div id="et_support_center" class="wrap et-divi-admin-page--wrapper" data-et-zone="wp-admin" data-et-page="wp-admin-support-center">
 			<h1><?php esc_html_e( sprintf( '%1$s Help &amp; Support Center', $this->parent_nicename ), 'et-core' );
@@ -2887,8 +3021,8 @@ class ET_Core_SupportCenter {
 									continue;
 								}
 
-								// If it's not in our whitelist, add it to the list of plugins we'll disable
-								if ( ! in_array( $plugin, $this->safe_mode_plugins_whitelist ) ) {
+								// If it's not in our allowlist, add it to the list of plugins we'll disable
+								if ( ! in_array( $plugin, $this->safe_mode_plugins_allowlist ) ) {
 									$plugins_list[] = '<li>' . esc_html( $all_plugins[ $plugin ]['Name'] ) . '</li>';
 								}
 							}
@@ -2999,4 +3133,219 @@ class ET_Core_SupportCenter {
 
 	}
 
+	/**
+	 * SUPPORT CENTER :: DIVI HOSTING CARD
+	 */
+
+	/**
+	 * Conditionally display Divi Hosting Card in the Support Center
+	 *
+	 * @since 4.4.7
+	 */
+	public function maybe_display_divi_hosting_card() {
+		// Sanity Check: Exit early if the user does not have permission
+		if ( ! $this->current_user_can( 'et_support_center_system' ) ) {
+			return;
+		}
+
+		// Exit if Admin dismissed the Divi Hosting Card
+		if ( get_option( 'et_hosting_card_dismissed', false ) ) {
+			return;
+		}
+
+		// Show the Divi Hosting Card
+		add_action( 'et_support_center_below_position_1', array( $this, 'print_divi_hosting_card' ) );
+	}
+
+	/**
+	 * Prepare Settings for ET API request
+	 * Returns false when ET username/api_key is not found, and ET subscription is not active
+	 *
+	 * @since 4.4.7
+	 * @param string $action
+	 *
+	 * @return bool|array
+	 */
+	protected function get_et_api_request_settings( $action ) {
+		$et_account  = et_core_get_et_account();
+		$et_username = et_()->array_get( $et_account, 'et_username', '' );
+		$et_api_key  = et_()->array_get( $et_account, 'et_api_key', '' );
+
+		// Only when ET Username and ET API Key is found
+		if ( '' !== $et_username && '' !== $et_api_key ) {
+			global $wp_version;
+
+			// Prepare settings for API request
+			return array(
+				'timeout'    => 30,
+				'body'       => array(
+					'action'   => $action,
+					'username' => $et_username,
+					'api_key'  => $et_api_key,
+				),
+				'user-agent' => 'WordPress/' . $wp_version . '; ' . home_url( '/' ),
+			);
+		}
+
+		return false;
+	}
+
+	/**
+	 * Check ET API whether ET User has disabled Divi Hosting Card
+	 *
+	 * @since 4.4.7
+	 *
+	 * @return bool
+	 */
+	protected function maybe_api_has_hosting_card_disabled() {
+	    // Get API settings
+		$api_settings = $this->get_et_api_request_settings( 'check_hosting_card_status' );
+
+		// Check API only when ET Username, ET API Key is found and Account is active
+		if ( is_array( $api_settings ) ) {
+			$request               = wp_remote_post( 'https://www.elegantthemes.com/api/api.php', $api_settings );
+			$request_response_code = wp_remote_retrieve_response_code( $request );
+
+			// Do not show the Hosting Card when API Request, or, API Response has any error
+			if ( is_wp_error( $request ) || 200 !== $request_response_code ) {
+				return true;
+			}
+
+			$response_body = wp_remote_retrieve_body( $request );
+			$response      = (array) json_decode( $response_body );
+
+			// Check whether the User has disabled the card
+			if ( et_()->array_get( $response, 'success' ) && et_()->array_get( $response, 'status' ) === 'disabled' ) {
+				// Mark it dismissed, so it won't be displayed anymore on this website
+				update_option( 'et_hosting_card_dismissed', true );
+
+				// Do not show the Hosting Card
+				return true;
+			}
+		}
+
+		// Show the Hosting Card
+		return false;
+	}
+
+	/**
+	 * Return Data for Divi Hosting Card
+	 *
+	 * @since 4.4.7
+	 *
+	 * @return array
+	 */
+	protected function get_divi_hosting_features() {
+
+		return array(
+			'title'           => esc_html__( 'Get Recommended Divi Hosting', 'et-core' ),
+			'summary'         => esc_html__( 'Upgrade your hosting to the most reliable, Divi-compatible hosting. Enjoy perfectly configured hosting environments pre-installed with the tools you need to be successful with Divi.', 'et-core' ),
+			'url'             => 'https://www.elegantthemes.com/hosting/',
+			'learn_more'      => esc_html__( 'Learn About Divi Hosting', 'et-core' ),
+			'dismiss_tooltip' => esc_html__( 'Remove This Recommendation On All Of Your Websites And Your Client\'s Websites Forever', 'et-core' ),
+			'features'        => array(
+				'server'   => array(
+					'title'   => esc_html__( 'Divi-Optimized Servers', 'et-core' ),
+					'tooltip' => esc_html__( "We worked with our parters to make sure that their hosting solutions meet all of Divi's requirements out of the box. No hosting headaches on Divi Hosting.", 'et-core' ),
+				),
+				'speed'    => array(
+					'title'   => esc_html__( 'Blazing Fast Speed', 'et-core' ),
+					'tooltip' => esc_html__( 'Divi Hosting is powered by fast networks, modern hosting infrastructures and the latest server software. Plus you will enjoy automatic caching and a free CDN.', 'et-core' ),
+				),
+				'security' => array(
+					'title'   => esc_html__( 'A Focus On Security', 'et-core' ),
+					'tooltip' => esc_html__( 'All of our hosting partners are dedicated to security. That means up-to-date server software and secure hosting practices.', 'et-core' ),
+				),
+				'backups'  => array(
+					'title'   => esc_html__( 'Automatic Backups', 'et-core' ),
+					'tooltip' => esc_html__( 'Every website needs backups! Each of our hosting partners provide automatic daily backups. If disaster strikes, these hosting companies have your back.', 'et-core' ),
+				),
+				'migrate'  => array(
+					'title'   => esc_html__( 'Easy Site Migration', 'et-core' ),
+					'tooltip' => esc_html__( "Already have a Divi website hosted somewhere else? All of our hosting partners provide migration tools or professional assisted migration. It's easy to switch to Divi Hosting!", 'et-core' ),
+				),
+				'staging'  => array(
+					'title'   => esc_html__( 'Easy Staging Sites', 'et-core' ),
+					'tooltip' => esc_html__( 'Automatic staging sites make it easy to develop new designs for your clients without disrupting visitors. Finish your work and push it live all at once.', 'et-core' ),
+				),
+			),
+		);
+	}
+
+	/**
+	 * Build and display Divi Hosting Card
+	 *
+	 * @since 4.4.7
+	 */
+	public function print_divi_hosting_card() {
+		// Gather System status data
+		$report = $this->system_diagnostics_generate_report( false );
+		$result = array();
+
+		// Prepare the report data to check against when to show the Divi Hosting Card
+		foreach ( $report as $status ) {
+			$result[] = et_()->array_get( $status, 'pass_fail' );
+		}
+
+		// Exit if any system status item is not in a warning state (red dot indicator)
+		if ( ! in_array( 'fail', array_values( $result ), true ) ) {
+			return;
+		}
+
+		// Exit if ET User has disabled the Divi Hosting card
+		if ( $this->maybe_api_has_hosting_card_disabled() ) {
+			return;
+		}
+
+		// JS dependency for Tooltips
+		wp_enqueue_script( 'popper', $this->local_path . 'admin/js/popper.min.js', array( 'jquery' ), ET_CORE_VERSION );
+		wp_enqueue_script( 'tippy', $this->local_path . 'admin/js/tippy.min.js', array( 'jquery', 'popper' ), ET_CORE_VERSION );
+
+		$card     = $this->get_divi_hosting_features();
+		$features = '';
+
+		// HTML Template for Features of the Divi Hosting Card
+		foreach ( $card['features'] as $name => $feature ) {
+			$features .= sprintf(
+				'<div class="et_hosting_card--feature" data-tippy-content="%1$s">%2$s <h4>%3$s</h4></div>',
+				esc_html( $feature['tooltip'] ),
+				sprintf(
+					'<object type="image/svg+xml" className="fitvidsignore" data="%1$s" width="32" height="32"></object>',
+					esc_url( "{$this->local_path}admin/images/svg/{$name}.svg" )
+				),
+				esc_html( $feature['title'] )
+			);
+		}
+
+		// HTML Template for the Divi Hosting Card
+		$card_content = sprintf(
+			'<p class="et_card_summary">%1$s</p>
+			<div class="et_card_content et_hosting_card--features">%2$s</div>
+			<div class="et_card_cta et_hosting_card--cta">%3$s</div>',
+			esc_html( $card['summary'] ),
+			et_core_esc_previously( $features ),
+			sprintf(
+				'<a class="et_hosting_card--link" target="_blank" href="%1$s" title="%2$s">%3$s</a>',
+				esc_url( $card['url'] ),
+				esc_attr( $card['learn_more'] ),
+				esc_html( $card['learn_more'] )
+			)
+		);
+
+		// Display the Divi Hosting Card
+		print $this->add_support_center_card( array(
+			'title'              => $card['title'],
+			'content'            => $card_content,
+			'additional_classes' => array(
+				'et_hosting_card',
+			),
+			'dismiss_button'     => array(
+				'card_key'           => 'et_hosting_card',
+				'tooltip'            => $card['dismiss_tooltip'],
+				'additional_classes' => array(
+					'et_hosting_card--dismiss',
+				),
+			),
+		) );
+	}
 }

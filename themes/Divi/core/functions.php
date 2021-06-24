@@ -766,13 +766,13 @@ add_action( 'et_head_meta', 'et_force_edge_compatibility_mode' );
 
 if ( ! function_exists( 'et_get_allowed_localization_html_elements' ) ) :
 function et_get_allowed_localization_html_elements() {
-	$whitelisted_attributes = array(
+	$allowlisted_attributes = array(
 		'id'    => array(),
 		'class' => array(),
 		'style' => array(),
 	);
 
-	$whitelisted_attributes = apply_filters( 'et_allowed_localization_html_attributes', $whitelisted_attributes );
+	$allowlisted_attributes = apply_filters( 'et_allowed_localization_html_attributes', $allowlisted_attributes );
 
 	$elements = array(
 		'a'      => array(
@@ -794,7 +794,7 @@ function et_get_allowed_localization_html_elements() {
 	$elements = apply_filters( 'et_allowed_localization_html_elements', $elements );
 
 	foreach ( $elements as $tag => $attributes ) {
-		$elements[ $tag ] = array_merge( $attributes, $whitelisted_attributes );
+		$elements[ $tag ] = array_merge( $attributes, $allowlisted_attributes );
 	}
 
 	return $elements;
@@ -1025,7 +1025,7 @@ endif;
 
 if ( ! function_exists( 'et_core_add_allowed_protocols' ) ) :
 /**
- * Extend the whitelist of allowed URL protocols
+ * Extend the allowlist of allowed URL protocols
  *
  * @param array $protocols List of URL protocols allowed by WordPress.
  *
@@ -1173,6 +1173,60 @@ function et_image_add_srcset_and_sizes( $image, $echo = false ) {
 }
 endif;
 
+if ( ! function_exists( 'et_get_attachment_id_by_url_sql' ) ) :
+	/**
+	 * Generate SQL query syntax to compute attachment ID by URL.
+	 *
+	 * @since 4.4.2
+	 *
+	 * @param string $url The URL being looked up.
+	 *
+	 * @return string SQL query syntax.
+	 */
+	function et_get_attachment_id_by_url_sql( $normalized_url ) {
+		global $wpdb;
+
+		// Strip the HTTP/S protocol.
+		$cleaned_url = preg_replace( '/^https?:/i', '', $normalized_url );
+
+		// Remove any thumbnail size suffix from the filename and use that as a fallback.
+		$fallback_url = preg_replace( '/-(\d+)x(\d+)\.(jpg|jpeg|gif|png)$/', '.$3', $cleaned_url );
+
+		if ( $cleaned_url === $fallback_url ) {
+			$attachments_query = $wpdb->prepare(
+				"SELECT id
+				FROM $wpdb->posts
+				WHERE `post_type` = %s
+					AND `guid` IN ( %s, %s )",
+				'attachment',
+				esc_url_raw( "https:{$cleaned_url}" ),
+				esc_url_raw( "http:{$cleaned_url}" )
+			);
+		} else {
+			// Scenario: Trying to find the attachment for a file called x-150x150.jpg.
+			// 1. Since WordPress adds the -150x150 suffix for thumbnail sizes we cannot be
+			// sure if this is an attachment or an attachment's generated thumbnail.
+			// 2. Since both x.jpg and x-150x150.jpg can be uploaded as separate attachments
+			// we must decide which is a better match.
+			// 3. The above is why we order by guid length and use the first result.
+			$attachments_query = $wpdb->prepare(
+				"SELECT id
+				FROM $wpdb->posts
+				WHERE `post_type` = %s
+					AND `guid` IN ( %s, %s, %s, %s )
+				ORDER BY CHAR_LENGTH( `guid` ) DESC",
+				'attachment',
+				esc_url_raw( "https:{$cleaned_url}" ),
+				esc_url_raw( "https:{$fallback_url}" ),
+				esc_url_raw( "http:{$cleaned_url}" ),
+				esc_url_raw( "http:{$fallback_url}" )
+			);
+		}
+
+		return $attachments_query;
+	}
+endif;
+
 if ( ! function_exists( 'et_get_attachment_id_by_url' ) ) :
 /**
  * Tries to get attachment ID by URL.
@@ -1236,44 +1290,66 @@ function et_get_attachment_id_by_url( $url ) {
 		ET_Core_Cache_File::set( 'attachment_id_by_url', $cache );
 	}
 
-	// Strip the HTTP/S protocol.
-	$cleaned_url = preg_replace( '/^https?:/i', '', $normalized_url );
+	$attachments_sql_query = et_get_attachment_id_by_url_sql( $normalized_url );
+	$attachment_id         = (int) $wpdb->get_var( $attachments_sql_query );
 
-	// Remove any thumbnail size suffix from the filename and use that as a fallback.
-	$fallback_url = preg_replace( '/-(\d+)x(\d+)\.(jpg|jpeg|gif|png)$/', '.$3', $cleaned_url );
-
-	if ( $cleaned_url === $fallback_url ) {
-		$attachments_query = $wpdb->prepare(
-			"SELECT id
-			FROM $wpdb->posts
-			WHERE `post_type` = %s
-				AND `guid` IN ( %s, %s )",
-			'attachment',
-			esc_url_raw( "https:{$cleaned_url}" ),
-			esc_url_raw( "http:{$cleaned_url}" )
-		);
-	} else {
-		// Scenario: Trying to find the attachment for a file called x-150x150.jpg.
-		// 1. Since WordPress adds the -150x150 suffix for thumbnail sizes we cannot be
-		// sure if this is an attachment or an attachment's generated thumbnail.
-		// 2. Since both x.jpg and x-150x150.jpg can be uploaded as separate attachments
-		// we must decide which is a better match.
-		// 3. The above is why we order by guid length and use the first result.
-		$attachments_query = $wpdb->prepare(
-			"SELECT id
-			FROM $wpdb->posts
-			WHERE `post_type` = %s
-				AND `guid` IN ( %s, %s, %s, %s )
-			ORDER BY CHAR_LENGTH( `guid` ) DESC",
-			'attachment',
-			esc_url_raw( "https:{$cleaned_url}" ),
-			esc_url_raw( "https:{$fallback_url}" ),
-			esc_url_raw( "http:{$cleaned_url}" ),
-			esc_url_raw( "http:{$fallback_url}" )
-		);
+	// There is this new feature in WordPress 5.3 that allows users to upload big image file 
+	// (threshold being either width or height of 2560px) and the core will scale it down.
+	// This causing the GUID URL info stored is no more relevant since the WordPress core system
+	// will append "-scaled." string into the image URL when serving it in the frontend.
+	// Hence we run another query as fallback in case the attachment ID is not found and 
+	// there is "-scaled." string appear in the image URL
+	// @see https://make.wordpress.org/core/2019/10/09/introducing-handling-of-big-images-in-wordpress-5-3/
+	// @see https://wordpress.org/support/topic/media-images-renamed-to-xyz-scaled-jpg/
+	if ( ! $attachment_id && false !== strpos( $normalized_url, '-scaled.' ) ) {
+		$normalized_url_not_scaled = str_replace( '-scaled.', '.', $normalized_url );
+		$attachments_sql_query     = et_get_attachment_id_by_url_sql( $normalized_url_not_scaled );
+		$attachment_id             = (int) $wpdb->get_var( $attachments_sql_query );
 	}
 
-	$attachment_id = (int) $wpdb->get_var( $attachments_query );
+	// There is a case the GUID image URL stored differently with the URL
+	// served in the frontend for a featured image, so the query will always fail.
+	// Hence we add another fallback query to the _wp_attached_file value in 
+	// the postmeta table to match with the image relative path.
+	if ( ! $attachment_id ) {
+		$uploads         = wp_get_upload_dir();
+		$uploads_baseurl = trailingslashit( $uploads['baseurl'] );
+
+		if ( 0 === strpos( $normalized_url, $uploads_baseurl ) ) {
+			$file_path = str_replace( $uploads_baseurl, '', $normalized_url );
+			$file_path_no_resize = preg_replace( '/-(\d+)x(\d+)\.(jpg|jpeg|gif|png)$/', '.$3', $file_path );
+
+			if ( $file_path === $file_path_no_resize ) {
+				$attachments_sql_query = $wpdb->prepare(
+					"SELECT post_id
+					FROM $wpdb->postmeta
+					WHERE `meta_key` = %s
+						AND `meta_value` = %s",
+					'_wp_attached_file',
+					$file_path
+				);
+			} else {
+				// Scenario: Trying to find the attachment for a file called x-150x150.jpg.
+				// 1. Since WordPress adds the -150x150 suffix for thumbnail sizes we cannot be
+				// sure if this is an attachment or an attachment's generated thumbnail.
+				// 2. Since both x.jpg and x-150x150.jpg can be uploaded as separate attachments
+				// we must decide which is a better match.
+				// 3. The above is why we order by meta_value length and use the first result.
+				$attachments_sql_query = $wpdb->prepare(
+					"SELECT post_id
+					FROM $wpdb->postmeta
+					WHERE `meta_key` = %s
+						AND `meta_value` IN ( %s, %s )
+					ORDER BY CHAR_LENGTH( `meta_value` ) DESC",
+					'_wp_attached_file',
+					$file_path,
+					$file_path_no_resize
+				);
+			}
+
+			$attachment_id = (int) $wpdb->get_var( $attachments_sql_query );
+		}
+	}
 
 	// Cache data only if attachment ID is found.
 	if ( $attachment_id && et_core_is_uploads_dir_url( $normalized_url ) ) {
@@ -1721,3 +1797,68 @@ if ( ! function_exists( 'et_core_get_websafe_fonts' ) ) :
 		return apply_filters( 'et_websafe_fonts', $websafe_fonts );
 	}
 endif;
+
+if ( ! function_exists( 'et_maybe_update_hosting_card_status' ) ) :
+	/**
+	 * Divi Hosting Card :: Update dismiss status via ET API
+	 *
+	 * @since 4.4.7
+	 */
+	function et_maybe_update_hosting_card_status() {
+		$et_account        = et_core_get_et_account();
+		$et_username       = et_()->array_get( $et_account, 'et_username', '' );
+		$et_api_key        = et_()->array_get( $et_account, 'et_api_key', '' );
+
+		// Exit if ET Username and/or ET API Key is not found
+		if ( '' === $et_username || '' === $et_api_key ) {
+			// Remove any WP Cron for Updating Hosting Card Status
+			wp_unschedule_hook( 'et_maybe_update_hosting_card_status_cron' );
+
+			return;
+		}
+
+		global $wp_version;
+
+		// Prepare settings for API request
+		$options = array(
+			'timeout'    => 30,
+			'body'       => array(
+				'action'   => 'disable_hosting_card',
+				'username' => $et_username,
+				'api_key'  => $et_api_key,
+			),
+			'user-agent' => 'WordPress/' . $wp_version . '; ' . home_url( '/' ),
+		);
+
+		$request               = wp_remote_post( 'https://www.elegantthemes.com/api/api.php', $options );
+		$request_response_code = wp_remote_retrieve_response_code( $request );
+		$response_body         = wp_remote_retrieve_body( $request );
+		$response              = (array) json_decode( $response_body );
+
+		// API request has been updated successfully and the User has already disabled the card, or,
+		// when API request was successful and returns error message
+		if ( 'disabled' === et_()->array_get( $response, 'status' ) || '' !== et_()->array_get( $response, 'error', '' ) ) {
+			// Remove any WP Cron for Updating Hosting Card Status
+			wp_unschedule_hook( 'et_maybe_update_hosting_card_status_cron' );
+
+			return;
+		}
+
+		// Fail-safe :: Schedule WP Cron to try again
+		// Once something were wrong in API request, or, response has error code
+		if ( is_wp_error( $request ) || 200 !== $request_response_code ) {
+
+			// First API request has failed, which were done already in above, second request
+			// (via cron) will be made in a minute, then third (via cron) and future (via cron)
+			// call will be per hour. Once API request is successful, cron will be removed
+			$timestamp = time() + 1 * MINUTE_IN_SECONDS;
+
+			if ( ! wp_next_scheduled( 'et_maybe_update_hosting_card_status_cron' ) ) {
+				wp_schedule_event( $timestamp, 'hourly', 'et_maybe_update_hosting_card_status_cron' );
+			}
+		}
+	}
+endif;
+
+// Action for WP Cron: Disable Hosting Card status via ET API
+add_action( 'et_maybe_update_hosting_card_status_cron', 'et_maybe_update_hosting_card_status' );

@@ -21,6 +21,15 @@ abstract class ET_Builder_Module_Type_WithSpamProtection extends ET_Builder_Modu
 	public static $enabled_spam_providers;
 
 	/**
+	 * Shortcode attributes array checksum.
+	 *
+	 * @since 4.4.9
+	 *
+	 * @var
+	 */
+	protected $_checksum;
+
+	/**
 	 * Get module settings fields for spam protection providers
 	 *
 	 * @since 4.0.7
@@ -51,7 +60,7 @@ abstract class ET_Builder_Module_Type_WithSpamProtection extends ET_Builder_Modu
 				array(
 					'type'  => 'button',
 					'class' => 'et_pb_email_cancel',
-					'text'  => esc_html__( 'Cancel', 'et_builder' ),
+					'text'  => et_builder_i18n( 'Cancel' ),
 				),
 				array(
 					'type'  => 'button',
@@ -138,7 +147,7 @@ abstract class ET_Builder_Module_Type_WithSpamProtection extends ET_Builder_Modu
 				}
 
 				$index = count( $result[ $provider_slug ][ $account_name ] );
-				$result[ $provider_slug ][ $account_name ]["{$account_name}-{$index}"] = esc_html( $account_name );
+				$result[ $provider_slug ][ $account_name ][ "{$account_name}-{$index}" ] = esc_html( $account_name );
 			}
 
 			$result[ $provider_slug ]['manage'] = array(
@@ -164,8 +173,8 @@ abstract class ET_Builder_Module_Type_WithSpamProtection extends ET_Builder_Modu
 				'type'            => 'yes_no_button',
 				'option_category' => 'configuration',
 				'options'         => array(
-					'on'  => esc_html__( 'Yes', 'et_builder' ),
-					'off' => esc_html__( 'No', 'et_builder' ),
+					'on'  => et_builder_i18n( 'Yes' ),
+					'off' => et_builder_i18n( 'No' ),
 				),
 				'toggle_slug'     => 'spam',
 				'description'     => esc_html__( 'Whether or not to use a 3rd-party spam protection service like Google reCAPTCHA.', 'et_builder' ),
@@ -187,12 +196,15 @@ abstract class ET_Builder_Module_Type_WithSpamProtection extends ET_Builder_Modu
 
 		$accounts = self::_get_spam_accounts();
 
-
 		foreach ( self::$enabled_spam_providers as $provider_slug => $provider_name ) {
 			$max_accounts = null;
 			$no_accounts  = array(
 				'0'      => array( 'none' => esc_html__( 'Select an account', 'et_builder' ) ),
-				'manage' => array( 'add_new_account' => '', 'remove_account' => '', 'fetch_lists' => '' ),
+				'manage' => array(
+					'add_new_account' => '',
+					'remove_account'  => '',
+					'fetch_lists'     => '',
+				),
 			);
 
 			if ( 'ReCaptcha' === $provider_name ) {
@@ -201,19 +213,19 @@ abstract class ET_Builder_Module_Type_WithSpamProtection extends ET_Builder_Modu
 			}
 
 			$fields[ $provider_slug . '_list' ] = array(
-				'label'            => sprintf( esc_html__( '%s Account', 'et_builder' ), $provider_name ),
-				'type'             => 'select_with_option_groups',
-				'option_category'  => 'basic_option',
-				'options'          => isset( $accounts[ $provider_slug ] ) ? $accounts[ $provider_slug ] : $no_accounts,
-				'description'      => esc_html__( 'Choose an account or click "Add" to add a new account.' ),
-				'show_if'          => array(
+				'label'           => sprintf( esc_html__( '%s Account', 'et_builder' ), $provider_name ),
+				'type'            => 'select_with_option_groups',
+				'option_category' => 'basic_option',
+				'options'         => isset( $accounts[ $provider_slug ] ) ? $accounts[ $provider_slug ] : $no_accounts,
+				'description'     => esc_html__( 'Choose an account or click "Add" to add a new account.', 'et_builder' ),
+				'show_if'         => array(
 					'spam_provider'    => $provider_slug,
 					'use_spam_service' => 'on',
 				),
-				'default'          => '0|none',
-				'max_accounts'     => $max_accounts,
-				'toggle_slug'      => 'spam',
-				'after'            => array(
+				'default'         => '0|none',
+				'max_accounts'    => $max_accounts,
+				'toggle_slug'     => 'spam',
+				'after'           => array(
 					array(
 						'type'  => 'button',
 						'class' => 'et_pb_email_add_account',
@@ -229,7 +241,7 @@ abstract class ET_Builder_Module_Type_WithSpamProtection extends ET_Builder_Modu
 						),
 					),
 				),
-				'attributes'       => array(
+				'attributes'      => array(
 					'data-confirm_remove_text'     => esc_attr__( 'The following account will be removed:', 'et_builder' ),
 					'data-adding_new_account_text' => esc_attr__( 'Use the fields below to add a new account.', 'et_builder' ),
 				),
@@ -243,7 +255,7 @@ abstract class ET_Builder_Module_Type_WithSpamProtection extends ET_Builder_Modu
 			'label'           => esc_html__( 'Minimum Score', 'et_builder' ),
 			'type'            => 'range',
 			'option_category' => 'configuration',
-			'validate_unit'    => false,
+			'validate_unit'   => false,
 			'range_settings'  => array(
 				'min'  => '0',
 				'max'  => '1',
@@ -284,6 +296,10 @@ abstract class ET_Builder_Module_Type_WithSpamProtection extends ET_Builder_Modu
 	 * @return bool
 	 */
 	public function is_spam_submission() {
+		if ( empty( $_POST['token'] ) ) {
+			return true;
+		}
+
 		$provider = $this->prop( 'spam_provider' );
 		$account  = $this->prop( "{$provider}_list" );
 
@@ -330,8 +346,18 @@ abstract class ET_Builder_Module_Type_WithSpamProtection extends ET_Builder_Modu
 	}
 
 	public function render( $attrs, $content = null, $render_slug ) {
+
+		$this->_checksum  = md5( serialize( $attrs ) );
+		$use_spam_service = get_option( $this->slug . '_' . $this->_checksum );
+
 		if ( 'on' === $this->prop( 'use_spam_service' ) ) {
 			$this->add_classname( 'et_pb_recaptcha_enabled' );
+
+			if ( 'on' !== $use_spam_service ) {
+				update_option( $this->slug . '_' . $this->_checksum, 'on' );
+			}
+		} elseif ( 'off' !== $use_spam_service ) {
+			update_option( $this->slug . '_' . $this->_checksum, 'off' );
 		}
 	}
 }

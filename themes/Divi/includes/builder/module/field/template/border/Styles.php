@@ -1,6 +1,6 @@
 <?php
 
-require_once( ET_BUILDER_DIR . 'module/field/template/Tabbed.php' );
+require_once ET_BUILDER_DIR . 'module/field/template/Tabbed.php';
 
 class ET_Builder_Module_Field_Template_Border_Styles extends ET_Builder_Module_Field_Template_Tabbed {
 	protected function _get_control_class() {
