@@ -1,0 +1,10 @@
+{
+  "type": "wordpress-plugin",
+  "name": "lucrelabs/wp-site-migrate",
+  "version": "4.62",
+  "license": "proprietary",
+  "description": "Migrates site to WPEngine",
+  "require": {
+    "composer/installers": "~1.0"
+  }
+}

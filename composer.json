@@ -47,6 +47,7 @@
 		"lucrelabs/wp-migrate-db-pro": "1.9.10",
 		"lucrelabs/iconic-woo-delivery-slots-premium": "1.10.0",
 		"lucrelabs/woocommerce-subscriptions": "3.0.5",
+		"lucrelabs/wp-site-migrate": "^4.62",
 		"wp-cli/wp-cli": "^1.1.0",
 		"landongw/Divi": "*",
 		"ext-json": "*"
