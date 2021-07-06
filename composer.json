@@ -28,7 +28,7 @@
 	"require": {
 		"ext-gd": "*",
 		"ext-mbstring": "*",
-		"johnpbloch/wordpress": "5.5.2",
+		"johnpbloch/wordpress": "5.5.3",
 		"wpackagist-plugin/amazon-web-services": "0.3.6",
 		"wpackagist-plugin/sendgrid-email-delivery-simplified": "1.7",
 		"wpackagist-plugin/woocommerce": "4.0.1",
