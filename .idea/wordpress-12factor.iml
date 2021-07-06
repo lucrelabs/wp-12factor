@@ -10,8 +10,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/johnpbloch/wordpress-core-installer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/justinrainbow/json-schema" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mustache/mustache" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/mustangostang/spyc" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/nb/oxymel" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/container" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/log" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/ramsey/array_column" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/rmccue/requests" />
@@ -29,34 +29,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/process" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/translation" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/yaml" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/autoload-splitter" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/cache-command" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/checksum-command" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/config-command" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/core-command" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/cron-command" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/db-command" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/embed-command" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/entity-command" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/eval-command" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/export-command" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/extension-command" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/import-command" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/language-command" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/media-command" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/mustangostang-spyc" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/package-command" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/php-cli-tools" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/rewrite-command" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/role-command" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/scaffold-command" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/search-replace-command" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/server-command" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/shell-command" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/super-admin-command" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/widget-command" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/wp-cli" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/wp-cli/wp-config-transformer" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
